@@ -40,7 +40,7 @@
             // UsernameTextBox
             // 
             this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.UsernameTextBox.Location = new System.Drawing.Point(304, 147);
+            this.UsernameTextBox.Location = new System.Drawing.Point(313, 147);
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(200, 32);
             this.UsernameTextBox.TabIndex = 0;
@@ -49,7 +49,7 @@
             // PasswordTextBox
             // 
             this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.PasswordTextBox.Location = new System.Drawing.Point(304, 205);
+            this.PasswordTextBox.Location = new System.Drawing.Point(313, 205);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(200, 32);
@@ -60,7 +60,7 @@
             // 
             this.UsernameLabel.AutoSize = true;
             this.UsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.UsernameLabel.Location = new System.Drawing.Point(152, 150);
+            this.UsernameLabel.Location = new System.Drawing.Point(161, 150);
             this.UsernameLabel.Name = "UsernameLabel";
             this.UsernameLabel.Size = new System.Drawing.Size(119, 26);
             this.UsernameLabel.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.PasswordLabel.AutoSize = true;
             this.PasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.PasswordLabel.Location = new System.Drawing.Point(157, 208);
+            this.PasswordLabel.Location = new System.Drawing.Point(166, 208);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(114, 26);
             this.PasswordLabel.TabIndex = 3;
@@ -81,7 +81,7 @@
             this.LoginWarningLabel.AutoSize = true;
             this.LoginWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.LoginWarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.LoginWarningLabel.Location = new System.Drawing.Point(510, 147);
+            this.LoginWarningLabel.Location = new System.Drawing.Point(519, 147);
             this.LoginWarningLabel.Name = "LoginWarningLabel";
             this.LoginWarningLabel.Size = new System.Drawing.Size(262, 24);
             this.LoginWarningLabel.TabIndex = 4;
@@ -90,7 +90,7 @@
             // LoginButton
             // 
             this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.LoginButton.Location = new System.Drawing.Point(304, 267);
+            this.LoginButton.Location = new System.Drawing.Point(313, 267);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(200, 35);
             this.LoginButton.TabIndex = 5;
