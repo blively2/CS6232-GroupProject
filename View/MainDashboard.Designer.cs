@@ -32,13 +32,13 @@
             this.MainDashboardTabControl = new System.Windows.Forms.TabControl();
             this.MainTabPage = new System.Windows.Forms.TabPage();
             this.RegisterCustomerTabPage = new System.Windows.Forms.TabPage();
+            this.CustomerRegistrationUserControl = new SofaSoGood.RegisterCustomerUserControl();
             this.EditCustomerTabPage = new System.Windows.Forms.TabPage();
+            this.EditCustomerUserControl = new SofaSoGood.UserControls.EditCustomerUserControl();
             this.SearchCustomerTabPage = new System.Windows.Forms.TabPage();
+            this.SearchCustomerUserControl = new SofaSoGood.UserControls.SearchCustomerUserControl();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.CustomerRegistrationUserControl = new SofaSoGood.CustomerRegistrationUserControl();
-            this.EditCustomerUserControl = new SofaSoGood.UserControls.EditCustomerUserControl();
-            this.SearchCustomerUserControl = new SofaSoGood.UserControls.SearchCustomerUserControl();
             this.MainDashboardTabControl.SuspendLayout();
             this.RegisterCustomerTabPage.SuspendLayout();
             this.EditCustomerTabPage.SuspendLayout();
@@ -80,6 +80,14 @@
             this.RegisterCustomerTabPage.Text = "Registration";
             this.RegisterCustomerTabPage.UseVisualStyleBackColor = true;
             // 
+            // CustomerRegistrationUserControl
+            // 
+            this.CustomerRegistrationUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomerRegistrationUserControl.Location = new System.Drawing.Point(3, 3);
+            this.CustomerRegistrationUserControl.Name = "CustomerRegistrationUserControl";
+            this.CustomerRegistrationUserControl.Size = new System.Drawing.Size(770, 392);
+            this.CustomerRegistrationUserControl.TabIndex = 0;
+            // 
             // EditCustomerTabPage
             // 
             this.EditCustomerTabPage.Controls.Add(this.EditCustomerUserControl);
@@ -90,6 +98,14 @@
             this.EditCustomerTabPage.Text = "Edit Customer";
             this.EditCustomerTabPage.UseVisualStyleBackColor = true;
             // 
+            // EditCustomerUserControl
+            // 
+            this.EditCustomerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EditCustomerUserControl.Location = new System.Drawing.Point(0, 0);
+            this.EditCustomerUserControl.Name = "EditCustomerUserControl";
+            this.EditCustomerUserControl.Size = new System.Drawing.Size(776, 398);
+            this.EditCustomerUserControl.TabIndex = 0;
+            // 
             // SearchCustomerTabPage
             // 
             this.SearchCustomerTabPage.Controls.Add(this.SearchCustomerUserControl);
@@ -99,6 +115,14 @@
             this.SearchCustomerTabPage.TabIndex = 3;
             this.SearchCustomerTabPage.Text = "Search Customer";
             this.SearchCustomerTabPage.UseVisualStyleBackColor = true;
+            // 
+            // SearchCustomerUserControl
+            // 
+            this.SearchCustomerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchCustomerUserControl.Location = new System.Drawing.Point(0, 0);
+            this.SearchCustomerUserControl.Name = "SearchCustomerUserControl";
+            this.SearchCustomerUserControl.Size = new System.Drawing.Size(776, 398);
+            this.SearchCustomerUserControl.TabIndex = 0;
             // 
             // WelcomeUserLabel
             // 
@@ -121,27 +145,6 @@
             this.LogoutLinkLabel.TabStop = true;
             this.LogoutLinkLabel.Text = "Logout";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLabelClicked);
-            // 
-            // CustomerRegistrationUserControl
-            // 
-            this.CustomerRegistrationUserControl.Location = new System.Drawing.Point(0, 0);
-            this.CustomerRegistrationUserControl.Name = "CustomerRegistrationUserControl";
-            this.CustomerRegistrationUserControl.Size = new System.Drawing.Size(776, 398);
-            this.CustomerRegistrationUserControl.TabIndex = 0;
-            // 
-            // EditCustomerUserControl
-            // 
-            this.EditCustomerUserControl.Location = new System.Drawing.Point(0, 0);
-            this.EditCustomerUserControl.Name = "EditCustomerUserControl";
-            this.EditCustomerUserControl.Size = new System.Drawing.Size(776, 398);
-            this.EditCustomerUserControl.TabIndex = 0;
-            // 
-            // SearchCustomerUserControl
-            // 
-            this.SearchCustomerUserControl.Location = new System.Drawing.Point(8, 8);
-            this.SearchCustomerUserControl.Name = "SearchCustomerUserControl";
-            this.SearchCustomerUserControl.Size = new System.Drawing.Size(150, 150);
-            this.SearchCustomerUserControl.TabIndex = 0;
             // 
             // MainDashboard
             // 
@@ -176,7 +179,7 @@
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
         private System.Windows.Forms.TabPage EditCustomerTabPage;
         private System.Windows.Forms.TabPage SearchCustomerTabPage;
-        private CustomerRegistrationUserControl CustomerRegistrationUserControl;
+        private RegisterCustomerUserControl CustomerRegistrationUserControl;
         private UserControls.EditCustomerUserControl EditCustomerUserControl;
         private UserControls.SearchCustomerUserControl SearchCustomerUserControl;
     }

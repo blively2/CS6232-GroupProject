@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SofaSoGood
 {
-    public partial class CustomerRegistrationUserControl : UserControl
+    public partial class RegisterCustomerUserControl : UserControl
     {
-        public CustomerRegistrationUserControl()
+        public RegisterCustomerUserControl()
         {
             InitializeComponent();
         }

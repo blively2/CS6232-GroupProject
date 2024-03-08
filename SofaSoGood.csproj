@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserControls\CustomerRegistrationUserControl.cs">
+    <Compile Include="UserControls\RegisterCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\CustomerRegistrationUserControl.Designer.cs">
-      <DependentUpon>CustomerRegistrationUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\RegisterCustomerUserControl.Designer.cs">
+      <DependentUpon>RegisterCustomerUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EditCustomerUserControl.cs">
       <SubType>UserControl</SubType>
@@ -87,8 +87,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\CustomerRegistrationUserControl.resx">
-      <DependentUpon>CustomerRegistrationUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\RegisterCustomerUserControl.resx">
+      <DependentUpon>RegisterCustomerUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
       <DependentUpon>EditCustomerUserControl.cs</DependentUpon>

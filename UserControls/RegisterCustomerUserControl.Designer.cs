@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood
 {
-    partial class CustomerRegistrationUserControl
+    partial class RegisterCustomerUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,18 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // CustomerRegistrationUserControl
+            // TitleLabel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "CustomerRegistrationUserControl";
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.TitleLabel.Location = new System.Drawing.Point(272, 23);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(220, 29);
+            this.TitleLabel.TabIndex = 0;
+            this.TitleLabel.Text = "Register Customer:";
+            // 
+            // RegisterCustomerUserControl
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.TitleLabel);
+            this.Name = "RegisterCustomerUserControl";
             this.Size = new System.Drawing.Size(776, 398);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label TitleLabel;
     }
 }
