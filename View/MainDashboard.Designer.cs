@@ -36,7 +36,13 @@
             this.SearchCustomerTabPage = new System.Windows.Forms.TabPage();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.CustomerRegistrationUserControl = new SofaSoGood.CustomerRegistrationUserControl();
+            this.EditCustomerUserControl = new SofaSoGood.UserControls.EditCustomerUserControl();
+            this.SearchCustomerUserControl = new SofaSoGood.UserControls.SearchCustomerUserControl();
             this.MainDashboardTabControl.SuspendLayout();
+            this.RegisterCustomerTabPage.SuspendLayout();
+            this.EditCustomerTabPage.SuspendLayout();
+            this.SearchCustomerTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainDashboardTabControl
@@ -65,6 +71,7 @@
             // 
             // RegisterCustomerTabPage
             // 
+            this.RegisterCustomerTabPage.Controls.Add(this.CustomerRegistrationUserControl);
             this.RegisterCustomerTabPage.Location = new System.Drawing.Point(4, 33);
             this.RegisterCustomerTabPage.Name = "RegisterCustomerTabPage";
             this.RegisterCustomerTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -75,6 +82,7 @@
             // 
             // EditCustomerTabPage
             // 
+            this.EditCustomerTabPage.Controls.Add(this.EditCustomerUserControl);
             this.EditCustomerTabPage.Location = new System.Drawing.Point(4, 33);
             this.EditCustomerTabPage.Name = "EditCustomerTabPage";
             this.EditCustomerTabPage.Size = new System.Drawing.Size(776, 398);
@@ -84,6 +92,7 @@
             // 
             // SearchCustomerTabPage
             // 
+            this.SearchCustomerTabPage.Controls.Add(this.SearchCustomerUserControl);
             this.SearchCustomerTabPage.Location = new System.Drawing.Point(4, 33);
             this.SearchCustomerTabPage.Name = "SearchCustomerTabPage";
             this.SearchCustomerTabPage.Size = new System.Drawing.Size(776, 398);
@@ -113,6 +122,27 @@
             this.LogoutLinkLabel.Text = "Logout";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLabelClicked);
             // 
+            // CustomerRegistrationUserControl
+            // 
+            this.CustomerRegistrationUserControl.Location = new System.Drawing.Point(0, 0);
+            this.CustomerRegistrationUserControl.Name = "CustomerRegistrationUserControl";
+            this.CustomerRegistrationUserControl.Size = new System.Drawing.Size(776, 398);
+            this.CustomerRegistrationUserControl.TabIndex = 0;
+            // 
+            // EditCustomerUserControl
+            // 
+            this.EditCustomerUserControl.Location = new System.Drawing.Point(0, 0);
+            this.EditCustomerUserControl.Name = "EditCustomerUserControl";
+            this.EditCustomerUserControl.Size = new System.Drawing.Size(776, 398);
+            this.EditCustomerUserControl.TabIndex = 0;
+            // 
+            // SearchCustomerUserControl
+            // 
+            this.SearchCustomerUserControl.Location = new System.Drawing.Point(8, 8);
+            this.SearchCustomerUserControl.Name = "SearchCustomerUserControl";
+            this.SearchCustomerUserControl.Size = new System.Drawing.Size(150, 150);
+            this.SearchCustomerUserControl.TabIndex = 0;
+            // 
             // MainDashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -129,6 +159,9 @@
             this.Text = "Sofa So Good FMS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDashboardFormClose);
             this.MainDashboardTabControl.ResumeLayout(false);
+            this.RegisterCustomerTabPage.ResumeLayout(false);
+            this.EditCustomerTabPage.ResumeLayout(false);
+            this.SearchCustomerTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +176,8 @@
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
         private System.Windows.Forms.TabPage EditCustomerTabPage;
         private System.Windows.Forms.TabPage SearchCustomerTabPage;
+        private CustomerRegistrationUserControl CustomerRegistrationUserControl;
+        private UserControls.EditCustomerUserControl EditCustomerUserControl;
+        private UserControls.SearchCustomerUserControl SearchCustomerUserControl;
     }
 }
