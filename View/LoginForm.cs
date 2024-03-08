@@ -10,7 +10,7 @@ namespace SofaSoGood
     public partial class LoginForm : Form
     {
 
-        private MainDashboard MainDashboard;
+        private readonly MainDashboard MainDashboard;
         /// <summary>
         /// Constructs the LoginForm and initializes its components.
         /// </summary>

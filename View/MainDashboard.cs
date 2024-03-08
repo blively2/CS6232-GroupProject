@@ -10,7 +10,7 @@ namespace SofaSoGood.View
         /// <summary>
         /// Accessible instance of the LoginForm passed into MainDashboard.
         /// </summary>
-        private LoginForm LoginForm;
+        private readonly LoginForm LoginForm;
 
         /// <summary>
         /// Initializes a new instance of the MainDashboard.
