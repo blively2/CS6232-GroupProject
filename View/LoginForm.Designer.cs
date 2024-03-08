@@ -111,7 +111,7 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.LoginButton);
