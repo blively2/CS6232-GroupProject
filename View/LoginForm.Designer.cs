@@ -125,6 +125,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sofa So Good FMS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginFormFormClose);
             this.ResumeLayout(false);
             this.PerformLayout();
 

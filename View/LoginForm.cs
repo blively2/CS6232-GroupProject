@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SofaSoGood.View;
+using System;
 using System.Windows.Forms;
 
 namespace SofaSoGood
@@ -15,6 +9,8 @@ namespace SofaSoGood
     /// </summary>
     public partial class LoginForm : Form
     {
+
+        private MainDashboard MainDashboard;
         /// <summary>
         /// Constructs the LoginForm and initializes its components.
         /// </summary>
@@ -22,6 +18,7 @@ namespace SofaSoGood
         {
             InitializeComponent();
             this.LoginWarningLabel.Text = string.Empty;
+            this.MainDashboard = new MainDashboard(this);
         }
 
         /// <summary>
@@ -35,8 +32,11 @@ namespace SofaSoGood
         {
             if (this.UsernameTextBox.Text == "employee" && this.PasswordTextBox.Text == "test1234")
             {
-                //Do something to indicate login success and show the next form
-                System.Diagnostics.Debug.WriteLine("Login Successful");
+                this.Hide();
+                this.MainDashboard.SetCurrentUserLabel(this.UsernameTextBox.Text);
+                this.MainDashboard.Show();
+                this.UsernameTextBox.Text = string.Empty;
+                this.PasswordTextBox.Text = string.Empty;
             }
             else
             {
@@ -55,5 +55,14 @@ namespace SofaSoGood
             this.LoginWarningLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Ensures that the application exits properly when closed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        private void LoginFormFormClose(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
