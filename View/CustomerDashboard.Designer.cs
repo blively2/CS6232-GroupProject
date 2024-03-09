@@ -64,7 +64,7 @@
             this.RegisterCustomerTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.RegisterCustomerTabPage.Size = new System.Drawing.Size(776, 398);
             this.RegisterCustomerTabPage.TabIndex = 1;
-            this.RegisterCustomerTabPage.Text = "Registration";
+            this.RegisterCustomerTabPage.Text = "Register Customer";
             this.RegisterCustomerTabPage.UseVisualStyleBackColor = true;
             // 
             // CustomerRegistrationUserControl
