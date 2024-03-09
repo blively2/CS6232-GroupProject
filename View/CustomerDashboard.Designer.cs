@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood.View
 {
-    partial class MainDashboard
+    partial class CustomerDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashboard));
             this.MainDashboardTabControl = new System.Windows.Forms.TabControl();
-            this.MainTabPage = new System.Windows.Forms.TabPage();
             this.RegisterCustomerTabPage = new System.Windows.Forms.TabPage();
             this.CustomerRegistrationUserControl = new SofaSoGood.RegisterCustomerUserControl();
             this.EditCustomerTabPage = new System.Windows.Forms.TabPage();
@@ -47,7 +46,6 @@
             // 
             // MainDashboardTabControl
             // 
-            this.MainDashboardTabControl.Controls.Add(this.MainTabPage);
             this.MainDashboardTabControl.Controls.Add(this.RegisterCustomerTabPage);
             this.MainDashboardTabControl.Controls.Add(this.EditCustomerTabPage);
             this.MainDashboardTabControl.Controls.Add(this.SearchCustomerTabPage);
@@ -57,17 +55,6 @@
             this.MainDashboardTabControl.SelectedIndex = 0;
             this.MainDashboardTabControl.Size = new System.Drawing.Size(784, 435);
             this.MainDashboardTabControl.TabIndex = 0;
-            // 
-            // MainTabPage
-            // 
-            this.MainTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.MainTabPage.Location = new System.Drawing.Point(4, 33);
-            this.MainTabPage.Name = "MainTabPage";
-            this.MainTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.MainTabPage.Size = new System.Drawing.Size(776, 398);
-            this.MainTabPage.TabIndex = 0;
-            this.MainTabPage.Text = "Main";
-            this.MainTabPage.UseVisualStyleBackColor = true;
             // 
             // RegisterCustomerTabPage
             // 
@@ -146,7 +133,7 @@
             this.LogoutLinkLabel.Text = "Logout";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLabelClicked);
             // 
-            // MainDashboard
+            // CustomerDashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(784, 461);
@@ -157,9 +144,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainDashboard";
+            this.Name = "CustomerDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sofa So Good FMS";
+            this.Text = "Sofa So Good FMS - Customer Management";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDashboardFormClose);
             this.MainDashboardTabControl.ResumeLayout(false);
             this.RegisterCustomerTabPage.ResumeLayout(false);
@@ -173,7 +160,6 @@
         #endregion
 
         private System.Windows.Forms.TabControl MainDashboardTabControl;
-        private System.Windows.Forms.TabPage MainTabPage;
         private System.Windows.Forms.TabPage RegisterCustomerTabPage;
         private System.Windows.Forms.Label WelcomeUserLabel;
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
