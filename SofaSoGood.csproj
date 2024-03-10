@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="DAL\CS6232-g3DBConnection.cs" />
+    <Compile Include="DAL\MemberDAL.cs" />
+    <Compile Include="Model\Member.cs" />
     <Compile Include="UserControls\RegisterCustomerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,10 +119,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="DAL\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
