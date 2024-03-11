@@ -10,7 +10,7 @@ namespace SofaSoGood
     public partial class LoginForm : Form
     {
 
-        private readonly CustomerDashboard MainDashboard;
+        private readonly MemberDashboard MainDashboard;
         /// <summary>
         /// Constructs the LoginForm and initializes its components.
         /// </summary>
@@ -18,7 +18,7 @@ namespace SofaSoGood
         {
             InitializeComponent();
             this.LoginWarningLabel.Text = string.Empty;
-            this.MainDashboard = new CustomerDashboard(this);
+            this.MainDashboard = new MemberDashboard(this);
         }
 
         /// <summary>

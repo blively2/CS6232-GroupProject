@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood.View
 {
-    partial class CustomerDashboard
+    partial class MemberDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberDashboard));
             this.MainDashboardTabControl = new System.Windows.Forms.TabControl();
             this.RegisterCustomerTabPage = new System.Windows.Forms.TabPage();
             this.CustomerRegistrationUserControl = new SofaSoGood.RegisterCustomerUserControl();

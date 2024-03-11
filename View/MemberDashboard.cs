@@ -5,7 +5,7 @@ namespace SofaSoGood.View
     /// <summary>
     /// MainDashboard is primary form for Sofa So Good's Furniture Management System.
     /// </summary>
-    public partial class CustomerDashboard : Form
+    public partial class MemberDashboard : Form
     {
         /// <summary>
         /// Accessible instance of the LoginForm passed into MainDashboard.
@@ -16,7 +16,7 @@ namespace SofaSoGood.View
         /// Initializes a new instance of the MainDashboard.
         /// Uses the LoginForm as a component
         /// </summary>
-        public CustomerDashboard(LoginForm LoginForm)
+        public MemberDashboard(LoginForm LoginForm)
         {
             InitializeComponent();
             this.LoginForm = LoginForm;
