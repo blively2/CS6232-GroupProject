@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood.UserControls
 {
-    partial class SearchCustomerUserControl
+    partial class EditMemberUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,17 +35,17 @@
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.TitleLabel.Location = new System.Drawing.Point(269, 23);
+            this.TitleLabel.Location = new System.Drawing.Point(286, 24);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(205, 29);
+            this.TitleLabel.Size = new System.Drawing.Size(171, 29);
             this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "Search Customer:";
+            this.TitleLabel.Text = "Edit Customer:";
             // 
-            // SearchCustomerUserControl
+            // EditCustomerUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.TitleLabel);
-            this.Name = "SearchCustomerUserControl";
+            this.Name = "EditCustomerUserControl";
             this.Size = new System.Drawing.Size(776, 398);
             this.ResumeLayout(false);
             this.PerformLayout();

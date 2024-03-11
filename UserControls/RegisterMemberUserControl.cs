@@ -6,11 +6,11 @@ using SofaSoGood.Model;
 
 namespace SofaSoGood
 {
-    public partial class RegisterCustomerUserControl : UserControl
+    public partial class RegisterMemberUserControl : UserControl
     {
         private MemberController memberController;
 
-        public RegisterCustomerUserControl()
+        public RegisterMemberUserControl()
         {
             InitializeComponent();
             memberController = new MemberController();

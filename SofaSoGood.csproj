@@ -50,23 +50,23 @@
     <Compile Include="DAL\CS6232-g3DBConnection.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="Model\Member.cs" />
-    <Compile Include="UserControls\RegisterCustomerUserControl.cs">
+    <Compile Include="UserControls\RegisterMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RegisterCustomerUserControl.Designer.cs">
-      <DependentUpon>RegisterCustomerUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\RegisterMemberUserControl.Designer.cs">
+      <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EditCustomerUserControl.cs">
+    <Compile Include="UserControls\EditMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\EditCustomerUserControl.Designer.cs">
-      <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\EditMemberUserControl.Designer.cs">
+      <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchCustomerUserControl.cs">
+    <Compile Include="UserControls\SearchMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchCustomerUserControl.Designer.cs">
-      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\SearchMemberUserControl.Designer.cs">
+      <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -91,14 +91,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\RegisterCustomerUserControl.resx">
-      <DependentUpon>RegisterCustomerUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\RegisterMemberUserControl.resx">
+      <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\EditCustomerUserControl.resx">
-      <DependentUpon>EditCustomerUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\EditMemberUserControl.resx">
+      <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchCustomerUserControl.resx">
-      <DependentUpon>SearchCustomerUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
+      <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

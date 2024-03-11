@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood
 {
-    partial class RegisterCustomerUserControl
+    partial class RegisterMemberUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -62,7 +62,7 @@
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(220, 29);
             this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "Register Customer:";
+            this.TitleLabel.Text = "Register Member:";
             // 
             // firstNameLabel
             // 
@@ -254,7 +254,7 @@
             this.registerMemberAlertLabel.Size = new System.Drawing.Size(0, 13);
             this.registerMemberAlertLabel.TabIndex = 23;
             // 
-            // RegisterCustomerUserControl
+            // RegisterMemberUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.registerMemberAlertLabel);
@@ -281,7 +281,7 @@
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.TitleLabel);
-            this.Name = "RegisterCustomerUserControl";
+            this.Name = "RegisterMemberUserControl";
             this.Size = new System.Drawing.Size(776, 398);
             this.ResumeLayout(false);
             this.PerformLayout();

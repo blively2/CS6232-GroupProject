@@ -30,25 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberDashboard));
             this.MainDashboardTabControl = new System.Windows.Forms.TabControl();
-            this.RegisterCustomerTabPage = new System.Windows.Forms.TabPage();
-            this.CustomerRegistrationUserControl = new SofaSoGood.RegisterCustomerUserControl();
-            this.EditCustomerTabPage = new System.Windows.Forms.TabPage();
-            this.EditCustomerUserControl = new SofaSoGood.UserControls.EditCustomerUserControl();
-            this.SearchCustomerTabPage = new System.Windows.Forms.TabPage();
-            this.SearchCustomerUserControl = new SofaSoGood.UserControls.SearchCustomerUserControl();
+            this.RegisterMemberTabPage = new System.Windows.Forms.TabPage();
+            this.MemberRegistrationUserControl = new SofaSoGood.RegisterMemberUserControl();
+            this.EditMemberTabPage = new System.Windows.Forms.TabPage();
+            this.EditMemberUserControl = new SofaSoGood.UserControls.EditMemberUserControl();
+            this.SearchMemberTabPage = new System.Windows.Forms.TabPage();
+            this.SearchMemberUserControl = new SofaSoGood.UserControls.SearchMemberUserControl();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.MainDashboardTabControl.SuspendLayout();
-            this.RegisterCustomerTabPage.SuspendLayout();
-            this.EditCustomerTabPage.SuspendLayout();
-            this.SearchCustomerTabPage.SuspendLayout();
+            this.RegisterMemberTabPage.SuspendLayout();
+            this.EditMemberTabPage.SuspendLayout();
+            this.SearchMemberTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainDashboardTabControl
             // 
-            this.MainDashboardTabControl.Controls.Add(this.RegisterCustomerTabPage);
-            this.MainDashboardTabControl.Controls.Add(this.EditCustomerTabPage);
-            this.MainDashboardTabControl.Controls.Add(this.SearchCustomerTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.RegisterMemberTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.EditMemberTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.SearchMemberTabPage);
             this.MainDashboardTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.MainDashboardTabControl.Location = new System.Drawing.Point(0, 0);
             this.MainDashboardTabControl.Name = "MainDashboardTabControl";
@@ -56,60 +56,60 @@
             this.MainDashboardTabControl.Size = new System.Drawing.Size(784, 435);
             this.MainDashboardTabControl.TabIndex = 0;
             // 
-            // RegisterCustomerTabPage
+            // RegisterMemberTabPage
             // 
-            this.RegisterCustomerTabPage.Controls.Add(this.CustomerRegistrationUserControl);
-            this.RegisterCustomerTabPage.Location = new System.Drawing.Point(4, 33);
-            this.RegisterCustomerTabPage.Name = "RegisterCustomerTabPage";
-            this.RegisterCustomerTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RegisterCustomerTabPage.Size = new System.Drawing.Size(776, 398);
-            this.RegisterCustomerTabPage.TabIndex = 1;
-            this.RegisterCustomerTabPage.Text = "Register Customer";
-            this.RegisterCustomerTabPage.UseVisualStyleBackColor = true;
+            this.RegisterMemberTabPage.Controls.Add(this.MemberRegistrationUserControl);
+            this.RegisterMemberTabPage.Location = new System.Drawing.Point(4, 33);
+            this.RegisterMemberTabPage.Name = "RegisterMemberTabPage";
+            this.RegisterMemberTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.RegisterMemberTabPage.Size = new System.Drawing.Size(776, 398);
+            this.RegisterMemberTabPage.TabIndex = 1;
+            this.RegisterMemberTabPage.Text = "Register Member";
+            this.RegisterMemberTabPage.UseVisualStyleBackColor = true;
             // 
-            // CustomerRegistrationUserControl
+            // MemberRegistrationUserControl
             // 
-            this.CustomerRegistrationUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomerRegistrationUserControl.Location = new System.Drawing.Point(3, 3);
-            this.CustomerRegistrationUserControl.Name = "CustomerRegistrationUserControl";
-            this.CustomerRegistrationUserControl.Size = new System.Drawing.Size(770, 392);
-            this.CustomerRegistrationUserControl.TabIndex = 0;
+            this.MemberRegistrationUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MemberRegistrationUserControl.Location = new System.Drawing.Point(3, 3);
+            this.MemberRegistrationUserControl.Name = "MemberRegistrationUserControl";
+            this.MemberRegistrationUserControl.Size = new System.Drawing.Size(770, 392);
+            this.MemberRegistrationUserControl.TabIndex = 0;
             // 
-            // EditCustomerTabPage
+            // EditMemberTabPage
             // 
-            this.EditCustomerTabPage.Controls.Add(this.EditCustomerUserControl);
-            this.EditCustomerTabPage.Location = new System.Drawing.Point(4, 33);
-            this.EditCustomerTabPage.Name = "EditCustomerTabPage";
-            this.EditCustomerTabPage.Size = new System.Drawing.Size(776, 398);
-            this.EditCustomerTabPage.TabIndex = 2;
-            this.EditCustomerTabPage.Text = "Edit Customer";
-            this.EditCustomerTabPage.UseVisualStyleBackColor = true;
+            this.EditMemberTabPage.Controls.Add(this.EditMemberUserControl);
+            this.EditMemberTabPage.Location = new System.Drawing.Point(4, 33);
+            this.EditMemberTabPage.Name = "EditMemberTabPage";
+            this.EditMemberTabPage.Size = new System.Drawing.Size(776, 398);
+            this.EditMemberTabPage.TabIndex = 2;
+            this.EditMemberTabPage.Text = "Edit Member";
+            this.EditMemberTabPage.UseVisualStyleBackColor = true;
             // 
-            // EditCustomerUserControl
+            // EditMemberUserControl
             // 
-            this.EditCustomerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditCustomerUserControl.Location = new System.Drawing.Point(0, 0);
-            this.EditCustomerUserControl.Name = "EditCustomerUserControl";
-            this.EditCustomerUserControl.Size = new System.Drawing.Size(776, 398);
-            this.EditCustomerUserControl.TabIndex = 0;
+            this.EditMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EditMemberUserControl.Location = new System.Drawing.Point(0, 0);
+            this.EditMemberUserControl.Name = "EditMemberUserControl";
+            this.EditMemberUserControl.Size = new System.Drawing.Size(776, 398);
+            this.EditMemberUserControl.TabIndex = 0;
             // 
-            // SearchCustomerTabPage
+            // SearchMemberTabPage
             // 
-            this.SearchCustomerTabPage.Controls.Add(this.SearchCustomerUserControl);
-            this.SearchCustomerTabPage.Location = new System.Drawing.Point(4, 33);
-            this.SearchCustomerTabPage.Name = "SearchCustomerTabPage";
-            this.SearchCustomerTabPage.Size = new System.Drawing.Size(776, 398);
-            this.SearchCustomerTabPage.TabIndex = 3;
-            this.SearchCustomerTabPage.Text = "Search Customer";
-            this.SearchCustomerTabPage.UseVisualStyleBackColor = true;
+            this.SearchMemberTabPage.Controls.Add(this.SearchMemberUserControl);
+            this.SearchMemberTabPage.Location = new System.Drawing.Point(4, 33);
+            this.SearchMemberTabPage.Name = "SearchMemberTabPage";
+            this.SearchMemberTabPage.Size = new System.Drawing.Size(776, 398);
+            this.SearchMemberTabPage.TabIndex = 3;
+            this.SearchMemberTabPage.Text = "Search Member";
+            this.SearchMemberTabPage.UseVisualStyleBackColor = true;
             // 
-            // SearchCustomerUserControl
+            // SearchMemberUserControl
             // 
-            this.SearchCustomerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchCustomerUserControl.Location = new System.Drawing.Point(0, 0);
-            this.SearchCustomerUserControl.Name = "SearchCustomerUserControl";
-            this.SearchCustomerUserControl.Size = new System.Drawing.Size(776, 398);
-            this.SearchCustomerUserControl.TabIndex = 0;
+            this.SearchMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SearchMemberUserControl.Location = new System.Drawing.Point(0, 0);
+            this.SearchMemberUserControl.Name = "SearchMemberUserControl";
+            this.SearchMemberUserControl.Size = new System.Drawing.Size(776, 398);
+            this.SearchMemberUserControl.TabIndex = 0;
             // 
             // WelcomeUserLabel
             // 
@@ -133,7 +133,7 @@
             this.LogoutLinkLabel.Text = "Logout";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLabelClicked);
             // 
-            // CustomerDashboard
+            // MemberDashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(784, 461);
@@ -144,14 +144,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CustomerDashboard";
+            this.Name = "MemberDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sofa So Good FMS - Customer Management";
+            this.Text = "Sofa So Good FMS - Member Management";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainDashboardFormClose);
             this.MainDashboardTabControl.ResumeLayout(false);
-            this.RegisterCustomerTabPage.ResumeLayout(false);
-            this.EditCustomerTabPage.ResumeLayout(false);
-            this.SearchCustomerTabPage.ResumeLayout(false);
+            this.RegisterMemberTabPage.ResumeLayout(false);
+            this.EditMemberTabPage.ResumeLayout(false);
+            this.SearchMemberTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,13 +160,13 @@
         #endregion
 
         private System.Windows.Forms.TabControl MainDashboardTabControl;
-        private System.Windows.Forms.TabPage RegisterCustomerTabPage;
+        private System.Windows.Forms.TabPage RegisterMemberTabPage;
         private System.Windows.Forms.Label WelcomeUserLabel;
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
-        private System.Windows.Forms.TabPage EditCustomerTabPage;
-        private System.Windows.Forms.TabPage SearchCustomerTabPage;
-        private RegisterCustomerUserControl CustomerRegistrationUserControl;
-        private UserControls.EditCustomerUserControl EditCustomerUserControl;
-        private UserControls.SearchCustomerUserControl SearchCustomerUserControl;
+        private System.Windows.Forms.TabPage EditMemberTabPage;
+        private System.Windows.Forms.TabPage SearchMemberTabPage;
+        private RegisterMemberUserControl MemberRegistrationUserControl;
+        private UserControls.EditMemberUserControl EditMemberUserControl;
+        private UserControls.SearchMemberUserControl SearchMemberUserControl;
     }
 }
