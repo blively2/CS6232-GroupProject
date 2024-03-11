@@ -73,7 +73,52 @@ namespace SofaSoGood
                 registerMemberAlertLabel.Text = "First Name is required.";
                 return false;
             }
-
+            if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
+            {
+                registerMemberAlertLabel.Text = "Last Name is required.";
+                return false;
+            }
+            if (genderComboBox.SelectedIndex == -1)
+            {
+                registerMemberAlertLabel.Text = "Gender selection is required.";
+                return false;
+            }
+            if (dateOfBirthDatePicker.Value >= DateTime.Now)
+            {
+                registerMemberAlertLabel.Text = "Date of Birth must be in the past.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(address1TextBox.Text))
+            {
+                registerMemberAlertLabel.Text = "Address 1 is required.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(address2TextBox.Text))
+            {
+                registerMemberAlertLabel.Text = "Address 2 is required.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(cityTextBox.Text))
+            {
+                registerMemberAlertLabel.Text = "City is required.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(stateTextBox.Text))
+            {
+                registerMemberAlertLabel.Text = "State is required.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(zipTextBox.Text))
+            {
+                registerMemberAlertLabel.Text = "A valid Zip code is required.";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(contactPhoneTextBox.Text) || contactPhoneTextBox.Text.Length != 10)
+            {
+                registerMemberAlertLabel.Text = "A valid 10-digit Contact Phone number is required.";
+                return false;
+            }
+            registerMemberAlertLabel.Text = "";
             return true;
         }
 
