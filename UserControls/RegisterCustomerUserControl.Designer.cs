@@ -112,7 +112,7 @@
             // address2Label
             // 
             this.address2Label.AutoSize = true;
-            this.address2Label.Location = new System.Drawing.Point(362, 84);
+            this.address2Label.Location = new System.Drawing.Point(344, 84);
             this.address2Label.Name = "address2Label";
             this.address2Label.Size = new System.Drawing.Size(57, 13);
             this.address2Label.TabIndex = 6;
@@ -121,7 +121,7 @@
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
-            this.cityLabel.Location = new System.Drawing.Point(362, 127);
+            this.cityLabel.Location = new System.Drawing.Point(344, 127);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(27, 13);
             this.cityLabel.TabIndex = 7;
@@ -130,7 +130,7 @@
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
-            this.stateLabel.Location = new System.Drawing.Point(362, 171);
+            this.stateLabel.Location = new System.Drawing.Point(344, 171);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(35, 13);
             this.stateLabel.TabIndex = 8;
@@ -139,7 +139,7 @@
             // zipLabel
             // 
             this.zipLabel.AutoSize = true;
-            this.zipLabel.Location = new System.Drawing.Point(362, 218);
+            this.zipLabel.Location = new System.Drawing.Point(344, 218);
             this.zipLabel.Name = "zipLabel";
             this.zipLabel.Size = new System.Drawing.Size(25, 13);
             this.zipLabel.TabIndex = 9;
@@ -148,7 +148,7 @@
             // contactPhoneLabel
             // 
             this.contactPhoneLabel.AutoSize = true;
-            this.contactPhoneLabel.Location = new System.Drawing.Point(362, 263);
+            this.contactPhoneLabel.Location = new System.Drawing.Point(344, 263);
             this.contactPhoneLabel.Name = "contactPhoneLabel";
             this.contactPhoneLabel.Size = new System.Drawing.Size(81, 13);
             this.contactPhoneLabel.TabIndex = 10;
@@ -156,9 +156,9 @@
             // 
             // addMemberButton
             // 
-            this.addMemberButton.Location = new System.Drawing.Point(229, 340);
+            this.addMemberButton.Location = new System.Drawing.Point(214, 340);
             this.addMemberButton.Name = "addMemberButton";
-            this.addMemberButton.Size = new System.Drawing.Size(75, 23);
+            this.addMemberButton.Size = new System.Drawing.Size(90, 36);
             this.addMemberButton.TabIndex = 11;
             this.addMemberButton.Text = "Add Member";
             this.addMemberButton.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(446, 340);
+            this.clearButton.Location = new System.Drawing.Point(483, 340);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.Size = new System.Drawing.Size(85, 36);
             this.clearButton.TabIndex = 12;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -249,7 +249,7 @@
             // registerMemberAlertLabel
             // 
             this.registerMemberAlertLabel.AutoSize = true;
-            this.registerMemberAlertLabel.Location = new System.Drawing.Point(352, 315);
+            this.registerMemberAlertLabel.Location = new System.Drawing.Point(295, 309);
             this.registerMemberAlertLabel.Name = "registerMemberAlertLabel";
             this.registerMemberAlertLabel.Size = new System.Drawing.Size(0, 13);
             this.registerMemberAlertLabel.TabIndex = 23;
