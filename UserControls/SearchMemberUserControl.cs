@@ -6,13 +6,13 @@ namespace SofaSoGood.UserControls
     /// UserControl for Searching Customers in the database.
     /// Has an CustomerController instance to interact with the DB.
     /// </summary>
-    public partial class SearchCustomerUserControl : UserControl
+    public partial class SearchMemberUserControl : UserControl
     {
         /// <summary>
         /// Constructor for SearchCustomerUserControl.
         /// Initializes the controller and the component for the UI.
         /// </summary>
-        public SearchCustomerUserControl()
+        public SearchMemberUserControl()
         {
             InitializeComponent();
         }

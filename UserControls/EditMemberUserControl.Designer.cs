@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood.UserControls
 {
-    partial class EditCustomerUserControl
+    partial class EditMemberUserControl
     {
         /// <summary> 
         /// Required designer variable.

@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberDashboard));
             this.MainDashboardTabControl = new System.Windows.Forms.TabControl();
             this.RegisterCustomerTabPage = new System.Windows.Forms.TabPage();
-            this.CustomerRegistrationUserControl = new SofaSoGood.RegisterCustomerUserControl();
+            this.CustomerRegistrationUserControl = new SofaSoGood.RegisterMemberUserControl();
             this.EditCustomerTabPage = new System.Windows.Forms.TabPage();
-            this.EditCustomerUserControl = new SofaSoGood.UserControls.EditCustomerUserControl();
+            this.EditCustomerUserControl = new SofaSoGood.UserControls.EditMemberUserControl();
             this.SearchCustomerTabPage = new System.Windows.Forms.TabPage();
-            this.SearchCustomerUserControl = new SofaSoGood.UserControls.SearchCustomerUserControl();
+            this.SearchCustomerUserControl = new SofaSoGood.UserControls.SearchMemberUserControl();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.MainDashboardTabControl.SuspendLayout();
@@ -165,8 +165,8 @@
         private System.Windows.Forms.LinkLabel LogoutLinkLabel;
         private System.Windows.Forms.TabPage EditCustomerTabPage;
         private System.Windows.Forms.TabPage SearchCustomerTabPage;
-        private RegisterCustomerUserControl CustomerRegistrationUserControl;
-        private UserControls.EditCustomerUserControl EditCustomerUserControl;
-        private UserControls.SearchCustomerUserControl SearchCustomerUserControl;
+        private RegisterMemberUserControl CustomerRegistrationUserControl;
+        private UserControls.EditMemberUserControl EditCustomerUserControl;
+        private UserControls.SearchMemberUserControl SearchCustomerUserControl;
     }
 }
