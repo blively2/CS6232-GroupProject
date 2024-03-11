@@ -15,7 +15,7 @@ namespace SofaSoGood.DAL
         /// Adds a new member to the database.
         /// </summary>
         /// <param name="member">The member to add.</param>
-        public static void AddMember(Member member)
+        public void AddMember(Member member)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {

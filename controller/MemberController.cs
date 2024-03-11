@@ -6,11 +6,18 @@ namespace SofaSoGood.Controller
 {
     public class MemberController
     {
-        public static bool AddMember(Member member)
+        private readonly MemberDAL memberDAL;
+
+        public MemberController()
+        {
+            memberDAL = new MemberDAL();
+        }
+
+        public bool AddMember(Member member)
         {
             try
             {
-                MemberDAL.AddMember(member);
+                memberDAL.AddMember(member);
                 return true;
             }
             catch (Exception)
