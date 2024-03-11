@@ -176,73 +176,74 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(104, 124);
+            this.lastNameTextBox.Location = new System.Drawing.Point(133, 124);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(200, 20);
+            this.lastNameTextBox.Size = new System.Drawing.Size(171, 20);
             this.lastNameTextBox.TabIndex = 13;
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(104, 81);
+            this.firstNameTextBox.Location = new System.Drawing.Point(133, 81);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(200, 20);
+            this.firstNameTextBox.Size = new System.Drawing.Size(171, 20);
             this.firstNameTextBox.TabIndex = 14;
             // 
             // address1TextBox
             // 
-            this.address1TextBox.Location = new System.Drawing.Point(104, 264);
+            this.address1TextBox.Location = new System.Drawing.Point(133, 264);
             this.address1TextBox.Name = "address1TextBox";
-            this.address1TextBox.Size = new System.Drawing.Size(200, 20);
+            this.address1TextBox.Size = new System.Drawing.Size(171, 20);
             this.address1TextBox.TabIndex = 15;
             // 
             // address2TextBox
             // 
-            this.address2TextBox.Location = new System.Drawing.Point(446, 81);
+            this.address2TextBox.Location = new System.Drawing.Point(483, 81);
             this.address2TextBox.Name = "address2TextBox";
-            this.address2TextBox.Size = new System.Drawing.Size(200, 20);
+            this.address2TextBox.Size = new System.Drawing.Size(163, 20);
             this.address2TextBox.TabIndex = 16;
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(446, 124);
+            this.cityTextBox.Location = new System.Drawing.Point(483, 124);
             this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(200, 20);
+            this.cityTextBox.Size = new System.Drawing.Size(163, 20);
             this.cityTextBox.TabIndex = 17;
             // 
             // stateTextBox
             // 
-            this.stateTextBox.Location = new System.Drawing.Point(446, 168);
+            this.stateTextBox.Location = new System.Drawing.Point(483, 168);
             this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(200, 20);
+            this.stateTextBox.Size = new System.Drawing.Size(163, 20);
             this.stateTextBox.TabIndex = 18;
             // 
             // zipTextBox
             // 
-            this.zipTextBox.Location = new System.Drawing.Point(446, 215);
+            this.zipTextBox.Location = new System.Drawing.Point(483, 215);
             this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(200, 20);
+            this.zipTextBox.Size = new System.Drawing.Size(163, 20);
             this.zipTextBox.TabIndex = 19;
             // 
             // contactPhoneTextBox
             // 
-            this.contactPhoneTextBox.Location = new System.Drawing.Point(446, 260);
+            this.contactPhoneTextBox.Location = new System.Drawing.Point(483, 260);
             this.contactPhoneTextBox.Name = "contactPhoneTextBox";
-            this.contactPhoneTextBox.Size = new System.Drawing.Size(200, 20);
+            this.contactPhoneTextBox.Size = new System.Drawing.Size(163, 20);
             this.contactPhoneTextBox.TabIndex = 20;
             // 
             // dateOfBirthDatePicker
             // 
-            this.dateOfBirthDatePicker.Location = new System.Drawing.Point(104, 216);
+            this.dateOfBirthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOfBirthDatePicker.Location = new System.Drawing.Point(133, 216);
             this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
-            this.dateOfBirthDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateOfBirthDatePicker.Size = new System.Drawing.Size(171, 20);
             this.dateOfBirthDatePicker.TabIndex = 21;
             // 
             // genderComboBox
             // 
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(104, 172);
+            this.genderComboBox.Location = new System.Drawing.Point(133, 172);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(200, 21);
+            this.genderComboBox.Size = new System.Drawing.Size(171, 21);
             this.genderComboBox.TabIndex = 22;
             // 
             // registerMemberAlertLabel
