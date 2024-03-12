@@ -13,16 +13,16 @@ namespace SofaSoGood.Controller
             memberDAL = new MemberDAL();
         }
 
-        public bool AddMember(Member member)
+        public int AddMember(Member member)
         {
             try
             {
-                memberDAL.AddMember(member);
-                return true;
+                int newMemberId = memberDAL.AddMember(member);
+                return newMemberId;
             }
             catch (Exception)
             {
-                return false;
+                return -1;
             }
         }
     }

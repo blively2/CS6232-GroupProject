@@ -60,7 +60,7 @@
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.TitleLabel.Location = new System.Drawing.Point(272, 23);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(220, 29);
+            this.TitleLabel.Size = new System.Drawing.Size(206, 29);
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "Register Member:";
             // 
@@ -156,9 +156,9 @@
             // 
             // addMemberButton
             // 
-            this.addMemberButton.Location = new System.Drawing.Point(214, 340);
+            this.addMemberButton.Location = new System.Drawing.Point(133, 340);
             this.addMemberButton.Name = "addMemberButton";
-            this.addMemberButton.Size = new System.Drawing.Size(90, 36);
+            this.addMemberButton.Size = new System.Drawing.Size(200, 35);
             this.addMemberButton.TabIndex = 11;
             this.addMemberButton.Text = "Add Member";
             this.addMemberButton.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(483, 340);
+            this.clearButton.Location = new System.Drawing.Point(446, 340);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(85, 36);
+            this.clearButton.Size = new System.Drawing.Size(200, 35);
             this.clearButton.TabIndex = 12;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -180,6 +180,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(171, 20);
             this.lastNameTextBox.TabIndex = 13;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // firstNameTextBox
             // 
@@ -187,6 +188,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(171, 20);
             this.firstNameTextBox.TabIndex = 14;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // address1TextBox
             // 
@@ -194,6 +196,7 @@
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(171, 20);
             this.address1TextBox.TabIndex = 15;
+            this.address1TextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // address2TextBox
             // 
@@ -201,6 +204,7 @@
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(163, 20);
             this.address2TextBox.TabIndex = 16;
+            this.address2TextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // cityTextBox
             // 
@@ -208,6 +212,7 @@
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(163, 20);
             this.cityTextBox.TabIndex = 17;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // stateTextBox
             // 
@@ -215,6 +220,7 @@
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(163, 20);
             this.stateTextBox.TabIndex = 18;
+            this.stateTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // zipTextBox
             // 
@@ -222,6 +228,7 @@
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(163, 20);
             this.zipTextBox.TabIndex = 19;
+            this.zipTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // contactPhoneTextBox
             // 
@@ -229,6 +236,7 @@
             this.contactPhoneTextBox.Name = "contactPhoneTextBox";
             this.contactPhoneTextBox.Size = new System.Drawing.Size(163, 20);
             this.contactPhoneTextBox.TabIndex = 20;
+            this.contactPhoneTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // dateOfBirthDatePicker
             // 
@@ -237,14 +245,17 @@
             this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
             this.dateOfBirthDatePicker.Size = new System.Drawing.Size(171, 20);
             this.dateOfBirthDatePicker.TabIndex = 21;
+            this.dateOfBirthDatePicker.ValueChanged += new System.EventHandler(this.Input_Changed);
             // 
             // genderComboBox
             // 
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(133, 172);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(171, 21);
             this.genderComboBox.TabIndex = 22;
+            this.genderComboBox.SelectedIndexChanged += new System.EventHandler(this.Input_Changed);
             // 
             // registerMemberAlertLabel
             // 

@@ -1,11 +1,7 @@
 ﻿using SofaSoGood.Model;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SofaSoGood.DAL
 {
@@ -15,14 +11,15 @@ namespace SofaSoGood.DAL
         /// Adds a new member to the database.
         /// </summary>
         /// <param name="member">The member to add.</param>
-        public void AddMember(Member member)
+        public int AddMember(Member member)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
                 string insertQuery = @"
-                INSERT INTO [dbo].[Member] 
-                (FirstName, LastName, Gender, DateOfBirth, Address1, Address2, City, State, Zip, ContactPhone)
-                VALUES (@FirstName, @LastName, @Gender, @DateOfBirth, @Address1, @Address2, @City, @State, @Zip, @ContactPhone);";
+                    INSERT INTO [dbo].[Member]
+                    (FirstName, LastName, Gender, DateOfBirth, Address1, Address2, City, State, Zip, ContactPhone)
+                    VALUES (@FirstName, @LastName, @Gender, @DateOfBirth, @Address1, @Address2, @City, @State, @Zip, @ContactPhone);
+                    SELECT CAST(SCOPE_IDENTITY() AS INT);";
 
                 using (var cmd = new SqlCommand(insertQuery, connection))
                 {
@@ -38,7 +35,8 @@ namespace SofaSoGood.DAL
                     cmd.Parameters.Add("@ContactPhone", SqlDbType.Char, 10).Value = member.ContactPhone;
 
                     connection.Open();
-                    cmd.ExecuteNonQuery();
+                    int newMemberId = Convert.ToInt32(cmd.ExecuteScalar());
+                    return newMemberId;
                 }
             }
         }

@@ -41,10 +41,12 @@ namespace SofaSoGood
                     ContactPhone = contactPhoneTextBox.Text
                 };
 
-                if (memberController.AddMember(member))
+                int newMemberId = memberController.AddMember(member);
+                if (newMemberId > 0)
                 {
                     registerMemberAlertLabel.ForeColor = Color.Green;
                     registerMemberAlertLabel.Text = "Member registered successfully!";
+                    ShowSuccessDialog(newMemberId);
                     ClearForm();
                 }
                 else
@@ -141,6 +143,24 @@ namespace SofaSoGood
             genderComboBox.Items.Add("Male");
             genderComboBox.Items.Add("Female");
             genderComboBox.SelectedIndex = -1;
+        }
+
+        private void Input_TextChanged(object sender, EventArgs e)
+        {
+            registerMemberAlertLabel.Text = "";
+        }
+
+        private void Input_Changed(object sender, EventArgs e)
+        {
+            registerMemberAlertLabel.Text = "";
+        }
+
+        private void ShowSuccessDialog(int memberId)
+        {
+            string message = $"Member registered successfully! Member ID: {memberId}";
+            string title = "Registration Successful";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result = MessageBox.Show(message, title, buttons);
         }
     }
 }
