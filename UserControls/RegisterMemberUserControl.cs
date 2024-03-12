@@ -8,7 +8,7 @@ namespace SofaSoGood
 {
     public partial class RegisterMemberUserControl : UserControl
     {
-        private MemberController memberController;
+        private readonly MemberController memberController;
 
         public RegisterMemberUserControl()
         {
