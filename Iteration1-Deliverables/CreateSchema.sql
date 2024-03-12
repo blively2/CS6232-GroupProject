@@ -155,7 +155,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ReturnItem](
-	[ReturnItemID] [int] NOT NULL,
+	[ReturnItemID] [int] IDENTITY(1,1) NOT NULL,
 	[ReturnTransactionID] [int] NOT NULL,
 	[RentalItemID] [int] NOT NULL,
 	[QuantityReturned] [int] NOT NULL,
