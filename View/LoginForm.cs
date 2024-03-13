@@ -1,4 +1,5 @@
-﻿using SofaSoGood.Controller;
+﻿using SofaSoGood.Model;
+using SofaSoGood.Controller;
 using SofaSoGood.View;
 using System;
 using System.Windows.Forms;
@@ -11,6 +12,7 @@ namespace SofaSoGood
     public partial class LoginForm : Form
     {
         private readonly LoginController loginController;
+        private readonly EmployeeController employeeController;
 
         private readonly MemberDashboard MainDashboard;
         /// <summary>
@@ -22,6 +24,8 @@ namespace SofaSoGood
             this.LoginWarningLabel.Text = string.Empty;
             this.MainDashboard = new MemberDashboard(this);
             loginController = new LoginController();
+            employeeController = new EmployeeController();
+            
         }
 
         /// <summary>
@@ -35,8 +39,9 @@ namespace SofaSoGood
         {
             if (loginController.VerifyUserCredentials(this.UsernameTextBox.Text, this.PasswordTextBox.Text))
             {
+                Employee loggedInEmployee = employeeController.GetEmployeeByLoginID(loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text));
                 this.Hide();
-                this.MainDashboard.SetCurrentUserLabel(this.UsernameTextBox.Text);
+                this.MainDashboard.SetCurrentUserLabel(loggedInEmployee.FirstName + " " + loggedInEmployee.LastName);
                 this.MainDashboard.Show();
                 this.UsernameTextBox.Text = string.Empty;
                 this.PasswordTextBox.Text = string.Empty;

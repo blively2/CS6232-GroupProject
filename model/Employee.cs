@@ -2,7 +2,7 @@
 
 namespace SofaSoGood.Model
 {
-    public class Member
+    public class Employee
     {
         /// <summary>
         /// Gets or sets the member identifier.
@@ -10,13 +10,21 @@ namespace SofaSoGood.Model
         /// <value>
         /// The member identifier.
         /// </value>
-        public int MemberID { get; set; }
+        public int EmployeeID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LoginID.
+        /// </summary>
+        /// <value>
+        /// The first name.
+        /// </value>
+        public int LoginID { get; set; }
 
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
         /// <value>
-        /// The first name.
+        /// The last name.
         /// </value>
         public string FirstName { get; set; }
 
@@ -91,22 +99,5 @@ namespace SofaSoGood.Model
         /// The contact phone.
         /// </value>
         public string ContactPhone { get; set; }
-
-        /// <summary>
-        /// Determines whether the specified other has changes.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified other has changes; otherwise, <c>false</c>.
-        /// </returns>
-        public bool HasChanges(Member other)
-        {
-            return Address1 != other.Address1 ||
-                   Address2 != other.Address2 ||
-                   City != other.City ||
-                   State != other.State ||
-                   Zip != other.Zip ||
-                   ContactPhone != other.ContactPhone;
-        }
     }
 }

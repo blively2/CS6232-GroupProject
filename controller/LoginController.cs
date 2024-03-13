@@ -6,7 +6,7 @@ namespace SofaSoGood.Controller
     /// <summary>
     /// This class is the controller for Login.
     /// </summary>
-    internal class LoginController
+    public class LoginController
     {
         private readonly LoginDAL loginDAL;
 
@@ -21,6 +21,11 @@ namespace SofaSoGood.Controller
         public Boolean VerifyUserCredentials(string Username, string Password)
         {
             return loginDAL.VerifyUserCredentials(Username, Password);
+        }
+
+        public int GetLoginIDByUsernameAndPassword(string Username, string Password)
+        {
+            return loginDAL.GetLoginIDByUsernameAndPassword(Username, Password);
         }
     }
 }
