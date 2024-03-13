@@ -1,4 +1,5 @@
-﻿using SofaSoGood.View;
+﻿using SofaSoGood.Controller;
+using SofaSoGood.View;
 using System;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace SofaSoGood
     /// </summary>
     public partial class LoginForm : Form
     {
+        private readonly LoginController loginController;
 
         private readonly MemberDashboard MainDashboard;
         /// <summary>
@@ -19,6 +21,7 @@ namespace SofaSoGood
             InitializeComponent();
             this.LoginWarningLabel.Text = string.Empty;
             this.MainDashboard = new MemberDashboard(this);
+            loginController = new LoginController();
         }
 
         /// <summary>
@@ -30,7 +33,7 @@ namespace SofaSoGood
         /// <param name="e">Contains the event data.</param>
         private void LoginButtonClick(object sender, EventArgs e)
         {
-            if (this.UsernameTextBox.Text == "employee" && this.PasswordTextBox.Text == "test1234")
+            if (loginController.VerifyUserCredentials(this.UsernameTextBox.Text, this.PasswordTextBox.Text))
             {
                 this.Hide();
                 this.MainDashboard.SetCurrentUserLabel(this.UsernameTextBox.Text);

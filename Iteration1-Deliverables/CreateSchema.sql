@@ -1,9 +1,15 @@
 ﻿USE [master]
 GO
+
+IF EXISTS (SELECT 1 FROM master.dbo.sysdatabases WHERE name = 'CS6232-g3')
+BEGIN
+ DROP DATABASE [CS6232-g3];
+END
+GO
+	
 /****** Object:  Database [CS6232-g3]    Script Date: 3/10/2024 6:29:42 PM ******/
 CREATE DATABASE [CS6232-g3]
- GO
-
+GO
 USE [CS6232-g3]
 GO
 /****** Object:  Table [dbo].[Employee]    Script Date: 3/10/2024 6:29:42 PM ******/
@@ -16,10 +22,10 @@ CREATE TABLE [dbo].[Employee](
 	[LoginID] [int] NOT NULL,
 	[FirstName] [varchar](45) NOT NULL,
 	[LastName] [varchar](45) NOT NULL,
-	[Gender] [char](1) NOT NULL,
+	[Gender] [char](1) NULL,
 	[DateOfBirth] [date] NOT NULL,
 	[Address1] [varchar](150) NOT NULL,
-	[Address2] [varchar](150) NOT NULL,
+	[Address2] [varchar](150) NULL,
 	[City] [varchar](45) NOT NULL,
 	[State] [varchar](45) NOT NULL,
 	[Zip] [varchar](10) NOT NULL,
@@ -30,6 +36,14 @@ CREATE TABLE [dbo].[Employee](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+INSERT INTO [dbo].[Employee] ([LoginID], [FirstName], [LastName], [Gender], [DateOfBirth], [Address1], [City], [State], [Zip], [ContactPhone])
+VALUES 
+(1, 'Deeksha', 'Namani', 'M', '1997-01-01', '123 Maple St', 'Carrollton', 'GA', '30118', '1234567890'),
+(2, 'Benjamin', 'Lively', 'M', '1992-03-03', '125 Maple St', 'Temple', 'GA', '12345', '1234567892'),
+(3, 'Stane', 'Shadrix', 'F', '1993-04-04', '126 Maple St', 'Atlanta', 'GA', '34567', '1234567893');
+GO
+
 /****** Object:  Table [dbo].[Furniture]    Script Date: 3/10/2024 6:29:42 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -50,6 +64,16 @@ CREATE TABLE [dbo].[Furniture](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+
+INSERT INTO [dbo].[Furniture] ([CategoryName], [StyleName], [Name], [Description], [RentalRatePerDay], [InStockQuantity], [TotalQuantity])
+VALUES 
+('Chair', 'Modern', 'Modern Chair', 'A sleek, modern chair.', 10.00, 5, 10),
+('Table', 'Traditional', 'Traditional Table', 'A sturdy, traditional table.', 15.00, 5, 10),
+('Sofa', 'Contemporary', 'Contemporary Sofa', 'A comfortable, contemporary sofa.', 20.00, 5, 10),
+('Bed', 'Rustic', 'Rustic Bed', 'A cozy, rustic bed.', 25.00, 5, 10),
+('Desk', 'Industrial', 'Industrial Desk', 'A solid, industrial desk.', 30.00, 5, 10);
+GO
+
 /****** Object:  Table [dbo].[FurnitureCategory]    Script Date: 3/10/2024 6:29:42 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -63,6 +87,16 @@ CREATE TABLE [dbo].[FurnitureCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+INSERT INTO [dbo].[FurnitureCategory] ([CategoryName])
+VALUES 
+('Chair'),
+('Table'),
+('Sofa'),
+('Bed'),
+('Desk');
+GO
+
 /****** Object:  Table [dbo].[FurnitureStyle]    Script Date: 3/10/2024 6:29:42 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -76,6 +110,17 @@ CREATE TABLE [dbo].[FurnitureStyle](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+INSERT INTO [dbo].[FurnitureStyle] ([StyleName])
+VALUES
+('Modern'),
+('Traditional'),
+('Contemporary'),
+('Rustic'),
+('Industrial'),
+('Victorian');
+GO
+
 /****** Object:  Table [dbo].[Login]    Script Date: 3/10/2024 6:29:42 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -91,6 +136,15 @@ CREATE TABLE [dbo].[Login](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+INSERT INTO [dbo].[Login] ([Username], [Password])
+VALUES
+('user1', 'password1'), -- Corresponds to LoginID 1
+('user2', 'password2'), -- Corresponds to LoginID 2
+('user3', 'password3'); -- Corresponds to LoginID 3
+GO
+
+
 /****** Object:  Table [dbo].[Member]    Script Date: 3/10/2024 6:29:42 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -114,6 +168,16 @@ CREATE TABLE [dbo].[Member](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+INSERT INTO [dbo].[Member] ([FirstName], [LastName], [Gender], [DateOfBirth], [Address1], [Address2], [City], [State], [Zip], [ContactPhone])
+VALUES 
+('Pooja', 'Shetty', 'F', '1990-01-01', '128 Dueberry St', 'Apt 1', 'Atlanta', 'GA', '12345', '1234567895'),
+('Ian', 'Hallman', 'M', '1991-02-02', '129 BlueRose St', 'Apt 2', 'Townsville', 'GA', '30118', '1234567896'),
+('Rob', 'Melisso', 'M', '1992-03-03', '130 King St', 'Apt 3', 'Carrollton', 'GA', '30130', '1234567897'),
+('Jodarn', 'Lee', 'F', '1993-04-04', '131 TimeSquare St', 'Apt 4', 'Villa Rica', '36789', '12345', '1234567898'),
+('Felix', 'Foi', 'M', '1994-05-05', '132 CitySquare St', 'Apt 5', 'Hellan', 'GA', '12890', '1234567899');
+GO
+
 /****** Object:  Table [dbo].[RentalItem]    Script Date: 3/10/2024 6:29:42 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -155,7 +219,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ReturnItem](
-	[ReturnItemID] [int] IDENTITY(1,1) NOT NULL,
+	[ReturnItemID] [int] NOT NULL,
 	[ReturnTransactionID] [int] NOT NULL,
 	[RentalItemID] [int] NOT NULL,
 	[QuantityReturned] [int] NOT NULL,

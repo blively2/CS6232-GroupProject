@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\CS6232-g3DBConnection.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="Model\Member.cs" />
