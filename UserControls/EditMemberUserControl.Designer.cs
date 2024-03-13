@@ -248,6 +248,7 @@
             this.clearButton.TabIndex = 39;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // memberIDLabel
             // 

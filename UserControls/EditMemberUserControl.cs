@@ -62,6 +62,7 @@ namespace SofaSoGood.UserControls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void GetMemberButton_Click(object sender, System.EventArgs e)
         {
+            invalidMemberIDLabel.Text = " ";
             if (!int.TryParse(memberIDTextBox.Text, out int memberId))
             {
                 invalidMemberIDLabel.ForeColor = Color.Red;
@@ -205,17 +206,24 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void ClearForm()
         {
-            firstNameTextBox.Text = "";
-            lastNameTextBox.Text = "";
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
             genderComboBox.SelectedIndex = -1;
             dateOfBirthDatePicker.Value = DateTime.Now;
-            address1TextBox.Text = "";
-            address2TextBox.Text = "";
-            cityTextBox.Text = "";
-            stateTextBox.Text = "";
-            zipTextBox.Text = "";
-            contactTextBox.Text = "";
+            address1TextBox.Clear();
+            address2TextBox.Clear();
+            cityTextBox.Clear();
+            stateTextBox.Clear();
+            zipTextBox.Clear();
+            contactTextBox.Clear();
             invalidInputLabel.Text = "";
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            memberIDTextBox.Clear();
+            invalidInputLabel.Text = string.Empty;
         }
     }
 }
