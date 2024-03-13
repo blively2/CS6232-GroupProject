@@ -62,7 +62,7 @@
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(206, 29);
             this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "Register Member:";
+            this.TitleLabel.Text = "Register Member";
             // 
             // firstNameLabel
             // 

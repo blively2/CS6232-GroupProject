@@ -5,7 +5,10 @@ using System.Data;
 
 namespace SofaSoGood.DAL
 {
-    internal class MemberDAL
+    /// <summary>
+    /// This class is data access layer between model and view for Members
+    /// </summary>
+    public class MemberDAL
     {
         /// <summary>
         /// Adds a new member to the database.
@@ -40,5 +43,46 @@ namespace SofaSoGood.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets the member by identifier.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+        /// <returns></returns>
+        public Member GetMemberById(int memberId)
+        {
+            Member member = null;
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Member] WHERE MemberID = @MemberID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("MemberID", SqlDbType.Int).Value = memberId;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            member = new Member
+                            {
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                Gender = reader.GetString(reader.GetOrdinal("Gender")),
+                                DateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
+                                Address1 = reader.GetString(reader.GetOrdinal("Address1")),
+                                Address2 = reader.IsDBNull(reader.GetOrdinal("Address2")) ? null : reader.GetString(reader.GetOrdinal("Address2")),
+                                City = reader.GetString(reader.GetOrdinal("City")),
+                                State = reader.GetString(reader.GetOrdinal("State")),
+                                Zip = reader.GetString(reader.GetOrdinal("Zip")),
+                                ContactPhone = reader.GetString(reader.GetOrdinal("ContactPhone")),
+                            };
+                        }
+                    }
+                }
+            }
+            return member;
+        }
+
     }
 }

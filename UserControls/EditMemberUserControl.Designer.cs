@@ -55,6 +55,7 @@
             this.memberIDTextBox = new System.Windows.Forms.TextBox();
             this.invalidMemberIDLabel = new System.Windows.Forms.Label();
             this.invalidInputLabel = new System.Windows.Forms.Label();
+            this.getMemberButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -231,18 +232,18 @@
             // 
             // addMemberButton
             // 
-            this.addMemberButton.Location = new System.Drawing.Point(227, 340);
+            this.addMemberButton.Location = new System.Drawing.Point(51, 340);
             this.addMemberButton.Name = "addMemberButton";
-            this.addMemberButton.Size = new System.Drawing.Size(90, 36);
+            this.addMemberButton.Size = new System.Drawing.Size(199, 36);
             this.addMemberButton.TabIndex = 38;
             this.addMemberButton.Text = "Add Member";
             this.addMemberButton.UseVisualStyleBackColor = true;
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(414, 340);
+            this.clearButton.Location = new System.Drawing.Point(504, 340);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(85, 36);
+            this.clearButton.Size = new System.Drawing.Size(150, 36);
             this.clearButton.TabIndex = 39;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -250,7 +251,7 @@
             // memberIDLabel
             // 
             this.memberIDLabel.AutoSize = true;
-            this.memberIDLabel.Location = new System.Drawing.Point(224, 70);
+            this.memberIDLabel.Location = new System.Drawing.Point(48, 62);
             this.memberIDLabel.Name = "memberIDLabel";
             this.memberIDLabel.Size = new System.Drawing.Size(59, 13);
             this.memberIDLabel.TabIndex = 40;
@@ -258,7 +259,7 @@
             // 
             // memberIDTextBox
             // 
-            this.memberIDTextBox.Location = new System.Drawing.Point(344, 63);
+            this.memberIDTextBox.Location = new System.Drawing.Point(171, 62);
             this.memberIDTextBox.Name = "memberIDTextBox";
             this.memberIDTextBox.Size = new System.Drawing.Size(171, 20);
             this.memberIDTextBox.TabIndex = 41;
@@ -266,7 +267,7 @@
             // invalidMemberIDLabel
             // 
             this.invalidMemberIDLabel.AutoSize = true;
-            this.invalidMemberIDLabel.Location = new System.Drawing.Point(548, 66);
+            this.invalidMemberIDLabel.Location = new System.Drawing.Point(514, 65);
             this.invalidMemberIDLabel.Name = "invalidMemberIDLabel";
             this.invalidMemberIDLabel.Size = new System.Drawing.Size(87, 13);
             this.invalidMemberIDLabel.TabIndex = 42;
@@ -275,15 +276,26 @@
             // invalidInputLabel
             // 
             this.invalidInputLabel.AutoSize = true;
-            this.invalidInputLabel.Location = new System.Drawing.Point(350, 322);
+            this.invalidInputLabel.Location = new System.Drawing.Point(282, 352);
             this.invalidInputLabel.Name = "invalidInputLabel";
-            this.invalidInputLabel.Size = new System.Drawing.Size(131, 20);
+            this.invalidInputLabel.Size = new System.Drawing.Size(87, 13);
             this.invalidInputLabel.TabIndex = 43;
             this.invalidInputLabel.Text = "invalidInputLabel";
+            // 
+            // getMemberButton
+            // 
+            this.getMemberButton.Location = new System.Drawing.Point(379, 59);
+            this.getMemberButton.Name = "getMemberButton";
+            this.getMemberButton.Size = new System.Drawing.Size(74, 29);
+            this.getMemberButton.TabIndex = 44;
+            this.getMemberButton.Text = "Get";
+            this.getMemberButton.UseVisualStyleBackColor = true;
+            this.getMemberButton.Click += new System.EventHandler(this.GetMemberButton_Click);
             // 
             // EditMemberUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.getMemberButton);
             this.Controls.Add(this.invalidInputLabel);
             this.Controls.Add(this.invalidMemberIDLabel);
             this.Controls.Add(this.memberIDTextBox);
@@ -347,5 +359,6 @@
         private System.Windows.Forms.TextBox memberIDTextBox;
         private System.Windows.Forms.Label invalidMemberIDLabel;
         private System.Windows.Forms.Label invalidInputLabel;
+        private System.Windows.Forms.Button getMemberButton;
     }
 }
