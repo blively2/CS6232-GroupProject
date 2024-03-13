@@ -49,7 +49,7 @@
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.contactLabel = new System.Windows.Forms.Label();
             this.contactTextBox = new System.Windows.Forms.TextBox();
-            this.addMemberButton = new System.Windows.Forms.Button();
+            this.updateMemberButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.memberIDTextBox = new System.Windows.Forms.TextBox();
@@ -230,20 +230,21 @@
             this.contactTextBox.Size = new System.Drawing.Size(163, 20);
             this.contactTextBox.TabIndex = 37;
             // 
-            // addMemberButton
+            // updateMemberButton
             // 
-            this.addMemberButton.Location = new System.Drawing.Point(51, 340);
-            this.addMemberButton.Name = "addMemberButton";
-            this.addMemberButton.Size = new System.Drawing.Size(199, 36);
-            this.addMemberButton.TabIndex = 38;
-            this.addMemberButton.Text = "Update Member";
-            this.addMemberButton.UseVisualStyleBackColor = true;
+            this.updateMemberButton.Location = new System.Drawing.Point(51, 340);
+            this.updateMemberButton.Name = "updateMemberButton";
+            this.updateMemberButton.Size = new System.Drawing.Size(169, 36);
+            this.updateMemberButton.TabIndex = 38;
+            this.updateMemberButton.Text = "Update Member";
+            this.updateMemberButton.UseVisualStyleBackColor = true;
+            this.updateMemberButton.Click += new System.EventHandler(this.UpdateMemberButton_Click);
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(504, 340);
+            this.clearButton.Location = new System.Drawing.Point(532, 340);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(150, 36);
+            this.clearButton.Size = new System.Drawing.Size(122, 36);
             this.clearButton.TabIndex = 39;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -263,24 +264,23 @@
             this.memberIDTextBox.Name = "memberIDTextBox";
             this.memberIDTextBox.Size = new System.Drawing.Size(171, 20);
             this.memberIDTextBox.TabIndex = 41;
+            this.memberIDTextBox.TextChanged += new System.EventHandler(this.MemberIDTextBox_TextChanged);
             // 
             // invalidMemberIDLabel
             // 
             this.invalidMemberIDLabel.AutoSize = true;
-            this.invalidMemberIDLabel.Location = new System.Drawing.Point(514, 65);
+            this.invalidMemberIDLabel.Location = new System.Drawing.Point(488, 65);
             this.invalidMemberIDLabel.Name = "invalidMemberIDLabel";
-            this.invalidMemberIDLabel.Size = new System.Drawing.Size(87, 13);
+            this.invalidMemberIDLabel.Size = new System.Drawing.Size(0, 20);
             this.invalidMemberIDLabel.TabIndex = 42;
-            this.invalidMemberIDLabel.Text = "InvalidMemberID";
             // 
             // invalidInputLabel
             // 
             this.invalidInputLabel.AutoSize = true;
-            this.invalidInputLabel.Location = new System.Drawing.Point(282, 352);
+            this.invalidInputLabel.Location = new System.Drawing.Point(282, 340);
             this.invalidInputLabel.Name = "invalidInputLabel";
-            this.invalidInputLabel.Size = new System.Drawing.Size(87, 13);
+            this.invalidInputLabel.Size = new System.Drawing.Size(0, 20);
             this.invalidInputLabel.TabIndex = 43;
-            this.invalidInputLabel.Text = "invalidInputLabel";
             // 
             // getMemberButton
             // 
@@ -301,7 +301,7 @@
             this.Controls.Add(this.memberIDTextBox);
             this.Controls.Add(this.memberIDLabel);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.addMemberButton);
+            this.Controls.Add(this.updateMemberButton);
             this.Controls.Add(this.contactTextBox);
             this.Controls.Add(this.contactLabel);
             this.Controls.Add(this.zipTextBox);
@@ -353,7 +353,7 @@
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.Label contactLabel;
         private System.Windows.Forms.TextBox contactTextBox;
-        private System.Windows.Forms.Button addMemberButton;
+        private System.Windows.Forms.Button updateMemberButton;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label memberIDLabel;
         private System.Windows.Forms.TextBox memberIDTextBox;

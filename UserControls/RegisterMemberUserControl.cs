@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using SofaSoGood.Controller;
 using SofaSoGood.Model;
@@ -100,21 +101,37 @@ namespace SofaSoGood
                 registerMemberAlertLabel.Text = "Address 2 is required.";
                 return false;
             }
+        
             if (string.IsNullOrWhiteSpace(cityTextBox.Text))
             {
-                registerMemberAlertLabel.Text = "City is required.";
+                registerMemberAlertLabel.Text += "City cannot be empty. \n";
+                return false;
+
+            }
+            else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$"))
+            {
+                registerMemberAlertLabel.Text += "City must be alphabetical. \n";
                 return false;
             }
+
             if (string.IsNullOrWhiteSpace(stateTextBox.Text))
             {
-                registerMemberAlertLabel.Text = "State is required.";
+                registerMemberAlertLabel.Text += "State cannot be empty. \n";
                 return false;
+
             }
-            if (string.IsNullOrWhiteSpace(zipTextBox.Text))
+            else if (!Regex.IsMatch(stateTextBox.Text, @"^[a-zA-Z\s]+$"))
             {
-                registerMemberAlertLabel.Text = "A valid Zip code is required.";
+                registerMemberAlertLabel.Text += "State must be alphabetical. \n";
                 return false;
             }
+
+            if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
+            {
+                registerMemberAlertLabel.Text = "A valid 5-digit Zip code is required.";
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(contactPhoneTextBox.Text) || contactPhoneTextBox.Text.Length != 10)
             {
                 registerMemberAlertLabel.Text = "A valid 10-digit Contact Phone number is required.";

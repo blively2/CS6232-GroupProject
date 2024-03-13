@@ -96,5 +96,21 @@ namespace SofaSoGood.Model
         /// </value>
         public string ContactPhone { get; set; }
 
+        /// <summary>
+        /// Determines whether the specified other has changes.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified other has changes; otherwise, <c>false</c>.
+        /// </returns>
+        public bool HasChanges(Member other)
+        {
+            return Address1 != other.Address1 ||
+                   Address2 != other.Address2 ||
+                   City != other.City ||
+                   State != other.State ||
+                   Zip != other.Zip ||
+                   ContactPhone != other.ContactPhone;
+        }
     }
 }

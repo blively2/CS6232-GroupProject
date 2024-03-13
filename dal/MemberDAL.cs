@@ -84,5 +84,33 @@ namespace SofaSoGood.DAL
             return member;
         }
 
+        /// <summary>
+        /// Updates the member.
+        /// </summary>
+        /// <param name="member">The member.</param>
+        /// <returns></returns>
+        public bool UpdateMember(Member member)
+        {
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                var query = @"UPDATE Member SET Address1 = @Address1, Address2 = @Address2,
+                          City = @City, State = @State, Zip = @Zip, ContactPhone = @ContactPhone
+                          WHERE MemberID = @MemberID";
+                using (var command = new SqlCommand(query, connection))
+                { 
+                    command.Parameters.Add("@Address1", SqlDbType.VarChar, 150).Value = member.Address1;
+                    command.Parameters.Add("@Address2", SqlDbType.VarChar, 150).Value = member.Address2;
+                    command.Parameters.Add("@City", SqlDbType.VarChar, 45).Value = member.City;
+                    command.Parameters.Add("@State", SqlDbType.VarChar, 45).Value = member.State;
+                    command.Parameters.Add("@Zip", SqlDbType.VarChar, 10).Value = member.Zip;
+                    command.Parameters.Add("@ContactPhone", SqlDbType.Char, 10).Value = member.ContactPhone;
+                    command.Parameters.Add("MemberID", SqlDbType.Int).Value = member.MemberID;
+
+                    connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    return result > 0;
+                }
+            }
+        }
     }
 }

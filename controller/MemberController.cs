@@ -46,5 +46,20 @@ namespace SofaSoGood.Controller
         {
             return memberDAL.GetMemberById(memberId);
         }
+
+        /// <summary>
+        /// Updates the member.
+        /// </summary>
+        /// <param name="updatedMember">The updated member.</param>
+        /// <returns></returns>
+        public int UpdateMember(Member updatedMember)
+        {
+            var currentMember = memberDAL.GetMemberById(updatedMember.MemberID);
+            if (currentMember != null && !currentMember.HasChanges(updatedMember))
+            {
+                return -1;
+            }
+            return memberDAL.UpdateMember(updatedMember) ? 1 : 0;
+        }
     }
 }

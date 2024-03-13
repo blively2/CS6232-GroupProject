@@ -1,4 +1,8 @@
 ﻿using SofaSoGood.Controller;
+using SofaSoGood.Model;
+using System;
+using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace SofaSoGood.UserControls
@@ -21,8 +25,12 @@ namespace SofaSoGood.UserControls
             memberController = new MemberController();
             InitializeGenderComboBox();
             DisableEditableFields();
+            memberIDTextBox.TextChanged += MemberIDTextBox_TextChanged;
         }
 
+        /// <summary>
+        /// Initializes the gender ComboBox.
+        /// </summary>
         private void InitializeGenderComboBox()
         {
             genderComboBox.Items.Clear();                             
@@ -56,7 +64,8 @@ namespace SofaSoGood.UserControls
         {
             if (!int.TryParse(memberIDTextBox.Text, out int memberId))
             {
-                MessageBox.Show("Please enter a valid Member ID.");
+                invalidMemberIDLabel.ForeColor = Color.Red;
+                invalidMemberIDLabel.Text = "Please enter a valid Member ID.";
                 return;
             }
 
@@ -79,7 +88,8 @@ namespace SofaSoGood.UserControls
             }
             else
             {
-                MessageBox.Show("Member not found.");
+                invalidMemberIDLabel.ForeColor = Color.Red;
+                invalidMemberIDLabel.Text = "Member not found.";
             }
         }
 
@@ -94,6 +104,118 @@ namespace SofaSoGood.UserControls
             stateTextBox.ReadOnly = false;
             zipTextBox.ReadOnly = false;
             contactTextBox.ReadOnly = false;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the UpdateMemberButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void UpdateMemberButton_Click(object sender, System.EventArgs e)
+        {
+            invalidInputLabel.Text = "";
+            invalidInputLabel.ForeColor = Color.Red;
+            invalidInputLabel.Text = "";
+
+            if (string.IsNullOrWhiteSpace(address1TextBox.Text))
+            {
+                invalidInputLabel.Text += "Address 1 cannot be empty.";
+            }
+
+            if (string.IsNullOrWhiteSpace(cityTextBox.Text))
+            {
+                invalidInputLabel.Text += "City cannot be empty. \n";
+
+            } else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$")) 
+            {
+                invalidInputLabel.Text += "City must be alphabetical. \n";
+            }
+
+            if (string.IsNullOrWhiteSpace(stateTextBox.Text))
+            {
+                invalidInputLabel.Text += "State cannot be empty. \n";
+
+            } else if (!Regex.IsMatch(stateTextBox.Text, @"^[a-zA-Z\s]+$"))
+            {
+                invalidInputLabel.Text += "State must be alphabetical. \n";
+            }
+
+            if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
+            {
+                invalidInputLabel.Text += "5-digit Zip code is required.";
+            }
+
+            if (string.IsNullOrWhiteSpace(contactTextBox.Text) || !Regex.IsMatch(contactTextBox.Text, @"^\d{10}$"))
+            {
+                invalidInputLabel.Text += "10-digit Contact number is required.";
+            }
+
+            if (!string.IsNullOrEmpty(invalidInputLabel.Text))
+            {
+                return;
+            }
+
+            var updatedMember = new Member
+            {
+                MemberID = int.Parse(memberIDTextBox.Text),
+                FirstName = firstNameTextBox.Text, 
+                LastName = lastNameTextBox.Text,   
+                Gender = genderComboBox.SelectedItem.ToString()[0].ToString(),
+                DateOfBirth = dateOfBirthDatePicker.Value, 
+                Address1 = address1TextBox.Text,
+                Address2 = address2TextBox.Text,
+                City = cityTextBox.Text,
+                State = stateTextBox.Text,
+                Zip = zipTextBox.Text,
+                ContactPhone = contactTextBox.Text
+            };
+
+            var result = memberController.UpdateMember(updatedMember);
+            if (result == -1)
+            {
+                invalidInputLabel.ForeColor = Color.Orange;
+                invalidInputLabel.Text = "No changes made.";
+            }
+            else if (result == 0)
+            {
+                invalidInputLabel.ForeColor = Color.Red;
+                invalidInputLabel.Text = "Update failed.";
+            }
+            else
+            {
+                invalidInputLabel.ForeColor = Color.Green;
+                invalidInputLabel.Text = "Member updated successfully.";
+            }
+        }
+
+        /// <summary>
+        /// Handles the TextChanged event of the MemberIDTextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        private void MemberIDTextBox_TextChanged(object sender, System.EventArgs e)
+        {
+            invalidInputLabel.Text = "";
+            ClearForm();
+            DisableEditableFields();
+        }
+
+        /// <summary>
+        /// Clears the form.
+        /// </summary>
+        private void ClearForm()
+        {
+            firstNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            genderComboBox.SelectedIndex = -1;
+            dateOfBirthDatePicker.Value = DateTime.Now;
+            address1TextBox.Text = "";
+            address2TextBox.Text = "";
+            cityTextBox.Text = "";
+            stateTextBox.Text = "";
+            zipTextBox.Text = "";
+            contactTextBox.Text = "";
+            invalidInputLabel.Text = "";
         }
     }
 }
