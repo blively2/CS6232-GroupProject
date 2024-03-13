@@ -236,7 +236,7 @@
             this.addMemberButton.Name = "addMemberButton";
             this.addMemberButton.Size = new System.Drawing.Size(199, 36);
             this.addMemberButton.TabIndex = 38;
-            this.addMemberButton.Text = "Add Member";
+            this.addMemberButton.Text = "Update Member";
             this.addMemberButton.UseVisualStyleBackColor = true;
             // 
             // clearButton
