@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace SofaSoGood
             InitializeComponent();
             memberController = new MemberController();
             InitializeGenderComboBox();
+            InitializeStateComboBox();
         }
 
         private void AddMemberButton_Click(object sender, EventArgs e)
@@ -37,7 +39,7 @@ namespace SofaSoGood
                     Address1 = address1TextBox.Text,
                     Address2 = address2TextBox.Text,
                     City = cityTextBox.Text,
-                    State = stateTextBox.Text,
+                    State = stateComboBox.SelectedItem.ToString(),
                     Zip = zipTextBox.Text,
                     ContactPhone = contactPhoneTextBox.Text
                 };
@@ -124,13 +126,9 @@ namespace SofaSoGood
                 registerMemberAlertLabel.Text += "City must be alphabetical and cannot exceed 45 characters.\n";
             }
 
-            if (string.IsNullOrWhiteSpace(stateTextBox.Text))
+            if (stateComboBox.SelectedIndex == -1)
             {
-                registerMemberAlertLabel.Text += "State is required.\n";
-            }
-            else if (!Regex.IsMatch(stateTextBox.Text, @"^[a-zA-Z\s]+$") || stateTextBox.Text.Length > 45)
-            {
-                registerMemberAlertLabel.Text += "State must be alphabetical and cannot exceed 45 characters.\n";
+                registerMemberAlertLabel.Text += "State selection is required.\n";
             }
 
             if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
@@ -155,7 +153,7 @@ namespace SofaSoGood
             address1TextBox.Clear();
             address2TextBox.Clear();
             cityTextBox.Clear();
-            stateTextBox.Clear();
+            stateComboBox.SelectedIndex = -1;
             zipTextBox.Clear();
             contactPhoneTextBox.Clear();
         }
@@ -165,6 +163,15 @@ namespace SofaSoGood
             genderComboBox.Items.Add("Male");
             genderComboBox.Items.Add("Female");
             genderComboBox.SelectedIndex = -1;
+        }
+
+        private void InitializeStateComboBox()
+        {
+            var states = new List<string> { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL",
+                "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
+                "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
+            stateComboBox.Items.AddRange(states.ToArray());
+            stateComboBox.SelectedIndex = -1;
         }
 
         private void Input_TextChanged(object sender, EventArgs e)
