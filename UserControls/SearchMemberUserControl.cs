@@ -28,6 +28,9 @@ namespace SofaSoGood.UserControls
             memberListView.Hide();
         }
 
+        /// <summary>
+        /// Searched a Member based on the MemberID input from the user.
+        /// </summary>
         private void SearchByMemberIDButtonClick(object sender, System.EventArgs e)
         {
             bool isNumeric = int.TryParse(MemberIDTextBox.Text, out int customerID);
@@ -49,6 +52,9 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Searched a Member based on the contactPhone input from the user.
+        /// </summary>
         private void SearchByPhoneButtonClick(object sender, System.EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(phoneTextBox.Text) || !Regex.IsMatch(phoneTextBox.Text, @"^\d{10}$"))
@@ -69,6 +75,9 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Searched a Member based on the FirstName and LastName input from the user.
+        /// </summary>
         private void SearchByNameButtonClick(object sender, System.EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text) || string.IsNullOrWhiteSpace(lastNameTextBox.Text))
@@ -89,6 +98,9 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Displays a found Member in the ListView.
+        /// </summary>
         private void DisplayFoundMember(Member member)
         {
             memberListView.Items.Clear();
