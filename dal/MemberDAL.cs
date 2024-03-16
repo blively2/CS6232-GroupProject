@@ -85,6 +85,88 @@ namespace SofaSoGood.DAL
         }
 
         /// <summary>
+        /// Gets the member by identifier.
+        /// </summary>
+        /// <param name="contactPhone">The member phone number.</param>
+        /// <returns></returns>
+        public Member GetMemberByPhone(string contactPhone)
+        {
+            Member member = null;
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Member] WHERE ContactPhone = @ContactPhone";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@ContactPhone", SqlDbType.VarChar, 10).Value = contactPhone;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            member = new Member
+                            {
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                Gender = reader.GetString(reader.GetOrdinal("Gender")),
+                                DateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
+                                Address1 = reader.GetString(reader.GetOrdinal("Address1")),
+                                Address2 = reader.IsDBNull(reader.GetOrdinal("Address2")) ? null : reader.GetString(reader.GetOrdinal("Address2")),
+                                City = reader.GetString(reader.GetOrdinal("City")),
+                                State = reader.GetString(reader.GetOrdinal("State")),
+                                Zip = reader.GetString(reader.GetOrdinal("Zip")),
+                                ContactPhone = reader.GetString(reader.GetOrdinal("ContactPhone")),
+                            };
+                        }
+                    }
+                }
+            }
+            return member;
+        }
+
+        /// <summary>
+        /// Gets the member by firstName and lastName.
+        /// </summary>
+        /// <param name="firstName">The member's first name.</param>
+        /// <param name="lastName">The member's last name.</param>
+        /// <returns></returns>
+        public Member GetMemberByName(string firstName, string lastName)
+        {
+            Member member = null;
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Member] WHERE FirstName = @FirstName AND LastName = @LastName";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = firstName;
+                    command.Parameters.Add("@LastName", SqlDbType.VarChar, 200).Value = lastName;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            member = new Member
+                            {
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                Gender = reader.GetString(reader.GetOrdinal("Gender")),
+                                DateOfBirth = reader.GetDateTime(reader.GetOrdinal("DateOfBirth")),
+                                Address1 = reader.GetString(reader.GetOrdinal("Address1")),
+                                Address2 = reader.IsDBNull(reader.GetOrdinal("Address2")) ? null : reader.GetString(reader.GetOrdinal("Address2")),
+                                City = reader.GetString(reader.GetOrdinal("City")),
+                                State = reader.GetString(reader.GetOrdinal("State")),
+                                Zip = reader.GetString(reader.GetOrdinal("Zip")),
+                                ContactPhone = reader.GetString(reader.GetOrdinal("ContactPhone")),
+                            };
+                        }
+                    }
+                }
+            }
+            return member;
+        }
+
+        /// <summary>
         /// Updates the member.
         /// </summary>
         /// <param name="member">The member.</param>

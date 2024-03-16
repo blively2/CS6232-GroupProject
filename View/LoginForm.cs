@@ -12,6 +12,7 @@ namespace SofaSoGood
     public partial class LoginForm : Form
     {
         private readonly LoginController loginController;
+
         private readonly EmployeeController employeeController;
 
         private readonly MemberDashboard MainDashboard;
@@ -25,11 +26,10 @@ namespace SofaSoGood
             this.MainDashboard = new MemberDashboard(this);
             loginController = new LoginController();
             employeeController = new EmployeeController();
-            
         }
 
         /// <summary>
-        /// Validates user input against predefined credentials on login button click.
+        /// Validates user input against DB credentials on login button click.
         /// If validation is successful, hides the login form and shows the main dashboard.
         /// Otherwise, displays an error message.
         /// </summary>
@@ -39,7 +39,8 @@ namespace SofaSoGood
         {
             if (loginController.VerifyUserCredentials(this.UsernameTextBox.Text, this.PasswordTextBox.Text))
             {
-                Employee loggedInEmployee = employeeController.GetEmployeeByLoginID(loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text));
+                int loggedInEmployeeID = loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
+                Employee loggedInEmployee = employeeController.GetEmployeeByLoginID(loggedInEmployeeID);
                 this.Hide();
                 this.MainDashboard.SetCurrentUserLabel(loggedInEmployee.FirstName + " " + loggedInEmployee.LastName);
                 this.MainDashboard.Show();
@@ -52,7 +53,6 @@ namespace SofaSoGood
                 this.PasswordTextBox.Text = string.Empty;
                 this.LoginWarningLabel.Text = "Incorrect Username/Password";
             }
-
         }
 
         /// <summary>

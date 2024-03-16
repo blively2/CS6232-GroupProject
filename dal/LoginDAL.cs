@@ -1,8 +1,6 @@
-﻿using SofaSoGood.Model;
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SofaSoGood.DAL
 {

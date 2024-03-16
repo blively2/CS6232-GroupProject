@@ -48,6 +48,27 @@ namespace SofaSoGood.Controller
         }
 
         /// <summary>
+        /// Gets the member by contactPhone.
+        /// </summary>
+        /// <param name="contactPhone">The member contactPhone.</param>
+        /// <returns></returns>
+        public Member GetMemberByPhone(string contactPhone)
+        {
+            return memberDAL.GetMemberByPhone(contactPhone);
+        }
+
+        /// <summary>
+        /// Gets the member by firstName and lastName together.
+        /// </summary>
+        /// <param name="firstName">The member firstName.</param>
+        /// /// <param name="lastName">The member lastName.</param>
+        /// <returns></returns>
+        public Member GetMemberByName(string firstName, string lastName)
+        {
+            return memberDAL.GetMemberByName(firstName, lastName);
+        }
+
+        /// <summary>
         /// Updates the member.
         /// </summary>
         /// <param name="updatedMember">The updated member.</param>
