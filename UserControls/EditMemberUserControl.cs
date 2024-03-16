@@ -123,6 +123,11 @@ namespace SofaSoGood.UserControls
                 invalidInputLabel.Text += "Address 1 cannot be empty.";
             }
 
+            if (string.IsNullOrWhiteSpace(address2TextBox.Text))
+            {
+                invalidInputLabel.Text += "Address 2 cannot be empty.";
+            }
+
             if (string.IsNullOrWhiteSpace(cityTextBox.Text))
             {
                 invalidInputLabel.Text += "City cannot be empty. \n";
