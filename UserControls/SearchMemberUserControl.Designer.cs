@@ -64,41 +64,41 @@
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.titleLabel.Location = new System.Drawing.Point(244, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(283, 40);
+            this.titleLabel.Size = new System.Drawing.Size(273, 40);
             this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Search Member:";
+            this.titleLabel.Text = "Search Member";
             // 
             // phoneTextBox
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(123, 110);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(171, 20);
+            this.phoneTextBox.Size = new System.Drawing.Size(171, 26);
             this.phoneTextBox.TabIndex = 26;
-            this.phoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBoxTextChanged);
             // 
             // memberIDTextBox
             // 
             this.memberIDTextBox.Location = new System.Drawing.Point(123, 70);
             this.memberIDTextBox.Name = "memberIDTextBox";
-            this.memberIDTextBox.Size = new System.Drawing.Size(171, 20);
+            this.memberIDTextBox.Size = new System.Drawing.Size(171, 26);
             this.memberIDTextBox.TabIndex = 25;
-            this.memberIDTextBox.TextChanged += new System.EventHandler(this.MemberIDTextBox_TextChanged);
+            this.memberIDTextBox.TextChanged += new System.EventHandler(this.MemberIDTextBoxTextChanged);
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(123, 157);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(171, 20);
+            this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.firstNameTextBox.TabIndex = 24;
-            this.firstNameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(123, 200);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(171, 20);
+            this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.lastNameTextBox.TabIndex = 23;
-            this.lastNameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
             // 
             // searchByMemberIDButton
             // 
@@ -115,7 +115,7 @@
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Location = new System.Drawing.Point(47, 113);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(41, 13);
+            this.phoneLabel.Size = new System.Drawing.Size(59, 20);
             this.phoneLabel.TabIndex = 21;
             this.phoneLabel.Text = "Phone:";
             // 
@@ -124,7 +124,7 @@
             this.customerIDLabel.AutoSize = true;
             this.customerIDLabel.Location = new System.Drawing.Point(3, 73);
             this.customerIDLabel.Name = "customerIDLabel";
-            this.customerIDLabel.Size = new System.Drawing.Size(62, 13);
+            this.customerIDLabel.Size = new System.Drawing.Size(92, 20);
             this.customerIDLabel.TabIndex = 20;
             this.customerIDLabel.Text = "Member ID:";
             // 
@@ -133,7 +133,7 @@
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Location = new System.Drawing.Point(16, 203);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
+            this.lastNameLabel.Size = new System.Drawing.Size(90, 20);
             this.lastNameLabel.TabIndex = 19;
             this.lastNameLabel.Text = "Last Name:";
             // 
@@ -142,7 +142,7 @@
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Location = new System.Drawing.Point(16, 160);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            this.firstNameLabel.Size = new System.Drawing.Size(90, 20);
             this.firstNameLabel.TabIndex = 18;
             this.firstNameLabel.Text = "First Name:";
             // 
@@ -172,7 +172,7 @@
             this.MemberIDWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.MemberIDWarningLabel.Location = new System.Drawing.Point(506, 76);
             this.MemberIDWarningLabel.Name = "MemberIDWarningLabel";
-            this.MemberIDWarningLabel.Size = new System.Drawing.Size(90, 13);
+            this.MemberIDWarningLabel.Size = new System.Drawing.Size(133, 20);
             this.MemberIDWarningLabel.TabIndex = 29;
             this.MemberIDWarningLabel.Text = "Invalid MemberID";
             // 
@@ -182,7 +182,7 @@
             this.phoneWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.phoneWarningLabel.Location = new System.Drawing.Point(506, 116);
             this.phoneWarningLabel.Name = "phoneWarningLabel";
-            this.phoneWarningLabel.Size = new System.Drawing.Size(75, 13);
+            this.phoneWarningLabel.Size = new System.Drawing.Size(108, 20);
             this.phoneWarningLabel.TabIndex = 30;
             this.phoneWarningLabel.Text = "Invalid Phone ";
             // 
@@ -192,7 +192,7 @@
             this.nameWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.nameWarningLabel.Location = new System.Drawing.Point(506, 163);
             this.nameWarningLabel.Name = "nameWarningLabel";
-            this.nameWarningLabel.Size = new System.Drawing.Size(69, 13);
+            this.nameWarningLabel.Size = new System.Drawing.Size(100, 20);
             this.nameWarningLabel.TabIndex = 31;
             this.nameWarningLabel.Text = "Invalid Name";
             // 
@@ -264,13 +264,13 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(225, 235);
+            this.clearButton.Location = new System.Drawing.Point(300, 198);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(200, 30);
             this.clearButton.TabIndex = 33;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
             // 
             // SearchMemberUserControl
             // 
