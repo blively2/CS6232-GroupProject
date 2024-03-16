@@ -47,7 +47,7 @@ namespace SofaSoGood.UserControls
             {
                 phoneWarningLabel.Text += "Invalid Phone";
             }
-            else
+            else 
             {
                 this.DisplayFoundMember(memberController.GetMemberByPhone(phoneTextBox.Text));
             }
