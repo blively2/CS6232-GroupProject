@@ -71,74 +71,79 @@ namespace SofaSoGood
 
         private bool ValidateInputs()
         {
+            registerMemberAlertLabel.Text = "";
+
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
             {
-                registerMemberAlertLabel.Text = "First Name is required.";
-                return false;
+                registerMemberAlertLabel.Text += "First Name is required.\n";
             }
+            else if (firstNameTextBox.Text.Length > 200)
+            {
+                registerMemberAlertLabel.Text += "First Name cannot exceed 200 characters.\n";
+            }
+
             if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
             {
-                registerMemberAlertLabel.Text = "Last Name is required.";
-                return false;
+                registerMemberAlertLabel.Text += "Last Name is required.\n";
             }
+            else if (lastNameTextBox.Text.Length > 200)
+            {
+                registerMemberAlertLabel.Text += "Last Name cannot exceed 200 characters.\n";
+            }
+
             if (genderComboBox.SelectedIndex == -1)
             {
-                registerMemberAlertLabel.Text = "Gender selection is required.";
-                return false;
+                registerMemberAlertLabel.Text += "Gender selection is required.\n";
             }
+
             if (dateOfBirthDatePicker.Value >= DateTime.Now)
             {
-                registerMemberAlertLabel.Text = "Date of Birth must be in the past.";
-                return false;
+                registerMemberAlertLabel.Text += "Date of Birth must be in the past.\n";
             }
+
             if (string.IsNullOrWhiteSpace(address1TextBox.Text))
             {
-                registerMemberAlertLabel.Text = "Address 1 is required.";
-                return false;
+                registerMemberAlertLabel.Text += "Address 1 is required.\n";
             }
-            if (string.IsNullOrWhiteSpace(address2TextBox.Text))
+            else if (address1TextBox.Text.Length > 150)
             {
-                registerMemberAlertLabel.Text = "Address 2 is required.";
-                return false;
+                registerMemberAlertLabel.Text += "Address 1 cannot exceed 150 characters.\n";
             }
-        
+            
+            if (address2TextBox.Text.Length > 150)
+            {
+                registerMemberAlertLabel.Text += "Address 2 cannot exceed 150 characters.\n";
+            }
+
             if (string.IsNullOrWhiteSpace(cityTextBox.Text))
             {
-                registerMemberAlertLabel.Text += "City cannot be empty. \n";
-                return false;
-
+                registerMemberAlertLabel.Text += "City is required.\n";
             }
-            else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$"))
+            else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$") || cityTextBox.Text.Length > 45)
             {
-                registerMemberAlertLabel.Text += "City must be alphabetical. \n";
-                return false;
+                registerMemberAlertLabel.Text += "City must be alphabetical and cannot exceed 45 characters.\n";
             }
 
             if (string.IsNullOrWhiteSpace(stateTextBox.Text))
             {
-                registerMemberAlertLabel.Text += "State cannot be empty. \n";
-                return false;
-
+                registerMemberAlertLabel.Text += "State is required.\n";
             }
-            else if (!Regex.IsMatch(stateTextBox.Text, @"^[a-zA-Z\s]+$"))
+            else if (!Regex.IsMatch(stateTextBox.Text, @"^[a-zA-Z\s]+$") || stateTextBox.Text.Length > 45)
             {
-                registerMemberAlertLabel.Text += "State must be alphabetical. \n";
-                return false;
+                registerMemberAlertLabel.Text += "State must be alphabetical and cannot exceed 45 characters.\n";
             }
 
             if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
             {
-                registerMemberAlertLabel.Text = "A valid 5-digit Zip code is required.";
-                return false;
+                registerMemberAlertLabel.Text += "A valid 5-digit Zip code is required.\n";
             }
 
-            if (string.IsNullOrWhiteSpace(contactPhoneTextBox.Text) || contactPhoneTextBox.Text.Length != 10)
+            if (string.IsNullOrWhiteSpace(contactPhoneTextBox.Text) || !Regex.IsMatch(contactPhoneTextBox.Text, @"^\d{10}$"))
             {
-                registerMemberAlertLabel.Text = "A valid 10-digit Contact Phone number is required.";
-                return false;
+                registerMemberAlertLabel.Text += "A valid 10-digit Contact Phone number is required.\n";
             }
-            registerMemberAlertLabel.Text = "";
-            return true;
+
+            return registerMemberAlertLabel.Text == "";
         }
 
         private void ClearForm()
