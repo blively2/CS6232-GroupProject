@@ -26,6 +26,7 @@ namespace SofaSoGood.UserControls
             phoneWarningLabel.Text = string.Empty;
             nameWarningLabel.Text = string.Empty;
             memberListView.Hide();
+
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void SearchByMemberIDButtonClick(object sender, System.EventArgs e)
         {
-            bool isNumeric = int.TryParse(MemberIDTextBox.Text, out int customerID);
+            bool isNumeric = int.TryParse(memberIDTextBox.Text, out int customerID);
             if (isNumeric)
             {
                 Member member = memberController.GetMemberById(customerID);
@@ -129,11 +130,77 @@ namespace SofaSoGood.UserControls
         /// <summary>
         /// Clears error messages when any text field is changed.
         /// </summary>
-        private void TextChangedAnyField(object sender, EventArgs e)
+        //private void TextChangedAnyField(object sender, EventArgs e)
+        //{
+            //MemberIDWarningLabel.Text = string.Empty;
+            //phoneWarningLabel.Text = string.Empty;
+            //nameWarningLabel.Text = string.Empty;
+        //}
+
+        /// <summary>
+        /// Handles the Click event of the ClearButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void ClearButton_Click(object sender, EventArgs e)
         {
+            memberIDTextBox.Clear();
+            phoneTextBox.Clear();
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
             MemberIDWarningLabel.Text = string.Empty;
             phoneWarningLabel.Text = string.Empty;
             nameWarningLabel.Text = string.Empty;
+            memberListView.Items.Clear();
+            memberListView.Hide();
+        }
+
+        /// <summary>
+        /// Handles the TextChanged event of the MemberIDTextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void MemberIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ClearFieldsExcept("memberID");
+            MemberIDWarningLabel.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Handles the TextChanged event of the PhoneTextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ClearFieldsExcept("phone");
+            phoneWarningLabel.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Handles the TextChanged event of the NameTextBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ClearFieldsExcept("name");
+            nameWarningLabel.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Clears the fields except.
+        /// </summary>
+        /// <param name="field">The field.</param>
+        private void ClearFieldsExcept(string field)
+        {
+            if (field != "memberID") memberIDTextBox.Clear();
+            if (field != "phone") phoneTextBox.Clear();
+            if (field != "name")
+            {
+                firstNameTextBox.Clear();
+                lastNameTextBox.Clear();
+            }
         }
     }
 }
