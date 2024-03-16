@@ -82,7 +82,7 @@ namespace SofaSoGood.UserControls
         {
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text) || string.IsNullOrWhiteSpace(lastNameTextBox.Text))
             {
-                nameWarningLabel.Text = "Please enter both first and last name";
+                nameWarningLabel.Text = "Fill both fields";
             }
             else
             {
