@@ -128,21 +128,11 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Clears error messages when any text field is changed.
-        /// </summary>
-        //private void TextChangedAnyField(object sender, EventArgs e)
-        //{
-            //MemberIDWarningLabel.Text = string.Empty;
-            //phoneWarningLabel.Text = string.Empty;
-            //nameWarningLabel.Text = string.Empty;
-        //}
-
-        /// <summary>
         /// Handles the Click event of the ClearButton control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearButtonClick(object sender, EventArgs e)
         {
             memberIDTextBox.Clear();
             phoneTextBox.Clear();
@@ -160,7 +150,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void MemberIDTextBox_TextChanged(object sender, EventArgs e)
+        private void MemberIDTextBoxTextChanged(object sender, EventArgs e)
         {
             ClearFieldsExcept("memberID");
             MemberIDWarningLabel.Text = string.Empty;
@@ -171,7 +161,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
+        private void PhoneTextBoxTextChanged(object sender, EventArgs e)
         {
             ClearFieldsExcept("phone");
             phoneWarningLabel.Text = string.Empty;
@@ -182,7 +172,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        private void NameTextBoxTextChanged(object sender, EventArgs e)
         {
             ClearFieldsExcept("name");
             nameWarningLabel.Text = string.Empty;
