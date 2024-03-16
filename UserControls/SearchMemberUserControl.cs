@@ -126,6 +126,9 @@ namespace SofaSoGood.UserControls
             memberListView.Show();
         }
 
+        /// <summary>
+        /// Clears error messages when any text field is changed.
+        /// </summary>
         private void TextChangedAnyField(object sender, EventArgs e)
         {
             MemberIDWarningLabel.Text = string.Empty;
