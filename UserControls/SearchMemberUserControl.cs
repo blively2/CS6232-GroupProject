@@ -22,22 +22,30 @@ namespace SofaSoGood.UserControls
         {
             InitializeComponent();
             memberController = new MemberController();
-            customerIDWarningLabel.Text = string.Empty;
+            MemberIDWarningLabel.Text = string.Empty;
             phoneWarningLabel.Text = string.Empty;
             nameWarningLabel.Text = string.Empty;
+            memberListView.Hide();
         }
 
         private void SearchByMemberIDButtonClick(object sender, System.EventArgs e)
         {
-            bool isNumeric = int.TryParse(customerIDTextBox.Text, out int customerID);
-
+            bool isNumeric = int.TryParse(MemberIDTextBox.Text, out int customerID);
             if (isNumeric)
             {
-                this.DisplayFoundMember(memberController.GetMemberById(customerID));
+                Member member = memberController.GetMemberById(customerID);
+                if (member != null)
+                {
+                    this.DisplayFoundMember(member);
+                }
+                else
+                {
+                    MemberIDWarningLabel.Text = "No Member found";
+                }
             }
             else
             {
-                customerIDWarningLabel.Text = "Invalid Customer ID";
+                MemberIDWarningLabel.Text = "Invalid Customer ID";
             }
         }
 
@@ -45,11 +53,19 @@ namespace SofaSoGood.UserControls
         {
             if (string.IsNullOrWhiteSpace(phoneTextBox.Text) || !Regex.IsMatch(phoneTextBox.Text, @"^\d{10}$"))
             {
-                phoneWarningLabel.Text += "Invalid Phone";
+                phoneWarningLabel.Text = "Invalid Phone";
             }
-            else 
+            else
             {
-                this.DisplayFoundMember(memberController.GetMemberByPhone(phoneTextBox.Text));
+                Member member = memberController.GetMemberByPhone(phoneTextBox.Text);
+                if (member != null)
+                {
+                    this.DisplayFoundMember(member);
+                }
+                else
+                {
+                    phoneWarningLabel.Text = "No Member found.";
+                }
             }
         }
 
@@ -57,17 +73,25 @@ namespace SofaSoGood.UserControls
         {
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text) || string.IsNullOrWhiteSpace(lastNameTextBox.Text))
             {
-                nameWarningLabel.Text = "Invalid Name";
+                nameWarningLabel.Text = "Please enter both first and last name";
             }
             else
             {
-                this.DisplayFoundMember(memberController.GetMemberByName(firstNameTextBox.Text, lastNameTextBox.Text));
+                Member member = memberController.GetMemberByName(firstNameTextBox.Text, lastNameTextBox.Text);
+                if (member != null)
+                {
+                    this.DisplayFoundMember(member);
+                }
+                else
+                {
+                    nameWarningLabel.Text = "No Member found";
+                }
             }
         }
 
         private void DisplayFoundMember(Member member)
         {
-            MemberListView.Items.Clear();
+            memberListView.Items.Clear();
             ListViewItem item = new ListViewItem(member.MemberID.ToString());
             item.SubItems.Add(member.FirstName ?? string.Empty);
             item.SubItems.Add(member.LastName ?? string.Empty);
@@ -79,14 +103,22 @@ namespace SofaSoGood.UserControls
             item.SubItems.Add(member.State ?? string.Empty);
             item.SubItems.Add(member.Zip ?? string.Empty);
             item.SubItems.Add(member.ContactPhone ?? string.Empty);
-            MemberListView.Items.Add(item);
+            memberListView.Items.Add(item);
 
-            foreach (ColumnHeader column in MemberListView.Columns)
+            foreach (ColumnHeader column in memberListView.Columns)
             {
                 column.Width = -2;
             }
 
-            MemberListView.Refresh();
+            memberListView.Refresh();
+            memberListView.Show();
+        }
+
+        private void TextChangedAnyField(object sender, EventArgs e)
+        {
+            MemberIDWarningLabel.Text = string.Empty;
+            phoneWarningLabel.Text = string.Empty;
+            nameWarningLabel.Text = string.Empty;
         }
     }
 }

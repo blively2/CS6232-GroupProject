@@ -30,20 +30,20 @@
         {
             this.titleLabel = new System.Windows.Forms.Label();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
-            this.customerIDTextBox = new System.Windows.Forms.TextBox();
+            this.MemberIDTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
-            this.searchByCustomerIDButton = new System.Windows.Forms.Button();
+            this.searchByMemberIDButton = new System.Windows.Forms.Button();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.customerIDLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.searchByPhoneButton = new System.Windows.Forms.Button();
             this.searchByNameButton = new System.Windows.Forms.Button();
-            this.customerIDWarningLabel = new System.Windows.Forms.Label();
+            this.MemberIDWarningLabel = new System.Windows.Forms.Label();
             this.phoneWarningLabel = new System.Windows.Forms.Label();
             this.nameWarningLabel = new System.Windows.Forms.Label();
-            this.MemberListView = new System.Windows.Forms.ListView();
+            this.memberListView = new System.Windows.Forms.ListView();
             this.MemberID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -73,13 +73,15 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(171, 26);
             this.phoneTextBox.TabIndex = 26;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.TextChangedAnyField);
             // 
-            // customerIDTextBox
+            // MemberIDTextBox
             // 
-            this.customerIDTextBox.Location = new System.Drawing.Point(123, 70);
-            this.customerIDTextBox.Name = "customerIDTextBox";
-            this.customerIDTextBox.Size = new System.Drawing.Size(171, 26);
-            this.customerIDTextBox.TabIndex = 25;
+            this.MemberIDTextBox.Location = new System.Drawing.Point(123, 70);
+            this.MemberIDTextBox.Name = "MemberIDTextBox";
+            this.MemberIDTextBox.Size = new System.Drawing.Size(171, 26);
+            this.MemberIDTextBox.TabIndex = 25;
+            this.MemberIDTextBox.TextChanged += new System.EventHandler(this.TextChangedAnyField);
             // 
             // firstNameTextBox
             // 
@@ -87,6 +89,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.firstNameTextBox.TabIndex = 24;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.TextChangedAnyField);
             // 
             // lastNameTextBox
             // 
@@ -94,16 +97,17 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.lastNameTextBox.TabIndex = 23;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.TextChangedAnyField);
             // 
-            // searchByCustomerIDButton
+            // searchByMemberIDButton
             // 
-            this.searchByCustomerIDButton.Location = new System.Drawing.Point(300, 70);
-            this.searchByCustomerIDButton.Name = "searchByCustomerIDButton";
-            this.searchByCustomerIDButton.Size = new System.Drawing.Size(200, 30);
-            this.searchByCustomerIDButton.TabIndex = 22;
-            this.searchByCustomerIDButton.Text = "By Member ID";
-            this.searchByCustomerIDButton.UseVisualStyleBackColor = true;
-            this.searchByCustomerIDButton.Click += new System.EventHandler(this.SearchByMemberIDButtonClick);
+            this.searchByMemberIDButton.Location = new System.Drawing.Point(300, 70);
+            this.searchByMemberIDButton.Name = "searchByMemberIDButton";
+            this.searchByMemberIDButton.Size = new System.Drawing.Size(200, 30);
+            this.searchByMemberIDButton.TabIndex = 22;
+            this.searchByMemberIDButton.Text = "By Member ID";
+            this.searchByMemberIDButton.UseVisualStyleBackColor = true;
+            this.searchByMemberIDButton.Click += new System.EventHandler(this.SearchByMemberIDButtonClick);
             // 
             // phoneLabel
             // 
@@ -161,15 +165,15 @@
             this.searchByNameButton.UseVisualStyleBackColor = true;
             this.searchByNameButton.Click += new System.EventHandler(this.SearchByNameButtonClick);
             // 
-            // customerIDWarningLabel
+            // MemberIDWarningLabel
             // 
-            this.customerIDWarningLabel.AutoSize = true;
-            this.customerIDWarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.customerIDWarningLabel.Location = new System.Drawing.Point(506, 76);
-            this.customerIDWarningLabel.Name = "customerIDWarningLabel";
-            this.customerIDWarningLabel.Size = new System.Drawing.Size(144, 20);
-            this.customerIDWarningLabel.TabIndex = 29;
-            this.customerIDWarningLabel.Text = "Invalid CustomerID";
+            this.MemberIDWarningLabel.AutoSize = true;
+            this.MemberIDWarningLabel.ForeColor = System.Drawing.Color.Red;
+            this.MemberIDWarningLabel.Location = new System.Drawing.Point(506, 76);
+            this.MemberIDWarningLabel.Name = "MemberIDWarningLabel";
+            this.MemberIDWarningLabel.Size = new System.Drawing.Size(133, 20);
+            this.MemberIDWarningLabel.TabIndex = 29;
+            this.MemberIDWarningLabel.Text = "Invalid MemberID";
             // 
             // phoneWarningLabel
             // 
@@ -191,9 +195,9 @@
             this.nameWarningLabel.TabIndex = 31;
             this.nameWarningLabel.Text = "Invalid Name";
             // 
-            // MemberListView
+            // memberListView
             // 
-            this.MemberListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.memberListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.MemberID,
             this.FirstName,
             this.LastName,
@@ -205,13 +209,13 @@
             this.State,
             this.Zip,
             this.Phone});
-            this.MemberListView.HideSelection = false;
-            this.MemberListView.Location = new System.Drawing.Point(0, 288);
-            this.MemberListView.Name = "MemberListView";
-            this.MemberListView.Size = new System.Drawing.Size(776, 110);
-            this.MemberListView.TabIndex = 32;
-            this.MemberListView.UseCompatibleStateImageBehavior = false;
-            this.MemberListView.View = System.Windows.Forms.View.Details;
+            this.memberListView.HideSelection = false;
+            this.memberListView.Location = new System.Drawing.Point(0, 288);
+            this.memberListView.Name = "memberListView";
+            this.memberListView.Size = new System.Drawing.Size(776, 110);
+            this.memberListView.TabIndex = 32;
+            this.memberListView.UseCompatibleStateImageBehavior = false;
+            this.memberListView.View = System.Windows.Forms.View.Details;
             // 
             // MemberID
             // 
@@ -260,17 +264,17 @@
             // SearchMemberUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.MemberListView);
+            this.Controls.Add(this.memberListView);
             this.Controls.Add(this.nameWarningLabel);
             this.Controls.Add(this.phoneWarningLabel);
-            this.Controls.Add(this.customerIDWarningLabel);
+            this.Controls.Add(this.MemberIDWarningLabel);
             this.Controls.Add(this.searchByNameButton);
             this.Controls.Add(this.searchByPhoneButton);
             this.Controls.Add(this.phoneTextBox);
-            this.Controls.Add(this.customerIDTextBox);
+            this.Controls.Add(this.MemberIDTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.lastNameTextBox);
-            this.Controls.Add(this.searchByCustomerIDButton);
+            this.Controls.Add(this.searchByMemberIDButton);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.customerIDLabel);
             this.Controls.Add(this.lastNameLabel);
@@ -287,20 +291,20 @@
 
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.TextBox phoneTextBox;
-        private System.Windows.Forms.TextBox customerIDTextBox;
+        private System.Windows.Forms.TextBox MemberIDTextBox;
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.Button searchByCustomerIDButton;
+        private System.Windows.Forms.Button searchByMemberIDButton;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label customerIDLabel;
         private System.Windows.Forms.Label lastNameLabel;
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.Button searchByPhoneButton;
         private System.Windows.Forms.Button searchByNameButton;
-        private System.Windows.Forms.Label customerIDWarningLabel;
+        private System.Windows.Forms.Label MemberIDWarningLabel;
         private System.Windows.Forms.Label phoneWarningLabel;
         private System.Windows.Forms.Label nameWarningLabel;
-        private System.Windows.Forms.ListView MemberListView;
+        private System.Windows.Forms.ListView memberListView;
         private System.Windows.Forms.ColumnHeader MemberID;
         private System.Windows.Forms.ColumnHeader FirstName;
         private System.Windows.Forms.ColumnHeader LastName;
