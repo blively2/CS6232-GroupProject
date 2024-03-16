@@ -46,12 +46,12 @@
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.contactPhoneTextBox = new System.Windows.Forms.TextBox();
             this.dateOfBirthDatePicker = new System.Windows.Forms.DateTimePicker();
             this.genderComboBox = new System.Windows.Forms.ComboBox();
             this.registerMemberAlertLabel = new System.Windows.Forms.Label();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -60,7 +60,7 @@
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.TitleLabel.Location = new System.Drawing.Point(272, 23);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(206, 29);
+            this.TitleLabel.Size = new System.Drawing.Size(200, 29);
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "Register Member";
             // 
@@ -214,14 +214,6 @@
             this.cityTextBox.TabIndex = 17;
             this.cityTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
-            // stateTextBox
-            // 
-            this.stateTextBox.Location = new System.Drawing.Point(483, 168);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(163, 20);
-            this.stateTextBox.TabIndex = 18;
-            this.stateTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
-            // 
             // zipTextBox
             // 
             this.zipTextBox.Location = new System.Drawing.Point(483, 215);
@@ -260,20 +252,28 @@
             // registerMemberAlertLabel
             // 
             this.registerMemberAlertLabel.AutoSize = true;
-            this.registerMemberAlertLabel.Location = new System.Drawing.Point(295, 309);
+            this.registerMemberAlertLabel.Location = new System.Drawing.Point(652, 88);
             this.registerMemberAlertLabel.Name = "registerMemberAlertLabel";
             this.registerMemberAlertLabel.Size = new System.Drawing.Size(0, 13);
             this.registerMemberAlertLabel.TabIndex = 23;
             // 
+            // stateComboBox
+            // 
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Location = new System.Drawing.Point(483, 163);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(163, 21);
+            this.stateComboBox.TabIndex = 24;
+            // 
             // RegisterMemberUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.registerMemberAlertLabel);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.dateOfBirthDatePicker);
             this.Controls.Add(this.contactPhoneTextBox);
             this.Controls.Add(this.zipTextBox);
-            this.Controls.Add(this.stateTextBox);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.address2TextBox);
             this.Controls.Add(this.address1TextBox);
@@ -319,11 +319,11 @@
         private System.Windows.Forms.TextBox address1TextBox;
         private System.Windows.Forms.TextBox address2TextBox;
         private System.Windows.Forms.TextBox cityTextBox;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.TextBox contactPhoneTextBox;
         private System.Windows.Forms.DateTimePicker dateOfBirthDatePicker;
         private System.Windows.Forms.ComboBox genderComboBox;
         private System.Windows.Forms.Label registerMemberAlertLabel;
+        private System.Windows.Forms.ComboBox stateComboBox;
     }
 }
