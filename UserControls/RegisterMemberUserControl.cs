@@ -8,10 +8,19 @@ using SofaSoGood.Model;
 
 namespace SofaSoGood
 {
+    /// <summary>
+    /// UserControl for Register Customers in the database.
+    /// Has an MemberController instance to interact with the DB.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class RegisterMemberUserControl : UserControl
     {
         private readonly MemberController memberController;
 
+        /// <summary>
+        /// Constructor for RegisterMemberUserControl.
+        /// Initializes the controller and the component for the UI.
+        /// </summary>
         public RegisterMemberUserControl()
         {
             InitializeComponent();
@@ -20,6 +29,11 @@ namespace SofaSoGood
             InitializeStateComboBox();
         }
 
+        /// <summary>
+        /// Handles the Click event of the AddMemberButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void AddMemberButton_Click(object sender, EventArgs e)
         {
             if (!ValidateInputs())
@@ -65,12 +79,21 @@ namespace SofaSoGood
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the ClearButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearForm();
             registerMemberAlertLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Validates the inputs.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateInputs()
         {
             registerMemberAlertLabel.Text = "";
@@ -158,6 +181,9 @@ namespace SofaSoGood
             return registerMemberAlertLabel.Text == "";
         }
 
+        /// <summary>
+        /// Clears the form.
+        /// </summary>
         private void ClearForm()
         {
             firstNameTextBox.Clear();
@@ -172,6 +198,9 @@ namespace SofaSoGood
             contactPhoneTextBox.Clear();
         }
 
+        /// <summary>
+        /// Initializes the gender ComboBox.
+        /// </summary>
         private void InitializeGenderComboBox()
         {
             genderComboBox.Items.Add("Male");
@@ -179,6 +208,9 @@ namespace SofaSoGood
             genderComboBox.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Initializes the state ComboBox.
+        /// </summary>
         private void InitializeStateComboBox()
         {
             var states = new List<string> { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL",
@@ -188,16 +220,30 @@ namespace SofaSoGood
             stateComboBox.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Handles the TextChanged event of the Input control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Input_TextChanged(object sender, EventArgs e)
         {
             registerMemberAlertLabel.Text = "";
         }
 
+        /// <summary>
+        /// Handles the Changed event of the Input control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Input_Changed(object sender, EventArgs e)
         {
             registerMemberAlertLabel.Text = "";
         }
 
+        /// <summary>
+        /// Shows the success dialog.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
         private void ShowSuccessDialog(int memberId)
         {
             string message = $"Member registered successfully! Member ID: {memberId}";

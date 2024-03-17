@@ -10,7 +10,7 @@ namespace SofaSoGood.UserControls
 {
     /// <summary>
     /// UserControl for Editing Customers in the database.
-    /// Has an CustomerController instance to interact with the DB.
+    /// Has an MemberController instance to interact with the DB.
     /// </summary>
     public partial class EditMemberUserControl : UserControl
     {
@@ -284,6 +284,11 @@ namespace SofaSoGood.UserControls
             invalidMemberIDLabel.Text = "";
         }
 
+        /// <summary>
+        /// Handles the Click event of the ClearButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearForm();
@@ -291,6 +296,9 @@ namespace SofaSoGood.UserControls
             invalidInputLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Initializes the state ComboBox.
+        /// </summary>
         private void InitializeStateComboBox()
         {
             var states = new List<string> { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL",
