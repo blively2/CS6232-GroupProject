@@ -2,8 +2,14 @@ Classic ReadMe file!
 
 Sofa So Good, your Furniture Management System.
 
-Default login: 
+Default logins: 
 
-Username: employee
+Username: user1
+Password: password1
 
-Password: test1234
+Username: user2
+Password: password2
+
+Username: user3
+Password: password3
+
