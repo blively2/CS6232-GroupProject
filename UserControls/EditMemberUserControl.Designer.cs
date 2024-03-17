@@ -44,7 +44,6 @@
             this.cityLabel = new System.Windows.Forms.Label();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.stateLabel = new System.Windows.Forms.Label();
-            this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipLabel = new System.Windows.Forms.Label();
             this.zipTextBox = new System.Windows.Forms.TextBox();
             this.contactLabel = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.invalidMemberIDLabel = new System.Windows.Forms.Label();
             this.invalidInputLabel = new System.Windows.Forms.Label();
             this.getMemberButton = new System.Windows.Forms.Button();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -191,13 +191,6 @@
             this.stateLabel.TabIndex = 32;
             this.stateLabel.Text = "State:";
             // 
-            // stateTextBox
-            // 
-            this.stateTextBox.Location = new System.Drawing.Point(491, 190);
-            this.stateTextBox.Name = "stateTextBox";
-            this.stateTextBox.Size = new System.Drawing.Size(163, 20);
-            this.stateTextBox.TabIndex = 33;
-            // 
             // zipLabel
             // 
             this.zipLabel.AutoSize = true;
@@ -272,7 +265,7 @@
             this.invalidMemberIDLabel.AutoSize = true;
             this.invalidMemberIDLabel.Location = new System.Drawing.Point(488, 65);
             this.invalidMemberIDLabel.Name = "invalidMemberIDLabel";
-            this.invalidMemberIDLabel.Size = new System.Drawing.Size(0, 20);
+            this.invalidMemberIDLabel.Size = new System.Drawing.Size(0, 13);
             this.invalidMemberIDLabel.TabIndex = 42;
             // 
             // invalidInputLabel
@@ -280,7 +273,7 @@
             this.invalidInputLabel.AutoSize = true;
             this.invalidInputLabel.Location = new System.Drawing.Point(282, 340);
             this.invalidInputLabel.Name = "invalidInputLabel";
-            this.invalidInputLabel.Size = new System.Drawing.Size(0, 20);
+            this.invalidInputLabel.Size = new System.Drawing.Size(0, 13);
             this.invalidInputLabel.TabIndex = 43;
             // 
             // getMemberButton
@@ -293,9 +286,19 @@
             this.getMemberButton.UseVisualStyleBackColor = true;
             this.getMemberButton.Click += new System.EventHandler(this.GetMemberButton_Click);
             // 
+            // stateComboBox
+            // 
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Location = new System.Drawing.Point(491, 187);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(163, 21);
+            this.stateComboBox.TabIndex = 45;
+            // 
             // EditMemberUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.getMemberButton);
             this.Controls.Add(this.invalidInputLabel);
             this.Controls.Add(this.invalidMemberIDLabel);
@@ -307,7 +310,6 @@
             this.Controls.Add(this.contactLabel);
             this.Controls.Add(this.zipTextBox);
             this.Controls.Add(this.zipLabel);
-            this.Controls.Add(this.stateTextBox);
             this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.cityTextBox);
             this.Controls.Add(this.cityLabel);
@@ -349,7 +351,6 @@
         private System.Windows.Forms.Label cityLabel;
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.Label stateLabel;
-        private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.Label zipLabel;
         private System.Windows.Forms.TextBox zipTextBox;
         private System.Windows.Forms.Label contactLabel;
@@ -361,5 +362,6 @@
         private System.Windows.Forms.Label invalidMemberIDLabel;
         private System.Windows.Forms.Label invalidInputLabel;
         private System.Windows.Forms.Button getMemberButton;
+        private System.Windows.Forms.ComboBox stateComboBox;
     }
 }

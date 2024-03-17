@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TitleLabel = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
             this.genderLabel = new System.Windows.Forms.Label();
@@ -54,15 +54,15 @@
             this.stateComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // TitleLabel
+            // titleLabel
             // 
-            this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.TitleLabel.Location = new System.Drawing.Point(272, 23);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(200, 29);
-            this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "Register Member";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.titleLabel.Location = new System.Drawing.Point(272, 23);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(293, 40);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Register Member";
             // 
             // firstNameLabel
             // 
@@ -252,13 +252,15 @@
             // registerMemberAlertLabel
             // 
             this.registerMemberAlertLabel.AutoSize = true;
-            this.registerMemberAlertLabel.Location = new System.Drawing.Point(652, 88);
+            this.registerMemberAlertLabel.Location = new System.Drawing.Point(299, 303);
             this.registerMemberAlertLabel.Name = "registerMemberAlertLabel";
-            this.registerMemberAlertLabel.Size = new System.Drawing.Size(0, 13);
+            this.registerMemberAlertLabel.Size = new System.Drawing.Size(126, 13);
             this.registerMemberAlertLabel.TabIndex = 23;
+            //this.registerMemberAlertLabel.Text = "registerMemberAlertLabel";
             // 
             // stateComboBox
             // 
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Location = new System.Drawing.Point(483, 163);
             this.stateComboBox.Name = "stateComboBox";
@@ -291,7 +293,7 @@
             this.Controls.Add(this.genderLabel);
             this.Controls.Add(this.lastNameLabel);
             this.Controls.Add(this.firstNameLabel);
-            this.Controls.Add(this.TitleLabel);
+            this.Controls.Add(this.titleLabel);
             this.Name = "RegisterMemberUserControl";
             this.Size = new System.Drawing.Size(776, 398);
             this.ResumeLayout(false);
@@ -301,7 +303,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label firstNameLabel;
         private System.Windows.Forms.Label lastNameLabel;
         private System.Windows.Forms.Label genderLabel;

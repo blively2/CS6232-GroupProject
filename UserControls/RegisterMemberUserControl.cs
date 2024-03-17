@@ -78,67 +78,81 @@ namespace SofaSoGood
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
             {
                 registerMemberAlertLabel.Text += "First Name is required.\n";
+                return false;
             }
             else if (firstNameTextBox.Text.Length > 200)
             {
                 registerMemberAlertLabel.Text += "First Name cannot exceed 200 characters.\n";
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
             {
                 registerMemberAlertLabel.Text += "Last Name is required.\n";
+                return false;
             }
             else if (lastNameTextBox.Text.Length > 200)
             {
                 registerMemberAlertLabel.Text += "Last Name cannot exceed 200 characters.\n";
+                return false;
             }
 
             if (genderComboBox.SelectedIndex == -1)
             {
                 registerMemberAlertLabel.Text += "Gender selection is required.\n";
+                return false;
             }
 
             if (dateOfBirthDatePicker.Value >= DateTime.Now)
             {
                 registerMemberAlertLabel.Text += "Date of Birth must be in the past.\n";
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(address1TextBox.Text))
             {
                 registerMemberAlertLabel.Text += "Address 1 is required.\n";
+                return false;
             }
             else if (address1TextBox.Text.Length > 150)
             {
                 registerMemberAlertLabel.Text += "Address 1 cannot exceed 150 characters.\n";
+                return false;
             }
             
             if (address2TextBox.Text.Length > 150)
             {
                 registerMemberAlertLabel.Text += "Address 2 cannot exceed 150 characters.\n";
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(cityTextBox.Text))
             {
                 registerMemberAlertLabel.Text += "City is required.\n";
+                return false;
             }
             else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$") || cityTextBox.Text.Length > 45)
             {
                 registerMemberAlertLabel.Text += "City must be alphabetical and cannot exceed 45 characters.\n";
+                return false;
             }
 
             if (stateComboBox.SelectedIndex == -1)
             {
                 registerMemberAlertLabel.Text += "State selection is required.\n";
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
             {
                 registerMemberAlertLabel.Text += "A valid 5-digit Zip code is required.\n";
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(contactPhoneTextBox.Text) || !Regex.IsMatch(contactPhoneTextBox.Text, @"^\d{10}$"))
             {
                 registerMemberAlertLabel.Text += "A valid 10-digit Contact Phone number is required.\n";
+                return false;
             }
 
             return registerMemberAlertLabel.Text == "";
