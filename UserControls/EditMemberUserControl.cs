@@ -25,7 +25,6 @@ namespace SofaSoGood.UserControls
             memberController = new MemberController();
             InitializeGenderComboBox();
             DisableEditableFields();
-            memberIDTextBox.TextChanged += MemberIDTextBox_TextChanged;
         }
 
         /// <summary>
@@ -62,6 +61,7 @@ namespace SofaSoGood.UserControls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void GetMemberButton_Click(object sender, System.EventArgs e)
         {
+            invalidInputLabel.Text = "";
             invalidMemberIDLabel.Text = " ";
             if (!int.TryParse(memberIDTextBox.Text, out int memberId))
             {
@@ -76,7 +76,7 @@ namespace SofaSoGood.UserControls
 
                 firstNameTextBox.Text = member.FirstName;
                 lastNameTextBox.Text = member.LastName;
-                genderComboBox.SelectedItem = member.Gender == "Male" ? "Male" : "Female";
+                genderComboBox.SelectedItem = member.Gender == "M" ? "Male" : "Female";
                 dateOfBirthDatePicker.Value = member.DateOfBirth;
                 address1TextBox.Text = member.Address1;
                 address2TextBox.Text = member.Address2 ?? "";
@@ -99,6 +99,10 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void EnableEditableFields()
         {
+            firstNameTextBox.ReadOnly = false;
+            lastNameTextBox.ReadOnly = false;
+            genderComboBox.Enabled = true;
+            dateOfBirthDatePicker.Enabled = true;
             address1TextBox.ReadOnly = false;
             address2TextBox.ReadOnly = false;
             cityTextBox.ReadOnly = false;
@@ -116,25 +120,61 @@ namespace SofaSoGood.UserControls
         {
             invalidInputLabel.Text = "";
             invalidInputLabel.ForeColor = Color.Red;
-            invalidInputLabel.Text = "";
+
+            if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
+            {
+                invalidInputLabel.Text += "First Name is required.\n";
+            }
+            else if (firstNameTextBox.Text.Length > 200)
+            {
+                invalidInputLabel.Text += "First Name cannot exceed 200 characters.\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
+            {
+                invalidInputLabel.Text += "Last Name is required.\n";
+            }
+            else if (lastNameTextBox.Text.Length > 200)
+            {
+                invalidInputLabel.Text += "Last Name cannot exceed 200 characters.\n";
+            }
+
+            if (genderComboBox.SelectedIndex == -1)
+            {
+                invalidInputLabel.Text += "Gender selection is required.\n";
+            }
+
+            if (dateOfBirthDatePicker.Value >= DateTime.Now)
+            {
+                invalidInputLabel.Text += "Date of Birth must be in the past.\n";
+            }
 
             if (string.IsNullOrWhiteSpace(address1TextBox.Text))
             {
                 invalidInputLabel.Text += "Address 1 cannot be empty.";
             }
-
-            if (string.IsNullOrWhiteSpace(address2TextBox.Text))
+            else if (address1TextBox.Text.Length > 150)
             {
-                invalidInputLabel.Text += "Address 2 cannot be empty.";
+                invalidInputLabel.Text += "Address 1 cannot exceed 150 characters.\n";
+            }
+
+            if (address2TextBox.Text.Length > 150)
+            {
+                invalidInputLabel.Text += "Address 2 cannot exceed 150 characters.\n";
             }
 
             if (string.IsNullOrWhiteSpace(cityTextBox.Text))
             {
                 invalidInputLabel.Text += "City cannot be empty. \n";
 
-            } else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$")) 
+            } 
+            else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$")) 
             {
                 invalidInputLabel.Text += "City must be alphabetical. \n";
+            }
+            else if (cityTextBox.Text.Length > 45)
+            {
+                invalidInputLabel.Text += "City cannot exceed 45 characters.\n";
             }
 
             if (string.IsNullOrWhiteSpace(stateTextBox.Text))

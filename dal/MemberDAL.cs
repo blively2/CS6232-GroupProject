@@ -176,13 +176,18 @@ namespace SofaSoGood.DAL
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
-                var query = @"UPDATE Member SET Address1 = @Address1, Address2 = @Address2,
-                          City = @City, State = @State, Zip = @Zip, ContactPhone = @ContactPhone
-                          WHERE MemberID = @MemberID";
+                var query = @"UPDATE Member SET  FirstName = @FirstName, LastName = @LastName, 
+                            Gender = @Gender,DateOfBirth = @DateOfBirth, Address1 = @Address1,
+                            Address2 = @Address2, City = @City, State = @State, Zip = @Zip, 
+                            ContactPhone = @ContactPhone WHERE MemberID = @MemberID";
                 using (var command = new SqlCommand(query, connection))
-                { 
+                {
+                    command.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = member.FirstName;
+                    command.Parameters.Add("@LastName", SqlDbType.VarChar, 200).Value = member.LastName;
+                    command.Parameters.Add("@Gender", SqlDbType.Char, 1).Value = member.Gender;
+                    command.Parameters.Add("@DateOfBirth", SqlDbType.Date).Value = member.DateOfBirth;
                     command.Parameters.Add("@Address1", SqlDbType.VarChar, 150).Value = member.Address1;
-                    command.Parameters.Add("@Address2", SqlDbType.VarChar, 150).Value = member.Address2;
+                    command.Parameters.Add("@Address2", SqlDbType.VarChar, 150).Value = string.IsNullOrEmpty(member.Address2) ? (object)DBNull.Value : member.Address2;
                     command.Parameters.Add("@City", SqlDbType.VarChar, 45).Value = member.City;
                     command.Parameters.Add("@State", SqlDbType.VarChar, 45).Value = member.State;
                     command.Parameters.Add("@Zip", SqlDbType.VarChar, 10).Value = member.Zip;

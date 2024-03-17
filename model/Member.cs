@@ -101,7 +101,11 @@ namespace SofaSoGood.Model
         /// </returns>
         public bool HasChanges(Member other)
         {
-            return Address1 != other.Address1 ||
+            return FirstName != other.FirstName || 
+                   LastName != other.LastName ||
+                   Gender != other.Gender ||
+                   DateOfBirth != other.DateOfBirth ||
+                   Address1 != other.Address1 ||
                    Address2 != other.Address2 ||
                    City != other.City ||
                    State != other.State ||
