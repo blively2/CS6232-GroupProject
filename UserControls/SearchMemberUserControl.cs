@@ -150,7 +150,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void MemberIDTextBoxTextChanged(object sender, EventArgs e)
+        private void MemberIDTextBoxClicked(object sender, EventArgs e)
         {
             ClearFieldsExcept("memberID");
             MemberIDWarningLabel.Text = string.Empty;
@@ -161,7 +161,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void PhoneTextBoxTextChanged(object sender, EventArgs e)
+        private void PhoneTextBoxTextClicked(object sender, EventArgs e)
         {
             ClearFieldsExcept("phone");
             phoneWarningLabel.Text = string.Empty;
@@ -172,7 +172,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void NameTextBoxTextChanged(object sender, EventArgs e)
+        private void NameTextBoxClicked(object sender, EventArgs e)
         {
             ClearFieldsExcept("name");
             nameWarningLabel.Text = string.Empty;

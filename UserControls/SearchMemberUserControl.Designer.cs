@@ -74,7 +74,7 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(171, 26);
             this.phoneTextBox.TabIndex = 26;
-            this.phoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBoxTextChanged);
+            this.phoneTextBox.Click += new System.EventHandler(this.PhoneTextBoxTextClicked);
             // 
             // memberIDTextBox
             // 
@@ -82,7 +82,7 @@
             this.memberIDTextBox.Name = "memberIDTextBox";
             this.memberIDTextBox.Size = new System.Drawing.Size(171, 26);
             this.memberIDTextBox.TabIndex = 25;
-            this.memberIDTextBox.TextChanged += new System.EventHandler(this.MemberIDTextBoxTextChanged);
+            this.memberIDTextBox.Click += new System.EventHandler(this.MemberIDTextBoxClicked);
             // 
             // firstNameTextBox
             // 
@@ -90,7 +90,7 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.firstNameTextBox.TabIndex = 24;
-            this.firstNameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
+            this.firstNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
             // lastNameTextBox
             // 
@@ -98,7 +98,7 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.lastNameTextBox.TabIndex = 23;
-            this.lastNameTextBox.TextChanged += new System.EventHandler(this.NameTextBoxTextChanged);
+            this.lastNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
             // searchByMemberIDButton
             // 
