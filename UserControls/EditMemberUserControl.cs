@@ -236,15 +236,10 @@ namespace SofaSoGood.UserControls
             };
 
             var result = memberController.UpdateMember(updatedMember);
-            if (result == -1)
+            if (result == 1)
             {
                 invalidInputLabel.ForeColor = Color.Orange;
                 invalidInputLabel.Text = "No changes made.";
-            }
-            else if (result == 0)
-            {
-                invalidInputLabel.ForeColor = Color.Red;
-                invalidInputLabel.Text = "Update failed.";
             }
             else
             {
