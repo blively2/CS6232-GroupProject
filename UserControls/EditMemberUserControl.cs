@@ -238,13 +238,13 @@ namespace SofaSoGood.UserControls
             var result = memberController.UpdateMember(updatedMember);
             if (result == 1)
             {
-                invalidInputLabel.ForeColor = Color.Orange;
-                invalidInputLabel.Text = "No changes made.";
+                invalidInputLabel.ForeColor = Color.Green;
+                invalidInputLabel.Text = "Member updated.";
             }
             else
             {
-                invalidInputLabel.ForeColor = Color.Green;
-                invalidInputLabel.Text = "Member updated.";
+                invalidInputLabel.ForeColor = Color.Orange;
+                invalidInputLabel.Text = "No changes made.";
             }
         }
 
