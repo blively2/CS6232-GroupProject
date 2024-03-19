@@ -249,7 +249,7 @@ namespace SofaSoGood.UserControls
             else
             {
                 invalidInputLabel.ForeColor = Color.Green;
-                invalidInputLabel.Text = "Member updated successfully.";
+                invalidInputLabel.Text = "Member updated.";
             }
         }
 
