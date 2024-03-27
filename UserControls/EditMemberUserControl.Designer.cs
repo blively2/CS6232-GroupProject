@@ -111,6 +111,7 @@
             // 
             // genderComboBox
             // 
+            this.genderComboBox.Enabled = false;
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(171, 190);
             this.genderComboBox.Name = "genderComboBox";
