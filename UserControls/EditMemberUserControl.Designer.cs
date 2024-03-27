@@ -64,7 +64,7 @@
             this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.TitleLabel.Location = new System.Drawing.Point(278, 16);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(221, 40);
+            this.TitleLabel.Size = new System.Drawing.Size(151, 29);
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "Edit Member";
             // 
@@ -73,40 +73,40 @@
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Location = new System.Drawing.Point(44, 104);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
-            this.firstNameLabel.TabIndex = 3;
+            this.firstNameLabel.Size = new System.Drawing.Size(90, 20);
+            this.firstNameLabel.TabIndex = 0;
             this.firstNameLabel.Text = "First Name:";
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(171, 104);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(171, 20);
-            this.firstNameTextBox.TabIndex = 15;
+            this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
+            this.firstNameTextBox.TabIndex = 2;
             // 
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Location = new System.Drawing.Point(43, 150);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
-            this.lastNameLabel.TabIndex = 16;
+            this.lastNameLabel.Size = new System.Drawing.Size(90, 20);
+            this.lastNameLabel.TabIndex = 0;
             this.lastNameLabel.Text = "Last Name:";
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(171, 150);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(171, 20);
-            this.lastNameTextBox.TabIndex = 17;
+            this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
+            this.lastNameTextBox.TabIndex = 3;
             // 
             // genderLabel
             // 
             this.genderLabel.AutoSize = true;
             this.genderLabel.Location = new System.Drawing.Point(48, 198);
             this.genderLabel.Name = "genderLabel";
-            this.genderLabel.Size = new System.Drawing.Size(45, 13);
-            this.genderLabel.TabIndex = 18;
+            this.genderLabel.Size = new System.Drawing.Size(67, 20);
+            this.genderLabel.TabIndex = 0;
             this.genderLabel.Text = "Gender:";
             // 
             // genderComboBox
@@ -114,16 +114,16 @@
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(171, 190);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(171, 21);
-            this.genderComboBox.TabIndex = 23;
+            this.genderComboBox.Size = new System.Drawing.Size(171, 28);
+            this.genderComboBox.TabIndex = 4;
             // 
             // dateOfBirthLabel
             // 
             this.dateOfBirthLabel.AutoSize = true;
             this.dateOfBirthLabel.Location = new System.Drawing.Point(44, 245);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
-            this.dateOfBirthLabel.Size = new System.Drawing.Size(69, 13);
-            this.dateOfBirthLabel.TabIndex = 24;
+            this.dateOfBirthLabel.Size = new System.Drawing.Size(103, 20);
+            this.dateOfBirthLabel.TabIndex = 0;
             this.dateOfBirthLabel.Text = "Date of Birth:";
             // 
             // dateOfBirthDatePicker
@@ -131,64 +131,64 @@
             this.dateOfBirthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateOfBirthDatePicker.Location = new System.Drawing.Point(171, 239);
             this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
-            this.dateOfBirthDatePicker.Size = new System.Drawing.Size(171, 20);
-            this.dateOfBirthDatePicker.TabIndex = 25;
+            this.dateOfBirthDatePicker.Size = new System.Drawing.Size(171, 26);
+            this.dateOfBirthDatePicker.TabIndex = 5;
             // 
             // address1Label
             // 
             this.address1Label.AutoSize = true;
             this.address1Label.Location = new System.Drawing.Point(44, 288);
             this.address1Label.Name = "address1Label";
-            this.address1Label.Size = new System.Drawing.Size(57, 13);
-            this.address1Label.TabIndex = 26;
+            this.address1Label.Size = new System.Drawing.Size(85, 20);
+            this.address1Label.TabIndex = 0;
             this.address1Label.Text = "Address 1:";
             // 
             // address1TextBox
             // 
             this.address1TextBox.Location = new System.Drawing.Point(171, 285);
             this.address1TextBox.Name = "address1TextBox";
-            this.address1TextBox.Size = new System.Drawing.Size(171, 20);
-            this.address1TextBox.TabIndex = 27;
+            this.address1TextBox.Size = new System.Drawing.Size(171, 26);
+            this.address1TextBox.TabIndex = 6;
             // 
             // address2Label
             // 
             this.address2Label.AutoSize = true;
             this.address2Label.Location = new System.Drawing.Point(374, 104);
             this.address2Label.Name = "address2Label";
-            this.address2Label.Size = new System.Drawing.Size(57, 13);
-            this.address2Label.TabIndex = 28;
+            this.address2Label.Size = new System.Drawing.Size(85, 20);
+            this.address2Label.TabIndex = 0;
             this.address2Label.Text = "Address 2:";
             // 
             // address2TextBox
             // 
             this.address2TextBox.Location = new System.Drawing.Point(491, 97);
             this.address2TextBox.Name = "address2TextBox";
-            this.address2TextBox.Size = new System.Drawing.Size(163, 20);
-            this.address2TextBox.TabIndex = 29;
+            this.address2TextBox.Size = new System.Drawing.Size(163, 26);
+            this.address2TextBox.TabIndex = 7;
             // 
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
             this.cityLabel.Location = new System.Drawing.Point(376, 147);
             this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(27, 13);
-            this.cityLabel.TabIndex = 30;
+            this.cityLabel.Size = new System.Drawing.Size(39, 20);
+            this.cityLabel.TabIndex = 0;
             this.cityLabel.Text = "City:";
             // 
             // cityTextBox
             // 
             this.cityTextBox.Location = new System.Drawing.Point(491, 140);
             this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(163, 20);
-            this.cityTextBox.TabIndex = 31;
+            this.cityTextBox.Size = new System.Drawing.Size(163, 26);
+            this.cityTextBox.TabIndex = 8;
             // 
             // stateLabel
             // 
             this.stateLabel.AutoSize = true;
             this.stateLabel.Location = new System.Drawing.Point(376, 190);
             this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(35, 13);
-            this.stateLabel.TabIndex = 32;
+            this.stateLabel.Size = new System.Drawing.Size(52, 20);
+            this.stateLabel.TabIndex = 0;
             this.stateLabel.Text = "State:";
             // 
             // zipLabel
@@ -196,39 +196,39 @@
             this.zipLabel.AutoSize = true;
             this.zipLabel.Location = new System.Drawing.Point(378, 239);
             this.zipLabel.Name = "zipLabel";
-            this.zipLabel.Size = new System.Drawing.Size(25, 13);
-            this.zipLabel.TabIndex = 34;
+            this.zipLabel.Size = new System.Drawing.Size(35, 20);
+            this.zipLabel.TabIndex = 0;
             this.zipLabel.Text = "Zip:";
             // 
             // zipTextBox
             // 
             this.zipTextBox.Location = new System.Drawing.Point(491, 236);
             this.zipTextBox.Name = "zipTextBox";
-            this.zipTextBox.Size = new System.Drawing.Size(163, 20);
-            this.zipTextBox.TabIndex = 35;
+            this.zipTextBox.Size = new System.Drawing.Size(163, 26);
+            this.zipTextBox.TabIndex = 10;
             // 
             // contactLabel
             // 
             this.contactLabel.AutoSize = true;
             this.contactLabel.Location = new System.Drawing.Point(376, 292);
             this.contactLabel.Name = "contactLabel";
-            this.contactLabel.Size = new System.Drawing.Size(47, 13);
-            this.contactLabel.TabIndex = 36;
+            this.contactLabel.Size = new System.Drawing.Size(69, 20);
+            this.contactLabel.TabIndex = 0;
             this.contactLabel.Text = "Contact:";
             // 
             // contactTextBox
             // 
             this.contactTextBox.Location = new System.Drawing.Point(491, 281);
             this.contactTextBox.Name = "contactTextBox";
-            this.contactTextBox.Size = new System.Drawing.Size(163, 20);
-            this.contactTextBox.TabIndex = 37;
+            this.contactTextBox.Size = new System.Drawing.Size(163, 26);
+            this.contactTextBox.TabIndex = 11;
             // 
             // updateMemberButton
             // 
             this.updateMemberButton.Location = new System.Drawing.Point(51, 340);
             this.updateMemberButton.Name = "updateMemberButton";
             this.updateMemberButton.Size = new System.Drawing.Size(169, 36);
-            this.updateMemberButton.TabIndex = 38;
+            this.updateMemberButton.TabIndex = 12;
             this.updateMemberButton.Text = "Update Member";
             this.updateMemberButton.UseVisualStyleBackColor = true;
             this.updateMemberButton.Click += new System.EventHandler(this.UpdateMemberButton_Click);
@@ -238,7 +238,7 @@
             this.clearButton.Location = new System.Drawing.Point(532, 340);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(122, 36);
-            this.clearButton.TabIndex = 39;
+            this.clearButton.TabIndex = 13;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -248,16 +248,16 @@
             this.memberIDLabel.AutoSize = true;
             this.memberIDLabel.Location = new System.Drawing.Point(48, 62);
             this.memberIDLabel.Name = "memberIDLabel";
-            this.memberIDLabel.Size = new System.Drawing.Size(59, 13);
-            this.memberIDLabel.TabIndex = 40;
+            this.memberIDLabel.Size = new System.Drawing.Size(88, 20);
+            this.memberIDLabel.TabIndex = 0;
             this.memberIDLabel.Text = "MemberID:";
             // 
             // memberIDTextBox
             // 
             this.memberIDTextBox.Location = new System.Drawing.Point(171, 62);
             this.memberIDTextBox.Name = "memberIDTextBox";
-            this.memberIDTextBox.Size = new System.Drawing.Size(171, 20);
-            this.memberIDTextBox.TabIndex = 41;
+            this.memberIDTextBox.Size = new System.Drawing.Size(171, 26);
+            this.memberIDTextBox.TabIndex = 0;
             this.memberIDTextBox.TextChanged += new System.EventHandler(this.MemberIDTextBox_TextChanged);
             // 
             // invalidMemberIDLabel
@@ -265,7 +265,7 @@
             this.invalidMemberIDLabel.AutoSize = true;
             this.invalidMemberIDLabel.Location = new System.Drawing.Point(488, 65);
             this.invalidMemberIDLabel.Name = "invalidMemberIDLabel";
-            this.invalidMemberIDLabel.Size = new System.Drawing.Size(0, 13);
+            this.invalidMemberIDLabel.Size = new System.Drawing.Size(0, 20);
             this.invalidMemberIDLabel.TabIndex = 42;
             // 
             // invalidInputLabel
@@ -273,7 +273,7 @@
             this.invalidInputLabel.AutoSize = true;
             this.invalidInputLabel.Location = new System.Drawing.Point(282, 340);
             this.invalidInputLabel.Name = "invalidInputLabel";
-            this.invalidInputLabel.Size = new System.Drawing.Size(0, 13);
+            this.invalidInputLabel.Size = new System.Drawing.Size(0, 20);
             this.invalidInputLabel.TabIndex = 43;
             // 
             // getMemberButton
@@ -281,7 +281,7 @@
             this.getMemberButton.Location = new System.Drawing.Point(379, 59);
             this.getMemberButton.Name = "getMemberButton";
             this.getMemberButton.Size = new System.Drawing.Size(74, 29);
-            this.getMemberButton.TabIndex = 44;
+            this.getMemberButton.TabIndex = 1;
             this.getMemberButton.Text = "Get";
             this.getMemberButton.UseVisualStyleBackColor = true;
             this.getMemberButton.Click += new System.EventHandler(this.GetMemberButton_Click);
@@ -292,8 +292,8 @@
             this.stateComboBox.FormattingEnabled = true;
             this.stateComboBox.Location = new System.Drawing.Point(491, 187);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(163, 21);
-            this.stateComboBox.TabIndex = 45;
+            this.stateComboBox.Size = new System.Drawing.Size(163, 28);
+            this.stateComboBox.TabIndex = 9;
             // 
             // EditMemberUserControl
             // 

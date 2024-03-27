@@ -64,7 +64,7 @@
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.titleLabel.Location = new System.Drawing.Point(244, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(273, 40);
+            this.titleLabel.Size = new System.Drawing.Size(185, 29);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Search Member";
             // 
@@ -73,7 +73,7 @@
             this.phoneTextBox.Location = new System.Drawing.Point(123, 110);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(171, 26);
-            this.phoneTextBox.TabIndex = 26;
+            this.phoneTextBox.TabIndex = 2;
             this.phoneTextBox.Click += new System.EventHandler(this.PhoneTextBoxTextClicked);
             // 
             // memberIDTextBox
@@ -81,7 +81,7 @@
             this.memberIDTextBox.Location = new System.Drawing.Point(123, 70);
             this.memberIDTextBox.Name = "memberIDTextBox";
             this.memberIDTextBox.Size = new System.Drawing.Size(171, 26);
-            this.memberIDTextBox.TabIndex = 25;
+            this.memberIDTextBox.TabIndex = 0;
             this.memberIDTextBox.Click += new System.EventHandler(this.MemberIDTextBoxClicked);
             // 
             // firstNameTextBox
@@ -89,7 +89,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(123, 157);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
-            this.firstNameTextBox.TabIndex = 24;
+            this.firstNameTextBox.TabIndex = 4;
             this.firstNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
             // lastNameTextBox
@@ -97,7 +97,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(123, 200);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
-            this.lastNameTextBox.TabIndex = 23;
+            this.lastNameTextBox.TabIndex = 5;
             this.lastNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
             // searchByMemberIDButton
@@ -105,7 +105,7 @@
             this.searchByMemberIDButton.Location = new System.Drawing.Point(300, 70);
             this.searchByMemberIDButton.Name = "searchByMemberIDButton";
             this.searchByMemberIDButton.Size = new System.Drawing.Size(200, 30);
-            this.searchByMemberIDButton.TabIndex = 22;
+            this.searchByMemberIDButton.TabIndex = 1;
             this.searchByMemberIDButton.Text = "By Member ID";
             this.searchByMemberIDButton.UseVisualStyleBackColor = true;
             this.searchByMemberIDButton.Click += new System.EventHandler(this.SearchByMemberIDButtonClick);
@@ -151,7 +151,7 @@
             this.searchByPhoneButton.Location = new System.Drawing.Point(300, 110);
             this.searchByPhoneButton.Name = "searchByPhoneButton";
             this.searchByPhoneButton.Size = new System.Drawing.Size(200, 30);
-            this.searchByPhoneButton.TabIndex = 27;
+            this.searchByPhoneButton.TabIndex = 3;
             this.searchByPhoneButton.Text = "By Phone";
             this.searchByPhoneButton.UseVisualStyleBackColor = true;
             this.searchByPhoneButton.Click += new System.EventHandler(this.SearchByPhoneButtonClick);
@@ -161,7 +161,7 @@
             this.searchByNameButton.Location = new System.Drawing.Point(300, 157);
             this.searchByNameButton.Name = "searchByNameButton";
             this.searchByNameButton.Size = new System.Drawing.Size(200, 30);
-            this.searchByNameButton.TabIndex = 28;
+            this.searchByNameButton.TabIndex = 6;
             this.searchByNameButton.Text = "By Name";
             this.searchByNameButton.UseVisualStyleBackColor = true;
             this.searchByNameButton.Click += new System.EventHandler(this.SearchByNameButtonClick);
@@ -267,7 +267,7 @@
             this.clearButton.Location = new System.Drawing.Point(300, 198);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(200, 30);
-            this.clearButton.TabIndex = 33;
+            this.clearButton.TabIndex = 7;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);

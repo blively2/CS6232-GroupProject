@@ -55,6 +55,7 @@
             this.MainDashboardTabControl.SelectedIndex = 0;
             this.MainDashboardTabControl.Size = new System.Drawing.Size(784, 435);
             this.MainDashboardTabControl.TabIndex = 0;
+            this.MainDashboardTabControl.TabStop = false;
             // 
             // RegisterMemberTabPage
             // 
@@ -98,7 +99,7 @@
             this.SearchMemberTabPage.Controls.Add(this.SearchMemberUserControl);
             this.SearchMemberTabPage.Location = new System.Drawing.Point(4, 33);
             this.SearchMemberTabPage.Name = "SearchMemberTabPage";
-            this.SearchMemberTabPage.Size = new System.Drawing.Size(776, 398);
+            this.SearchMemberTabPage.Size = new System.Drawing.Size(192, 63);
             this.SearchMemberTabPage.TabIndex = 3;
             this.SearchMemberTabPage.Text = "Search Member";
             this.SearchMemberTabPage.UseVisualStyleBackColor = true;
@@ -108,7 +109,7 @@
             this.SearchMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchMemberUserControl.Location = new System.Drawing.Point(0, 0);
             this.SearchMemberUserControl.Name = "SearchMemberUserControl";
-            this.SearchMemberUserControl.Size = new System.Drawing.Size(776, 398);
+            this.SearchMemberUserControl.Size = new System.Drawing.Size(192, 63);
             this.SearchMemberUserControl.TabIndex = 0;
             // 
             // WelcomeUserLabel
@@ -118,7 +119,7 @@
             this.WelcomeUserLabel.Location = new System.Drawing.Point(7, 434);
             this.WelcomeUserLabel.Name = "WelcomeUserLabel";
             this.WelcomeUserLabel.Size = new System.Drawing.Size(143, 25);
-            this.WelcomeUserLabel.TabIndex = 1;
+            this.WelcomeUserLabel.TabIndex = 0;
             this.WelcomeUserLabel.Text = "Welcome, user";
             // 
             // LogoutLinkLabel
@@ -128,8 +129,7 @@
             this.LogoutLinkLabel.Location = new System.Drawing.Point(708, 434);
             this.LogoutLinkLabel.Name = "LogoutLinkLabel";
             this.LogoutLinkLabel.Size = new System.Drawing.Size(72, 25);
-            this.LogoutLinkLabel.TabIndex = 2;
-            this.LogoutLinkLabel.TabStop = true;
+            this.LogoutLinkLabel.TabIndex = 0;
             this.LogoutLinkLabel.Text = "Logout";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLabelClicked);
             // 
