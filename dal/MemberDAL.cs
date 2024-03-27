@@ -2,6 +2,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections.Generic;
 
 namespace SofaSoGood.DAL
 {
@@ -90,9 +91,9 @@ namespace SofaSoGood.DAL
         /// </summary>
         /// <param name="contactPhone">The member phone number.</param>
         /// <returns></returns>
-        public Member GetMemberByPhone(string contactPhone)
+        public List<Member> GetMemberByPhone(string contactPhone)
         {
-            Member member = null;
+            List<Member> members = new List<Member>();
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
                 string query = "SELECT * FROM [Member] WHERE ContactPhone = @ContactPhone";
@@ -102,9 +103,9 @@ namespace SofaSoGood.DAL
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            member = new Member
+                            var member = new Member
                             {
                                 MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
                                 FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
@@ -118,11 +119,12 @@ namespace SofaSoGood.DAL
                                 Zip = reader.GetString(reader.GetOrdinal("Zip")),
                                 ContactPhone = reader.GetString(reader.GetOrdinal("ContactPhone")),
                             };
+                            members.Add(member);
                         }
                     }
                 }
             }
-            return member;
+            return members;
         }
 
         /// <summary>
@@ -131,9 +133,9 @@ namespace SofaSoGood.DAL
         /// <param name="firstName">The member's first name.</param>
         /// <param name="lastName">The member's last name.</param>
         /// <returns></returns>
-        public Member GetMemberByName(string firstName, string lastName)
+        public List<Member> GetMembersByName(string firstName, string lastName)
         {
-            Member member = null;
+            List<Member> members = new List<Member>();
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
                 string query = "SELECT * FROM [Member] WHERE FirstName = @FirstName AND LastName = @LastName";
@@ -144,9 +146,9 @@ namespace SofaSoGood.DAL
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            member = new Member
+                            var member = new Member
                             {
                                 MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
                                 FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
@@ -160,11 +162,12 @@ namespace SofaSoGood.DAL
                                 Zip = reader.GetString(reader.GetOrdinal("Zip")),
                                 ContactPhone = reader.GetString(reader.GetOrdinal("ContactPhone")),
                             };
+                            members.Add(member);
                         }
                     }
                 }
             }
-            return member;
+            return members;
         }
 
         /// <summary>

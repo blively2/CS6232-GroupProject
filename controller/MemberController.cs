@@ -1,6 +1,7 @@
 ﻿using SofaSoGood.DAL;
 using SofaSoGood.Model;
 using System;
+using System.Collections.Generic;
 
 namespace SofaSoGood.Controller
 {
@@ -52,7 +53,7 @@ namespace SofaSoGood.Controller
         /// </summary>
         /// <param name="contactPhone">The member contactPhone.</param>
         /// <returns></returns>
-        public Member GetMemberByPhone(string contactPhone)
+        public List<Member> GetMemberByPhone(string contactPhone)
         {
             return memberDAL.GetMemberByPhone(contactPhone);
         }
@@ -63,9 +64,9 @@ namespace SofaSoGood.Controller
         /// <param name="firstName">The member firstName.</param>
         /// /// <param name="lastName">The member lastName.</param>
         /// <returns></returns>
-        public Member GetMemberByName(string firstName, string lastName)
+        public List<Member> GetMemberByName(string firstName, string lastName)
         {
-            return memberDAL.GetMemberByName(firstName, lastName);
+            return memberDAL.GetMembersByName(firstName, lastName);
         }
 
         /// <summary>

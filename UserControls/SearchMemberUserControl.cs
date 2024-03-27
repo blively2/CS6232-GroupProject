@@ -1,6 +1,7 @@
 ﻿using SofaSoGood.Controller;
 using SofaSoGood.Model;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -37,19 +38,20 @@ namespace SofaSoGood.UserControls
             bool isNumeric = int.TryParse(memberIDTextBox.Text, out int customerID);
             if (isNumeric)
             {
-                Member member = memberController.GetMemberById(customerID);
+                var member = memberController.GetMemberById(customerID);
                 if (member != null)
                 {
-                    this.DisplayFoundMember(member);
+                    List<Member> members = new List<Member> { member };
+                    this.DisplayFoundMembers(members);
                 }
                 else
                 {
-                    MemberIDWarningLabel.Text = "No Member found";
+                    MemberIDWarningLabel.Text = "No Members found";
                 }
             }
             else
             {
-                MemberIDWarningLabel.Text = "Invalid Customer ID";
+                MemberIDWarningLabel.Text = "Invalid Member ID";
             }
         }
 
@@ -64,14 +66,14 @@ namespace SofaSoGood.UserControls
             }
             else
             {
-                Member member = memberController.GetMemberByPhone(phoneTextBox.Text);
-                if (member != null)
+                List<Member> members = memberController.GetMemberByPhone(phoneTextBox.Text);
+                if (members.Count > 0)
                 {
-                    this.DisplayFoundMember(member);
+                    this.DisplayFoundMembers(members);
                 }
                 else
                 {
-                    phoneWarningLabel.Text = "No Member found.";
+                    phoneWarningLabel.Text = "No Members found.";
                 }
             }
         }
@@ -87,14 +89,14 @@ namespace SofaSoGood.UserControls
             }
             else
             {
-                Member member = memberController.GetMemberByName(firstNameTextBox.Text, lastNameTextBox.Text);
-                if (member != null)
+                List<Member> members = memberController.GetMemberByName(firstNameTextBox.Text, lastNameTextBox.Text);
+                if (members != null && members.Count > 0)
                 {
-                    this.DisplayFoundMember(member);
+                    this.DisplayFoundMembers(members);
                 }
                 else
                 {
-                    nameWarningLabel.Text = "No Member found";
+                    nameWarningLabel.Text = "No Members found";
                 }
             }
         }
@@ -102,29 +104,34 @@ namespace SofaSoGood.UserControls
         /// <summary>
         /// Displays a found Member in the ListView.
         /// </summary>
-        private void DisplayFoundMember(Member member)
+        private void DisplayFoundMembers(List<Member> members)
         {
             memberListView.Items.Clear();
-            ListViewItem item = new ListViewItem(member.MemberID.ToString());
-            item.SubItems.Add(member.FirstName ?? string.Empty);
-            item.SubItems.Add(member.LastName ?? string.Empty);
-            item.SubItems.Add(member.Gender ?? string.Empty);
-            item.SubItems.Add(member.DateOfBirth.ToShortDateString());
-            item.SubItems.Add(member.Address1 ?? string.Empty);
-            item.SubItems.Add(member.Address2 ?? string.Empty);
-            item.SubItems.Add(member.City ?? string.Empty);
-            item.SubItems.Add(member.State ?? string.Empty);
-            item.SubItems.Add(member.Zip ?? string.Empty);
-            item.SubItems.Add(member.ContactPhone ?? string.Empty);
-            memberListView.Items.Add(item);
+
+            foreach (Member member in members)
+            {
+                ListViewItem item = new ListViewItem(member.MemberID.ToString());
+                item.SubItems.Add(member.FirstName ?? string.Empty);
+                item.SubItems.Add(member.LastName ?? string.Empty);
+                item.SubItems.Add(member.Gender ?? string.Empty);
+                item.SubItems.Add(member.DateOfBirth.ToShortDateString());
+                item.SubItems.Add(member.Address1 ?? string.Empty);
+                item.SubItems.Add(member.Address2 ?? string.Empty);
+                item.SubItems.Add(member.City ?? string.Empty);
+                item.SubItems.Add(member.State ?? string.Empty);
+                item.SubItems.Add(member.Zip ?? string.Empty);
+                item.SubItems.Add(member.ContactPhone ?? string.Empty);
+                memberListView.Items.Add(item);
+            }
 
             foreach (ColumnHeader column in memberListView.Columns)
             {
                 column.Width = -2;
             }
 
+            memberListView.Visible = members.Count > 0;
+
             memberListView.Refresh();
-            memberListView.Show();
         }
 
         /// <summary>
