@@ -15,6 +15,7 @@ namespace SofaSoGood.UserControls
     public partial class EditMemberUserControl : UserControl
     {
         private readonly MemberController memberController;
+        private Member originalMember = null;
 
         /// <summary>
         /// Constructor for EditCustomerUserControl.
@@ -73,6 +74,7 @@ namespace SofaSoGood.UserControls
             }
 
             var member = memberController.GetMemberById(memberId);
+            originalMember = memberController.GetMemberById(memberId);
             if (member != null)
             {
 
@@ -113,6 +115,94 @@ namespace SofaSoGood.UserControls
             contactTextBox.ReadOnly = false;
         }
 
+        private bool ValidateInputs()
+        {
+            bool isValid = true;
+            ResetValidationMessages();
+
+            if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
+            {
+                firstNameAlertLabel.Text = "First Name is required.";
+                isValid = false;
+            }
+            else if (firstNameTextBox.Text.Length > 200)
+            {
+                firstNameAlertLabel.Text = "First Name cannot exceed 200 characters.";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
+            {
+                lastNameAlertLabel.Text = "Last Name is required.";
+                isValid = false;
+            }
+            else if (lastNameTextBox.Text.Length > 200)
+            {
+                lastNameAlertLabel.Text = "Last Name cannot exceed 200 characters.";
+                isValid = false;
+            }
+
+            if (genderComboBox.SelectedIndex == -1)
+            {
+                genderAlertLabel.Text = "Gender selection is required.";
+                isValid = false;
+            }
+
+            if (dateOfBirthDatePicker.Value >= DateTime.Now)
+            {
+                birthDateAlertLabel.Text = "Date of Birth must be in the past.";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(address1TextBox.Text))
+            {
+                addressOneAlertLabel.Text = "Address 1 is required.";
+                isValid = false;
+            }
+            else if (address1TextBox.Text.Length > 150)
+            {
+                addressOneAlertLabel.Text = "Address 1 cannot exceed 150 characters.";
+                isValid = false;
+            }
+
+            if (address2TextBox.Text.Length > 150)
+            {
+                addressTwoAlertLabel.Text = "Address 2 cannot \n exceed 150 characters.";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cityTextBox.Text))
+            {
+                cityAlertLabel.Text = "City is required.";
+                isValid = false;
+            }
+            else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$") || cityTextBox.Text.Length > 45)
+            {
+                cityAlertLabel.Text = "City must be alphabetical \n and cannot exceed 45 characters.";
+                isValid = false;
+            }
+
+            if (stateComboBox.SelectedIndex == -1)
+            {
+                stateAlertLabel.Text = "State selection is required.";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
+            {
+                zipAlertLabel.Text = "A valid 5-digit \n Zip code required.";
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(contactTextBox.Text) || !Regex.IsMatch(contactTextBox.Text, @"^\d{10}$"))
+            {
+                phoneAlertLabel.Text = "A valid 10-digit Contact \n Phone number is required.";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
         /// <summary>
         /// Handles the Click event of the UpdateMemberButton control.
         /// </summary>
@@ -120,113 +210,24 @@ namespace SofaSoGood.UserControls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void UpdateMemberButton_Click(object sender, System.EventArgs e)
         {
-            invalidInputLabel.Text = "";
-            invalidInputLabel.ForeColor = Color.Red;
-
-            if (string.IsNullOrEmpty(memberIDTextBox.Text))
+            if (!ValidateInputs())
             {
-                invalidInputLabel.Text = "Please enter MemberID";
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
+            if (!int.TryParse(memberIDTextBox.Text, out int memberId))
             {
-                invalidInputLabel.Text += "First Name is required.\n";
-                return;
-            }
-            else if (firstNameTextBox.Text.Length > 200)
-            {
-                invalidInputLabel.Text += "First Name cannot exceed 200 characters.\n";
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
-            {
-                invalidInputLabel.Text += "Last Name is required.\n";
-                return;
-            }
-            else if (lastNameTextBox.Text.Length > 200)
-            {
-                invalidInputLabel.Text += "Last Name cannot exceed 200 characters.\n";
-                return;
-            }
-
-            if (genderComboBox.SelectedIndex == -1)
-            {
-                invalidInputLabel.Text += "Gender selection is required.\n";
-                return;
-            }
-
-            if (dateOfBirthDatePicker.Value >= DateTime.Now)
-            {
-                invalidInputLabel.Text += "Date of Birth must be in the past.\n";
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(address1TextBox.Text))
-            {
-                invalidInputLabel.Text += "Address 1 cannot be empty.";
-                return;
-            }
-            else if (address1TextBox.Text.Length > 150)
-            {
-                invalidInputLabel.Text += "Address 1 cannot exceed 150 characters.\n";
-                return;
-            }
-
-            if (address2TextBox.Text.Length > 150)
-            {
-                invalidInputLabel.Text += "Address 2 cannot exceed 150 characters.\n";
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(cityTextBox.Text))
-            {
-                invalidInputLabel.Text += "City cannot be empty. \n";
-                return;
-
-            } 
-            else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$")) 
-            {
-                invalidInputLabel.Text += "City must be alphabetical. \n";
-                return;
-            }
-            else if (cityTextBox.Text.Length > 45)
-            {
-                invalidInputLabel.Text += "City cannot exceed 45 characters.\n";
-                return;
-            }
-
-            if (stateComboBox.SelectedIndex == -1)
-            {
-                invalidInputLabel.Text += "State selection is required.\n";
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
-            {
-                invalidInputLabel.Text += "5-digit Zip code is required.";
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(contactTextBox.Text) || !Regex.IsMatch(contactTextBox.Text, @"^\d{10}$"))
-            {
-                invalidInputLabel.Text += "10-digit Contact number is required.";
-                return;
-            }
-
-            if (!string.IsNullOrEmpty(invalidInputLabel.Text))
-            {
+                invalidMemberIDLabel.Text = "Invalid Member ID.";
                 return;
             }
 
             var updatedMember = new Member
             {
-                MemberID = int.Parse(memberIDTextBox.Text),
-                FirstName = firstNameTextBox.Text, 
-                LastName = lastNameTextBox.Text,   
+                MemberID = memberId,
+                FirstName = firstNameTextBox.Text,
+                LastName = lastNameTextBox.Text,
                 Gender = genderComboBox.SelectedItem.ToString()[0].ToString(),
-                DateOfBirth = dateOfBirthDatePicker.Value, 
+                DateOfBirth = dateOfBirthDatePicker.Value,
                 Address1 = address1TextBox.Text,
                 Address2 = address2TextBox.Text,
                 City = cityTextBox.Text,
@@ -235,17 +236,46 @@ namespace SofaSoGood.UserControls
                 ContactPhone = contactTextBox.Text
             };
 
-            var result = memberController.UpdateMember(updatedMember);
-            if (result == 1)
+            if (originalMember == null || MemberHasChanged(originalMember, updatedMember))
             {
-                invalidInputLabel.ForeColor = Color.Green;
-                invalidInputLabel.Text = "Member updated.";
+                int result = memberController.UpdateMember(updatedMember);
+                switch (result)
+                {
+                    case 1:
+                        invalidInputLabel.ForeColor = Color.Green;
+                        invalidInputLabel.Text = "Member updated successfully.";
+                        break;
+                    case -1:
+                        invalidInputLabel.ForeColor = Color.Orange;
+                        invalidInputLabel.Text = "No changes were made.";
+                        break;
+                    default:
+                        invalidInputLabel.ForeColor = Color.Red;
+                        invalidInputLabel.Text = "Failed to update member.";
+                        break;
+                }
             }
             else
             {
                 invalidInputLabel.ForeColor = Color.Orange;
-                invalidInputLabel.Text = "No changes made.";
+                invalidInputLabel.Text = "No changes were made.";
             }
+        }
+
+        private bool MemberHasChanged(Member original, Member updated)
+        {
+            bool address2Changed = (original.Address2 ?? "") != (updated.Address2 ?? "");
+
+            return !string.Equals(original.FirstName, updated.FirstName, StringComparison.OrdinalIgnoreCase) ||
+                   !string.Equals(original.LastName, updated.LastName, StringComparison.OrdinalIgnoreCase) ||
+                   original.Gender != updated.Gender ||
+                   original.DateOfBirth.Date != updated.DateOfBirth.Date ||
+                   !string.Equals(original.Address1?.Trim(), updated.Address1?.Trim(), StringComparison.OrdinalIgnoreCase) ||
+                   address2Changed ||
+                   !string.Equals(original.City?.Trim(), updated.City?.Trim(), StringComparison.OrdinalIgnoreCase) ||
+                   !string.Equals(original.State, updated.State, StringComparison.OrdinalIgnoreCase) ||
+                   !string.Equals(original.Zip?.Trim(), updated.Zip?.Trim(), StringComparison.OrdinalIgnoreCase) ||
+                   !string.Equals(original.ContactPhone?.Trim(), updated.ContactPhone?.Trim(), StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -258,6 +288,36 @@ namespace SofaSoGood.UserControls
             invalidInputLabel.Text = "";
             ClearForm();
             DisableEditableFields();
+        }
+
+        private void Input_TextChanged(object sender, EventArgs e)
+        {
+            ResetValidationMessages();
+
+        }
+
+        /// <summary>
+        /// Handles the Changed event of the Input control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void Input_Changed(object sender, EventArgs e)
+        {
+            ResetValidationMessages();
+        }
+
+        private void ResetValidationMessages()
+        {
+            firstNameAlertLabel.Text = "";
+            lastNameAlertLabel.Text = "";
+            genderAlertLabel.Text = "";
+            birthDateAlertLabel.Text = "";
+            addressOneAlertLabel.Text = "";
+            addressTwoAlertLabel.Text = "";
+            cityAlertLabel.Text = "";
+            stateAlertLabel.Text = "";
+            zipAlertLabel.Text = "";
+            phoneAlertLabel.Text = "";
         }
 
         /// <summary>

@@ -38,7 +38,6 @@ namespace SofaSoGood
         {
             if (!ValidateInputs())
             {
-                registerMemberAlertLabel.ForeColor = Color.Red;
                 return;
             }
 
@@ -61,21 +60,21 @@ namespace SofaSoGood
                 int newMemberId = memberController.AddMember(member);
                 if (newMemberId > 0)
                 {
-                    registerMemberAlertLabel.ForeColor = Color.Green;
-                    registerMemberAlertLabel.Text = "Member registered successfully!";
+                    confirmationAlertLabel.ForeColor = Color.Green;
+                    confirmationAlertLabel.Text = "Member registered successfully!";
                     ShowSuccessDialog(newMemberId);
                     ClearForm();
                 }
                 else
                 {
-                    registerMemberAlertLabel.ForeColor = Color.Red;
-                    registerMemberAlertLabel.Text = "Failed to register member.";
+                    confirmationAlertLabel.ForeColor = Color.Red;
+                    confirmationAlertLabel.Text = "Failed to register member.";
                 }
             }
             catch (Exception ex)
             {
-                registerMemberAlertLabel.ForeColor = Color.Red;
-                registerMemberAlertLabel.Text = "An error occurred: " + ex.Message;
+                confirmationAlertLabel.ForeColor = Color.Red;
+                confirmationAlertLabel.Text = "An error occurred: " + ex.Message;
             }
         }
 
@@ -87,7 +86,7 @@ namespace SofaSoGood
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearForm();
-            registerMemberAlertLabel.Text = string.Empty;
+            firstNameAlertLabel.Text = string.Empty;
         }
 
         /// <summary>
@@ -96,89 +95,100 @@ namespace SofaSoGood
         /// <returns></returns>
         private bool ValidateInputs()
         {
-            registerMemberAlertLabel.Text = "";
+            bool isValid = true;
+
+            firstNameAlertLabel.Text = "";
+            lastNameAlertLabel.Text = "";
+            genderAlertLabel.Text = "";
+            birthDateAlertLabel.Text = "";
+            addressOneAlertLabel.Text = "";
+            addressTwoAlertLabel.Text = "";
+            cityAlertLabel.Text = "";
+            stateAlertLabel.Text = "";
+            zipAlertLabel.Text = "";
+            phoneAlertLabel.Text = "";
 
             if (string.IsNullOrWhiteSpace(firstNameTextBox.Text))
             {
-                registerMemberAlertLabel.Text += "First Name is required.\n";
-                return false;
+                firstNameAlertLabel.Text = "First Name required.";
+                isValid = false;
             }
             else if (firstNameTextBox.Text.Length > 200)
             {
-                registerMemberAlertLabel.Text += "First Name cannot exceed 200 characters.\n";
-                return false;
+                firstNameAlertLabel.Text = "First Name cannot exceed 200 characters.";
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(lastNameTextBox.Text))
             {
-                registerMemberAlertLabel.Text += "Last Name is required.\n";
-                return false;
+                lastNameAlertLabel.Text = "Last Name required.";
+                isValid = false;
             }
             else if (lastNameTextBox.Text.Length > 200)
             {
-                registerMemberAlertLabel.Text += "Last Name cannot exceed 200 characters.\n";
-                return false;
+                lastNameAlertLabel.Text = "Last Name cannot exceed 200 characters.";
+                isValid = false;
             }
 
             if (genderComboBox.SelectedIndex == -1)
             {
-                registerMemberAlertLabel.Text += "Gender selection is required.\n";
-                return false;
+                genderAlertLabel.Text = "Gender selection required.";
+                isValid = false;
             }
 
             if (dateOfBirthDatePicker.Value >= DateTime.Now)
             {
-                registerMemberAlertLabel.Text += "Date of Birth must be in the past.\n";
-                return false;
+                birthDateAlertLabel.Text = "Date of Birth \n must be in past.";
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(address1TextBox.Text))
             {
-                registerMemberAlertLabel.Text += "Address 1 is required.\n";
-                return false;
+                addressOneAlertLabel.Text = "Address 1 required.";
+                isValid = false;
             }
             else if (address1TextBox.Text.Length > 150)
             {
-                registerMemberAlertLabel.Text += "Address 1 cannot exceed 150 characters.\n";
-                return false;
+                addressOneAlertLabel.Text = "Address 1 cannot exceed 150 characters.";
+                isValid = false;
             }
-            
+
             if (address2TextBox.Text.Length > 150)
             {
-                registerMemberAlertLabel.Text += "Address 2 cannot exceed 150 characters.\n";
-                return false;
+                addressTwoAlertLabel.Text = "Address 2 cannot exceed \n 150 characters.";
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(cityTextBox.Text))
             {
-                registerMemberAlertLabel.Text += "City is required.\n";
-                return false;
+                cityAlertLabel.Text = "City required.";
+                isValid = false;
             }
             else if (!Regex.IsMatch(cityTextBox.Text, @"^[a-zA-Z\s]+$") || cityTextBox.Text.Length > 45)
             {
-                registerMemberAlertLabel.Text += "City must be alphabetical and cannot exceed 45 characters.\n";
-                return false;
+                cityAlertLabel.Text = "City must be alphabetical \n and not exceed 45 characters.";
+                isValid = false;
             }
 
             if (stateComboBox.SelectedIndex == -1)
             {
-                registerMemberAlertLabel.Text += "State selection is required.\n";
-                return false;
+                stateAlertLabel.Text = "State selection required.";
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(zipTextBox.Text) || !Regex.IsMatch(zipTextBox.Text, @"^\d{5}$"))
             {
-                registerMemberAlertLabel.Text += "A valid 5-digit Zip code is required.\n";
-                return false;
+                zipAlertLabel.Text = "Valid 5-digit Zip code required.";
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(contactPhoneTextBox.Text) || !Regex.IsMatch(contactPhoneTextBox.Text, @"^\d{10}$"))
             {
-                registerMemberAlertLabel.Text += "A valid 10-digit Contact Phone number is required.\n";
-                return false;
+                phoneAlertLabel.Text = "Valid 10-digit Contact Phone \n number required.";
+                isValid = false;
             }
 
-            return registerMemberAlertLabel.Text == "";
+            return isValid;
         }
 
         /// <summary>
@@ -227,7 +237,17 @@ namespace SofaSoGood
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Input_TextChanged(object sender, EventArgs e)
         {
-            registerMemberAlertLabel.Text = "";
+            firstNameAlertLabel.Text = "";
+            lastNameAlertLabel.Text = "";
+            genderAlertLabel.Text = "";
+            birthDateAlertLabel.Text = "";
+            addressOneAlertLabel.Text = "";
+            addressTwoAlertLabel.Text = "";
+            cityAlertLabel.Text = "";
+            stateAlertLabel.Text = "";
+            zipAlertLabel.Text = "";
+            phoneAlertLabel.Text = "";
+
         }
 
         /// <summary>
@@ -237,7 +257,16 @@ namespace SofaSoGood
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Input_Changed(object sender, EventArgs e)
         {
-            registerMemberAlertLabel.Text = "";
+            firstNameAlertLabel.Text = "";
+            lastNameAlertLabel.Text = "";
+            genderAlertLabel.Text = "";
+            birthDateAlertLabel.Text = "";
+            addressOneAlertLabel.Text = "";
+            addressTwoAlertLabel.Text = "";
+            cityAlertLabel.Text = "";
+            stateAlertLabel.Text = "";
+            zipAlertLabel.Text = "";
+            phoneAlertLabel.Text = "";
         }
 
         /// <summary>
