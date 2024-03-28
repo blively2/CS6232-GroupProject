@@ -180,7 +180,7 @@
             this.addMemberButton.Location = new System.Drawing.Point(128, 340);
             this.addMemberButton.Name = "addMemberButton";
             this.addMemberButton.Size = new System.Drawing.Size(200, 35);
-            this.addMemberButton.TabIndex = 11;
+            this.addMemberButton.TabIndex = 10;
             this.addMemberButton.Text = "Add Member";
             this.addMemberButton.UseVisualStyleBackColor = true;
             this.addMemberButton.Click += new System.EventHandler(this.AddMemberButton_Click);
@@ -191,7 +191,7 @@
             this.clearButton.Location = new System.Drawing.Point(574, 331);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(200, 35);
-            this.clearButton.TabIndex = 12;
+            this.clearButton.TabIndex = 11;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
