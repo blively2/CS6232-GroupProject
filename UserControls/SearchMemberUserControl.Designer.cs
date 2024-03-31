@@ -64,7 +64,7 @@
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.titleLabel.Location = new System.Drawing.Point(407, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(185, 29);
+            this.titleLabel.Size = new System.Drawing.Size(273, 40);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Search Member";
             // 
@@ -72,7 +72,7 @@
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(286, 110);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(171, 26);
+            this.phoneTextBox.Size = new System.Drawing.Size(171, 20);
             this.phoneTextBox.TabIndex = 2;
             this.phoneTextBox.Click += new System.EventHandler(this.PhoneTextBoxTextClicked);
             // 
@@ -80,7 +80,7 @@
             // 
             this.memberIDTextBox.Location = new System.Drawing.Point(286, 70);
             this.memberIDTextBox.Name = "memberIDTextBox";
-            this.memberIDTextBox.Size = new System.Drawing.Size(171, 26);
+            this.memberIDTextBox.Size = new System.Drawing.Size(171, 20);
             this.memberIDTextBox.TabIndex = 0;
             this.memberIDTextBox.Click += new System.EventHandler(this.MemberIDTextBoxClicked);
             // 
@@ -88,7 +88,7 @@
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(286, 157);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
+            this.firstNameTextBox.Size = new System.Drawing.Size(171, 20);
             this.firstNameTextBox.TabIndex = 4;
             this.firstNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
@@ -96,7 +96,7 @@
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(286, 200);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
+            this.lastNameTextBox.Size = new System.Drawing.Size(171, 20);
             this.lastNameTextBox.TabIndex = 5;
             this.lastNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
