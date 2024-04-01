@@ -1,6 +1,6 @@
 ﻿namespace SofaSoGood.UserControls
 {
-    partial class SearchFurniture
+    partial class SearchFurnitureUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -96,6 +96,7 @@
             this.searchByCategoryButton.TabIndex = 25;
             this.searchByCategoryButton.Text = "By Furniture Category";
             this.searchByCategoryButton.UseVisualStyleBackColor = true;
+            this.searchByCategoryButton.Click += new System.EventHandler(this.SearchByCategoryButton_Click);
             // 
             // furnitureCategoryLabel
             // 
@@ -114,12 +115,13 @@
             this.styleButton.TabIndex = 28;
             this.styleButton.Text = "By Furniture Style";
             this.styleButton.UseVisualStyleBackColor = true;
+            this.styleButton.Click += new System.EventHandler(this.SearchByStyleButton_Click);
             // 
-            // label1
+            // furnitureStyleLabel
             // 
             this.furnitureStyleLabel.AutoSize = true;
             this.furnitureStyleLabel.Location = new System.Drawing.Point(124, 158);
-            this.furnitureStyleLabel.Name = "label1";
+            this.furnitureStyleLabel.Name = "furnitureStyleLabel";
             this.furnitureStyleLabel.Size = new System.Drawing.Size(77, 13);
             this.furnitureStyleLabel.TabIndex = 29;
             this.furnitureStyleLabel.Text = "Furniture Style:";
@@ -230,7 +232,7 @@
             this.TotalQuantity.Text = "Total Quantity";
             this.TotalQuantity.Width = 90;
             // 
-            // SearchFurniture
+            // SearchFurnitureUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.furnitureListView);
@@ -247,7 +249,7 @@
             this.Controls.Add(this.searchByFurnitureIDButton);
             this.Controls.Add(this.furnitureIDLabel);
             this.Controls.Add(this.TitleLabel);
-            this.Name = "SearchFurniture";
+            this.Name = "SearchFurnitureUserControl";
             this.Size = new System.Drawing.Size(970, 398);
             this.ResumeLayout(false);
             this.PerformLayout();

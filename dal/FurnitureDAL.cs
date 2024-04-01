@@ -79,6 +79,44 @@ namespace SofaSoGood.DAL
         }
 
         /// <summary>
+        /// Gets the name of the furniture by category.
+        /// </summary>
+        /// <param name="categoryName">Name of the category.</param>
+        /// <returns></returns>
+        public List<Furniture> GetFurnitureByCategoryName(string categoryName)
+        {
+            List<Furniture> furnitureList = new List<Furniture>();
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Furniture] WHERE CategoryName = @CategoryName";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@CategoryName", SqlDbType.VarChar)).Value = categoryName;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furniture = new Furniture
+                            {
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
+                                StyleName = reader.GetString(reader.GetOrdinal("StyleName")),
+                                Description = reader.GetString(reader.GetOrdinal("Description")),
+                                RentalRatePerDay = (double)reader.GetDecimal(reader.GetOrdinal("RentalRatePerDay")),
+                                InStockQuantity = reader.GetInt32(reader.GetOrdinal("InStockQuantity")),
+                                TotalQuantity = reader.GetInt32(reader.GetOrdinal("TotalQuantity"))
+                            };
+                            furnitureList.Add(furniture);
+                        }
+                    }
+                }
+            }
+            return furnitureList;
+        }
+
+        /// <summary>
         /// Gets the furniture styles.
         /// </summary>
         /// <returns></returns>
@@ -103,7 +141,44 @@ namespace SofaSoGood.DAL
             return styles;
         }
 
+        /// <summary>
+        /// Gets the name of the furniture by style.
+        /// </summary>
+        /// <param name="styleName">Name of the style.</param>
+        /// <returns></returns>
+        public List<Furniture> GetFurnitureByStyleName(string styleName)
+        {
+            List<Furniture> furnitureList = new List<Furniture>();
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Furniture] WHERE StyleName = @StyleName";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@StyleName", SqlDbType.VarChar)).Value = styleName;
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furniture = new Furniture
+                            {
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
+                                StyleName = reader.GetString(reader.GetOrdinal("StyleName")),
+                                Description = reader.GetString(reader.GetOrdinal("Description")),
+                                RentalRatePerDay = (double)reader.GetDecimal(reader.GetOrdinal("RentalRatePerDay")),
+                                InStockQuantity = reader.GetInt32(reader.GetOrdinal("InStockQuantity")),
+                                TotalQuantity = reader.GetInt32(reader.GetOrdinal("TotalQuantity"))
+                            };
+                            furnitureList.Add(furniture);
+                        }
+                    }
+                }
+            }
+            return furnitureList;
+        }
     }
- 
+
 }
 

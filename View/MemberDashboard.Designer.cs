@@ -37,7 +37,7 @@
             this.SearchMemberTabPage = new System.Windows.Forms.TabPage();
             this.SearchMemberUserControl = new SofaSoGood.UserControls.SearchMemberUserControl();
             this.searchFurnitureTabPage = new System.Windows.Forms.TabPage();
-            this.searchFurniture1 = new SofaSoGood.UserControls.SearchFurniture();
+            this.searchFurniture1 = new SofaSoGood.UserControls.SearchFurnitureUserControl();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.MainDashboardTabControl.SuspendLayout();
@@ -193,6 +193,6 @@
         private UserControls.EditMemberUserControl EditMemberUserControl;
         private UserControls.SearchMemberUserControl SearchMemberUserControl;
         private System.Windows.Forms.TabPage searchFurnitureTabPage;
-        private UserControls.SearchFurniture searchFurniture1;
+        private UserControls.SearchFurnitureUserControl searchFurniture1;
     }
 }

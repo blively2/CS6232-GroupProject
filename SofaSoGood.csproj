@@ -70,11 +70,11 @@
     <Compile Include="UserControls\EditMemberUserControl.Designer.cs">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchFurniture.cs">
+    <Compile Include="UserControls\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchFurniture.Designer.cs">
-      <DependentUpon>SearchFurniture.cs</DependentUpon>
+    <Compile Include="UserControls\SearchFurnitureUserControl.Designer.cs">
+      <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchMemberUserControl.cs">
       <SubType>UserControl</SubType>
@@ -111,8 +111,8 @@
     <EmbeddedResource Include="UserControls\EditMemberUserControl.resx">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchFurniture.resx">
-      <DependentUpon>SearchFurniture.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
+      <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
