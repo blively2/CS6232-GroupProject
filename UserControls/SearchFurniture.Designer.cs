@@ -35,13 +35,13 @@
             this.searchByCategoryButton = new System.Windows.Forms.Button();
             this.furnitureCategoryLabel = new System.Windows.Forms.Label();
             this.styleButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.FurnitureIDWarningLabel = new System.Windows.Forms.Label();
+            this.furnitureStyleLabel = new System.Windows.Forms.Label();
+            this.furnitureIDWarningLabel = new System.Windows.Forms.Label();
             this.catogeryWarningLabel = new System.Windows.Forms.Label();
             this.styleWarningLabel = new System.Windows.Forms.Label();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
-            this.memberListView = new System.Windows.Forms.ListView();
+            this.furnitureListView = new System.Windows.Forms.ListView();
             this.FurnitureID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FurnitureName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FurnitureCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -77,6 +77,7 @@
             this.searchByFurnitureIDButton.TabIndex = 22;
             this.searchByFurnitureIDButton.Text = "By Furniture ID";
             this.searchByFurnitureIDButton.UseVisualStyleBackColor = true;
+            this.searchByFurnitureIDButton.Click += new System.EventHandler(this.SearchByFurnitureIDButton_Click);
             // 
             // furnitureIDLabel
             // 
@@ -116,22 +117,21 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(124, 158);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Furniture Style:";
+            this.furnitureStyleLabel.AutoSize = true;
+            this.furnitureStyleLabel.Location = new System.Drawing.Point(124, 158);
+            this.furnitureStyleLabel.Name = "label1";
+            this.furnitureStyleLabel.Size = new System.Drawing.Size(77, 13);
+            this.furnitureStyleLabel.TabIndex = 29;
+            this.furnitureStyleLabel.Text = "Furniture Style:";
             // 
-            // FurnitureIDWarningLabel
+            // furnitureIDWarningLabel
             // 
-            this.FurnitureIDWarningLabel.AutoSize = true;
-            this.FurnitureIDWarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.FurnitureIDWarningLabel.Location = new System.Drawing.Point(708, 83);
-            this.FurnitureIDWarningLabel.Name = "FurnitureIDWarningLabel";
-            this.FurnitureIDWarningLabel.Size = new System.Drawing.Size(93, 13);
-            this.FurnitureIDWarningLabel.TabIndex = 30;
-            this.FurnitureIDWarningLabel.Text = "Invalid FurnitureID";
+            this.furnitureIDWarningLabel.AutoSize = true;
+            this.furnitureIDWarningLabel.ForeColor = System.Drawing.Color.Red;
+            this.furnitureIDWarningLabel.Location = new System.Drawing.Point(708, 83);
+            this.furnitureIDWarningLabel.Name = "furnitureIDWarningLabel";
+            this.furnitureIDWarningLabel.Size = new System.Drawing.Size(0, 13);
+            this.furnitureIDWarningLabel.TabIndex = 30;
             // 
             // catogeryWarningLabel
             // 
@@ -171,9 +171,9 @@
             this.styleComboBox.Size = new System.Drawing.Size(171, 21);
             this.styleComboBox.TabIndex = 47;
             // 
-            // memberListView
+            // furnitureListView
             // 
-            this.memberListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.furnitureListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FurnitureID,
             this.FurnitureName,
             this.FurnitureCategory,
@@ -182,13 +182,13 @@
             this.RentalRatePerDay,
             this.InStockQuantity,
             this.TotalQuantity});
-            this.memberListView.HideSelection = false;
-            this.memberListView.Location = new System.Drawing.Point(0, 285);
-            this.memberListView.Name = "memberListView";
-            this.memberListView.Size = new System.Drawing.Size(970, 110);
-            this.memberListView.TabIndex = 48;
-            this.memberListView.UseCompatibleStateImageBehavior = false;
-            this.memberListView.View = System.Windows.Forms.View.Details;
+            this.furnitureListView.HideSelection = false;
+            this.furnitureListView.Location = new System.Drawing.Point(0, 285);
+            this.furnitureListView.Name = "furnitureListView";
+            this.furnitureListView.Size = new System.Drawing.Size(970, 110);
+            this.furnitureListView.TabIndex = 48;
+            this.furnitureListView.UseCompatibleStateImageBehavior = false;
+            this.furnitureListView.View = System.Windows.Forms.View.Details;
             // 
             // FurnitureID
             // 
@@ -233,14 +233,14 @@
             // SearchFurniture
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.memberListView);
+            this.Controls.Add(this.furnitureListView);
             this.Controls.Add(this.styleComboBox);
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.styleWarningLabel);
             this.Controls.Add(this.catogeryWarningLabel);
-            this.Controls.Add(this.FurnitureIDWarningLabel);
+            this.Controls.Add(this.furnitureIDWarningLabel);
             this.Controls.Add(this.styleButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.furnitureStyleLabel);
             this.Controls.Add(this.searchByCategoryButton);
             this.Controls.Add(this.furnitureCategoryLabel);
             this.Controls.Add(this.furnitureIDTextBox);
@@ -263,13 +263,13 @@
         private System.Windows.Forms.Button searchByCategoryButton;
         private System.Windows.Forms.Label furnitureCategoryLabel;
         private System.Windows.Forms.Button styleButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label FurnitureIDWarningLabel;
+        private System.Windows.Forms.Label furnitureStyleLabel;
+        private System.Windows.Forms.Label furnitureIDWarningLabel;
         private System.Windows.Forms.Label catogeryWarningLabel;
         private System.Windows.Forms.Label styleWarningLabel;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.ComboBox styleComboBox;
-        private System.Windows.Forms.ListView memberListView;
+        private System.Windows.Forms.ListView furnitureListView;
         private System.Windows.Forms.ColumnHeader FurnitureID;
         private System.Windows.Forms.ColumnHeader FurnitureName;
         private System.Windows.Forms.ColumnHeader FurnitureCategory;
