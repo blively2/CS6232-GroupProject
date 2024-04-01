@@ -191,6 +191,7 @@ namespace SofaSoGood.UserControls
         /// <param name="field">The field.</param>
         private void ClearFieldsExcept(string field)
         {
+            memberListView.Hide();
             if (field != "memberID") memberIDTextBox.Clear();
             if (field != "phone") phoneTextBox.Clear();
             if (field != "name")
