@@ -70,5 +70,24 @@ namespace SofaSoGood.Controller
         {
             return furnitureDAL.GetFurnitureByStyleName(styleName);
         }
+
+        /// <summary>
+        /// Gets all furniture.
+        /// </summary>
+        /// <returns></returns>
+        public List<Furniture> GetAllFurniture()
+        {
+            return furnitureDAL.GetAllFurniture();
+        }
+
+        /// <summary>
+        /// Gets the furniture daily rate.
+        /// </summary>
+        /// <param name="furnitureId">The furniture identifier.</param>
+        /// <returns></returns>
+        public decimal GetFurnitureDailyRate(int furnitureId)
+        {
+            return furnitureDAL.GetFurnitureDailyRate(furnitureId);
+        }
     }
 }

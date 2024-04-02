@@ -178,6 +178,101 @@ namespace SofaSoGood.DAL
             }
             return furnitureList;
         }
+
+        public decimal GetFurnitureDailyRate(int furnitureId)
+        {
+            decimal dailyRate = 0;
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT RentalRatePerDay FROM [Furniture] WHERE FurnitureID = @FurnitureID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@FurnitureID", SqlDbType.Int).Value = furnitureId;
+                    connection.Open();
+                    dailyRate = (decimal)command.ExecuteScalar();
+                }
+            }
+            return dailyRate;
+        }
+
+        public void UpdateStockQuantity(int furnitureId, int quantityRented)
+        {
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "UPDATE [Furniture] SET InStockQuantity = InStockQuantity - @QuantityRented WHERE FurnitureID = @FurnitureID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@FurnitureID", SqlDbType.Int).Value = furnitureId;
+                    command.Parameters.Add("@QuantityRented", SqlDbType.Int).Value = quantityRented;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<Furniture> GetAvailableFurniture()
+        {
+            List<Furniture> availableFurniture = new List<Furniture>();
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Furniture] WHERE InStockQuantity > 0";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furniture = new Furniture
+                            {
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
+                                StyleName = reader.GetString(reader.GetOrdinal("StyleName")),
+                                Description = reader.GetString(reader.GetOrdinal("Description")),
+                                RentalRatePerDay = (double)reader.GetDecimal(reader.GetOrdinal("RentalRatePerDay")),
+                                InStockQuantity = reader.GetInt32(reader.GetOrdinal("InStockQuantity")),
+                                TotalQuantity = reader.GetInt32(reader.GetOrdinal("TotalQuantity"))
+                            };
+                            availableFurniture.Add(furniture);
+                        }
+                    }
+                }
+            }
+            return availableFurniture;
+        }
+
+        public List<Furniture> GetAllFurniture()
+        {
+            List<Furniture> furnitureList = new List<Furniture>();
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [Furniture]";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furniture = new Furniture
+                            {
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
+                                StyleName = reader.GetString(reader.GetOrdinal("StyleName")),
+                                Description = reader.GetString(reader.GetOrdinal("Description")),
+                                RentalRatePerDay = (double)reader.GetDecimal(reader.GetOrdinal("RentalRatePerDay")),
+                                InStockQuantity = reader.GetInt32(reader.GetOrdinal("InStockQuantity")),
+                                TotalQuantity = reader.GetInt32(reader.GetOrdinal("TotalQuantity"))
+                            };
+                            furnitureList.Add(furniture);
+                        }
+                    }
+                }
+            }
+            return furnitureList;
+        }
     }
 
 }
