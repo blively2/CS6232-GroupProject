@@ -50,14 +50,18 @@
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\RentalController.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\CS6232-g3DBConnection.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
+    <Compile Include="DAL\RentalDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalItem.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="UserControls\RegisterMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,6 +73,12 @@
     </Compile>
     <Compile Include="UserControls\EditMemberUserControl.Designer.cs">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RentalUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RentalUserControl.Designer.cs">
+      <DependentUpon>RentalUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
@@ -110,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditMemberUserControl.resx">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RentalUserControl.resx">
+      <DependentUpon>RentalUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
