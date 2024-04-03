@@ -28,9 +28,9 @@ namespace SofaSoGood.Controller
         /// </summary>
         /// <param name="furnitureID">The furniture identifier.</param>
         /// <returns></returns>
-        public Furniture SearchFurnitureByID(int furnitureID)
+        public Furniture GetFurnitureByID(int furnitureID)
         {
-            return furnitureDAL.GetFurnitureID(furnitureID);
+            return furnitureDAL.GetFurnitureByID(furnitureID);
         }
 
         /// <summary>

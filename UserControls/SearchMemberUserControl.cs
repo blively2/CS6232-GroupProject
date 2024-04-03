@@ -1,5 +1,6 @@
 ﻿using SofaSoGood.Controller;
 using SofaSoGood.Model;
+using SofaSoGood.View;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -14,6 +15,9 @@ namespace SofaSoGood.UserControls
     public partial class SearchMemberUserControl : UserControl
     {
         private readonly MemberController memberController;
+        public Member SelectedMember;
+        private MemberDashboard MemberDashboard;
+        private RentFurnitureUserControl RentFurnitureUserControl;
 
         /// <summary>
         /// Constructor for SearchCustomerUserControl.
@@ -22,12 +26,12 @@ namespace SofaSoGood.UserControls
         public SearchMemberUserControl()
         {
             InitializeComponent();
+            SelectedMember = null;
             memberController = new MemberController();
             MemberIDWarningLabel.Text = string.Empty;
             phoneWarningLabel.Text = string.Empty;
             nameWarningLabel.Text = string.Empty;
             memberListView.Hide();
-
         }
 
         /// <summary>
@@ -199,6 +203,47 @@ namespace SofaSoGood.UserControls
                 firstNameTextBox.Clear();
                 lastNameTextBox.Clear();
             }
+        }
+
+        /// <summary>
+        /// Double Clicking a ListView item changes the SelectedMember accordingly.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void MemberListViewDoubleClick(object sender, EventArgs e)
+        {
+            if (memberListView.SelectedItems.Count == 1)
+            {
+                int MemberID = int.Parse(memberListView.SelectedItems[0].Text);
+                Member ChosenMember = memberController.GetMemberById(MemberID);
+                if (ChosenMember != null)
+                {
+                    MemberIDWarningLabel.Text = "Member Selected!";
+                    SelectedMember = ChosenMember;
+                    this.MemberDashboard.SelectedMemberChanged(SelectedMember);
+                    this.RentFurnitureUserControl.DisplaySelectedMember(SelectedMember);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ensures that the application exits properly when closed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        public void SetMemberDashboard(MemberDashboard Dashboard)
+        {
+            this.MemberDashboard = Dashboard;
+        }
+
+        /// <summary>
+        /// Ensures that the application exits properly when closed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        public void SetRentFurnitureUserControl(RentFurnitureUserControl RentFurnitureControl)
+        {
+            this.RentFurnitureUserControl = RentFurnitureControl;
         }
     }
 }

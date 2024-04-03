@@ -70,6 +70,12 @@
     <Compile Include="UserControls\EditMemberUserControl.Designer.cs">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RentFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
+      <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditMemberUserControl.resx">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
+      <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>

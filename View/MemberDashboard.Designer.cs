@@ -1,4 +1,6 @@
-﻿namespace SofaSoGood.View
+﻿using System.Windows.Forms;
+
+namespace SofaSoGood.View
 {
     partial class MemberDashboard
     {
@@ -36,15 +38,20 @@
             this.EditMemberUserControl = new SofaSoGood.UserControls.EditMemberUserControl();
             this.SearchMemberTabPage = new System.Windows.Forms.TabPage();
             this.SearchMemberUserControl = new SofaSoGood.UserControls.SearchMemberUserControl();
-            this.searchFurnitureTabPage = new System.Windows.Forms.TabPage();
-            this.searchFurniture1 = new SofaSoGood.UserControls.SearchFurnitureUserControl();
+            this.SearchFurnitureTabPage = new System.Windows.Forms.TabPage();
+            this.SearchFurnitureUserControl = new SofaSoGood.UserControls.SearchFurnitureUserControl();
+            this.RentFurnitureTabPage = new System.Windows.Forms.TabPage();
+            this.RentFurnitureUserControl = new SofaSoGood.UserControls.RentFurnitureUserControl();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.MemberSelectedLabel = new System.Windows.Forms.Label();
+            this.ItemsAmountLabel = new System.Windows.Forms.Label();
             this.MainDashboardTabControl.SuspendLayout();
             this.RegisterMemberTabPage.SuspendLayout();
             this.EditMemberTabPage.SuspendLayout();
             this.SearchMemberTabPage.SuspendLayout();
-            this.searchFurnitureTabPage.SuspendLayout();
+            this.SearchFurnitureTabPage.SuspendLayout();
+            this.RentFurnitureTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainDashboardTabControl
@@ -52,7 +59,8 @@
             this.MainDashboardTabControl.Controls.Add(this.RegisterMemberTabPage);
             this.MainDashboardTabControl.Controls.Add(this.EditMemberTabPage);
             this.MainDashboardTabControl.Controls.Add(this.SearchMemberTabPage);
-            this.MainDashboardTabControl.Controls.Add(this.searchFurnitureTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.SearchFurnitureTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.RentFurnitureTabPage);
             this.MainDashboardTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainDashboardTabControl.Location = new System.Drawing.Point(0, 0);
             this.MainDashboardTabControl.Name = "MainDashboardTabControl";
@@ -64,10 +72,10 @@
             // RegisterMemberTabPage
             // 
             this.RegisterMemberTabPage.Controls.Add(this.MemberRegistrationUserControl);
-            this.RegisterMemberTabPage.Location = new System.Drawing.Point(4, 38);
+            this.RegisterMemberTabPage.Location = new System.Drawing.Point(4, 29);
             this.RegisterMemberTabPage.Name = "RegisterMemberTabPage";
             this.RegisterMemberTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RegisterMemberTabPage.Size = new System.Drawing.Size(972, 393);
+            this.RegisterMemberTabPage.Size = new System.Drawing.Size(972, 402);
             this.RegisterMemberTabPage.TabIndex = 1;
             this.RegisterMemberTabPage.Text = "Register Member";
             this.RegisterMemberTabPage.UseVisualStyleBackColor = true;
@@ -77,15 +85,15 @@
             this.MemberRegistrationUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MemberRegistrationUserControl.Location = new System.Drawing.Point(3, 3);
             this.MemberRegistrationUserControl.Name = "MemberRegistrationUserControl";
-            this.MemberRegistrationUserControl.Size = new System.Drawing.Size(966, 387);
+            this.MemberRegistrationUserControl.Size = new System.Drawing.Size(966, 396);
             this.MemberRegistrationUserControl.TabIndex = 0;
             // 
             // EditMemberTabPage
             // 
             this.EditMemberTabPage.Controls.Add(this.EditMemberUserControl);
-            this.EditMemberTabPage.Location = new System.Drawing.Point(4, 38);
+            this.EditMemberTabPage.Location = new System.Drawing.Point(4, 29);
             this.EditMemberTabPage.Name = "EditMemberTabPage";
-            this.EditMemberTabPage.Size = new System.Drawing.Size(192, 58);
+            this.EditMemberTabPage.Size = new System.Drawing.Size(972, 402);
             this.EditMemberTabPage.TabIndex = 2;
             this.EditMemberTabPage.Text = "Edit Member";
             this.EditMemberTabPage.UseVisualStyleBackColor = true;
@@ -95,15 +103,15 @@
             this.EditMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditMemberUserControl.Location = new System.Drawing.Point(0, 0);
             this.EditMemberUserControl.Name = "EditMemberUserControl";
-            this.EditMemberUserControl.Size = new System.Drawing.Size(192, 58);
+            this.EditMemberUserControl.Size = new System.Drawing.Size(972, 402);
             this.EditMemberUserControl.TabIndex = 0;
             // 
             // SearchMemberTabPage
             // 
             this.SearchMemberTabPage.Controls.Add(this.SearchMemberUserControl);
-            this.SearchMemberTabPage.Location = new System.Drawing.Point(4, 38);
+            this.SearchMemberTabPage.Location = new System.Drawing.Point(4, 29);
             this.SearchMemberTabPage.Name = "SearchMemberTabPage";
-            this.SearchMemberTabPage.Size = new System.Drawing.Size(972, 393);
+            this.SearchMemberTabPage.Size = new System.Drawing.Size(972, 402);
             this.SearchMemberTabPage.TabIndex = 3;
             this.SearchMemberTabPage.Text = "Search Member";
             this.SearchMemberTabPage.UseVisualStyleBackColor = true;
@@ -113,26 +121,44 @@
             this.SearchMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchMemberUserControl.Location = new System.Drawing.Point(0, 0);
             this.SearchMemberUserControl.Name = "SearchMemberUserControl";
-            this.SearchMemberUserControl.Size = new System.Drawing.Size(972, 393);
+            this.SearchMemberUserControl.Size = new System.Drawing.Size(972, 402);
             this.SearchMemberUserControl.TabIndex = 0;
             // 
-            // searchFurnitureTabPage
+            // SearchFurnitureTabPage
             // 
-            this.searchFurnitureTabPage.Controls.Add(this.searchFurniture1);
-            this.searchFurnitureTabPage.Location = new System.Drawing.Point(4, 38);
-            this.searchFurnitureTabPage.Name = "searchFurnitureTabPage";
-            this.searchFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.searchFurnitureTabPage.Size = new System.Drawing.Size(972, 393);
-            this.searchFurnitureTabPage.TabIndex = 4;
-            this.searchFurnitureTabPage.Text = "Search Furniture";
-            this.searchFurnitureTabPage.UseVisualStyleBackColor = true;
+            this.SearchFurnitureTabPage.Controls.Add(this.SearchFurnitureUserControl);
+            this.SearchFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
+            this.SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
+            this.SearchFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.SearchFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
+            this.SearchFurnitureTabPage.TabIndex = 4;
+            this.SearchFurnitureTabPage.Text = "Search Furniture";
+            this.SearchFurnitureTabPage.UseVisualStyleBackColor = true;
             // 
-            // searchFurniture1
+            // SearchFurnitureUserControl
             // 
-            this.searchFurniture1.Location = new System.Drawing.Point(0, 3);
-            this.searchFurniture1.Name = "searchFurniture1";
-            this.searchFurniture1.Size = new System.Drawing.Size(972, 394);
-            this.searchFurniture1.TabIndex = 0;
+            this.SearchFurnitureUserControl.Location = new System.Drawing.Point(0, 3);
+            this.SearchFurnitureUserControl.Name = "SearchFurnitureUserControl";
+            this.SearchFurnitureUserControl.Size = new System.Drawing.Size(972, 394);
+            this.SearchFurnitureUserControl.TabIndex = 0;
+            // 
+            // RentFurnitureTabPage
+            // 
+            this.RentFurnitureTabPage.Controls.Add(this.RentFurnitureUserControl);
+            this.RentFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
+            this.RentFurnitureTabPage.Name = "RentFurnitureTabPage";
+            this.RentFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.RentFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
+            this.RentFurnitureTabPage.TabIndex = 5;
+            this.RentFurnitureTabPage.Text = "Rent Furniture";
+            this.RentFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
+            // RentFurnitureUserControl
+            // 
+            this.RentFurnitureUserControl.Location = new System.Drawing.Point(0, 0);
+            this.RentFurnitureUserControl.Name = "RentFurnitureUserControl";
+            this.RentFurnitureUserControl.Size = new System.Drawing.Size(970, 398);
+            this.RentFurnitureUserControl.TabIndex = 0;
             // 
             // WelcomeUserLabel
             // 
@@ -140,7 +166,7 @@
             this.WelcomeUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.WelcomeUserLabel.Location = new System.Drawing.Point(7, 434);
             this.WelcomeUserLabel.Name = "WelcomeUserLabel";
-            this.WelcomeUserLabel.Size = new System.Drawing.Size(212, 36);
+            this.WelcomeUserLabel.Size = new System.Drawing.Size(143, 25);
             this.WelcomeUserLabel.TabIndex = 0;
             this.WelcomeUserLabel.Text = "Welcome, user";
             // 
@@ -150,16 +176,38 @@
             this.LogoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.LogoutLinkLabel.Location = new System.Drawing.Point(904, 434);
             this.LogoutLinkLabel.Name = "LogoutLinkLabel";
-            this.LogoutLinkLabel.Size = new System.Drawing.Size(108, 36);
+            this.LogoutLinkLabel.Size = new System.Drawing.Size(72, 25);
             this.LogoutLinkLabel.TabIndex = 0;
             this.LogoutLinkLabel.TabStop = true;
             this.LogoutLinkLabel.Text = "Logout";
             this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLabelClicked);
             // 
+            // MemberSelectedLabel
+            // 
+            this.MemberSelectedLabel.AutoSize = true;
+            this.MemberSelectedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.MemberSelectedLabel.Location = new System.Drawing.Point(400, 438);
+            this.MemberSelectedLabel.Name = "MemberSelectedLabel";
+            this.MemberSelectedLabel.Size = new System.Drawing.Size(180, 20);
+            this.MemberSelectedLabel.TabIndex = 1;
+            this.MemberSelectedLabel.Text = "Member Selected: None";
+            // 
+            // ItemsAmountLabel
+            // 
+            this.ItemsAmountLabel.AutoSize = true;
+            this.ItemsAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ItemsAmountLabel.Location = new System.Drawing.Point(747, 438);
+            this.ItemsAmountLabel.Name = "ItemsAmountLabel";
+            this.ItemsAmountLabel.Size = new System.Drawing.Size(95, 20);
+            this.ItemsAmountLabel.TabIndex = 2;
+            this.ItemsAmountLabel.Text = "Items: None";
+            // 
             // MemberDashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(984, 461);
+            this.Controls.Add(this.ItemsAmountLabel);
+            this.Controls.Add(this.MemberSelectedLabel);
             this.Controls.Add(this.LogoutLinkLabel);
             this.Controls.Add(this.WelcomeUserLabel);
             this.Controls.Add(this.MainDashboardTabControl);
@@ -175,10 +223,10 @@
             this.RegisterMemberTabPage.ResumeLayout(false);
             this.EditMemberTabPage.ResumeLayout(false);
             this.SearchMemberTabPage.ResumeLayout(false);
-            this.searchFurnitureTabPage.ResumeLayout(false);
+            this.SearchFurnitureTabPage.ResumeLayout(false);
+            this.RentFurnitureTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -192,7 +240,11 @@
         private RegisterMemberUserControl MemberRegistrationUserControl;
         private UserControls.EditMemberUserControl EditMemberUserControl;
         private UserControls.SearchMemberUserControl SearchMemberUserControl;
-        private System.Windows.Forms.TabPage searchFurnitureTabPage;
-        private UserControls.SearchFurnitureUserControl searchFurniture1;
+        private System.Windows.Forms.TabPage SearchFurnitureTabPage;
+        private UserControls.SearchFurnitureUserControl SearchFurnitureUserControl;
+        private System.Windows.Forms.TabPage RentFurnitureTabPage;
+        private UserControls.RentFurnitureUserControl RentFurnitureUserControl;
+        private System.Windows.Forms.Label MemberSelectedLabel;
+        private System.Windows.Forms.Label ItemsAmountLabel;
     }
 }

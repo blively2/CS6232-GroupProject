@@ -19,7 +19,7 @@ namespace SofaSoGood.DAL
         /// </summary>
         /// <param name="ID">The identifier.</param>
         /// <returns></returns>
-        public Furniture GetFurnitureID(int ID)
+        public Furniture GetFurnitureByID(int ID)
         {
             Furniture furniture = null;
             using (var connection = SofaSoGoodDBConnection.GetConnection())

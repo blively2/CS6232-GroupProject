@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using SofaSoGood.Model;
+using System.Collections.Generic;
 
 namespace SofaSoGood.View
 {
@@ -19,6 +21,11 @@ namespace SofaSoGood.View
         public MemberDashboard(LoginForm LoginForm)
         {
             InitializeComponent();
+            this.SearchMemberUserControl.SetMemberDashboard(this);
+            this.SearchMemberUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
+            this.SearchFurnitureUserControl.SetMemberDashboard(this);
+            this.SearchFurnitureUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
+            this.RentFurnitureUserControl.SetSearchFurnitureUserControl(this.SearchFurnitureUserControl);
             this.LoginForm = LoginForm;
         }
 
@@ -50,6 +57,33 @@ namespace SofaSoGood.View
         private void MainDashboardFormClose(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Ensures that the application exits properly when closed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        public void SelectedMemberChanged(Member ChosenMember)
+        {
+            if (ChosenMember == null)
+            {
+                MemberSelectedLabel.Text = "Member Selected: None";
+            }
+            else
+            {
+                MemberSelectedLabel.Text = "Member Selected: " + ChosenMember.FirstName + " " + ChosenMember.LastName;
+            }
+        }
+
+        /// <summary>
+        /// Ensures that the application exits properly when closed.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        public void SelectedFurnitureChanged(List<Furniture> FurnitureItems)
+        {
+                ItemsAmountLabel.Text = "Items: " + FurnitureItems.Count;
         }
     }
 }
