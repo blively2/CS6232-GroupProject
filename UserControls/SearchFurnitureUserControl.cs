@@ -127,6 +127,11 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Adds a searched then selected furniture item to SelectedFurniture, updates the item count in 
+        /// MemberDashboard and the displayed list in RentFurnitureUserControl.
+        /// Displays a message if furniture item has already been added.
+        /// </summary>
         private void FurnitureListViewDoubleClick(object sender, EventArgs e)
         {
             if (furnitureListView.SelectedItems.Count == 1)
@@ -170,6 +175,10 @@ namespace SofaSoGood.UserControls
             this.RentFurnitureUserControl = RentFurniture;
         }
 
+        /// <summary>
+        /// Removes a furniture item from SelectedFurniture by ID. Updates the count in MemberDashboard.
+        /// </summary>
+        /// <param name="furnitureID">ID of furniture item to remove..</param>
         public void RemoveFurnitureItem(int furnitureID)
         {
             SelectedFurniture.RemoveAll(f => f.FurnitureID == furnitureID);
