@@ -28,89 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboFurniture = new System.Windows.Forms.ComboBox();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.btnAddItem = new System.Windows.Forms.Button();
-            this.dgvRentalItems = new System.Windows.Forms.DataGridView();
-            this.btnRemoveItem = new System.Windows.Forms.Button();
-            this.txtEmployeeId = new System.Windows.Forms.TextBox();
-            this.txtMemberId = new System.Windows.Forms.TextBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.furnitureComboBox = new System.Windows.Forms.ComboBox();
+            this.quantityTextBox = new System.Windows.Forms.TextBox();
+            this.addItemButton = new System.Windows.Forms.Button();
+            this.rentalItemsDataGridView = new System.Windows.Forms.DataGridView();
+            this.removeItemButton = new System.Windows.Forms.Button();
+            this.employeeIdTextBox = new System.Windows.Forms.TextBox();
+            this.memberIdTextBox = new System.Windows.Forms.TextBox();
+            this.submitOrderButton = new System.Windows.Forms.Button();
             this.furnitureLabel = new System.Windows.Forms.Label();
             this.quantityLabel = new System.Windows.Forms.Label();
             this.memberIdLabel = new System.Windows.Forms.Label();
             this.employeeIdLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRentalItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboFurniture
+            // furnitureComboBox
             // 
-            this.comboFurniture.FormattingEnabled = true;
-            this.comboFurniture.Location = new System.Drawing.Point(65, 64);
-            this.comboFurniture.Name = "comboFurniture";
-            this.comboFurniture.Size = new System.Drawing.Size(121, 21);
-            this.comboFurniture.TabIndex = 0;
+            this.furnitureComboBox.FormattingEnabled = true;
+            this.furnitureComboBox.Location = new System.Drawing.Point(65, 64);
+            this.furnitureComboBox.Name = "furnitureComboBox";
+            this.furnitureComboBox.Size = new System.Drawing.Size(121, 21);
+            this.furnitureComboBox.TabIndex = 0;
             // 
-            // txtQuantity
+            // quantityTextBox
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(247, 64);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(100, 20);
-            this.txtQuantity.TabIndex = 1;
+            this.quantityTextBox.Location = new System.Drawing.Point(247, 64);
+            this.quantityTextBox.Name = "quantityTextBox";
+            this.quantityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.quantityTextBox.TabIndex = 1;
             // 
-            // btnAddItem
+            // addItemButton
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(353, 64);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(75, 23);
-            this.btnAddItem.TabIndex = 2;
-            this.btnAddItem.Text = "add";
-            this.btnAddItem.UseVisualStyleBackColor = true;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            this.addItemButton.Location = new System.Drawing.Point(353, 64);
+            this.addItemButton.Name = "addItemButton";
+            this.addItemButton.Size = new System.Drawing.Size(75, 23);
+            this.addItemButton.TabIndex = 2;
+            this.addItemButton.Text = "add";
+            this.addItemButton.UseVisualStyleBackColor = true;
+            this.addItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
             // 
-            // dgvRentalItems
+            // rentalItemsDataGridView
             // 
-            this.dgvRentalItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvRentalItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRentalItems.Location = new System.Drawing.Point(0, 153);
-            this.dgvRentalItems.Name = "dgvRentalItems";
-            this.dgvRentalItems.ReadOnly = true;
-            this.dgvRentalItems.Size = new System.Drawing.Size(799, 153);
-            this.dgvRentalItems.TabIndex = 3;
+            this.rentalItemsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.rentalItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rentalItemsDataGridView.Location = new System.Drawing.Point(0, 153);
+            this.rentalItemsDataGridView.Name = "rentalItemsDataGridView";
+            this.rentalItemsDataGridView.ReadOnly = true;
+            this.rentalItemsDataGridView.Size = new System.Drawing.Size(799, 153);
+            this.rentalItemsDataGridView.TabIndex = 3;
             // 
-            // btnRemoveItem
+            // removeItemButton
             // 
-            this.btnRemoveItem.Location = new System.Drawing.Point(434, 64);
-            this.btnRemoveItem.Name = "btnRemoveItem";
-            this.btnRemoveItem.Size = new System.Drawing.Size(75, 23);
-            this.btnRemoveItem.TabIndex = 4;
-            this.btnRemoveItem.Text = "remove";
-            this.btnRemoveItem.UseVisualStyleBackColor = true;
-            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            this.removeItemButton.Location = new System.Drawing.Point(434, 64);
+            this.removeItemButton.Name = "removeItemButton";
+            this.removeItemButton.Size = new System.Drawing.Size(75, 23);
+            this.removeItemButton.TabIndex = 4;
+            this.removeItemButton.Text = "remove";
+            this.removeItemButton.UseVisualStyleBackColor = true;
+            this.removeItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
-            // txtEmployeeId
+            // employeeIdTextBox
             // 
-            this.txtEmployeeId.Location = new System.Drawing.Point(434, 90);
-            this.txtEmployeeId.Name = "txtEmployeeId";
-            this.txtEmployeeId.Size = new System.Drawing.Size(100, 20);
-            this.txtEmployeeId.TabIndex = 5;
+            this.employeeIdTextBox.Location = new System.Drawing.Point(434, 90);
+            this.employeeIdTextBox.Name = "employeeIdTextBox";
+            this.employeeIdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.employeeIdTextBox.TabIndex = 5;
             // 
-            // txtMemberId
+            // memberIdTextBox
             // 
-            this.txtMemberId.Location = new System.Drawing.Point(247, 90);
-            this.txtMemberId.Name = "txtMemberId";
-            this.txtMemberId.Size = new System.Drawing.Size(100, 20);
-            this.txtMemberId.TabIndex = 6;
+            this.memberIdTextBox.Location = new System.Drawing.Point(247, 90);
+            this.memberIdTextBox.Name = "memberIdTextBox";
+            this.memberIdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.memberIdTextBox.TabIndex = 6;
             // 
-            // btnSubmit
+            // submitOrderButton
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(546, 113);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 7;
-            this.btnSubmit.Text = "submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.submitOrderButton.Location = new System.Drawing.Point(546, 113);
+            this.submitOrderButton.Name = "submitOrderButton";
+            this.submitOrderButton.Size = new System.Drawing.Size(75, 23);
+            this.submitOrderButton.TabIndex = 7;
+            this.submitOrderButton.Text = "submit";
+            this.submitOrderButton.UseVisualStyleBackColor = true;
+            this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButton_Click);
             // 
             // furnitureLabel
             // 
@@ -156,17 +156,17 @@
             this.Controls.Add(this.memberIdLabel);
             this.Controls.Add(this.quantityLabel);
             this.Controls.Add(this.furnitureLabel);
-            this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.txtMemberId);
-            this.Controls.Add(this.txtEmployeeId);
-            this.Controls.Add(this.btnRemoveItem);
-            this.Controls.Add(this.dgvRentalItems);
-            this.Controls.Add(this.btnAddItem);
-            this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.comboFurniture);
+            this.Controls.Add(this.submitOrderButton);
+            this.Controls.Add(this.memberIdTextBox);
+            this.Controls.Add(this.employeeIdTextBox);
+            this.Controls.Add(this.removeItemButton);
+            this.Controls.Add(this.rentalItemsDataGridView);
+            this.Controls.Add(this.addItemButton);
+            this.Controls.Add(this.quantityTextBox);
+            this.Controls.Add(this.furnitureComboBox);
             this.Name = "RentalUserControl";
             this.Size = new System.Drawing.Size(799, 306);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRentalItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,14 +174,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboFurniture;
-        private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.Button btnAddItem;
-        private System.Windows.Forms.DataGridView dgvRentalItems;
-        private System.Windows.Forms.Button btnRemoveItem;
-        private System.Windows.Forms.TextBox txtEmployeeId;
-        private System.Windows.Forms.TextBox txtMemberId;
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.ComboBox furnitureComboBox;
+        private System.Windows.Forms.TextBox quantityTextBox;
+        private System.Windows.Forms.Button addItemButton;
+        private System.Windows.Forms.DataGridView rentalItemsDataGridView;
+        private System.Windows.Forms.Button removeItemButton;
+        private System.Windows.Forms.TextBox employeeIdTextBox;
+        private System.Windows.Forms.TextBox memberIdTextBox;
+        private System.Windows.Forms.Button submitOrderButton;
         private System.Windows.Forms.Label furnitureLabel;
         private System.Windows.Forms.Label quantityLabel;
         private System.Windows.Forms.Label memberIdLabel;

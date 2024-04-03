@@ -23,17 +23,26 @@ namespace SofaSoGood.UserControls
 
         private void InitializeFurnitureComboBox()
         {
-            comboFurniture.DataSource = furnitureController.GetAllFurniture();
-            comboFurniture.DisplayMember = "Name";
-            comboFurniture.ValueMember = "FurnitureID";
+            var furniture = furnitureController.GetAllFurniture();
+            if (furniture != null)
+            {
+                furnitureComboBox.DataSource = furniture;
+                furnitureComboBox.DisplayMember = "Name";
+                furnitureComboBox.ValueMember = "FurnitureID";
+                furnitureComboBox.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show("Error retrieving furniture list.");
+            }
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+        private void AddItemButton_Click(object sender, EventArgs e)
         {
             if (ValidateRentalItem())
             {
-                int furnitureId = Convert.ToInt32(comboFurniture.SelectedValue);
-                int quantity = Convert.ToInt32(txtQuantity.Text);
+                int furnitureId = Convert.ToInt32(furnitureComboBox.SelectedValue);
+                int quantity = Convert.ToInt32(quantityTextBox.Text);
 
                 var rentalItem = new RentalItem
                 {
@@ -50,22 +59,26 @@ namespace SofaSoGood.UserControls
             }
         }
 
-        private void btnRemoveItem_Click(object sender, EventArgs e)
+        private void RemoveItemButton_Click(object sender, EventArgs e)
         {
-            if (currentRentalTransaction.RentalItems.Count > 0 && dgvRentalItems.SelectedRows.Count > 0)
+            if (rentalItemsDataGridView.SelectedRows.Count > 0 && rentalItemsDataGridView.SelectedRows[0].Index != -1)
             {
-                int selectedIndex = dgvRentalItems.SelectedRows[0].Index;
+                int selectedIndex = rentalItemsDataGridView.SelectedRows[0].Index;
                 currentRentalTransaction.RentalItems.RemoveAt(selectedIndex);
                 UpdateRentalItemGrid();
             }
+            else
+            {
+                MessageBox.Show("Please select an item to remove.");
+            }
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
             if (ValidateRentalTransaction())
             {
-                currentRentalTransaction.MemberID = Convert.ToInt32(txtMemberId.Text);
-                currentRentalTransaction.EmployeeID = Convert.ToInt32(txtEmployeeId.Text);
+                currentRentalTransaction.MemberID = Convert.ToInt32(memberIdTextBox.Text);
+                currentRentalTransaction.EmployeeID = Convert.ToInt32(employeeIdTextBox.Text);
                 currentRentalTransaction.TotalCost = CalculateTotalCost();
 
                 rentalController.CreateRentalTransaction(currentRentalTransaction);
@@ -76,13 +89,13 @@ namespace SofaSoGood.UserControls
 
         private bool ValidateRentalItem()
         {
-            if (comboFurniture.SelectedIndex == -1)
+            if (furnitureComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a furniture item.");
                 return false;
             }
 
-            if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
+            if (!int.TryParse(quantityTextBox.Text, out int quantity) || quantity <= 0)
             {
                 MessageBox.Show("Please enter a valid quantity.");
                 return false;
@@ -93,13 +106,13 @@ namespace SofaSoGood.UserControls
 
         private bool ValidateRentalTransaction()
         {
-            if (!int.TryParse(txtMemberId.Text, out int memberId))
+            if (!int.TryParse(memberIdTextBox.Text, out int memberId))
             {
                 MessageBox.Show("Please enter a valid member ID.");
                 return false;
             }
 
-            if (!int.TryParse(txtEmployeeId.Text, out int employeeId))
+            if (!int.TryParse(employeeIdTextBox.Text, out int employeeId))
             {
                 MessageBox.Show("Please enter a valid employee ID.");
                 return false;
@@ -116,8 +129,12 @@ namespace SofaSoGood.UserControls
 
         private void UpdateRentalItemGrid()
         {
-            dgvRentalItems.DataSource = null;
-            dgvRentalItems.DataSource = currentRentalTransaction.RentalItems;
+            rentalItemsDataGridView.DataSource = null;
+            if (currentRentalTransaction.RentalItems.Count > 0)
+            {
+                rentalItemsDataGridView.DataSource = currentRentalTransaction.RentalItems;
+            }
+            rentalItemsDataGridView.ClearSelection();
         }
 
         private decimal CalculateTotalCost()
@@ -132,22 +149,29 @@ namespace SofaSoGood.UserControls
 
         private void ClearRentalItemForm()
         {
-            comboFurniture.SelectedIndex = -1;
-            txtQuantity.Clear();
+            furnitureComboBox.SelectedIndex = -1;
+            quantityTextBox.Clear();
         }
 
         private void ClearForm()
         {
-            currentRentalTransaction = new RentalTransaction
+            try
             {
-                RentalTransactionID = rentalController.GetNextRentalTransactionID(),
-                RentalDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(7),
-                RentalItems = new List<RentalItem>()
-            };
-
-            txtMemberId.Clear();
-            txtEmployeeId.Clear();
+                currentRentalTransaction = new RentalTransaction
+                {
+                    RentalTransactionID = rentalController.GetNextRentalTransactionID(),
+                    RentalDate = DateTime.Now,
+                    DueDate = DateTime.Now.AddDays(7),
+                    RentalItems = new List<RentalItem>()
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to initialize the form. Error: {ex.Message}");
+                return;
+            }
+            memberIdTextBox.Clear();
+            employeeIdTextBox.Clear();
             ClearRentalItemForm();
             UpdateRentalItemGrid();
         }
