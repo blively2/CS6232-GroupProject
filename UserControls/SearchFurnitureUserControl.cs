@@ -22,6 +22,7 @@ namespace SofaSoGood.UserControls
             InitializeComponent();
             furnitureController = new FurnitureController();
             PopulateCategoryAndStyleComboboxes();
+            furnitureListView.Visible = false;
         }
 
         /// <summary>
@@ -67,6 +68,11 @@ namespace SofaSoGood.UserControls
             item.SubItems.Add(furniture.InStockQuantity.ToString());
             item.SubItems.Add(furniture.TotalQuantity.ToString());
             furnitureListView.Items.Add(item);
+
+            foreach (ColumnHeader column in furnitureListView.Columns)
+            {
+                column.Width = -2;
+            }
         }
 
         /// <summary>
@@ -112,6 +118,7 @@ namespace SofaSoGood.UserControls
             furnitureIDTextBox.Enabled = true;
             catogeryComboBox.Enabled = true;
             styleComboBox.Enabled = true;
+            furnitureListView.Visible = false;
 
         }
 
@@ -127,6 +134,7 @@ namespace SofaSoGood.UserControls
             {
                 furnitureListView.Items.Clear();
                 AddFurnitureToList(furniture);
+                furnitureListView.Visible = true;
             }
             else
             {
@@ -152,6 +160,7 @@ namespace SofaSoGood.UserControls
             foreach (var furniture in furnitureList)
             {
                 AddFurnitureToList(furniture);
+                furnitureListView.Visible = true;
             }
             furnitureIDTextBox.Clear();
             furnitureIDTextBox.Enabled = false;
@@ -171,6 +180,7 @@ namespace SofaSoGood.UserControls
             foreach (var furniture in furnitureList)
             {
                 AddFurnitureToList(furniture);
+                furnitureListView.Visible = true;
             }
             furnitureIDTextBox.Clear();
             furnitureIDTextBox.Enabled = false;
@@ -186,6 +196,7 @@ namespace SofaSoGood.UserControls
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearForm();
+            
         }
     }
 
