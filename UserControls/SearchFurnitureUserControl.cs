@@ -22,6 +22,7 @@ namespace SofaSoGood.UserControls
             InitializeComponent();
             furnitureController = new FurnitureController();
             PopulateCategoryAndStyleComboboxes();
+            furnitureListView.Visible = false;
         }
 
         /// <summary>
@@ -29,117 +30,173 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void PopulateCategoryAndStyleComboboxes()
         {
+            catogeryComboBox.DataSource = null;
+            catogeryComboBox.Items.Clear();
+            catogeryComboBox.Items.Insert(0, "-- Select Category --");
+            catogeryComboBox.SelectedIndex = 0;
+
             var categories = furnitureController.GetFurnitureCategories();
-            categoryComboBox.DataSource = categories;
+            foreach (var category in categories)
+            {
+                catogeryComboBox.Items.Add(category);
+            }
+
+            styleComboBox.DataSource = null;
+            styleComboBox.Items.Clear();
+            styleComboBox.Items.Insert(0, "-- Select Style --");
+            styleComboBox.SelectedIndex = 0;
 
             var styles = furnitureController.GetFurnitureStyles();
-            styleComboBox.DataSource = styles;
-        }
-
-        /// <summary>
-        /// Handles the Click event of the SearchByCategoryButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SearchByCategoryButton_Click(object sender, EventArgs e)
-        {
-            string selectedCategory = categoryComboBox.SelectedItem.ToString();
-            var furnitureList = furnitureController.SearchFurnitureByCategory(selectedCategory);
-            furnitureListView.Items.Clear();
-            foreach (var furniture in furnitureList)
+            foreach (var style in styles)
             {
-                ListViewItem item = new ListViewItem(furniture.FurnitureID.ToString());
-                item.SubItems.Add(furniture.Name);
-                item.SubItems.Add(furniture.CategoryName);
-                item.SubItems.Add(furniture.StyleName);
-                item.SubItems.Add(furniture.Description);
-                item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
-                item.SubItems.Add(furniture.InStockQuantity.ToString());
-                item.SubItems.Add(furniture.TotalQuantity.ToString());
-                furnitureListView.Items.Add(item);
+                styleComboBox.Items.Add(style);
             }
         }
 
+        /// <summary>
+        /// Adds the furniture to list.
+        /// </summary>
+        /// <param name="furniture">The furniture.</param>
+        private void AddFurnitureToList(Furniture furniture)
+        {
+            ListViewItem item = new ListViewItem(furniture.FurnitureID.ToString());
+            item.SubItems.Add(furniture.Name);
+            item.SubItems.Add(furniture.CategoryName);
+            item.SubItems.Add(furniture.StyleName);
+            item.SubItems.Add(furniture.Description);
+            item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
+            item.SubItems.Add(furniture.InStockQuantity.ToString());
+            item.SubItems.Add(furniture.TotalQuantity.ToString());
+            furnitureListView.Items.Add(item);
+
+            foreach (ColumnHeader column in furnitureListView.Columns)
+            {
+                column.Width = -2;
+            }
+        }
 
         /// <summary>
-        /// Handles the Click event of the SearchByFurnitureIDButton control.
+        /// Handles the Click event of the SearchButton control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SearchByFurnitureIDButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            warningLabel.Visible = false;
+
+            if (!string.IsNullOrWhiteSpace(furnitureIDTextBox.Text))
+            {
+                SearchByFurnitureID();
+            }
+            else if (catogeryComboBox.SelectedIndex > 0)
+            {
+                SearchByCategory();
+            }
+            else if (styleComboBox.SelectedIndex > 0)
+            {
+                SearchByStyle();
+            }
+            else 
+            {
+                warningLabel.ForeColor = Color.Red;
+                warningLabel.Text = "Please select ID/Catogery/Style";
+                warningLabel.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Clears the form.
+        /// </summary>
+        private void ClearForm()
         {
 
-            if (int.TryParse(furnitureIDTextBox.Text, out int furnitureID))
+            furnitureIDTextBox.Clear();
+            catogeryComboBox.SelectedIndex = 0;
+            styleComboBox.SelectedIndex = 0;
+            furnitureListView.Items.Clear();
+            warningLabel.Text = "";
+            furnitureIDTextBox.Enabled = true;
+            catogeryComboBox.Enabled = true;
+            styleComboBox.Enabled = true;
+            furnitureListView.Visible = false;
+
+        }
+
+        /// <summary>
+        /// Searches the by furniture identifier.
+        /// </summary>
+        private void SearchByFurnitureID()
+        {
+            
+            int.TryParse(furnitureIDTextBox.Text, out int furnitureID);
+            var furniture = furnitureController.SearchFurnitureByID(furnitureID);
+            if (furniture != null)
             {
-                FurnitureController controller = new FurnitureController();
-                Furniture furniture = controller.SearchFurnitureByID(furnitureID);
-                if (furniture != null)
-                {
-                    furnitureListView.Items.Clear();
-                    ListViewItem item = new ListViewItem(furniture.FurnitureID.ToString());
-                    item.SubItems.Add(furniture.Name);
-                    item.SubItems.Add(furniture.CategoryName);
-                    item.SubItems.Add(furniture.StyleName);
-                    item.SubItems.Add(furniture.Description);
-                    item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
-                    item.SubItems.Add(furniture.InStockQuantity.ToString());
-                    item.SubItems.Add(furniture.TotalQuantity.ToString());
-                    furnitureListView.Items.Add(item);
-                }
-                else
-                {
-                    furnitureIDWarningLabel.ForeColor = Color.Red;
-                    furnitureIDWarningLabel.Text = "Furniture not found.";
-                    return;
-                }
+                furnitureListView.Items.Clear();
+                AddFurnitureToList(furniture);
+                furnitureListView.Visible = true;
             }
             else
             {
-                furnitureIDWarningLabel.ForeColor = Color.Red;
-                furnitureIDWarningLabel.Text = "Try Furniture ID as a digit";
-                return;
+                warningLabel.ForeColor = Color.Red;
+                warningLabel.Text = "Furniture not found";
+                warningLabel.Visible = true;
             }
-
+            catogeryComboBox.SelectedIndex = 0;
+            catogeryComboBox.Enabled = false;
+            styleComboBox.SelectedIndex = 0;
+            styleComboBox.Enabled = false;
         }
 
-        private void StyleButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Searches the by category.
+        /// </summary>
+        private void SearchByCategory()
         {
-            string selectedCategory = categoryComboBox.SelectedItem.ToString();
+            string selectedCategory = catogeryComboBox.SelectedItem.ToString();
             var furnitureList = furnitureController.SearchFurnitureByCategory(selectedCategory);
-            furnitureListView.Items.Clear(); 
+            furnitureListView.Items.Clear();
+
             foreach (var furniture in furnitureList)
             {
-                ListViewItem item = new ListViewItem(furniture.FurnitureID.ToString());
-                item.SubItems.Add(furniture.Name);
-                item.SubItems.Add(furniture.CategoryName);
-                item.SubItems.Add(furniture.StyleName);
-                item.SubItems.Add(furniture.Description);
-                item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
-                item.SubItems.Add(furniture.InStockQuantity.ToString());
-                item.SubItems.Add(furniture.TotalQuantity.ToString());
-                furnitureListView.Items.Add(item);
+                AddFurnitureToList(furniture);
+                furnitureListView.Visible = true;
             }
-
+            furnitureIDTextBox.Clear();
+            furnitureIDTextBox.Enabled = false;
+            styleComboBox.SelectedIndex = 0;
+            styleComboBox.Enabled = false; 
         }
 
-        private void SearchByStyleButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Searches the by style.
+        /// </summary>
+        private void SearchByStyle()
         {
             string selectedStyle = styleComboBox.SelectedItem.ToString();
             var furnitureList = furnitureController.SearchFurnitureByStyle(selectedStyle);
             furnitureListView.Items.Clear();
+
             foreach (var furniture in furnitureList)
             {
-                ListViewItem item = new ListViewItem(furniture.FurnitureID.ToString());
-                item.SubItems.Add(furniture.Name);
-                item.SubItems.Add(furniture.CategoryName);
-                item.SubItems.Add(furniture.StyleName);
-                item.SubItems.Add(furniture.Description);
-                item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
-                item.SubItems.Add(furniture.InStockQuantity.ToString());
-                item.SubItems.Add(furniture.TotalQuantity.ToString());
-                furnitureListView.Items.Add(item);
+                AddFurnitureToList(furniture);
+                furnitureListView.Visible = true;
             }
+            furnitureIDTextBox.Clear();
+            furnitureIDTextBox.Enabled = false;
+            catogeryComboBox.SelectedIndex = 0;
+            catogeryComboBox.Enabled = false; 
+        }
 
+        /// <summary>
+        /// Handles the Click event of the ClearButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            
         }
     }
 
