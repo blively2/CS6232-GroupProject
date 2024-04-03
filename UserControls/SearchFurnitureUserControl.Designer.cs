@@ -39,7 +39,7 @@
             this.furnitureIDWarningLabel = new System.Windows.Forms.Label();
             this.catogeryWarningLabel = new System.Windows.Forms.Label();
             this.styleWarningLabel = new System.Windows.Forms.Label();
-            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.catogeryComboBox = new System.Windows.Forms.ComboBox();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.furnitureListView = new System.Windows.Forms.ListView();
             this.FurnitureID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -141,9 +141,8 @@
             this.catogeryWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.catogeryWarningLabel.Location = new System.Drawing.Point(708, 121);
             this.catogeryWarningLabel.Name = "catogeryWarningLabel";
-            this.catogeryWarningLabel.Size = new System.Drawing.Size(124, 13);
+            this.catogeryWarningLabel.Size = new System.Drawing.Size(0, 13);
             this.catogeryWarningLabel.TabIndex = 31;
-            this.catogeryWarningLabel.Text = "Invalid FurnitureCategory";
             // 
             // styleWarningLabel
             // 
@@ -151,18 +150,17 @@
             this.styleWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.styleWarningLabel.Location = new System.Drawing.Point(708, 158);
             this.styleWarningLabel.Name = "styleWarningLabel";
-            this.styleWarningLabel.Size = new System.Drawing.Size(64, 13);
+            this.styleWarningLabel.Size = new System.Drawing.Size(0, 13);
             this.styleWarningLabel.TabIndex = 32;
-            this.styleWarningLabel.Text = "Invalid Style";
             // 
-            // categoryComboBox
+            // catogeryComboBox
             // 
-            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(278, 118);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(171, 21);
-            this.categoryComboBox.TabIndex = 46;
+            this.catogeryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.catogeryComboBox.FormattingEnabled = true;
+            this.catogeryComboBox.Location = new System.Drawing.Point(278, 118);
+            this.catogeryComboBox.Name = "catogeryComboBox";
+            this.catogeryComboBox.Size = new System.Drawing.Size(171, 21);
+            this.catogeryComboBox.TabIndex = 46;
             // 
             // styleComboBox
             // 
@@ -237,7 +235,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.furnitureListView);
             this.Controls.Add(this.styleComboBox);
-            this.Controls.Add(this.categoryComboBox);
+            this.Controls.Add(this.catogeryComboBox);
             this.Controls.Add(this.styleWarningLabel);
             this.Controls.Add(this.catogeryWarningLabel);
             this.Controls.Add(this.furnitureIDWarningLabel);
@@ -269,7 +267,7 @@
         private System.Windows.Forms.Label furnitureIDWarningLabel;
         private System.Windows.Forms.Label catogeryWarningLabel;
         private System.Windows.Forms.Label styleWarningLabel;
-        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.ComboBox catogeryComboBox;
         private System.Windows.Forms.ComboBox styleComboBox;
         private System.Windows.Forms.ListView furnitureListView;
         private System.Windows.Forms.ColumnHeader FurnitureID;
