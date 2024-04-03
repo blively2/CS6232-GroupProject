@@ -1,13 +1,7 @@
 ﻿using SofaSoGood.Controller;
 using SofaSoGood.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SofaSoGood.UserControls
@@ -59,87 +53,6 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Handles the Click event of the SearchByCategoryButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SearchByCategoryButton_Click(object sender, EventArgs e)
-        {
-            if (catogeryComboBox.SelectedIndex <= 0)
-            {
-                catogeryWarningLabel.ForeColor = Color.Red;
-                catogeryWarningLabel.Text = "Please select a category.";
-                return;
-            }
-
-            string selectedCategory = catogeryComboBox.SelectedItem.ToString();
-            var furnitureList = furnitureController.SearchFurnitureByCategory(selectedCategory);
-            furnitureListView.Items.Clear();
-            foreach (var furniture in furnitureList)
-            {
-                this.AddFurnitureToList(furniture);
-            }
-        }
-
-
-        /// <summary>
-        /// Handles the Click event of the SearchByFurnitureIDButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SearchByFurnitureIDButton_Click(object sender, EventArgs e)
-        {
-
-            if (int.TryParse(furnitureIDTextBox.Text, out int furnitureID))
-            {
-                FurnitureController controller = new FurnitureController();
-                Furniture furniture = controller.SearchFurnitureByID(furnitureID);
-                if (furniture != null)
-                {
-                    furnitureListView.Items.Clear();
-                    this.AddFurnitureToList(furniture);
-                }
-                else
-                {
-                    furnitureIDWarningLabel.ForeColor = Color.Red;
-                    furnitureIDWarningLabel.Text = "Furniture not found.";
-                    return;
-                }
-            }
-            else
-            {
-                furnitureIDWarningLabel.ForeColor = Color.Red;
-                furnitureIDWarningLabel.Text = "Try Furniture ID as a digit";
-                return;
-            }
-
-        }
-
-        /// <summary>
-        /// Handles the Click event of the SearchByStyleButton control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SearchByStyleButton_Click(object sender, EventArgs e)
-        {
-            if (styleComboBox.SelectedIndex <= 0)
-            {
-                styleWarningLabel.ForeColor = Color.Red;
-                styleWarningLabel.Text = "Please select a style";
-                return;
-            }
-
-            string selectedStyle = styleComboBox.SelectedItem.ToString();
-            var furnitureList = furnitureController.SearchFurnitureByStyle(selectedStyle);
-            furnitureListView.Items.Clear();
-            foreach (var furniture in furnitureList)
-            {
-                this.AddFurnitureToList(furniture);
-            }
-
-        }
-
-        /// <summary>
         /// Adds the furniture to list.
         /// </summary>
         /// <param name="furniture">The furniture.</param>
@@ -154,6 +67,125 @@ namespace SofaSoGood.UserControls
             item.SubItems.Add(furniture.InStockQuantity.ToString());
             item.SubItems.Add(furniture.TotalQuantity.ToString());
             furnitureListView.Items.Add(item);
+        }
+
+        /// <summary>
+        /// Handles the Click event of the SearchButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            warningLabel.Visible = false;
+
+            if (!string.IsNullOrWhiteSpace(furnitureIDTextBox.Text))
+            {
+                SearchByFurnitureID();
+            }
+            else if (catogeryComboBox.SelectedIndex > 0)
+            {
+                SearchByCategory();
+            }
+            else if (styleComboBox.SelectedIndex > 0)
+            {
+                SearchByStyle();
+            }
+            else 
+            {
+                warningLabel.ForeColor = Color.Red;
+                warningLabel.Text = "Please select ID/Catogery/Style";
+                warningLabel.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Clears the form.
+        /// </summary>
+        private void ClearForm()
+        {
+
+            furnitureIDTextBox.Clear();
+            catogeryComboBox.SelectedIndex = 0;
+            styleComboBox.SelectedIndex = 0;
+            furnitureListView.Items.Clear();
+            warningLabel.Text = "";
+            furnitureIDTextBox.Enabled = true;
+            catogeryComboBox.Enabled = true;
+            styleComboBox.Enabled = true;
+
+        }
+
+        /// <summary>
+        /// Searches the by furniture identifier.
+        /// </summary>
+        private void SearchByFurnitureID()
+        {
+            
+            int.TryParse(furnitureIDTextBox.Text, out int furnitureID);
+            var furniture = furnitureController.SearchFurnitureByID(furnitureID);
+            if (furniture != null)
+            {
+                furnitureListView.Items.Clear();
+                AddFurnitureToList(furniture);
+            }
+            else
+            {
+                warningLabel.ForeColor = Color.Red;
+                warningLabel.Text = "Furniture not found";
+                warningLabel.Visible = true;
+            }
+            catogeryComboBox.SelectedIndex = 0;
+            catogeryComboBox.Enabled = false;
+            styleComboBox.SelectedIndex = 0;
+            styleComboBox.Enabled = false;
+        }
+
+        /// <summary>
+        /// Searches the by category.
+        /// </summary>
+        private void SearchByCategory()
+        {
+            string selectedCategory = catogeryComboBox.SelectedItem.ToString();
+            var furnitureList = furnitureController.SearchFurnitureByCategory(selectedCategory);
+            furnitureListView.Items.Clear();
+
+            foreach (var furniture in furnitureList)
+            {
+                AddFurnitureToList(furniture);
+            }
+            furnitureIDTextBox.Clear();
+            furnitureIDTextBox.Enabled = false;
+            styleComboBox.SelectedIndex = 0;
+            styleComboBox.Enabled = false; 
+        }
+
+        /// <summary>
+        /// Searches the by style.
+        /// </summary>
+        private void SearchByStyle()
+        {
+            string selectedStyle = styleComboBox.SelectedItem.ToString();
+            var furnitureList = furnitureController.SearchFurnitureByStyle(selectedStyle);
+            furnitureListView.Items.Clear();
+
+            foreach (var furniture in furnitureList)
+            {
+                AddFurnitureToList(furniture);
+            }
+            furnitureIDTextBox.Clear();
+            furnitureIDTextBox.Enabled = false;
+            catogeryComboBox.SelectedIndex = 0;
+            catogeryComboBox.Enabled = false; 
+        }
+
+        /// <summary>
+        /// Handles the Click event of the ClearButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 
