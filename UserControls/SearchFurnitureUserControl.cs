@@ -35,7 +35,7 @@ namespace SofaSoGood.UserControls
             this.furnitureListView.Hide();
             SelectedFurniture = new List<Furniture>();
             this.categoryWarningLabel.Text = string.Empty;
-            this.styleWarningLabel.Text = string.Empty; 
+            this.styleWarningLabel.Text = string.Empty;
         }
 
         /// <summary>
@@ -183,6 +183,16 @@ namespace SofaSoGood.UserControls
         public void RemoveFurnitureItem(int furnitureID)
         {
             SelectedFurniture.RemoveAll(f => f.FurnitureID == furnitureID);
+            this.MemberDashboard.SelectedFurnitureChanged(this.SelectedFurniture);
+        }
+
+        /// <summary>
+        /// Removes all furniture items from SelectedFurniture. Updates the count in MemberDashboard.
+        /// </summary>
+        /// <param name="furnitureID">ID of furniture item to remove..</param>
+        public void ClearSelectedFurniture()
+        {
+            SelectedFurniture.Clear();
             this.MemberDashboard.SelectedFurnitureChanged(this.SelectedFurniture);
         }
     }

@@ -39,6 +39,8 @@ namespace SofaSoGood.UserControls
             if (SelectedMember != null)
             {
                 SelectedMemberListView.Items.Clear();
+                this.SearchFurnitureUserControl.ClearSelectedFurniture();
+                this.DisplaySelectedFurniture(this.SearchFurnitureUserControl.SelectedFurniture);
                 ListViewItem item = new ListViewItem(SelectedMember.MemberID.ToString());
                 item.SubItems.Add(SelectedMember.FirstName ?? string.Empty);
                 item.SubItems.Add(SelectedMember.LastName ?? string.Empty);
@@ -144,8 +146,6 @@ namespace SofaSoGood.UserControls
         /// </summary>
         public void CheckIfMemberAndFurniturePopulated()
         {
-            System.Diagnostics.Debug.WriteLine(this.SelectedFurnitureListView.Items.Count);
-            System.Diagnostics.Debug.WriteLine(this.SelectedMemberListView.Items.Count);
             if (this.SelectedFurnitureListView.Items.Count > 0 && this.SelectedMemberListView.Items.Count > 0)
             {
                 this.StartDatePicker.Enabled = true;
