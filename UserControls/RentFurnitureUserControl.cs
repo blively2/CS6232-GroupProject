@@ -1,7 +1,9 @@
 ﻿using SofaSoGood.Model;
 using System;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SofaSoGood.UserControls
 {
@@ -25,7 +27,6 @@ namespace SofaSoGood.UserControls
         {
             InitializeComponent();
             this.FormatSelectedMemberAndFurnitureListView();
-            this.SelectedFurnitureListView.ContextMenuStrip = this.RightClickMenuStrip;
             this.CheckIfMemberAndFurniturePopulated();
             this.DateAlertLabel.Text = string.Empty;
         }
@@ -68,24 +69,21 @@ namespace SofaSoGood.UserControls
         /// <param name="selectedFurniture">List of selected furniture.</param>
         public void DisplaySelectedFurniture(List<Furniture> selectedFurniture)
         {
-            SelectedFurnitureListView.Items.Clear();
+            SelectedFurnitureDataGridView.Rows.Clear();
 
-            if (selectedFurniture != null && selectedFurniture.Count > 0)
+            foreach (var furniture in selectedFurniture)
             {
-                foreach (var furniture in selectedFurniture)
-                {
-                    ListViewItem item = new ListViewItem(furniture.FurnitureID.ToString());
-                    item.SubItems.Add(furniture.Name ?? string.Empty);
-                    item.SubItems.Add(furniture.CategoryName ?? string.Empty);
-                    item.SubItems.Add(furniture.StyleName ?? string.Empty);
-                    item.SubItems.Add(furniture.Description ?? string.Empty);
-                    item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
-                    item.SubItems.Add(furniture.InStockQuantity.ToString());
-                    item.SubItems.Add(furniture.TotalQuantity.ToString());
-                    item.SubItems.Add("1");
-                    SelectedFurnitureListView.Items.Add(item);
-                    this.UseSearchFurnitureFunctionalityLabel.Text = "";
-                }
+                int index = SelectedFurnitureDataGridView.Rows.Add();
+                DataGridViewRow newRow = SelectedFurnitureDataGridView.Rows[index];
+                newRow.Cells["FurnitureID"].Value = furniture.FurnitureID;
+                newRow.Cells["FurnitureName"].Value = furniture.Name;
+                newRow.Cells["FurnitureCategory"].Value = furniture.CategoryName;
+                newRow.Cells["FurnitureStyle"].Value = furniture.StyleName;
+                newRow.Cells["Description"].Value = furniture.Description;
+                newRow.Cells["RentalRatePerDay"].Value = furniture.RentalRatePerDay.ToString("C");
+                newRow.Cells["InStockQuantity"].Value = furniture.InStockQuantity;
+                newRow.Cells["TotalQuantity"].Value = furniture.TotalQuantity;
+                newRow.Cells["AmountToRent"].Value = "1";
             }
             this.FormatSelectedMemberAndFurnitureListView();
         }
@@ -100,36 +98,14 @@ namespace SofaSoGood.UserControls
                 column.Width = -2;
             }
 
-            foreach (ColumnHeader column in SelectedFurnitureListView.Columns)
+            foreach (DataGridViewColumn column in SelectedFurnitureDataGridView.Columns)
             {
-                column.Width = -2;
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
 
-            SelectedFurnitureListView.Refresh();
+            SelectedFurnitureDataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            SelectedFurnitureDataGridView.Refresh();
             SelectedMemberListView.Refresh();
-            this.CheckIfMemberAndFurniturePopulated();
-        }
-
-        /// <summary>
-        /// Removes a selected item from the ListView when the context menu option is clicked.
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        /// </summary>
-        private void RemoveFurnitureToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            if (SelectedFurnitureListView.SelectedItems.Count > 0)
-            {
-                int furnitureID = int.Parse(SelectedFurnitureListView.SelectedItems[0].Text);
-                this.SearchFurnitureUserControl.RemoveFurnitureItem(furnitureID);
-                this.SelectedFurnitureListView.Items.Remove(SelectedFurnitureListView.SelectedItems[0]);
-                this.SelectedFurnitureListView.Refresh();
-            }
-
-            if (SelectedFurnitureListView.SelectedItems.Count == 0)
-            {
-                this.UseSearchFurnitureFunctionalityLabel.Text = "Use the Search Furniture Tab and Double Click to Select Furniture";
-            }
-
             this.CheckIfMemberAndFurniturePopulated();
         }
 
@@ -147,18 +123,18 @@ namespace SofaSoGood.UserControls
         /// </summary>
         public void CheckIfMemberAndFurniturePopulated()
         {
-            if (this.SelectedFurnitureListView.Items.Count > 0 && this.SelectedMemberListView.Items.Count > 0)
-            {
-                this.StartDatePicker.Enabled = true;
-                this.EndDatePicker.Enabled = true;
-                this.RentFurnitureButton.Enabled = true;
-            }
-            else if (this.SelectedFurnitureListView.Items.Count == 0 || this.SelectedMemberListView.Items.Count == 0)
-            {
-                this.StartDatePicker.Enabled = false;
-                this.EndDatePicker.Enabled = false;
-                this.RentFurnitureButton.Enabled = false;
-            }
+            bool memberPopulated = this.SelectedMemberListView.Items.Count > 0;
+            bool furniturePopulated = this.SelectedFurnitureDataGridView.Rows.Count > 0;
+
+            this.StartDatePicker.Enabled = memberPopulated && furniturePopulated;
+            this.EndDatePicker.Enabled = memberPopulated && furniturePopulated;
+            this.RentFurnitureButton.Enabled = memberPopulated && furniturePopulated;
+
+            this.SelectedMemberListView.BackColor = !memberPopulated ? Color.LightGray : SystemColors.Window;
+            this.SelectedFurnitureDataGridView.BackColor = !furniturePopulated ? Color.LightGray : SystemColors.Window;
+
+            this.UseSearchMemberFunctionalityLabel.Text = memberPopulated ? "" : "Please select a member.";
+            this.UseSearchFurnitureFunctionalityLabel.Text = furniturePopulated ? "Click the Furniture Table to Edit Quantities" : "Please select furniture to rent.";
         }
 
         /// <summary>
@@ -200,6 +176,36 @@ namespace SofaSoGood.UserControls
         private void DatePickerDropDown(object sender, EventArgs e)
         {
             this.DateAlertLabel.Text = string.Empty;
+        }
+
+        private void SelectedFurnitureDataGridViewCellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (SelectedFurnitureDataGridView.Columns[e.ColumnIndex].Name != "AmountToRent")
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void SelectedFurnitureDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+                int newAmountToRent;
+                bool isValidNumber = int.TryParse(e.FormattedValue.ToString(), out newAmountToRent);
+
+                if (!isValidNumber)
+                {
+
+                SelectedFurnitureDataGridView[e.ColumnIndex, e.RowIndex].Value = 1;
+                    e.Cancel = true;
+                    return;
+                }
+
+                int inStockQuantity = Convert.ToInt32(SelectedFurnitureDataGridView["InStockQuantity", e.RowIndex].Value);
+                if (newAmountToRent > inStockQuantity)
+                {
+                    SelectedFurnitureDataGridView[e.ColumnIndex, e.RowIndex].Value = inStockQuantity;
+                    MessageBox.Show("The amount to rent cannot exceed the in-stock quantity.");
+                    e.Cancel = true;
+                }
         }
     }
 }

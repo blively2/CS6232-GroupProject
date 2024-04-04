@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.SelectedMemberListView = new System.Windows.Forms.ListView();
             this.MemberID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,18 +42,6 @@
             this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TitleLabel = new System.Windows.Forms.Label();
             this.UseSearchMemberFunctionalityLabel = new System.Windows.Forms.Label();
-            this.SelectedFurnitureListView = new System.Windows.Forms.ListView();
-            this.FurnitureID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FurnitureName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FurnitureCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FurnitureStyle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RentalRatePerDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.InStockQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TotalQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AmountToRent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RightClickMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UseSearchFurnitureFunctionalityLabel = new System.Windows.Forms.Label();
             this.DateAlertLabel = new System.Windows.Forms.Label();
             this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -62,7 +49,17 @@
             this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.EndDateLabel = new System.Windows.Forms.Label();
             this.RentFurnitureButton = new System.Windows.Forms.Button();
-            this.RightClickMenuStrip.SuspendLayout();
+            this.SelectedFurnitureDataGridView = new System.Windows.Forms.DataGridView();
+            this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FurnitureStyle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentalRatePerDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AmountToRent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // SelectedMemberListView
@@ -153,85 +150,6 @@
             this.UseSearchMemberFunctionalityLabel.TabIndex = 35;
             this.UseSearchMemberFunctionalityLabel.Text = "Use the Search Member Tab and Double Click to Select a Member";
             // 
-            // SelectedFurnitureListView
-            // 
-            this.SelectedFurnitureListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.FurnitureID,
-            this.FurnitureName,
-            this.FurnitureCategory,
-            this.FurnitureStyle,
-            this.Description,
-            this.RentalRatePerDay,
-            this.InStockQuantity,
-            this.TotalQuantity,
-            this.AmountToRent});
-            this.SelectedFurnitureListView.FullRowSelect = true;
-            this.SelectedFurnitureListView.HideSelection = false;
-            this.SelectedFurnitureListView.Location = new System.Drawing.Point(0, 179);
-            this.SelectedFurnitureListView.Name = "SelectedFurnitureListView";
-            this.SelectedFurnitureListView.Size = new System.Drawing.Size(970, 110);
-            this.SelectedFurnitureListView.TabIndex = 49;
-            this.SelectedFurnitureListView.UseCompatibleStateImageBehavior = false;
-            this.SelectedFurnitureListView.View = System.Windows.Forms.View.Details;
-            // 
-            // FurnitureID
-            // 
-            this.FurnitureID.Text = "Furniture ID";
-            this.FurnitureID.Width = 90;
-            // 
-            // FurnitureName
-            // 
-            this.FurnitureName.Text = "Name";
-            this.FurnitureName.Width = 90;
-            // 
-            // FurnitureCategory
-            // 
-            this.FurnitureCategory.Text = "Category";
-            this.FurnitureCategory.Width = 120;
-            // 
-            // FurnitureStyle
-            // 
-            this.FurnitureStyle.Text = "Style";
-            this.FurnitureStyle.Width = 90;
-            // 
-            // Description
-            // 
-            this.Description.Text = "Description";
-            this.Description.Width = 120;
-            // 
-            // RentalRatePerDay
-            // 
-            this.RentalRatePerDay.Text = "Rate Per Day";
-            this.RentalRatePerDay.Width = 90;
-            // 
-            // InStockQuantity
-            // 
-            this.InStockQuantity.Text = "In Stock Quantity";
-            this.InStockQuantity.Width = 90;
-            // 
-            // TotalQuantity
-            // 
-            this.TotalQuantity.Text = "Total Quantity";
-            this.TotalQuantity.Width = 90;
-            // 
-            // AmountToRent
-            // 
-            this.AmountToRent.Text = "Amount To Rent";
-            // 
-            // RightClickMenuStrip
-            // 
-            this.RightClickMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeItemToolStripMenuItem});
-            this.RightClickMenuStrip.Name = "contextMenuStrip1";
-            this.RightClickMenuStrip.Size = new System.Drawing.Size(145, 26);
-            // 
-            // removeItemToolStripMenuItem
-            // 
-            this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
-            this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.removeItemToolStripMenuItem.Text = "Remove Item";
-            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.RemoveFurnitureToolStripMenuItemClick);
-            // 
             // UseSearchFurnitureFunctionalityLabel
             // 
             this.UseSearchFurnitureFunctionalityLabel.AutoSize = true;
@@ -294,7 +212,7 @@
             // RentFurnitureButton
             // 
             this.RentFurnitureButton.Enabled = false;
-            this.RentFurnitureButton.Location = new System.Drawing.Point(645, 324);
+            this.RentFurnitureButton.Location = new System.Drawing.Point(770, 324);
             this.RentFurnitureButton.Name = "RentFurnitureButton";
             this.RentFurnitureButton.Size = new System.Drawing.Size(169, 36);
             this.RentFurnitureButton.TabIndex = 56;
@@ -302,10 +220,80 @@
             this.RentFurnitureButton.UseVisualStyleBackColor = true;
             this.RentFurnitureButton.Click += new System.EventHandler(this.RentFurnitureButtonClick);
             // 
+            // SelectedFurnitureDataGridView
+            // 
+            this.SelectedFurnitureDataGridView.AllowUserToAddRows = false;
+            this.SelectedFurnitureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SelectedFurnitureDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FurnitureID,
+            this.FurnitureName,
+            this.FurnitureCategory,
+            this.FurnitureStyle,
+            this.Description,
+            this.RentalRatePerDay,
+            this.InStockQuantity,
+            this.TotalQuantity,
+            this.AmountToRent});
+            this.SelectedFurnitureDataGridView.Location = new System.Drawing.Point(0, 179);
+            this.SelectedFurnitureDataGridView.MultiSelect = false;
+            this.SelectedFurnitureDataGridView.Name = "SelectedFurnitureDataGridView";
+            this.SelectedFurnitureDataGridView.RowTemplate.Height = 28;
+            this.SelectedFurnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(970, 110);
+            this.SelectedFurnitureDataGridView.TabIndex = 57;
+            this.SelectedFurnitureDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.SelectedFurnitureDataGridViewCellBeginEdit);
+            this.SelectedFurnitureDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.SelectedFurnitureDataGridViewCellValidating);
+            // 
+            // FurnitureID
+            // 
+            this.FurnitureID.HeaderText = "ID";
+            this.FurnitureID.Name = "FurnitureID";
+            // 
+            // FurnitureName
+            // 
+            this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.Name = "FurnitureName";
+            // 
+            // FurnitureCategory
+            // 
+            this.FurnitureCategory.HeaderText = "Category";
+            this.FurnitureCategory.Name = "FurnitureCategory";
+            // 
+            // FurnitureStyle
+            // 
+            this.FurnitureStyle.HeaderText = "Style";
+            this.FurnitureStyle.Name = "FurnitureStyle";
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            // 
+            // RentalRatePerDay
+            // 
+            this.RentalRatePerDay.HeaderText = "RentalRatePerDay";
+            this.RentalRatePerDay.Name = "RentalRatePerDay";
+            // 
+            // InStockQuantity
+            // 
+            this.InStockQuantity.HeaderText = "InStockQuantity";
+            this.InStockQuantity.Name = "InStockQuantity";
+            // 
+            // TotalQuantity
+            // 
+            this.TotalQuantity.HeaderText = "TotalQuantity";
+            this.TotalQuantity.Name = "TotalQuantity";
+            // 
+            // AmountToRent
+            // 
+            this.AmountToRent.HeaderText = "AmountToRent";
+            this.AmountToRent.Name = "AmountToRent";
+            // 
             // RentFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SelectedFurnitureDataGridView);
             this.Controls.Add(this.RentFurnitureButton);
             this.Controls.Add(this.EndDatePicker);
             this.Controls.Add(this.EndDateLabel);
@@ -313,13 +301,12 @@
             this.Controls.Add(this.StartDatePicker);
             this.Controls.Add(this.StartDateLabel);
             this.Controls.Add(this.UseSearchFurnitureFunctionalityLabel);
-            this.Controls.Add(this.SelectedFurnitureListView);
             this.Controls.Add(this.UseSearchMemberFunctionalityLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.SelectedMemberListView);
             this.Name = "RentFurnitureUserControl";
             this.Size = new System.Drawing.Size(970, 398);
-            this.RightClickMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,17 +328,6 @@
         private System.Windows.Forms.ColumnHeader Phone;
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Label UseSearchMemberFunctionalityLabel;
-        private System.Windows.Forms.ListView SelectedFurnitureListView;
-        private System.Windows.Forms.ColumnHeader FurnitureID;
-        private System.Windows.Forms.ColumnHeader FurnitureName;
-        private System.Windows.Forms.ColumnHeader FurnitureCategory;
-        private System.Windows.Forms.ColumnHeader FurnitureStyle;
-        private System.Windows.Forms.ColumnHeader Description;
-        private System.Windows.Forms.ColumnHeader RentalRatePerDay;
-        private System.Windows.Forms.ColumnHeader InStockQuantity;
-        private System.Windows.Forms.ColumnHeader TotalQuantity;
-        private System.Windows.Forms.ContextMenuStrip RightClickMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem removeItemToolStripMenuItem;
         private System.Windows.Forms.Label UseSearchFurnitureFunctionalityLabel;
         private System.Windows.Forms.Label DateAlertLabel;
         private System.Windows.Forms.DateTimePicker StartDatePicker;
@@ -359,6 +335,15 @@
         private System.Windows.Forms.DateTimePicker EndDatePicker;
         private System.Windows.Forms.Label EndDateLabel;
         private System.Windows.Forms.Button RentFurnitureButton;
-        private System.Windows.Forms.ColumnHeader AmountToRent;
+        private System.Windows.Forms.DataGridView SelectedFurnitureDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureStyle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RentalRatePerDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InStockQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AmountToRent;
     }
 }
