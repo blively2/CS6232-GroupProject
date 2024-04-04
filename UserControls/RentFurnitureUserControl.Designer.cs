@@ -52,6 +52,7 @@
             this.RentalRatePerDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InStockQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TotalQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AmountToRent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RightClickMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UseSearchFurnitureFunctionalityLabel = new System.Windows.Forms.Label();
@@ -162,7 +163,8 @@
             this.Description,
             this.RentalRatePerDay,
             this.InStockQuantity,
-            this.TotalQuantity});
+            this.TotalQuantity,
+            this.AmountToRent});
             this.SelectedFurnitureListView.FullRowSelect = true;
             this.SelectedFurnitureListView.HideSelection = false;
             this.SelectedFurnitureListView.Location = new System.Drawing.Point(0, 179);
@@ -211,6 +213,10 @@
             // 
             this.TotalQuantity.Text = "Total Quantity";
             this.TotalQuantity.Width = 90;
+            // 
+            // AmountToRent
+            // 
+            this.AmountToRent.Text = "Amount To Rent";
             // 
             // RightClickMenuStrip
             // 
@@ -353,5 +359,6 @@
         private System.Windows.Forms.DateTimePicker EndDatePicker;
         private System.Windows.Forms.Label EndDateLabel;
         private System.Windows.Forms.Button RentFurnitureButton;
+        private System.Windows.Forms.ColumnHeader AmountToRent;
     }
 }

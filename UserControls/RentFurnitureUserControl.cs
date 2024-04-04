@@ -82,6 +82,7 @@ namespace SofaSoGood.UserControls
                     item.SubItems.Add(furniture.RentalRatePerDay.ToString("C"));
                     item.SubItems.Add(furniture.InStockQuantity.ToString());
                     item.SubItems.Add(furniture.TotalQuantity.ToString());
+                    item.SubItems.Add("1");
                     SelectedFurnitureListView.Items.Add(item);
                     this.UseSearchFurnitureFunctionalityLabel.Text = "";
                 }
