@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SofaSoGood.Model
+﻿namespace SofaSoGood.Model
 {
+    /// <summary>
+    /// Class to define Furniture programmatically.
+    /// </summary>
     public class Furniture
     {
         /// <summary>

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SofaSoGood.Model
+﻿namespace SofaSoGood.Model
 {
+    /// <summary>
+    /// Class to define RentalItem programmatically.
+    /// </summary>
     public class RentalItem
     {
         /// <summary>

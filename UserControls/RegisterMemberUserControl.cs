@@ -12,7 +12,6 @@ namespace SofaSoGood
     /// UserControl for Register Customers in the database.
     /// Has an MemberController instance to interact with the DB.
     /// </summary>
-    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class RegisterMemberUserControl : UserControl
     {
         private readonly MemberController memberController;
@@ -278,7 +277,7 @@ namespace SofaSoGood
             string message = $"Member registered successfully! Member ID: {memberId}";
             string title = "Registration Successful";
             MessageBoxButtons buttons = MessageBoxButtons.OK;
-            DialogResult result = MessageBox.Show(message, title, buttons);
+            MessageBox.Show(message, title, buttons);
         }
     }
 }

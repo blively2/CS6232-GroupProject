@@ -2,6 +2,9 @@
 
 namespace SofaSoGood.Model
 {
+    /// <summary>
+    /// Class to define Member programmatically.
+    /// </summary>
     public class Member
     {
         /// <summary>

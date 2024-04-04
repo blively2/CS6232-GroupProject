@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SofaSoGood.Model
 {
+    /// <summary>
+    /// Class to define RentalTransaction programmatically.
+    /// </summary>
     public class RentalTransaction
     {
         /// <summary>
@@ -40,5 +43,4 @@ namespace SofaSoGood.Model
         /// </summary>
         public List<RentalItem> RentalItems { get; set; }
     }
-
 }
