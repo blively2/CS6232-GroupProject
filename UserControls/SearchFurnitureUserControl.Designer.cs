@@ -77,7 +77,7 @@
             this.searchByFurnitureIDButton.TabIndex = 22;
             this.searchByFurnitureIDButton.Text = "By Furniture ID";
             this.searchByFurnitureIDButton.UseVisualStyleBackColor = true;
-            this.searchByFurnitureIDButton.Click += new System.EventHandler(this.SearchByFurnitureIDButton_Click);
+            this.searchByFurnitureIDButton.Click += new System.EventHandler(this.SearchByFurnitureIDButtonClick);
             // 
             // furnitureIDLabel
             // 
@@ -96,7 +96,7 @@
             this.searchByCategoryButton.TabIndex = 25;
             this.searchByCategoryButton.Text = "By Furniture Category";
             this.searchByCategoryButton.UseVisualStyleBackColor = true;
-            this.searchByCategoryButton.Click += new System.EventHandler(this.SearchByCategoryButton_Click);
+            this.searchByCategoryButton.Click += new System.EventHandler(this.SearchByCategoryButtonClick);
             // 
             // furnitureCategoryLabel
             // 
@@ -115,7 +115,7 @@
             this.styleButton.TabIndex = 28;
             this.styleButton.Text = "By Furniture Style";
             this.styleButton.UseVisualStyleBackColor = true;
-            this.styleButton.Click += new System.EventHandler(this.SearchByStyleButton_Click);
+            this.styleButton.Click += new System.EventHandler(this.SearchByStyleButtonClick);
             // 
             // furnitureStyleLabel
             // 

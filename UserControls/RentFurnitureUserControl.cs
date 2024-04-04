@@ -1,22 +1,26 @@
 ﻿using SofaSoGood.Model;
-using SofaSoGood.View;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SofaSoGood.UserControls
 {
+    /// <summary>
+    /// UserControl for Renting Furniture.
+    /// Has a reference to the SearchFurnitureUserControl.
+    /// </summary>
     public partial class RentFurnitureUserControl : UserControl
     {
 
+        /// <summary>
+        /// Field to hold reference to the SearchFurnitureUserControl.
+        /// </summary>
         private SearchFurnitureUserControl SearchFurnitureUserControl;
 
+        /// <summary>
+        /// Constructor for RentFurnitureUserControl.
+        /// Initializes components, formats the list views, and checks if member and furniture are populated.
+        /// </summary>
         public RentFurnitureUserControl()
         {
             InitializeComponent();
@@ -27,8 +31,9 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Displays a SelectedMember in the ListView.
+        /// Displays the selected member information in the ListView.
         /// </summary>
+        /// <param name="SelectedMember">The selected member.</param>
         public void DisplaySelectedMember(Member SelectedMember)
         {
             if (SelectedMember != null)
@@ -56,8 +61,9 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Displays a SelectedMember in the ListView.
+        /// Displays the selected furniture items in the ListView.
         /// </summary>
+        /// <param name="selectedFurniture">List of selected furniture.</param>
         public void DisplaySelectedFurniture(List<Furniture> selectedFurniture)
         {
             SelectedFurnitureListView.Items.Clear();
@@ -82,7 +88,7 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Formats the SelectedMember ListView programmatically.
+        /// Programmatically formats the list views for selected member and furniture.
         /// </summary>
         private void FormatSelectedMemberAndFurnitureListView()
         {
@@ -101,7 +107,12 @@ namespace SofaSoGood.UserControls
             this.CheckIfMemberAndFurniturePopulated();
         }
 
-        private void RemoveItemToolStripMenuItemClick(object sender, EventArgs e)
+        /// <summary>
+        /// Removes a selected item from the ListView when the context menu option is clicked.
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// </summary>
+        private void RemoveFurnitureToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (SelectedFurnitureListView.SelectedItems.Count > 0)
             {
@@ -119,11 +130,18 @@ namespace SofaSoGood.UserControls
             this.CheckIfMemberAndFurniturePopulated();
         }
 
+        /// <summary>
+        /// Sets the reference to the SearchFurnitureUserControl.
+        /// </summary>
+        /// <param name="searchFurnitureUserControl">The SearchFurnitureUserControl instance.</param>
         public void SetSearchFurnitureUserControl(SearchFurnitureUserControl searchFurnitureUserControl)
         {
             this.SearchFurnitureUserControl = searchFurnitureUserControl;
         }
 
+        /// <summary>
+        /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
+        /// </summary>
         public void CheckIfMemberAndFurniturePopulated()
         {
             System.Diagnostics.Debug.WriteLine(this.SelectedFurnitureListView.Items.Count);
@@ -142,11 +160,20 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// </summary>
         private void RentFurnitureButtonClick(object sender, EventArgs e)
         {
             this.ValidateRentalDates();
         }
 
+        /// <summary>
+        /// Validates the start and end dates for the furniture rental.
+        /// </summary>
+        /// <returns>True if the dates are valid, otherwise false.</returns>
         private bool ValidateRentalDates()
         {
             bool isValid = true;
@@ -166,6 +193,9 @@ namespace SofaSoGood.UserControls
             return isValid;
         }
 
+        /// <summary>
+        /// Clears the date alert label when the date picker is interacted with.
+        /// </summary>
         private void DatePickerDropDown(object sender, EventArgs e)
         {
             this.DateAlertLabel.Text = string.Empty;

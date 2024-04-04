@@ -224,7 +224,7 @@
             this.removeItemToolStripMenuItem.Name = "removeItemToolStripMenuItem";
             this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.removeItemToolStripMenuItem.Text = "Remove Item";
-            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.RemoveItemToolStripMenuItemClick);
+            this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.RemoveFurnitureToolStripMenuItemClick);
             // 
             // UseSearchFurnitureFunctionalityLabel
             // 

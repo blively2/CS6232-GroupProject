@@ -16,8 +16,11 @@ namespace SofaSoGood.UserControls
     {
         // FurnitureController instance for interacting with the database.
         private readonly FurnitureController furnitureController;
+        // List<Furniture> Selected Furniture for Display outside of this control.
         public List<Furniture> SelectedFurniture;
+        // Instance of MemberDashboard to reflect changes to Item counts in SelectedFurniture
         private MemberDashboard MemberDashboard;
+        // Instance of RentFurnitureUserControl to reflect changes to SelectedFurniture in the transaction.
         private RentFurnitureUserControl RentFurnitureUserControl;
 
         /// <summary>
@@ -49,7 +52,7 @@ namespace SofaSoGood.UserControls
         /// Event handler for clicking the Search By Category button.
         /// Retrieves a list of furniture matching the selected category and updates the ListView.
         /// </summary>
-        private void SearchByCategoryButton_Click(object sender, EventArgs e)
+        private void SearchByCategoryButtonClick(object sender, EventArgs e)
         {
             var furnitureList = furnitureController.SearchFurnitureByCategory(categoryComboBox.SelectedItem.ToString());
             PopulateFurnitureListView(furnitureList);
@@ -59,7 +62,7 @@ namespace SofaSoGood.UserControls
         /// Event handler for clicking the Search By Furniture ID button.
         /// Retrieves the furniture item matching the provided ID and updates the ListView.
         /// </summary>
-        private void SearchByFurnitureIDButton_Click(object sender, EventArgs e)
+        private void SearchByFurnitureIDButtonClick(object sender, EventArgs e)
         {
             if (int.TryParse(furnitureIDTextBox.Text, out int furnitureID))
             {
@@ -79,7 +82,7 @@ namespace SofaSoGood.UserControls
         /// Event handler for clicking the Search By Style button.
         /// Retrieves a list of furniture matching the selected style and updates the ListView.
         /// </summary>
-        private void SearchByStyleButton_Click(object sender, EventArgs e)
+        private void SearchByStyleButtonClick(object sender, EventArgs e)
         {
             var furnitureList = furnitureController.SearchFurnitureByStyle(styleComboBox.SelectedItem.ToString());
             PopulateFurnitureListView(furnitureList);
@@ -156,20 +159,18 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Ensures that the application exits properly when closed.
+        /// Sets the MemberDashboard on load.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Provides data for the FormClosed event.</param>
+        /// <param name="Dashboard">Sets the MemberDashboard as an instance variable for updating the view..</param>
         public void SetMemberDashboard(MemberDashboard Dashboard)
         {
             this.MemberDashboard = Dashboard;
         }
 
         /// <summary>
-        /// Ensures that the application exits properly when closed.
+        /// Sets the MemberDashboard on load.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Provides data for the FormClosed event.</param>
+        /// <param name="RentFurniture">Sets the RentFurnitureUserControl as an instance variable for updating its transaction.</param>
         public void SetRentFurnitureUserControl(RentFurnitureUserControl RentFurniture)
         {
             this.RentFurnitureUserControl = RentFurniture;

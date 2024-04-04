@@ -79,8 +79,7 @@ namespace SofaSoGood.View
         /// <summary>
         /// Ensures that the application exits properly when closed.
         /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Provides data for the FormClosed event.</param>
+        /// <param name="FurnitureItems">Accepts a List<Furniture> to reflect changes to item counts.</param>
         public void SelectedFurnitureChanged(List<Furniture> FurnitureItems)
         {
                 ItemsAmountLabel.Text = "Items: " + FurnitureItems.Count;
