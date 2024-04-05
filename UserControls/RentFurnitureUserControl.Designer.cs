@@ -62,6 +62,12 @@
             this.AmountToRent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectedFurnitureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RemoveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TaxTextBox = new System.Windows.Forms.TextBox();
+            this.CostTextBox = new System.Windows.Forms.TextBox();
+            this.TotalTextBox = new System.Windows.Forms.TextBox();
+            this.TaxLabel = new System.Windows.Forms.Label();
+            this.CostLabe = new System.Windows.Forms.Label();
+            this.TotalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).BeginInit();
             this.SelectedFurnitureMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -183,6 +189,7 @@
             this.StartDatePicker.Name = "StartDatePicker";
             this.StartDatePicker.Size = new System.Drawing.Size(149, 26);
             this.StartDatePicker.TabIndex = 52;
+            this.StartDatePicker.ValueChanged += new System.EventHandler(this.StartDatePickerValueChanged);
             this.StartDatePicker.DropDown += new System.EventHandler(this.DatePickerDropDown);
             // 
             // StartDateLabel
@@ -202,6 +209,7 @@
             this.EndDatePicker.Name = "EndDatePicker";
             this.EndDatePicker.Size = new System.Drawing.Size(149, 26);
             this.EndDatePicker.TabIndex = 55;
+            this.EndDatePicker.ValueChanged += new System.EventHandler(this.EndDatePickerValueChanged);
             this.EndDatePicker.DropDown += new System.EventHandler(this.DatePickerDropDown);
             // 
             // EndDateLabel
@@ -247,6 +255,7 @@
             this.SelectedFurnitureDataGridView.TabIndex = 57;
             this.SelectedFurnitureDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.SelectedFurnitureDataGridViewCellBeginEdit);
             this.SelectedFurnitureDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.SelectedFurnitureDataGridViewCellValidating);
+            this.SelectedFurnitureDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectedFurnitureDataGridViewCellValueChanged);
             // 
             // FurnitureID
             // 
@@ -298,19 +307,76 @@
             this.SelectedFurnitureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RemoveMenuItem});
             this.SelectedFurnitureMenuStrip.Name = "SelectedFurnitureMenuStrip";
-            this.SelectedFurnitureMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.SelectedFurnitureMenuStrip.Size = new System.Drawing.Size(145, 26);
             // 
             // RemoveMenuItem
             // 
             this.RemoveMenuItem.Name = "RemoveMenuItem";
-            this.RemoveMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RemoveMenuItem.Size = new System.Drawing.Size(144, 22);
             this.RemoveMenuItem.Text = "Remove Item";
             this.RemoveMenuItem.Click += new System.EventHandler(this.RemoveMenuItemClick);
+            // 
+            // TaxTextBox
+            // 
+            this.TaxTextBox.Location = new System.Drawing.Point(593, 326);
+            this.TaxTextBox.Name = "TaxTextBox";
+            this.TaxTextBox.ReadOnly = true;
+            this.TaxTextBox.Size = new System.Drawing.Size(100, 26);
+            this.TaxTextBox.TabIndex = 58;
+            // 
+            // CostTextBox
+            // 
+            this.CostTextBox.Location = new System.Drawing.Point(593, 294);
+            this.CostTextBox.Name = "CostTextBox";
+            this.CostTextBox.ReadOnly = true;
+            this.CostTextBox.Size = new System.Drawing.Size(100, 26);
+            this.CostTextBox.TabIndex = 59;
+            // 
+            // TotalTextBox
+            // 
+            this.TotalTextBox.Location = new System.Drawing.Point(593, 358);
+            this.TotalTextBox.Name = "TotalTextBox";
+            this.TotalTextBox.ReadOnly = true;
+            this.TotalTextBox.Size = new System.Drawing.Size(100, 26);
+            this.TotalTextBox.TabIndex = 60;
+            // 
+            // TaxLabel
+            // 
+            this.TaxLabel.AutoSize = true;
+            this.TaxLabel.Location = new System.Drawing.Point(549, 329);
+            this.TaxLabel.Name = "TaxLabel";
+            this.TaxLabel.Size = new System.Drawing.Size(38, 20);
+            this.TaxLabel.TabIndex = 61;
+            this.TaxLabel.Text = "Tax:";
+            // 
+            // CostLabe
+            // 
+            this.CostLabe.AutoSize = true;
+            this.CostLabe.Location = new System.Drawing.Point(541, 297);
+            this.CostLabe.Name = "CostLabe";
+            this.CostLabe.Size = new System.Drawing.Size(46, 20);
+            this.CostLabe.TabIndex = 62;
+            this.CostLabe.Text = "Cost:";
+            // 
+            // TotalLabel
+            // 
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Location = new System.Drawing.Point(539, 361);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(48, 20);
+            this.TotalLabel.TabIndex = 63;
+            this.TotalLabel.Text = "Total:";
             // 
             // RentFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TotalLabel);
+            this.Controls.Add(this.CostLabe);
+            this.Controls.Add(this.TaxLabel);
+            this.Controls.Add(this.TotalTextBox);
+            this.Controls.Add(this.CostTextBox);
+            this.Controls.Add(this.TaxTextBox);
             this.Controls.Add(this.SelectedFurnitureDataGridView);
             this.Controls.Add(this.RentFurnitureButton);
             this.Controls.Add(this.EndDatePicker);
@@ -355,6 +421,14 @@
         private System.Windows.Forms.Label EndDateLabel;
         private System.Windows.Forms.Button RentFurnitureButton;
         private System.Windows.Forms.DataGridView SelectedFurnitureDataGridView;
+        private System.Windows.Forms.ContextMenuStrip SelectedFurnitureMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem RemoveMenuItem;
+        private System.Windows.Forms.TextBox TaxTextBox;
+        private System.Windows.Forms.TextBox CostTextBox;
+        private System.Windows.Forms.TextBox TotalTextBox;
+        private System.Windows.Forms.Label TaxLabel;
+        private System.Windows.Forms.Label CostLabe;
+        private System.Windows.Forms.Label TotalLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureCategory;
@@ -364,7 +438,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountToRent;
-        private System.Windows.Forms.ContextMenuStrip SelectedFurnitureMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem RemoveMenuItem;
     }
 }

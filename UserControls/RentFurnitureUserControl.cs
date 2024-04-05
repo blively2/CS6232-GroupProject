@@ -144,7 +144,7 @@ namespace SofaSoGood.UserControls
             this.SelectedFurnitureDataGridView.BackColor = !furniturePopulated ? Color.LightGray : SystemColors.Window;
 
             this.UseSearchMemberFunctionalityLabel.Text = memberPopulated ? "" : "Please select a member.";
-            this.UseSearchFurnitureFunctionalityLabel.Text = furniturePopulated ? "Click the Furniture Table to Edit Quantities" : "Please select furniture to rent.";
+            this.UseSearchFurnitureFunctionalityLabel.Text = furniturePopulated ? "Click AmountToRent to Edit Quantities, Right Click to Remove" : "Please select furniture to rent.";
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace SofaSoGood.UserControls
                 this.DateAlertLabel.Text = "Start date cannot be in the past.";
             }
 
-            if (this.EndDatePicker.Value.Date <= this.StartDatePicker.Value.Date)
+            if (this.EndDatePicker.Value.Date < this.StartDatePicker.Value.Date)
             {
                 isValid = false;
                 this.DateAlertLabel.Text = "End date must be after the start date.";
@@ -189,6 +189,9 @@ namespace SofaSoGood.UserControls
             this.DateAlertLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Captures the beginning of edits for AmountToRent.
+        /// </summary>
         private void SelectedFurnitureDataGridViewCellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (SelectedFurnitureDataGridView.Columns[e.ColumnIndex].Name != "AmountToRent")
@@ -244,6 +247,66 @@ namespace SofaSoGood.UserControls
                 this.SearchFurnitureUserControl.RemoveFurnitureItem(furnitureIdToRemove);
             }
             this.CheckIfMemberAndFurniturePopulated();
+            UpdateCostSummary();
+        }
+
+        /// <summary>
+        /// Updates the cost for display.
+        /// </summary>
+        private void UpdateCostSummary()
+        {
+            decimal totalCost = 0m;
+            const decimal taxRate = 0.07m;
+
+            TimeSpan rentalPeriod = EndDatePicker.Value.Date - StartDatePicker.Value.Date;
+            int rentalDays = Math.Max(1, rentalPeriod.Days);
+
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                if (row.Cells["AmountToRent"].Value != null && row.Cells["RentalRatePerDay"].Value != null)
+                {
+                    int amountToRent = Convert.ToInt32(row.Cells["AmountToRent"].Value);
+                    decimal rentalRatePerDay = Convert.ToDecimal(row.Cells["RentalRatePerDay"].Value.ToString().Replace("$", ""));
+                    totalCost += (amountToRent * rentalRatePerDay) * rentalDays;
+                }
+            }
+
+            decimal tax = totalCost * taxRate;
+            decimal total = totalCost + tax;
+
+            CostTextBox.Text = totalCost.ToString("C");
+            TaxTextBox.Text = tax.ToString("C");
+            TotalTextBox.Text = total.ToString("C");
+        }
+
+        /// <summary>
+        /// Updates the cost summary when changes are made to AmountToRent
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectedFurnitureDataGridViewCellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+                UpdateCostSummary();
+        }
+
+        /// <summary>
+        /// Updates the cost summary when changes are made to EndDate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EndDatePickerValueChanged(object sender, EventArgs e)
+        {
+            UpdateCostSummary();
+        }
+
+        /// <summary>
+        /// Updates the cost summary when changes are made to StartDate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StartDatePickerValueChanged(object sender, EventArgs e)
+        {
+            UpdateCostSummary();
         }
     }
 }
