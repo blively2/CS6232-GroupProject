@@ -22,6 +22,8 @@ namespace SofaSoGood.UserControls
         private MemberDashboard MemberDashboard;
         // Instance of RentFurnitureUserControl to reflect changes to SelectedFurniture in the transaction.
         private RentFurnitureUserControl RentFurnitureUserControl;
+        // Instance of LoginForm to access LoggedInEmployee.
+        private LoginForm LoginForm;
 
         /// <summary>
         /// Constructor initializes the UserControl, the FurnitureController,

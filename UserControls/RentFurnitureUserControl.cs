@@ -1,7 +1,6 @@
 ﻿using SofaSoGood.Model;
 using System;
 using System.Collections.Generic;
-using Microsoft.VisualBasic;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -14,10 +13,11 @@ namespace SofaSoGood.UserControls
     public partial class RentFurnitureUserControl : UserControl
     {
 
-        /// <summary>
-        /// Field to hold reference to the SearchFurnitureUserControl.
-        /// </summary>
+        // Field to hold reference to the SearchFurnitureUserControl.
         private SearchFurnitureUserControl SearchFurnitureUserControl;
+
+        // Instance of LoginForm to access LoggedInEmployee.
+        private LoginForm LoginForm;
 
         /// <summary>
         /// Constructor for RentFurnitureUserControl.
@@ -120,6 +120,15 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
+        /// Sets the reference to the SearchFurnitureUserControl.
+        /// </summary>
+        /// <param name="searchFurnitureUserControl">The SearchFurnitureUserControl instance.</param>
+        public void SetLoginForm(LoginForm loginForm)
+        {
+            this.LoginForm = loginForm;
+        }
+
+        /// <summary>
         /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
         /// </summary>
         public void CheckIfMemberAndFurniturePopulated()
@@ -146,6 +155,7 @@ namespace SofaSoGood.UserControls
         private void RentFurnitureButtonClick(object sender, EventArgs e)
         {
             this.ValidateRentalDates();
+            System.Diagnostics.Debug.WriteLine(this.LoginForm.LoggedInEmployee.EmployeeID);
         }
 
         /// <summary>

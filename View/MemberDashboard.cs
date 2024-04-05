@@ -21,12 +21,13 @@ namespace SofaSoGood.View
         public MemberDashboard(LoginForm LoginForm)
         {
             InitializeComponent();
+            this.LoginForm = LoginForm;
             this.SearchMemberUserControl.SetMemberDashboard(this);
             this.SearchMemberUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
             this.SearchFurnitureUserControl.SetMemberDashboard(this);
             this.SearchFurnitureUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
+            this.RentFurnitureUserControl.SetLoginForm(this.LoginForm);
             this.RentFurnitureUserControl.SetSearchFurnitureUserControl(this.SearchFurnitureUserControl);
-            this.LoginForm = LoginForm;
         }
 
         /// <summary>

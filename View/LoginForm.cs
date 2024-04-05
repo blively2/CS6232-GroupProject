@@ -13,11 +13,12 @@ namespace SofaSoGood
     {
         // Reference to LoginController
         private readonly LoginController loginController;
-
         // Reference to EmployeeController
         private readonly EmployeeController employeeController;
         // Reference to MemberDashboard
         private readonly MemberDashboard MainDashboard;
+        // Reference to Employee that is logged in currently
+        public Employee LoggedInEmployee;
 
         /// <summary>
         /// Constructs the LoginForm and initializes its components.
@@ -44,6 +45,7 @@ namespace SofaSoGood
             {
                 int loggedInEmployeeID = loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
                 Employee loggedInEmployee = employeeController.GetEmployeeByLoginID(loggedInEmployeeID);
+                this.SetLoggedInEmployee(loggedInEmployee);
                 this.Hide();
                 this.MainDashboard.SetCurrentUserLabel(loggedInEmployee.FirstName + " " + loggedInEmployee.LastName);
                 this.MainDashboard.Show();
@@ -74,6 +76,15 @@ namespace SofaSoGood
         private void LoginFormFormClose(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Sets the LoggedInEmployee.
+        /// </summary>
+        /// <param name="PassedInEmployee">Sets the LoggedInEmployee after logging in.</param>
+        private void SetLoggedInEmployee(Employee PassedInEmployee)
+        {
+            this.LoggedInEmployee = PassedInEmployee;
         }
     }
 }
