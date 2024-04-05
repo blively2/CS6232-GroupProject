@@ -29,6 +29,7 @@ namespace SofaSoGood.UserControls
             this.FormatSelectedMemberAndFurnitureListView();
             this.CheckIfMemberAndFurniturePopulated();
             this.DateAlertLabel.Text = string.Empty;
+            SelectedFurnitureDataGridView.ContextMenuStrip = SelectedFurnitureMenuStrip;
         }
 
         /// <summary>
@@ -186,26 +187,53 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Validates the entered value of AmountToRent
+        /// </summary>
         private void SelectedFurnitureDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-                int newAmountToRent;
-                bool isValidNumber = int.TryParse(e.FormattedValue.ToString(), out newAmountToRent);
-
-                if (!isValidNumber)
+            if (SelectedFurnitureDataGridView.Columns[e.ColumnIndex].Name == "AmountToRent")
+            {
+                if (!int.TryParse(e.FormattedValue.ToString(), out int newAmountToRent))
                 {
-
-                SelectedFurnitureDataGridView[e.ColumnIndex, e.RowIndex].Value = 1;
-                    e.Cancel = true;
-                    return;
-                }
-
-                int inStockQuantity = Convert.ToInt32(SelectedFurnitureDataGridView["InStockQuantity", e.RowIndex].Value);
-                if (newAmountToRent > inStockQuantity)
-                {
-                    SelectedFurnitureDataGridView[e.ColumnIndex, e.RowIndex].Value = inStockQuantity;
-                    MessageBox.Show("The amount to rent cannot exceed the in-stock quantity.");
+                    MessageBox.Show("Please enter a valid number for the amount to rent.");
                     e.Cancel = true;
                 }
+                else
+                {
+                    int inStockQuantity = Convert.ToInt32(SelectedFurnitureDataGridView["InStockQuantity", e.RowIndex].Value);
+                    if (newAmountToRent > inStockQuantity)
+                    {
+                        MessageBox.Show("The amount to rent cannot exceed the in-stock quantity.");
+                        e.Cancel = true;
+                    }
+                    else if (newAmountToRent < 1)
+                    {
+                        MessageBox.Show("Positive Integers only.");
+                        e.Cancel = true;
+                    }
+                }
+            }
+            else
+            {
+                SelectedFurnitureDataGridView.CancelEdit();
+            }
+        }
+
+        /// <summary>
+        /// Allows the user to right click a furniture item to remove.
+        /// </summary>
+        private void RemoveMenuItemClick(object sender, EventArgs e)
+        {
+            if (SelectedFurnitureDataGridView.SelectedRows.Count == 1)
+            {
+                var selectedRow = SelectedFurnitureDataGridView.SelectedRows[0];
+                int furnitureIdToRemove = Convert.ToInt32(selectedRow.Cells["FurnitureID"].Value);
+
+                SelectedFurnitureDataGridView.Rows.Remove(selectedRow);
+                this.SearchFurnitureUserControl.RemoveFurnitureItem(furnitureIdToRemove);
+            }
+            this.CheckIfMemberAndFurniturePopulated();
         }
     }
 }

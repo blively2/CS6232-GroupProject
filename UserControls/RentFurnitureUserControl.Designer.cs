@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.SelectedMemberListView = new System.Windows.Forms.ListView();
             this.MemberID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,7 +60,10 @@
             this.InStockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountToRent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectedFurnitureMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.RemoveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).BeginInit();
+            this.SelectedFurnitureMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // SelectedMemberListView
@@ -289,6 +293,20 @@
             this.AmountToRent.HeaderText = "AmountToRent";
             this.AmountToRent.Name = "AmountToRent";
             // 
+            // SelectedFurnitureMenuStrip
+            // 
+            this.SelectedFurnitureMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RemoveMenuItem});
+            this.SelectedFurnitureMenuStrip.Name = "SelectedFurnitureMenuStrip";
+            this.SelectedFurnitureMenuStrip.Size = new System.Drawing.Size(181, 48);
+            // 
+            // RemoveMenuItem
+            // 
+            this.RemoveMenuItem.Name = "RemoveMenuItem";
+            this.RemoveMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RemoveMenuItem.Text = "Remove Item";
+            this.RemoveMenuItem.Click += new System.EventHandler(this.RemoveMenuItemClick);
+            // 
             // RentFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -307,6 +325,7 @@
             this.Name = "RentFurnitureUserControl";
             this.Size = new System.Drawing.Size(970, 398);
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).EndInit();
+            this.SelectedFurnitureMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,5 +364,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn InStockQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountToRent;
+        private System.Windows.Forms.ContextMenuStrip SelectedFurnitureMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem RemoveMenuItem;
     }
 }
