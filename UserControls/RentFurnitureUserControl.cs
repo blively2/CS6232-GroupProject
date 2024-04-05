@@ -207,9 +207,9 @@ namespace SofaSoGood.UserControls
             rentalTransaction.TotalCost = decimal.Parse(TotalTextBox.Text.Replace("$", ""));
             rentalTransaction.RentalItems = RentalItems;
 
+            this.rentalController.CreateRentalTransaction(rentalTransaction);
             var receiptForm = new ReceiptForm(rentalTransaction);
             receiptForm.ShowDialog();
-            // this.rentalController.CreateRentalTransaction(rentalTransaction);
         }
 
         /// <summary>
