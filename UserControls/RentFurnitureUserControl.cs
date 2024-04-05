@@ -206,12 +206,6 @@ namespace SofaSoGood.UserControls
             rentalTransaction.TotalCost = decimal.Parse(TotalTextBox.Text.Replace("$", ""));
             rentalTransaction.RentalItems = RentalItems;
 
-            System.Diagnostics.Debug.WriteLine(rentalTransaction.MemberID);
-            System.Diagnostics.Debug.WriteLine(rentalTransaction.EmployeeID);
-            System.Diagnostics.Debug.WriteLine(rentalTransaction.RentalDate);
-            System.Diagnostics.Debug.WriteLine(rentalTransaction.DueDate);
-            System.Diagnostics.Debug.WriteLine(rentalTransaction.TotalCost);
-
             this.rentalController.CreateRentalTransaction(rentalTransaction);
         }
 
