@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using SofaSoGood.Controller;
 
 namespace SofaSoGood.UserControls
 {
@@ -16,8 +17,14 @@ namespace SofaSoGood.UserControls
         // Field to hold reference to the SearchFurnitureUserControl.
         private SearchFurnitureUserControl SearchFurnitureUserControl;
 
+        // Field to hold reference to the SearchFurnitureUserControl.
+        private SearchMemberUserControl SearchMemberUserControl;
+
         // Instance of LoginForm to access LoggedInEmployee.
         private LoginForm LoginForm;
+
+        // Instance of RentalController
+        private RentalController rentalController;
 
         /// <summary>
         /// Constructor for RentFurnitureUserControl.
@@ -30,6 +37,7 @@ namespace SofaSoGood.UserControls
             this.CheckIfMemberAndFurniturePopulated();
             this.DateAlertLabel.Text = string.Empty;
             SelectedFurnitureDataGridView.ContextMenuStrip = SelectedFurnitureMenuStrip;
+            this.rentalController = new RentalController();
         }
 
         /// <summary>
@@ -120,6 +128,15 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
+        /// Sets the reference to the SearchMemberUserControl.
+        /// </summary>
+        /// <param name="searchMemberUserControl">The SearchMemberUserControl instance.</param>
+        public void SetSearchMemberUserControl(SearchMemberUserControl searchMemberUserControl)
+        {
+            this.SearchMemberUserControl = searchMemberUserControl;
+        }
+
+        /// <summary>
         /// Sets the reference to the SearchFurnitureUserControl.
         /// </summary>
         /// <param name="searchFurnitureUserControl">The SearchFurnitureUserControl instance.</param>
@@ -154,8 +171,47 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void RentFurnitureButtonClick(object sender, EventArgs e)
         {
-            this.ValidateRentalDates();
-            System.Diagnostics.Debug.WriteLine(this.LoginForm.LoggedInEmployee.EmployeeID);
+            if (!ValidateRentalDates())
+            {
+                return;
+            }
+
+            List<RentalItem> RentalItems = new List<RentalItem>();
+
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                if (row.Cells["FurnitureID"].Value != null && row.Cells["AmountToRent"].Value != null && row.Cells["RentalRatePerDay"].Value != null)
+                {
+                    RentalItem item = new RentalItem
+                    {
+                        FurnitureID = Convert.ToInt32(row.Cells["FurnitureID"].Value),
+                        Quantity = Convert.ToInt32(row.Cells["AmountToRent"].Value),
+                        DailyRate = Convert.ToDecimal(row.Cells["RentalRatePerDay"].Value.ToString().Replace("$", ""))
+                    };
+                    TimeSpan rentalPeriod = EndDatePicker.Value.Date - StartDatePicker.Value.Date;
+                    int rentalDays = rentalPeriod.Days + 1;
+
+                    item.DailyRate = item.Quantity * item.DailyRate;
+
+                    RentalItems.Add(item);
+                }
+            }
+
+            RentalTransaction rentalTransaction = new RentalTransaction();
+            rentalTransaction.MemberID = this.SearchMemberUserControl.SelectedMember.MemberID;
+            rentalTransaction.EmployeeID = this.LoginForm.LoggedInEmployee.EmployeeID;
+            rentalTransaction.RentalDate = StartDatePicker.Value.Date;
+            rentalTransaction.DueDate = EndDatePicker.Value.Date;
+            rentalTransaction.TotalCost = decimal.Parse(TotalTextBox.Text.Replace("$", ""));
+            rentalTransaction.RentalItems = RentalItems;
+
+            System.Diagnostics.Debug.WriteLine(rentalTransaction.MemberID);
+            System.Diagnostics.Debug.WriteLine(rentalTransaction.EmployeeID);
+            System.Diagnostics.Debug.WriteLine(rentalTransaction.RentalDate);
+            System.Diagnostics.Debug.WriteLine(rentalTransaction.DueDate);
+            System.Diagnostics.Debug.WriteLine(rentalTransaction.TotalCost);
+
+            this.rentalController.CreateRentalTransaction(rentalTransaction);
         }
 
         /// <summary>
@@ -259,7 +315,7 @@ namespace SofaSoGood.UserControls
             const decimal taxRate = 0.07m;
 
             TimeSpan rentalPeriod = EndDatePicker.Value.Date - StartDatePicker.Value.Date;
-            int rentalDays = Math.Max(1, rentalPeriod.Days);
+            int rentalDays = Math.Max(1, rentalPeriod.Days + 1);
 
             foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
             {

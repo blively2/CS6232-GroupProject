@@ -28,6 +28,7 @@ namespace SofaSoGood.View
             this.SearchFurnitureUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
             this.RentFurnitureUserControl.SetLoginForm(this.LoginForm);
             this.RentFurnitureUserControl.SetSearchFurnitureUserControl(this.SearchFurnitureUserControl);
+            this.RentFurnitureUserControl.SetSearchMemberUserControl(this.SearchMemberUserControl);
         }
 
         /// <summary>
