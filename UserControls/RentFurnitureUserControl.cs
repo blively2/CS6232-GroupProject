@@ -164,6 +164,7 @@ namespace SofaSoGood.UserControls
             this.UseSearchFurnitureFunctionalityLabel.Text = furniturePopulated ? "Click AmountToRent to Edit Quantities, Right Click to Remove" : "Please select furniture to rent.";
         }
 
+
         /// <summary>
         /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
         /// <param name="sender">The source of the event.</param>
@@ -171,7 +172,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void RentFurnitureButtonClick(object sender, EventArgs e)
         {
-            if (!ValidateRentalDates())
+            if (!ValidateRentalDates() || !ConfirmRentalTransaction())
             {
                 return;
             }
@@ -212,6 +213,36 @@ namespace SofaSoGood.UserControls
             System.Diagnostics.Debug.WriteLine(rentalTransaction.TotalCost);
 
             this.rentalController.CreateRentalTransaction(rentalTransaction);
+        }
+
+        /// <summary>
+        /// Asks the User to confirm the transaction before proceeding.
+        /// </summary>
+        /// <returns></returns>
+        private bool ConfirmRentalTransaction()
+        {
+            string confirmationMessage = "Confirm rental of the following items:\n";
+
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                string itemName = row.Cells["FurnitureName"].Value.ToString();
+                int quantity = Convert.ToInt32(row.Cells["AmountToRent"].Value);
+                confirmationMessage += $"{quantity} x {itemName}\n";
+            }
+
+                string memberName = $"{this.SearchMemberUserControl.SelectedMember.FirstName} {this.SearchMemberUserControl.SelectedMember.LastName}";
+                confirmationMessage += $"to {memberName} for ";
+
+            string totalCost = TotalTextBox.Text;
+            confirmationMessage += $"{totalCost}.";
+
+            DialogResult dialogResult = MessageBox.Show(confirmationMessage, "Confirm Rental", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
