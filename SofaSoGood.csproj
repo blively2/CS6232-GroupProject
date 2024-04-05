@@ -92,6 +92,12 @@
     <Compile Include="UserControls\SearchMemberUserControl.Designer.cs">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReceiptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReceiptForm.Designer.cs">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReceiptForm.resx">
+      <DependentUpon>ReceiptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

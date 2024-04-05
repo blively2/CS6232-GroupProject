@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using SofaSoGood.Controller;
+using SofaSoGood.View;
 
 namespace SofaSoGood.UserControls
 {
@@ -206,7 +207,9 @@ namespace SofaSoGood.UserControls
             rentalTransaction.TotalCost = decimal.Parse(TotalTextBox.Text.Replace("$", ""));
             rentalTransaction.RentalItems = RentalItems;
 
-            this.rentalController.CreateRentalTransaction(rentalTransaction);
+            var receiptForm = new ReceiptForm(rentalTransaction);
+            receiptForm.ShowDialog();
+            // this.rentalController.CreateRentalTransaction(rentalTransaction);
         }
 
         /// <summary>
