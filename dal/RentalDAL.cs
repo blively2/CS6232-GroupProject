@@ -128,5 +128,44 @@ namespace SofaSoGood.DAL
             }
             return nextId;
         }
+
+        public List<RentalTransaction> GetRentalHistoryByMemberId(int memberId)
+        {
+            List<RentalTransaction> rentalHistory = new List<RentalTransaction>();
+
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = @"
+            SELECT rt.RentalTransactionID, rt.MemberID, rt.EmployeeID, rt.RentalDate, rt.DueDate, rt.TotalCost
+            FROM [RentalTransaction] rt
+            WHERE rt.MemberID = @MemberID
+            ORDER BY rt.RentalDate DESC";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MemberID", memberId);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var rentalTransaction = new RentalTransaction
+                            {
+                                RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                                MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                                EmployeeID = reader.GetInt32(reader.GetOrdinal("EmployeeID")),
+                                RentalDate = reader.GetDateTime(reader.GetOrdinal("RentalDate")),
+                                DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate")),
+                                TotalCost = reader.GetDecimal(reader.GetOrdinal("TotalCost")),
+                            };
+
+                            rentalHistory.Add(rentalTransaction);
+                        }
+                    }
+                }
+            }
+
+            return rentalHistory;
+        }
     }
 }
