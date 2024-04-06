@@ -74,6 +74,12 @@
     <Compile Include="UserControls\EditMemberUserControl.Designer.cs">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RentalHistoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RentalHistoryUserControl.Designer.cs">
+      <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RentFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\EditMemberUserControl.resx">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\RentalHistoryUserControl.resx">
+      <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
