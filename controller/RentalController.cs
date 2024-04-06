@@ -9,9 +9,7 @@ namespace SofaSoGood.Controller
     /// </summary>
     public class RentalController
     {
-        // Data access layer for rental transactions
         private readonly RentalDAL rentalDAL;
-        // Data access layer for furniture
         private readonly FurnitureDAL furnitureDAL;
 
         /// <summary>
@@ -73,6 +71,16 @@ namespace SofaSoGood.Controller
         public int GetNextRentalTransactionID()
         {
             return rentalDAL.GetNextRentalTransactionID();
+        }
+
+        /// <summary>
+        /// Retrieves all rental transactions associated with a specific member ID.
+        /// </summary>
+        /// <param name="memberId">The ID of the member whose rental history is being requested.</param>
+        /// <returns>A list of RentalTransaction objects representing the member's rental history.</returns>
+        public List<RentalTransaction> GetRentalHistoryByMemberId(int memberId)
+        {
+            return rentalDAL.GetRentalHistoryByMemberId(memberId);
         }
     }
 }
