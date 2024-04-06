@@ -38,6 +38,8 @@ namespace SofaSoGood.UserControls
 
         public void LoadRentalHistory(int memberId)
         {
+            errorMessageLabel.Text = "";
+
             rentalHistoryDataGridView.Rows.Clear();
 
             var rentalHistory = rentalController.GetRentalHistoryByMemberId(memberId);
@@ -47,14 +49,15 @@ namespace SofaSoGood.UserControls
                 foreach (var transaction in rentalHistory)
                 {
                     rentalHistoryDataGridView.Rows.Add(transaction.RentalTransactionID,
-                                                   transaction.RentalDate.ToString("yyyy-MM-dd"),
-                                                   transaction.DueDate.ToString("yyyy-MM-dd"),
-                                                   transaction.TotalCost.ToString("C2"));
+                                                       transaction.RentalDate.ToString("yyyy-MM-dd"),
+                                                       transaction.DueDate.ToString("yyyy-MM-dd"),
+                                                       transaction.TotalCost.ToString("C2"));
                 }
             }
             else
             {
-                MessageBox.Show($"No rental history found for Member ID: {memberId}", "Rental History Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                errorMessageLabel.Text = $"No rental history found for Member ID: {memberId}";
+                errorMessageLabel.ForeColor = Color.Red;
             }
         }
 
@@ -66,7 +69,9 @@ namespace SofaSoGood.UserControls
             }
             else
             {
-                MessageBox.Show("Please enter a valid Member ID.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                errorMessageLabel.Text = "Please enter a valid Member ID.";
+                errorMessageLabel.ForeColor = Color.Red;
+
                 rentalHistoryDataGridView.Rows.Clear();
             }
         }
@@ -83,6 +88,14 @@ namespace SofaSoGood.UserControls
             memberIdTextBox.Clear();
 
             errorMessageLabel.Text = "";
+        }
+
+        private void memberIdTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(errorMessageLabel.Text))
+            {
+                errorMessageLabel.Text = "";
+            }
         }
     }
 }

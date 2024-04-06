@@ -55,6 +55,7 @@
             this.memberIdTextBox.Name = "memberIdTextBox";
             this.memberIdTextBox.Size = new System.Drawing.Size(100, 20);
             this.memberIdTextBox.TabIndex = 1;
+            this.memberIdTextBox.TextChanged += new System.EventHandler(this.memberIdTextBox_TextChanged);
             // 
             // rentalHistoryTitleLabel
             // 
