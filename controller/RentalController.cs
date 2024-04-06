@@ -27,7 +27,9 @@ namespace SofaSoGood.Controller
         /// <param name="rentalTransaction">The rental transaction to be created.</param>
         public void CreateRentalTransaction(RentalTransaction rentalTransaction)
         {
-            rentalDAL.CreateRentalTransaction(rentalTransaction);
+            int transactionId = rentalDAL.CreateRentalTransaction(rentalTransaction);
+
+            rentalTransaction.RentalTransactionID = transactionId;
 
             foreach (var item in rentalTransaction.RentalItems)
             {

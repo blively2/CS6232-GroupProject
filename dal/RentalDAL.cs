@@ -15,13 +15,13 @@ namespace SofaSoGood.DAL
         /// Creates a new rental transaction in the database and associated rental items.
         /// </summary>
         /// <param name="rentalTransaction">The rental transaction object containing the details of the transaction.</param>
-        public void CreateRentalTransaction(RentalTransaction rentalTransaction)
+        public int CreateRentalTransaction(RentalTransaction rentalTransaction)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
                 string query = "INSERT INTO [RentalTransaction] (MemberID, EmployeeID, RentalDate, DueDate, TotalCost) " +
-                               "VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost); " +
-                               "SELECT SCOPE_IDENTITY();";
+                                "VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost); " +
+                                "SELECT CAST(SCOPE_IDENTITY() as int);";
                 using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@MemberID", SqlDbType.Int).Value = rentalTransaction.MemberID;
@@ -31,12 +31,12 @@ namespace SofaSoGood.DAL
                     command.Parameters.Add("@TotalCost", SqlDbType.Decimal).Value = rentalTransaction.TotalCost;
 
                     connection.Open();
-                    int rentalTransactionId = Convert.ToInt32(command.ExecuteScalar());
+                    int rentalTransactionId = (int)command.ExecuteScalar();
 
                     foreach (var item in rentalTransaction.RentalItems)
                     {
                         string itemQuery = "INSERT INTO [RentalItem] (RentalTransactionID, FurnitureID, Quantity, DailyRate) " +
-                                           "VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate)";
+                                            "VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate)";
                         using (var itemCommand = new SqlCommand(itemQuery, connection))
                         {
                             itemCommand.Parameters.Add("@RentalTransactionID", SqlDbType.Int).Value = rentalTransactionId;
@@ -46,6 +46,7 @@ namespace SofaSoGood.DAL
                             itemCommand.ExecuteNonQuery();
                         }
                     }
+                    return rentalTransactionId;
                 }
             }
         }
