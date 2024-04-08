@@ -98,5 +98,14 @@ namespace SofaSoGood.View
         {
             EditMemberUserControl.PopulateMemberData(selectedMember);
         }
+
+        /// <summary>
+        /// Displays the rental history for a specified member.
+        /// </summary>
+        /// <param name="memberId">The ID of the member whose rental history is to be displayed.</param>
+        public void ShowMemberRentalHistory(int memberId)
+        {
+            rentalHistoryUserControl.LoadRentalHistory(memberId);
+        }
     }
 }

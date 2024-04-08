@@ -43,7 +43,7 @@ namespace SofaSoGood.View
             this.RentFurnitureTabPage = new System.Windows.Forms.TabPage();
             this.RentFurnitureUserControl = new SofaSoGood.UserControls.RentFurnitureUserControl();
             this.rentalHistoryTabPage = new System.Windows.Forms.TabPage();
-            this.rentalHistoryUserControl1 = new SofaSoGood.UserControls.RentalHistoryUserControl();
+            this.rentalHistoryUserControl = new SofaSoGood.UserControls.RentalHistoryUserControl();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.MemberSelectedLabel = new System.Windows.Forms.Label();
@@ -167,7 +167,7 @@ namespace SofaSoGood.View
             // 
             // rentalHistoryTabPage
             // 
-            this.rentalHistoryTabPage.Controls.Add(this.rentalHistoryUserControl1);
+            this.rentalHistoryTabPage.Controls.Add(this.rentalHistoryUserControl);
             this.rentalHistoryTabPage.Location = new System.Drawing.Point(4, 29);
             this.rentalHistoryTabPage.Name = "rentalHistoryTabPage";
             this.rentalHistoryTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -176,12 +176,12 @@ namespace SofaSoGood.View
             this.rentalHistoryTabPage.Text = "Rental History";
             this.rentalHistoryTabPage.UseVisualStyleBackColor = true;
             // 
-            // rentalHistoryUserControl1
+            // rentalHistoryUserControl
             // 
-            this.rentalHistoryUserControl1.Location = new System.Drawing.Point(0, 3);
-            this.rentalHistoryUserControl1.Name = "rentalHistoryUserControl1";
-            this.rentalHistoryUserControl1.Size = new System.Drawing.Size(969, 399);
-            this.rentalHistoryUserControl1.TabIndex = 0;
+            this.rentalHistoryUserControl.Location = new System.Drawing.Point(0, 3);
+            this.rentalHistoryUserControl.Name = "rentalHistoryUserControl";
+            this.rentalHistoryUserControl.Size = new System.Drawing.Size(969, 399);
+            this.rentalHistoryUserControl.TabIndex = 0;
             // 
             // WelcomeUserLabel
             // 
@@ -272,6 +272,6 @@ namespace SofaSoGood.View
         private System.Windows.Forms.Label MemberSelectedLabel;
         private System.Windows.Forms.Label ItemsAmountLabel;
         private TabPage rentalHistoryTabPage;
-        private UserControls.RentalHistoryUserControl rentalHistoryUserControl1;
+        private UserControls.RentalHistoryUserControl rentalHistoryUserControl;
     }
 }
