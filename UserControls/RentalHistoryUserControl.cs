@@ -86,7 +86,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        private void searchHistoryButton_Click(object sender, EventArgs e)
+        private void SearchHistoryButton_Click(object sender, EventArgs e)
         {
             if (int.TryParse(memberIdTextBox.Text, out int memberId))
             {
@@ -96,8 +96,8 @@ namespace SofaSoGood.UserControls
             {
                 errorMessageLabel.Text = "Please enter a valid Member ID.";
                 errorMessageLabel.ForeColor = Color.Red;
-
                 rentalHistoryDataGridView.Rows.Clear();
+                viewedMemberLabel.Text = "";
             }
         }
 
@@ -106,7 +106,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        private void clearSearchButton_Click(object sender, EventArgs e)
+        private void ClearSearchButton_Click(object sender, EventArgs e)
         {
             ClearHistoryForm();
         }
@@ -117,10 +117,9 @@ namespace SofaSoGood.UserControls
         private void ClearHistoryForm()
         {
             rentalHistoryDataGridView.Rows.Clear();
-
             memberIdTextBox.Clear();
-
             errorMessageLabel.Text = "";
+            viewedMemberLabel.Text = "";
         }
 
         /// <summary>
@@ -128,7 +127,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        private void memberIdTextBox_TextChanged(object sender, EventArgs e)
+        private void MemberIdTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(errorMessageLabel.Text))
             {

@@ -56,7 +56,7 @@
             this.memberIdTextBox.Name = "memberIdTextBox";
             this.memberIdTextBox.Size = new System.Drawing.Size(100, 20);
             this.memberIdTextBox.TabIndex = 0;
-            this.memberIdTextBox.TextChanged += new System.EventHandler(this.memberIdTextBox_TextChanged);
+            this.memberIdTextBox.TextChanged += new System.EventHandler(this.MemberIdTextBox_TextChanged);
             // 
             // rentalHistoryTitleLabel
             // 
@@ -84,7 +84,7 @@
             this.searchHistoryButton.TabIndex = 1;
             this.searchHistoryButton.Text = "Search";
             this.searchHistoryButton.UseVisualStyleBackColor = true;
-            this.searchHistoryButton.Click += new System.EventHandler(this.searchHistoryButton_Click);
+            this.searchHistoryButton.Click += new System.EventHandler(this.SearchHistoryButton_Click);
             // 
             // clearSearchButton
             // 
@@ -94,7 +94,7 @@
             this.clearSearchButton.TabIndex = 2;
             this.clearSearchButton.Text = "Clear";
             this.clearSearchButton.UseVisualStyleBackColor = true;
-            this.clearSearchButton.Click += new System.EventHandler(this.clearSearchButton_Click);
+            this.clearSearchButton.Click += new System.EventHandler(this.ClearSearchButton_Click);
             // 
             // errorMessageLabel
             // 
@@ -107,7 +107,7 @@
             // viewedMemberLabel
             // 
             this.viewedMemberLabel.AutoSize = true;
-            this.viewedMemberLabel.Location = new System.Drawing.Point(387, 45);
+            this.viewedMemberLabel.Location = new System.Drawing.Point(387, 44);
             this.viewedMemberLabel.Name = "viewedMemberLabel";
             this.viewedMemberLabel.Size = new System.Drawing.Size(0, 13);
             this.viewedMemberLabel.TabIndex = 7;
