@@ -96,7 +96,7 @@
             this.MemberListView.Location = new System.Drawing.Point(2, 84);
             this.MemberListView.MultiSelect = false;
             this.MemberListView.Name = "MemberListView";
-            this.MemberListView.Size = new System.Drawing.Size(980, 92);
+            this.MemberListView.Size = new System.Drawing.Size(746, 92);
             this.MemberListView.TabIndex = 34;
             this.MemberListView.UseCompatibleStateImageBehavior = false;
             this.MemberListView.View = System.Windows.Forms.View.Details;
@@ -162,7 +162,7 @@
             this.FurnitureDataGridView.Name = "FurnitureDataGridView";
             this.FurnitureDataGridView.RowTemplate.Height = 28;
             this.FurnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.FurnitureDataGridView.Size = new System.Drawing.Size(980, 110);
+            this.FurnitureDataGridView.Size = new System.Drawing.Size(746, 110);
             this.FurnitureDataGridView.TabIndex = 58;
             // 
             // FurnitureID
@@ -231,7 +231,7 @@
             // 
             this.TotalCostLabel.AutoSize = true;
             this.TotalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.TotalCostLabel.Location = new System.Drawing.Point(582, 363);
+            this.TotalCostLabel.Location = new System.Drawing.Point(558, 363);
             this.TotalCostLabel.Name = "TotalCostLabel";
             this.TotalCostLabel.Size = new System.Drawing.Size(108, 25);
             this.TotalCostLabel.TabIndex = 61;
@@ -242,7 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(750, 461);
             this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.DueDateLabel);
             this.Controls.Add(this.ItemsLabel);
