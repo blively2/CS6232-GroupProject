@@ -14,17 +14,9 @@ namespace SofaSoGood.UserControls
     /// </summary>
     public partial class RentFurnitureUserControl : UserControl
     {
-
-        // Field to hold reference to the SearchFurnitureUserControl.
         private SearchFurnitureUserControl SearchFurnitureUserControl;
-
-        // Field to hold reference to the SearchFurnitureUserControl.
         private SearchMemberUserControl SearchMemberUserControl;
-
-        // Instance of LoginForm to access LoggedInEmployee.
         private LoginForm LoginForm;
-
-        // Instance of RentalController
         private RentalController rentalController;
 
         /// <summary>

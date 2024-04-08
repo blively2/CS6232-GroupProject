@@ -130,6 +130,13 @@ namespace SofaSoGood.DAL
             return nextId;
         }
 
+
+        /// <summary>
+        /// Retrieves the rental history for a specific member identified by their member ID.
+        /// </summary>
+        /// <param name="memberId">The unique identifier of the member whose rental history is being requested.</param>
+        /// <returns>A list of RentalTransaction objects representing the rental transactions associated with the specified member.
+        /// The transactions are ordered by their ID in descending order, the most recent transactions appear first.</returns>
         public List<RentalTransaction> GetRentalHistoryByMemberId(int memberId)
         {
             List<RentalTransaction> rentalHistory = new List<RentalTransaction>();

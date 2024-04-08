@@ -175,6 +175,11 @@ namespace SofaSoGood.DAL
             return furnitureList;
         }
 
+        /// <summary>
+        /// Retrieves a single piece of furniture from the database based on its unique ID.
+        /// </summary>
+        /// <param name="ID">The unique identifier of the furniture to retrieve.</param>
+        /// <returns>A Furniture object if found; otherwise, null.</returns>
         public Furniture GetFurnitureID(int ID)
         {
             Furniture furniture = null;
@@ -208,6 +213,11 @@ namespace SofaSoGood.DAL
             return furniture;
         }
 
+        /// <summary>
+        /// Retrieves the daily rental rate of a specific piece of furniture based on its ID.
+        /// </summary>
+        /// <param name="furnitureId">The ID of the furniture whose daily rental rate is to be retrieved.</param>
+        /// <returns>The daily rental rate as a decimal value.</returns>
         public decimal GetFurnitureDailyRate(int furnitureId)
         {
             decimal dailyRate = 0;
@@ -224,6 +234,11 @@ namespace SofaSoGood.DAL
             return dailyRate;
         }
 
+        /// <summary>
+        /// Updates the stock quantity of a specific piece of furniture after a rental transaction.
+        /// </summary>
+        /// <param name="furnitureId">The ID of the furniture whose stock quantity is to be updated.</param>
+        /// <param name="quantityRented">The quantity of the furniture that was rented, which will be subtracted from the current stock.</param>
         public void UpdateStockQuantity(int furnitureId, int quantityRented)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
@@ -239,6 +254,10 @@ namespace SofaSoGood.DAL
             }
         }
 
+        /// <summary>
+        /// Retrieves all furniture items from the database that are currently available for rent.
+        /// </summary>
+        /// <returns>A list of Furniture objects representing all available furniture items.</returns>
         public List<Furniture> GetAvailableFurniture()
         {
             List<Furniture> availableFurniture = new List<Furniture>();
@@ -271,6 +290,10 @@ namespace SofaSoGood.DAL
             return availableFurniture;
         }
 
+        /// <summary>
+        /// Retrieves all furniture items from the database, regardless of their stock quantity.
+        /// </summary>
+        /// <returns>A list of all Furniture objects found in the database.</returns>
         public List<Furniture> GetAllFurniture()
         {
             List<Furniture> furnitureList = new List<Furniture>();
