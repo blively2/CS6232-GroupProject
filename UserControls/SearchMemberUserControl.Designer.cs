@@ -56,6 +56,7 @@
             this.Zip = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clearButton = new System.Windows.Forms.Button();
+            this.doubleClicktoSelectMemberLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -72,7 +73,7 @@
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(286, 110);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(171, 20);
+            this.phoneTextBox.Size = new System.Drawing.Size(171, 26);
             this.phoneTextBox.TabIndex = 2;
             this.phoneTextBox.Click += new System.EventHandler(this.PhoneTextBoxTextClicked);
             // 
@@ -80,7 +81,7 @@
             // 
             this.memberIDTextBox.Location = new System.Drawing.Point(286, 70);
             this.memberIDTextBox.Name = "memberIDTextBox";
-            this.memberIDTextBox.Size = new System.Drawing.Size(171, 20);
+            this.memberIDTextBox.Size = new System.Drawing.Size(171, 26);
             this.memberIDTextBox.TabIndex = 0;
             this.memberIDTextBox.Click += new System.EventHandler(this.MemberIDTextBoxClicked);
             // 
@@ -88,7 +89,7 @@
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(286, 157);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(171, 20);
+            this.firstNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.firstNameTextBox.TabIndex = 4;
             this.firstNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
@@ -96,7 +97,7 @@
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(286, 200);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(171, 20);
+            this.lastNameTextBox.Size = new System.Drawing.Size(171, 26);
             this.lastNameTextBox.TabIndex = 5;
             this.lastNameTextBox.Click += new System.EventHandler(this.NameTextBoxClicked);
             // 
@@ -115,7 +116,7 @@
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Location = new System.Drawing.Point(179, 116);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(41, 13);
+            this.phoneLabel.Size = new System.Drawing.Size(59, 20);
             this.phoneLabel.TabIndex = 21;
             this.phoneLabel.Text = "Phone:";
             // 
@@ -124,7 +125,7 @@
             this.customerIDLabel.AutoSize = true;
             this.customerIDLabel.Location = new System.Drawing.Point(179, 76);
             this.customerIDLabel.Name = "customerIDLabel";
-            this.customerIDLabel.Size = new System.Drawing.Size(62, 13);
+            this.customerIDLabel.Size = new System.Drawing.Size(92, 20);
             this.customerIDLabel.TabIndex = 20;
             this.customerIDLabel.Text = "Member ID:";
             // 
@@ -133,7 +134,7 @@
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Location = new System.Drawing.Point(179, 203);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(61, 13);
+            this.lastNameLabel.Size = new System.Drawing.Size(90, 20);
             this.lastNameLabel.TabIndex = 19;
             this.lastNameLabel.Text = "Last Name:";
             // 
@@ -142,7 +143,7 @@
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Location = new System.Drawing.Point(179, 160);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            this.firstNameLabel.Size = new System.Drawing.Size(90, 20);
             this.firstNameLabel.TabIndex = 18;
             this.firstNameLabel.Text = "First Name:";
             // 
@@ -172,7 +173,7 @@
             this.MemberIDWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.MemberIDWarningLabel.Location = new System.Drawing.Point(669, 76);
             this.MemberIDWarningLabel.Name = "MemberIDWarningLabel";
-            this.MemberIDWarningLabel.Size = new System.Drawing.Size(90, 13);
+            this.MemberIDWarningLabel.Size = new System.Drawing.Size(133, 20);
             this.MemberIDWarningLabel.TabIndex = 29;
             this.MemberIDWarningLabel.Text = "Invalid MemberID";
             // 
@@ -182,7 +183,7 @@
             this.phoneWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.phoneWarningLabel.Location = new System.Drawing.Point(669, 116);
             this.phoneWarningLabel.Name = "phoneWarningLabel";
-            this.phoneWarningLabel.Size = new System.Drawing.Size(75, 13);
+            this.phoneWarningLabel.Size = new System.Drawing.Size(108, 20);
             this.phoneWarningLabel.TabIndex = 30;
             this.phoneWarningLabel.Text = "Invalid Phone ";
             // 
@@ -192,7 +193,7 @@
             this.nameWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.nameWarningLabel.Location = new System.Drawing.Point(669, 163);
             this.nameWarningLabel.Name = "nameWarningLabel";
-            this.nameWarningLabel.Size = new System.Drawing.Size(69, 13);
+            this.nameWarningLabel.Size = new System.Drawing.Size(100, 20);
             this.nameWarningLabel.TabIndex = 31;
             this.nameWarningLabel.Text = "Invalid Name";
             // 
@@ -275,9 +276,20 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButtonClick);
             // 
+            // doubleClicktoSelectMemberLabel
+            // 
+            this.doubleClicktoSelectMemberLabel.AutoSize = true;
+            this.doubleClicktoSelectMemberLabel.ForeColor = System.Drawing.Color.Black;
+            this.doubleClicktoSelectMemberLabel.Location = new System.Drawing.Point(346, 255);
+            this.doubleClicktoSelectMemberLabel.Name = "doubleClicktoSelectMemberLabel";
+            this.doubleClicktoSelectMemberLabel.Size = new System.Drawing.Size(230, 20);
+            this.doubleClicktoSelectMemberLabel.TabIndex = 50;
+            this.doubleClicktoSelectMemberLabel.Text = "Double Click to Select Member.";
+            // 
             // SearchMemberUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.doubleClicktoSelectMemberLabel);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.memberListView);
             this.Controls.Add(this.nameWarningLabel);
@@ -332,5 +344,6 @@
         private System.Windows.Forms.ColumnHeader Zip;
         private System.Windows.Forms.ColumnHeader Phone;
         private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label doubleClicktoSelectMemberLabel;
     }
 }

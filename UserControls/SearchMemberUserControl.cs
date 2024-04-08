@@ -32,6 +32,7 @@ namespace SofaSoGood.UserControls
             phoneWarningLabel.Text = string.Empty;
             nameWarningLabel.Text = string.Empty;
             memberListView.Hide();
+            this.doubleClicktoSelectMemberLabel.Hide();
         }
 
         /// <summary>
@@ -139,7 +140,10 @@ namespace SofaSoGood.UserControls
                 column.Width = -2;
             }
 
-            memberListView.Visible = members.Count > 0;
+            if (members.Count > 0) {
+                memberListView.Show();
+                doubleClicktoSelectMemberLabel.Show();
+            }
 
             memberListView.Refresh();
         }
@@ -160,6 +164,7 @@ namespace SofaSoGood.UserControls
             nameWarningLabel.Text = string.Empty;
             memberListView.Items.Clear();
             memberListView.Hide();
+            doubleClicktoSelectMemberLabel.Hide();
         }
 
         /// <summary>
@@ -202,6 +207,7 @@ namespace SofaSoGood.UserControls
         private void ClearFieldsExcept(string field)
         {
             memberListView.Hide();
+            doubleClicktoSelectMemberLabel.Hide();
             if (field != "memberID") memberIDTextBox.Clear();
             if (field != "phone") phoneTextBox.Clear();
             if (field != "name")
