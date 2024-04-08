@@ -196,22 +196,34 @@ namespace SofaSoGood.UserControls
             this.MemberDashboard.SelectedFurnitureChanged(this.SelectedFurniture);
         }
 
+        /// <summary>
+        /// Hides the returned FurnitureID is modified.
+        /// </summary>
         private void FurnitureIDTextBoxTextChanged(object sender, EventArgs e)
         {
-            this.ClearFurnitureList();
+            this.VisibilityFurnitureList();
         }
 
+        /// <summary>
+        /// Hides the returned categoryComboBox is modified.
+        /// </summary>
         private void CategoryComboBoxDropDown(object sender, EventArgs e)
         {
-            this.ClearFurnitureList();
+            this.VisibilityFurnitureList();
         }
 
+        /// <summary>
+        /// Hides the returned styleComboBox is modified.
+        /// </summary>
         private void StyleComboBoxDropDown(object sender, EventArgs e)
         {
-            this.ClearFurnitureList();
+            this.VisibilityFurnitureList();
         }
 
-        private void ClearFurnitureList()
+        /// <summary>
+        /// Hides the ListView returned from the search.
+        /// </summary>
+        private void VisibilityFurnitureList()
         {
             this.furnitureListView.Hide();
         }
