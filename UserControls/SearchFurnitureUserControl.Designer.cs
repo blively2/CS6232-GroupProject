@@ -50,6 +50,7 @@
             this.RentalRatePerDay = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.InStockQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TotalQuantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.doubleClicktoSelectFurnitureLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -66,7 +67,7 @@
             // 
             this.furnitureIDTextBox.Location = new System.Drawing.Point(278, 76);
             this.furnitureIDTextBox.Name = "furnitureIDTextBox";
-            this.furnitureIDTextBox.Size = new System.Drawing.Size(171, 20);
+            this.furnitureIDTextBox.Size = new System.Drawing.Size(171, 26);
             this.furnitureIDTextBox.TabIndex = 21;
             this.furnitureIDTextBox.TextChanged += new System.EventHandler(this.FurnitureIDTextBoxTextChanged);
             // 
@@ -85,7 +86,7 @@
             this.furnitureIDLabel.AutoSize = true;
             this.furnitureIDLabel.Location = new System.Drawing.Point(124, 83);
             this.furnitureIDLabel.Name = "furnitureIDLabel";
-            this.furnitureIDLabel.Size = new System.Drawing.Size(65, 13);
+            this.furnitureIDLabel.Size = new System.Drawing.Size(98, 20);
             this.furnitureIDLabel.TabIndex = 23;
             this.furnitureIDLabel.Text = "Furniture ID:";
             // 
@@ -104,7 +105,7 @@
             this.furnitureCategoryLabel.AutoSize = true;
             this.furnitureCategoryLabel.Location = new System.Drawing.Point(124, 118);
             this.furnitureCategoryLabel.Name = "furnitureCategoryLabel";
-            this.furnitureCategoryLabel.Size = new System.Drawing.Size(96, 13);
+            this.furnitureCategoryLabel.Size = new System.Drawing.Size(145, 20);
             this.furnitureCategoryLabel.TabIndex = 26;
             this.furnitureCategoryLabel.Text = "Furniture Category:";
             // 
@@ -123,7 +124,7 @@
             this.furnitureStyleLabel.AutoSize = true;
             this.furnitureStyleLabel.Location = new System.Drawing.Point(124, 158);
             this.furnitureStyleLabel.Name = "furnitureStyleLabel";
-            this.furnitureStyleLabel.Size = new System.Drawing.Size(77, 13);
+            this.furnitureStyleLabel.Size = new System.Drawing.Size(116, 20);
             this.furnitureStyleLabel.TabIndex = 29;
             this.furnitureStyleLabel.Text = "Furniture Style:";
             // 
@@ -133,7 +134,7 @@
             this.furnitureIDWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.furnitureIDWarningLabel.Location = new System.Drawing.Point(708, 83);
             this.furnitureIDWarningLabel.Name = "furnitureIDWarningLabel";
-            this.furnitureIDWarningLabel.Size = new System.Drawing.Size(0, 13);
+            this.furnitureIDWarningLabel.Size = new System.Drawing.Size(0, 20);
             this.furnitureIDWarningLabel.TabIndex = 30;
             // 
             // categoryWarningLabel
@@ -142,7 +143,7 @@
             this.categoryWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.categoryWarningLabel.Location = new System.Drawing.Point(708, 121);
             this.categoryWarningLabel.Name = "categoryWarningLabel";
-            this.categoryWarningLabel.Size = new System.Drawing.Size(124, 13);
+            this.categoryWarningLabel.Size = new System.Drawing.Size(186, 20);
             this.categoryWarningLabel.TabIndex = 31;
             this.categoryWarningLabel.Text = "Invalid FurnitureCategory";
             // 
@@ -152,7 +153,7 @@
             this.styleWarningLabel.ForeColor = System.Drawing.Color.Red;
             this.styleWarningLabel.Location = new System.Drawing.Point(708, 158);
             this.styleWarningLabel.Name = "styleWarningLabel";
-            this.styleWarningLabel.Size = new System.Drawing.Size(64, 13);
+            this.styleWarningLabel.Size = new System.Drawing.Size(93, 20);
             this.styleWarningLabel.TabIndex = 32;
             this.styleWarningLabel.Text = "Invalid Style";
             // 
@@ -162,7 +163,7 @@
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(278, 118);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(171, 21);
+            this.categoryComboBox.Size = new System.Drawing.Size(171, 28);
             this.categoryComboBox.TabIndex = 46;
             this.categoryComboBox.DropDown += new System.EventHandler(this.CategoryComboBoxDropDown);
             // 
@@ -172,7 +173,7 @@
             this.styleComboBox.FormattingEnabled = true;
             this.styleComboBox.Location = new System.Drawing.Point(278, 158);
             this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(171, 21);
+            this.styleComboBox.Size = new System.Drawing.Size(171, 28);
             this.styleComboBox.TabIndex = 47;
             this.styleComboBox.DropDown += new System.EventHandler(this.StyleComboBoxDropDown);
             // 
@@ -237,9 +238,20 @@
             this.TotalQuantity.Text = "Total Quantity";
             this.TotalQuantity.Width = 90;
             // 
+            // doubleClicktoSelectFurnitureLabel
+            // 
+            this.doubleClicktoSelectFurnitureLabel.AutoSize = true;
+            this.doubleClicktoSelectFurnitureLabel.ForeColor = System.Drawing.Color.Black;
+            this.doubleClicktoSelectFurnitureLabel.Location = new System.Drawing.Point(325, 250);
+            this.doubleClicktoSelectFurnitureLabel.Name = "doubleClicktoSelectFurnitureLabel";
+            this.doubleClicktoSelectFurnitureLabel.Size = new System.Drawing.Size(236, 20);
+            this.doubleClicktoSelectFurnitureLabel.TabIndex = 49;
+            this.doubleClicktoSelectFurnitureLabel.Text = "Double Click to Select Furniture.";
+            // 
             // SearchFurnitureUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.doubleClicktoSelectFurnitureLabel);
             this.Controls.Add(this.furnitureListView);
             this.Controls.Add(this.styleComboBox);
             this.Controls.Add(this.categoryComboBox);
@@ -285,5 +297,6 @@
         private System.Windows.Forms.ColumnHeader RentalRatePerDay;
         private System.Windows.Forms.ColumnHeader InStockQuantity;
         private System.Windows.Forms.ColumnHeader TotalQuantity;
+        private System.Windows.Forms.Label doubleClicktoSelectFurnitureLabel;
     }
 }
