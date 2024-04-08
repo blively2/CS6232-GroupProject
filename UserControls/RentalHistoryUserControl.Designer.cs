@@ -43,54 +43,60 @@
             this.rentalHistoryDataGridView.AllowUserToAddRows = false;
             this.rentalHistoryDataGridView.AllowUserToDeleteRows = false;
             this.rentalHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.rentalHistoryDataGridView.Location = new System.Drawing.Point(3, 73);
+            this.rentalHistoryDataGridView.Location = new System.Drawing.Point(4, 112);
+            this.rentalHistoryDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rentalHistoryDataGridView.Name = "rentalHistoryDataGridView";
             this.rentalHistoryDataGridView.ReadOnly = true;
-            this.rentalHistoryDataGridView.Size = new System.Drawing.Size(638, 197);
+            this.rentalHistoryDataGridView.Size = new System.Drawing.Size(957, 303);
             this.rentalHistoryDataGridView.TabIndex = 0;
             // 
             // memberIdTextBox
             // 
-            this.memberIdTextBox.Location = new System.Drawing.Point(119, 42);
+            this.memberIdTextBox.Location = new System.Drawing.Point(178, 65);
+            this.memberIdTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.memberIdTextBox.Name = "memberIdTextBox";
-            this.memberIdTextBox.Size = new System.Drawing.Size(100, 20);
-            this.memberIdTextBox.TabIndex = 1;
+            this.memberIdTextBox.Size = new System.Drawing.Size(148, 26);
+            this.memberIdTextBox.TabIndex = 0;
             this.memberIdTextBox.TextChanged += new System.EventHandler(this.memberIdTextBox_TextChanged);
             // 
             // rentalHistoryTitleLabel
             // 
             this.rentalHistoryTitleLabel.AutoSize = true;
-            this.rentalHistoryTitleLabel.Location = new System.Drawing.Point(257, 13);
+            this.rentalHistoryTitleLabel.Location = new System.Drawing.Point(386, 20);
+            this.rentalHistoryTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.rentalHistoryTitleLabel.Name = "rentalHistoryTitleLabel";
-            this.rentalHistoryTitleLabel.Size = new System.Drawing.Size(99, 13);
+            this.rentalHistoryTitleLabel.Size = new System.Drawing.Size(147, 20);
             this.rentalHistoryTitleLabel.TabIndex = 2;
             this.rentalHistoryTitleLabel.Text = "View Rental History";
             // 
             // memberIdLabel
             // 
             this.memberIdLabel.AutoSize = true;
-            this.memberIdLabel.Location = new System.Drawing.Point(51, 47);
+            this.memberIdLabel.Location = new System.Drawing.Point(76, 72);
+            this.memberIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.memberIdLabel.Name = "memberIdLabel";
-            this.memberIdLabel.Size = new System.Drawing.Size(62, 13);
+            this.memberIdLabel.Size = new System.Drawing.Size(92, 20);
             this.memberIdLabel.TabIndex = 3;
             this.memberIdLabel.Text = "Member ID:";
             // 
             // searchHistoryButton
             // 
-            this.searchHistoryButton.Location = new System.Drawing.Point(225, 39);
+            this.searchHistoryButton.Location = new System.Drawing.Point(338, 60);
+            this.searchHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchHistoryButton.Name = "searchHistoryButton";
-            this.searchHistoryButton.Size = new System.Drawing.Size(75, 23);
-            this.searchHistoryButton.TabIndex = 4;
+            this.searchHistoryButton.Size = new System.Drawing.Size(112, 35);
+            this.searchHistoryButton.TabIndex = 1;
             this.searchHistoryButton.Text = "Search";
             this.searchHistoryButton.UseVisualStyleBackColor = true;
             this.searchHistoryButton.Click += new System.EventHandler(this.searchHistoryButton_Click);
             // 
             // clearSearchButton
             // 
-            this.clearSearchButton.Location = new System.Drawing.Point(306, 39);
+            this.clearSearchButton.Location = new System.Drawing.Point(459, 60);
+            this.clearSearchButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clearSearchButton.Name = "clearSearchButton";
-            this.clearSearchButton.Size = new System.Drawing.Size(75, 23);
-            this.clearSearchButton.TabIndex = 5;
+            this.clearSearchButton.Size = new System.Drawing.Size(112, 35);
+            this.clearSearchButton.TabIndex = 2;
             this.clearSearchButton.Text = "Clear";
             this.clearSearchButton.UseVisualStyleBackColor = true;
             this.clearSearchButton.Click += new System.EventHandler(this.clearSearchButton_Click);
@@ -98,14 +104,15 @@
             // errorMessageLabel
             // 
             this.errorMessageLabel.AutoSize = true;
-            this.errorMessageLabel.Location = new System.Drawing.Point(387, 44);
+            this.errorMessageLabel.Location = new System.Drawing.Point(580, 68);
+            this.errorMessageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorMessageLabel.Size = new System.Drawing.Size(0, 20);
             this.errorMessageLabel.TabIndex = 6;
             // 
             // RentalHistoryUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.clearSearchButton);
@@ -114,8 +121,9 @@
             this.Controls.Add(this.rentalHistoryTitleLabel);
             this.Controls.Add(this.memberIdTextBox);
             this.Controls.Add(this.rentalHistoryDataGridView);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RentalHistoryUserControl";
-            this.Size = new System.Drawing.Size(644, 277);
+            this.Size = new System.Drawing.Size(966, 426);
             ((System.ComponentModel.ISupportInitialize)(this.rentalHistoryDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
