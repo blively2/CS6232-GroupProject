@@ -52,6 +52,7 @@
             this.rentalHistoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.rentalHistoryDataGridView.Size = new System.Drawing.Size(957, 303);
             this.rentalHistoryDataGridView.TabIndex = 0;
+            this.rentalHistoryDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RentalHistoryDataGridViewCellMouseDoubleClick);
             // 
             // memberIdTextBox
             // 

@@ -1,4 +1,6 @@
 ﻿using SofaSoGood.Controller;
+using SofaSoGood.Model;
+using SofaSoGood.View;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -132,6 +134,24 @@ namespace SofaSoGood.UserControls
             if (!string.IsNullOrEmpty(errorMessageLabel.Text))
             {
                 errorMessageLabel.Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Double clicking a transaction in Rental History displays the itemized ReceiptForm
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
+        private void RentalHistoryDataGridViewCellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var row = rentalHistoryDataGridView.Rows[e.RowIndex];
+                int rentalTransactionID = Convert.ToInt32(row.Cells["RentalTransactionID"].Value);
+                RentalTransaction TransactionToDisplay =this.rentalController.GetRentalTransaction(rentalTransactionID);
+
+                var receiptForm = new ReceiptForm(TransactionToDisplay);
+                receiptForm.ShowDialog();
             }
         }
     }
