@@ -19,7 +19,7 @@ namespace SofaSoGood.View
             TransactionIDLabel.Text = "Transaction Number: " + this.rentalTransaction.RentalTransactionID.ToString();
             this.PopulateMemberListView();
             this.DisplayFurniture(this.rentalTransaction.RentalItems);
-            DueDateLabel.Text = "Due Date: " + this.rentalTransaction.DueDate.ToString();
+            DueDateLabel.Text = "Due Date: " + this.rentalTransaction.DueDate.ToShortDateString();
             TotalCostLabel.Text = "Total Cost: $" + this.rentalTransaction.TotalCost.ToString();
         }
 
