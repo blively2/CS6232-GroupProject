@@ -214,6 +214,7 @@ namespace SofaSoGood.UserControls
             receiptForm.ShowDialog();
             this.SelectedFurnitureDataGridView.Rows.Clear();
             this.SearchFurnitureUserControl.ClearSelectedFurniture();
+            this.UpdateCostSummary();
         }
 
         /// <summary>
