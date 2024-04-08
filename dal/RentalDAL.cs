@@ -140,7 +140,7 @@ namespace SofaSoGood.DAL
             SELECT rt.RentalTransactionID, rt.MemberID, rt.EmployeeID, rt.RentalDate, rt.DueDate, rt.TotalCost
             FROM [RentalTransaction] rt
             WHERE rt.MemberID = @MemberID
-            ORDER BY rt.RentalDate DESC";
+            ORDER BY rt.RentalTransactionID DESC";
 
                 using (var command = new SqlCommand(query, connection))
                 {
