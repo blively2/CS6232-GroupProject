@@ -88,6 +88,12 @@ namespace SofaSoGood.View
                 ItemsAmountLabel.Text = "Items: " + FurnitureItems.Count;
         }
 
+        /// <summary>
+        /// Invokes the method to populate the edit member form with the selected member's data.
+        /// This method is intended to be called when a member is selected from a list, 
+        /// preparing the EditMemberUserControl for data editing.
+        /// </summary>
+        /// <param name="selectedMember">The member selected from the list, whose data will be displayed on the form for editing.</param>
         public void PopulateEditMemberForm(Member selectedMember)
         {
             EditMemberUserControl.PopulateMemberData(selectedMember);

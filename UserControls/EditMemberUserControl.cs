@@ -98,6 +98,14 @@ namespace SofaSoGood.UserControls
             }
         }
 
+
+        /// <summary>
+        /// Populates the form fields with data from the specified member.
+        /// This method fills in all the editable fields on the form based on the member's details
+        /// and makes the fields editable for potential updates.
+        /// </summary>
+        /// <param name="member">The member whose information is to be displayed on the form. 
+        /// If null, the method will exit without altering the form.</param>
         public void PopulateMemberData(Member member)
         {
             if (member == null) return;
