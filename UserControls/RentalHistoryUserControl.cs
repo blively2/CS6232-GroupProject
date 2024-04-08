@@ -14,6 +14,7 @@ namespace SofaSoGood.UserControls
         /// Controller for rental operations.
         /// </summary>
         private RentalController rentalController;
+        private MemberController memberController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalHistoryUserControl"/> class.
@@ -23,6 +24,7 @@ namespace SofaSoGood.UserControls
             InitializeComponent();
             InitializeDataGridView();
             rentalController = new RentalController();
+            memberController = new MemberController();
         }
 
         /// <summary>
@@ -49,25 +51,33 @@ namespace SofaSoGood.UserControls
         public void LoadRentalHistory(int memberId)
         {
             errorMessageLabel.Text = "";
-
             rentalHistoryDataGridView.Rows.Clear();
 
             var rentalHistory = rentalController.GetRentalHistoryByMemberId(memberId);
+            var member = memberController.GetMemberById(memberId);
 
             if (rentalHistory.Count > 0)
             {
+                if (member != null)
+                {
+                    viewedMemberLabel.Text = $"Viewing rentals for: {member.FirstName} {member.LastName}";
+                }
+
                 foreach (var transaction in rentalHistory)
                 {
-                    rentalHistoryDataGridView.Rows.Add(transaction.RentalTransactionID,
-                                                       transaction.RentalDate.ToString("yyyy-MM-dd"),
-                                                       transaction.DueDate.ToString("yyyy-MM-dd"),
-                                                       transaction.TotalCost.ToString("C2"));
+                    rentalHistoryDataGridView.Rows.Add(
+                        transaction.RentalTransactionID,
+                        transaction.RentalDate.ToString("yyyy-MM-dd"),
+                        transaction.DueDate.ToString("yyyy-MM-dd"),
+                        transaction.TotalCost.ToString("C2")
+                    );
                 }
             }
             else
             {
                 errorMessageLabel.Text = $"No rental history found for Member ID: {memberId}";
                 errorMessageLabel.ForeColor = Color.Red;
+                viewedMemberLabel.Text = "";
             }
         }
 
