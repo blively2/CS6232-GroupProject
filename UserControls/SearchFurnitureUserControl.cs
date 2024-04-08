@@ -195,5 +195,25 @@ namespace SofaSoGood.UserControls
             SelectedFurniture.Clear();
             this.MemberDashboard.SelectedFurnitureChanged(this.SelectedFurniture);
         }
+
+        private void FurnitureIDTextBoxTextChanged(object sender, EventArgs e)
+        {
+            this.ClearFurnitureList();
+        }
+
+        private void CategoryComboBoxDropDown(object sender, EventArgs e)
+        {
+            this.ClearFurnitureList();
+        }
+
+        private void StyleComboBoxDropDown(object sender, EventArgs e)
+        {
+            this.ClearFurnitureList();
+        }
+
+        private void ClearFurnitureList()
+        {
+            this.furnitureListView.Hide();
+        }
     }
 }

@@ -68,6 +68,7 @@
             this.furnitureIDTextBox.Name = "furnitureIDTextBox";
             this.furnitureIDTextBox.Size = new System.Drawing.Size(171, 26);
             this.furnitureIDTextBox.TabIndex = 21;
+            this.furnitureIDTextBox.TextChanged += new System.EventHandler(this.FurnitureIDTextBoxTextChanged);
             // 
             // searchByFurnitureIDButton
             // 
@@ -163,6 +164,7 @@
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(171, 28);
             this.categoryComboBox.TabIndex = 46;
+            this.categoryComboBox.DropDown += new System.EventHandler(this.CategoryComboBoxDropDown);
             // 
             // styleComboBox
             // 
@@ -172,6 +174,7 @@
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(171, 28);
             this.styleComboBox.TabIndex = 47;
+            this.styleComboBox.DropDown += new System.EventHandler(this.StyleComboBoxDropDown);
             // 
             // furnitureListView
             // 
