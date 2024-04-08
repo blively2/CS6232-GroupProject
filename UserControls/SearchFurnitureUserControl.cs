@@ -33,6 +33,7 @@ namespace SofaSoGood.UserControls
             furnitureController = new FurnitureController();
             PopulateCategoryAndStyleComboboxes();
             this.furnitureListView.Hide();
+            this.doubleClicktoSelectFurnitureLabel.Hide();
             SelectedFurniture = new List<Furniture>();
             this.categoryWarningLabel.Text = string.Empty;
             this.styleWarningLabel.Text = string.Empty;
@@ -118,8 +119,12 @@ namespace SofaSoGood.UserControls
             {
                 column.Width = -2;
             }
+            
+                if (furnitureList.Count > 0) {
+                furnitureListView.Visible = true;
+                this.doubleClicktoSelectFurnitureLabel.Visible = true;
+            }
 
-            furnitureListView.Visible = furnitureList.Count > 0;
 
             furnitureListView.Refresh();
 
@@ -226,6 +231,7 @@ namespace SofaSoGood.UserControls
         private void VisibilityFurnitureList()
         {
             this.furnitureListView.Hide();
+            this.doubleClicktoSelectFurnitureLabel.Hide();
         }
     }
 }
