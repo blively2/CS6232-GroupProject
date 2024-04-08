@@ -14,3 +14,11 @@ Username: user3
 Password: password3
 
 Database Creation located in Iteration 1: Deliverables folder.
+
+Workflow
+Add Member
+Edit Member
+
+Search a Member, double click to Select Member
+Search furniture, double click to Select Furniture, populates in Rent Furniture
+Receipt after successful transaction
