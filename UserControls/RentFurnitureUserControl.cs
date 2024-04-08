@@ -165,7 +165,7 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void RentFurnitureButtonClick(object sender, EventArgs e)
         {
-            if (!ValidateRentalDates() || !ConfirmRentalTransaction())
+            if (!ValidateRentalDates() || !ConfirmRentalTransaction() || !ValidateRentalQuantities())
             {
                 return;
             }
@@ -210,9 +210,32 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
+        /// Validates AmountToRent does not exceed InStockQuantity
+        /// </summary>
+        /// <returns>true if valid, false otherwise</returns>
+        private bool ValidateRentalQuantities()
+        {
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                if (row.Cells["AmountToRent"].Value != null && row.Cells["InStockQuantity"].Value != null)
+                {
+                    int amountToRent = Convert.ToInt32(row.Cells["AmountToRent"].Value);
+                    int inStockQuantity = Convert.ToInt32(row.Cells["InStockQuantity"].Value);
+
+                    if (amountToRent > inStockQuantity)
+                    {
+                        MessageBox.Show("Amount to rent can not exceed stock.");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Asks the User to confirm the transaction before proceeding.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>boolean for confirmation</returns>
         private bool ConfirmRentalTransaction()
         {
             string confirmationMessage = "Confirm rental of the following items:\n";
@@ -389,5 +412,6 @@ namespace SofaSoGood.UserControls
         {
             UpdateCostSummary();
         }
+
     }
 }
