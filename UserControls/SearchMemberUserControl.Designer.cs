@@ -162,7 +162,7 @@
             this.searchByNameButton.Name = "searchByNameButton";
             this.searchByNameButton.Size = new System.Drawing.Size(200, 30);
             this.searchByNameButton.TabIndex = 6;
-            this.searchByNameButton.Text = "By Name";
+            this.searchByNameButton.Text = "By First and/or Last Name";
             this.searchByNameButton.UseVisualStyleBackColor = true;
             this.searchByNameButton.Click += new System.EventHandler(this.SearchByNameButtonClick);
             // 

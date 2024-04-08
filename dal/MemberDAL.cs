@@ -138,11 +138,11 @@ namespace SofaSoGood.DAL
             List<Member> members = new List<Member>();
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
-                string query = "SELECT * FROM [Member] WHERE FirstName = @FirstName AND LastName = @LastName";
+                string query = "SELECT * FROM [Member] WHERE (@FirstName = '' OR FirstName LIKE @FirstName) AND (@LastName = '' OR LastName LIKE @LastName)";
                 using (var command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = firstName;
-                    command.Parameters.Add("@LastName", SqlDbType.VarChar, 200).Value = lastName;
+                    command.Parameters.AddWithValue("@FirstName", firstName + "%");
+                    command.Parameters.AddWithValue("@LastName", lastName + "%");
                     connection.Open();
                     using (var reader = command.ExecuteReader())
                     {

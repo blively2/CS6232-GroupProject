@@ -87,21 +87,27 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void SearchByNameButtonClick(object sender, System.EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(firstNameTextBox.Text) || string.IsNullOrWhiteSpace(lastNameTextBox.Text))
+            string firstName = firstNameTextBox.Text.Trim();
+            string lastName = lastNameTextBox.Text.Trim();
+
+            List<Member> members = new List<Member>();
+
+            if (!string.IsNullOrEmpty(firstName) || !string.IsNullOrEmpty(lastName))
             {
-                nameWarningLabel.Text = "Fill both fields";
+                members = memberController.GetMemberByName(firstName, lastName);
             }
             else
             {
-                List<Member> members = memberController.GetMemberByName(firstNameTextBox.Text, lastNameTextBox.Text);
-                if (members != null && members.Count > 0)
-                {
-                    this.DisplayFoundMembers(members);
-                }
-                else
-                {
-                    nameWarningLabel.Text = "No Members found";
-                }
+                nameWarningLabel.Text = "Please enter at least a first or a last name.";
+            }
+
+            if (members.Count > 0)
+            {
+                this.DisplayFoundMembers(members);
+            }
+            else if (string.IsNullOrEmpty(nameWarningLabel.Text))
+            {
+                nameWarningLabel.Text = "No Members found";
             }
         }
 
