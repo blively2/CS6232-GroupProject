@@ -212,10 +212,12 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Double Clicking a ListView item changes the SelectedMember accordingly.
+        /// Handles the double-click event on a ListView item representing a member. 
+        /// It sets the selected member in various parts of the application, including displaying the member's data
+        /// in the rent furniture user control, and preparing the edit member form with the member's details for editing.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">Event data that provides context about the double click action.</param>
         private void MemberListViewDoubleClick(object sender, EventArgs e)
         {
             if (memberListView.SelectedItems.Count == 1)
