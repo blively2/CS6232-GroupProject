@@ -13,6 +13,8 @@ namespace SofaSoGood.View
         private RentalTransaction rentalTransaction;
         private MemberController memberController;
         private FurnitureController furnitureController;
+        private EmployeeController employeeController;
+        private Employee RentedByEmployee;
 
         /// <summary>
         /// Constructs a new ReceiptForm.
@@ -23,11 +25,14 @@ namespace SofaSoGood.View
             this.rentalTransaction = rentalTransaction;
             this.memberController = new MemberController();
             this.furnitureController = new FurnitureController();
+            this.employeeController = new EmployeeController();
             TransactionIDLabel.Text = "Transaction Number: " + this.rentalTransaction.RentalTransactionID.ToString();
             this.PopulateMemberListView();
             this.DisplayFurniture(this.rentalTransaction.RentalItems);
+            this.RentedByEmployee = this.employeeController.GetEmployeeByEmployeeID(rentalTransaction.EmployeeID);
             DueDateLabel.Text = "Due Date: " + this.rentalTransaction.DueDate.ToShortDateString();
             TotalCostLabel.Text = "Total Cost: $" + this.rentalTransaction.TotalCost.ToString();
+            RentedByLabel.Text = "Rented By: " + this.RentedByEmployee.FirstName + RentedByEmployee.LastName;
         }
 
         /// <summary>

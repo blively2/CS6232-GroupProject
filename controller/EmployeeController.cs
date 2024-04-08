@@ -18,9 +18,20 @@ namespace SofaSoGood.Controller
             employeeDAL = new EmployeeDAL();
         }
 
+        /// <summary>
+        /// Gets an Employee by LoginID.
+        /// </summary>
         public Employee GetEmployeeByLoginID(int LoginID)
         {
             return employeeDAL.GetEmployeeByLoginID(LoginID);
+        }
+
+        /// <summary>
+        /// Gets an Employee by EmployeeID.
+        /// </summary>
+        public Employee GetEmployeeByEmployeeID(int EmployeeID)
+        {
+            return employeeDAL.GetEmployeeByEmployeeID(EmployeeID);
         }
     }
 }

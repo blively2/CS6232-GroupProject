@@ -54,6 +54,7 @@
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.DueDateLabel = new System.Windows.Forms.Label();
             this.TotalCostLabel = new System.Windows.Forms.Label();
+            this.RentedByLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FurnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,12 +238,23 @@
             this.TotalCostLabel.TabIndex = 61;
             this.TotalCostLabel.Text = "Total Cost:";
             // 
+            // RentedByLabel
+            // 
+            this.RentedByLabel.AutoSize = true;
+            this.RentedByLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.RentedByLabel.Location = new System.Drawing.Point(12, 427);
+            this.RentedByLabel.Name = "RentedByLabel";
+            this.RentedByLabel.Size = new System.Drawing.Size(108, 25);
+            this.RentedByLabel.TabIndex = 62;
+            this.RentedByLabel.Text = "Rented By:";
+            // 
             // ReceiptForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(750, 461);
+            this.Controls.Add(this.RentedByLabel);
             this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.DueDateLabel);
             this.Controls.Add(this.ItemsLabel);
@@ -290,5 +302,6 @@
         private System.Windows.Forms.Label ItemsLabel;
         private System.Windows.Forms.Label DueDateLabel;
         private System.Windows.Forms.Label TotalCostLabel;
+        private System.Windows.Forms.Label RentedByLabel;
     }
 }
