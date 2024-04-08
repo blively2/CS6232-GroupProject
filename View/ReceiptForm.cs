@@ -5,11 +5,18 @@ using System.Windows.Forms;
 
 namespace SofaSoGood.View
 {
+    /// <summary>
+    /// ReceiptForm that displays after a successful transaction and when doubleclicking order history.
+    /// </summary>
     public partial class ReceiptForm : Form
     {
         private RentalTransaction rentalTransaction;
         private MemberController memberController;
         private FurnitureController furnitureController;
+
+        /// <summary>
+        /// Constructs a new ReceiptForm.
+        /// </summary>
         public ReceiptForm(RentalTransaction rentalTransaction)
         {
             InitializeComponent();
@@ -23,6 +30,9 @@ namespace SofaSoGood.View
             TotalCostLabel.Text = "Total Cost: $" + this.rentalTransaction.TotalCost.ToString();
         }
 
+        /// <summary>
+        /// Populates the Member for the Receipt.
+        /// </summary>
         private void PopulateMemberListView()
         {
             Member member = this.memberController.GetMemberById(this.rentalTransaction.MemberID);
