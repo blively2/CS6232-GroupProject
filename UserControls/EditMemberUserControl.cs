@@ -98,6 +98,25 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        public void PopulateMemberData(Member member)
+        {
+            if (member == null) return;
+
+            memberIDTextBox.Text = member.MemberID.ToString();
+            firstNameTextBox.Text = member.FirstName;
+            lastNameTextBox.Text = member.LastName;
+            genderComboBox.SelectedItem = member.Gender == "M" ? "Male" : member.Gender == "F" ? "Female" : null;
+            dateOfBirthDatePicker.Value = member.DateOfBirth;
+            address1TextBox.Text = member.Address1;
+            address2TextBox.Text = member.Address2 ?? "";
+            cityTextBox.Text = member.City;
+            stateComboBox.SelectedItem = member.State;
+            zipTextBox.Text = member.Zip;
+            contactTextBox.Text = member.ContactPhone;
+
+            EnableEditableFields();
+        }
+
         /// <summary>
         /// Enables the editable fields.
         /// </summary>

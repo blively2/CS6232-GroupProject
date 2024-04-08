@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using SofaSoGood.Model;
 using System.Collections.Generic;
+using SofaSoGood.UserControls;
 
 namespace SofaSoGood.View
 {
@@ -85,6 +86,11 @@ namespace SofaSoGood.View
         public void SelectedFurnitureChanged(List<Furniture> FurnitureItems)
         {
                 ItemsAmountLabel.Text = "Items: " + FurnitureItems.Count;
+        }
+
+        public void PopulateEditMemberForm(Member selectedMember)
+        {
+            EditMemberUserControl.PopulateMemberData(selectedMember);
         }
     }
 }

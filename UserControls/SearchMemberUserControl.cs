@@ -228,6 +228,7 @@ namespace SofaSoGood.UserControls
                     SelectedMember = ChosenMember;
                     this.MemberDashboard.SelectedMemberChanged(SelectedMember);
                     this.RentFurnitureUserControl.DisplaySelectedMember(SelectedMember);
+                    MemberDashboard.PopulateEditMemberForm(ChosenMember);
                 }
             }
         }
