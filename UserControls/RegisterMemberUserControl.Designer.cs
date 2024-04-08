@@ -202,7 +202,7 @@
             this.lastNameTextBox.Location = new System.Drawing.Point(128, 117);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(154, 26);
-            this.lastNameTextBox.TabIndex = 13;
+            this.lastNameTextBox.TabIndex = 1;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // firstNameTextBox
@@ -211,7 +211,7 @@
             this.firstNameTextBox.Location = new System.Drawing.Point(128, 61);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(154, 26);
-            this.firstNameTextBox.TabIndex = 14;
+            this.firstNameTextBox.TabIndex = 0;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // address1TextBox
@@ -220,7 +220,7 @@
             this.address1TextBox.Location = new System.Drawing.Point(128, 267);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(154, 26);
-            this.address1TextBox.TabIndex = 15;
+            this.address1TextBox.TabIndex = 4;
             this.address1TextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // address2TextBox
@@ -229,7 +229,7 @@
             this.address2TextBox.Location = new System.Drawing.Point(574, 61);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(157, 26);
-            this.address2TextBox.TabIndex = 16;
+            this.address2TextBox.TabIndex = 5;
             this.address2TextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // cityTextBox
@@ -238,7 +238,7 @@
             this.cityTextBox.Location = new System.Drawing.Point(574, 117);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(157, 26);
-            this.cityTextBox.TabIndex = 17;
+            this.cityTextBox.TabIndex = 6;
             this.cityTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // zipTextBox
@@ -247,7 +247,7 @@
             this.zipTextBox.Location = new System.Drawing.Point(574, 215);
             this.zipTextBox.Name = "zipTextBox";
             this.zipTextBox.Size = new System.Drawing.Size(157, 26);
-            this.zipTextBox.TabIndex = 19;
+            this.zipTextBox.TabIndex = 8;
             this.zipTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // contactPhoneTextBox
@@ -256,7 +256,7 @@
             this.contactPhoneTextBox.Location = new System.Drawing.Point(574, 266);
             this.contactPhoneTextBox.Name = "contactPhoneTextBox";
             this.contactPhoneTextBox.Size = new System.Drawing.Size(157, 26);
-            this.contactPhoneTextBox.TabIndex = 20;
+            this.contactPhoneTextBox.TabIndex = 9;
             this.contactPhoneTextBox.TextChanged += new System.EventHandler(this.Input_TextChanged);
             // 
             // dateOfBirthDatePicker
@@ -266,7 +266,7 @@
             this.dateOfBirthDatePicker.Location = new System.Drawing.Point(128, 215);
             this.dateOfBirthDatePicker.Name = "dateOfBirthDatePicker";
             this.dateOfBirthDatePicker.Size = new System.Drawing.Size(154, 26);
-            this.dateOfBirthDatePicker.TabIndex = 21;
+            this.dateOfBirthDatePicker.TabIndex = 3;
             this.dateOfBirthDatePicker.ValueChanged += new System.EventHandler(this.Input_Changed);
             // 
             // genderComboBox
@@ -277,7 +277,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(128, 168);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(154, 28);
-            this.genderComboBox.TabIndex = 22;
+            this.genderComboBox.TabIndex = 2;
             this.genderComboBox.SelectedIndexChanged += new System.EventHandler(this.Input_Changed);
             // 
             // firstNameAlertLabel
@@ -298,7 +298,7 @@
             this.stateComboBox.Location = new System.Drawing.Point(574, 168);
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(157, 28);
-            this.stateComboBox.TabIndex = 24;
+            this.stateComboBox.TabIndex = 7;
             // 
             // lastNameAlertLabel
             // 

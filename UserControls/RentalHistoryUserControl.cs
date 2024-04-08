@@ -1,20 +1,23 @@
 ﻿using SofaSoGood.Controller;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SofaSoGood.UserControls
 {
+    /// <summary>
+    /// Represents the user control used to display a customer's rental history.
+    /// </summary>
     public partial class RentalHistoryUserControl : UserControl
     {
+        /// <summary>
+        /// Controller for rental operations.
+        /// </summary>
         private RentalController rentalController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentalHistoryUserControl"/> class.
+        /// </summary>
         public RentalHistoryUserControl()
         {
             InitializeComponent();
@@ -22,6 +25,9 @@ namespace SofaSoGood.UserControls
             rentalController = new RentalController();
         }
 
+        /// <summary>
+        /// Sets up columns and their formatting in the DataGridView for displaying rental transactions.
+        /// </summary>
         private void InitializeDataGridView()
         {
             rentalHistoryDataGridView.Columns.Add("RentalTransactionID", "Transaction ID");
@@ -36,6 +42,10 @@ namespace SofaSoGood.UserControls
             rentalHistoryDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        /// <summary>
+        /// Loads and displays the rental history for a specified member ID.
+        /// </summary>
+        /// <param name="memberId">The member ID whose rental history is to be displayed.</param>
         public void LoadRentalHistory(int memberId)
         {
             errorMessageLabel.Text = "";
@@ -61,6 +71,11 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the click event on the search history button to initiate the rental history search.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void searchHistoryButton_Click(object sender, EventArgs e)
         {
             if (int.TryParse(memberIdTextBox.Text, out int memberId))
@@ -76,11 +91,19 @@ namespace SofaSoGood.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the click event on the clear search button to reset the form.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void clearSearchButton_Click(object sender, EventArgs e)
         {
             ClearHistoryForm();
         }
 
+        /// <summary>
+        /// Clears the history form and resets it to its initial state.
+        /// </summary>
         private void ClearHistoryForm()
         {
             rentalHistoryDataGridView.Rows.Clear();
@@ -90,6 +113,11 @@ namespace SofaSoGood.UserControls
             errorMessageLabel.Text = "";
         }
 
+        /// <summary>
+        /// Handles changes in the text of the member ID text box, clearing the error message if any text is present.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void memberIdTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(errorMessageLabel.Text))
