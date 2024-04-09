@@ -22,3 +22,4 @@ Edit Member
 Search a Member, double click to Select Member
 Search furniture, double click to Select Furniture, populates in Rent Furniture
 Receipt after successful transaction
+Rental History defaults to SelectedMember
