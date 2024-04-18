@@ -201,7 +201,7 @@ namespace SofaSoGood.UserControls
 
 
 
-            this.rentalController.CreateRentalTransaction(rentalTransaction);
+            this.rentalController.CreateRentalTransactionWithInventoryUpdate(rentalTransaction);
             var receiptForm = new ReceiptForm(rentalTransaction);
             receiptForm.ShowDialog();
             this.SelectedFurnitureDataGridView.Rows.Clear();

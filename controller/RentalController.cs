@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Transactions;
+using System.Collections.Generic;
 using SofaSoGood.DAL;
 using SofaSoGood.Model;
 
@@ -83,6 +85,30 @@ namespace SofaSoGood.Controller
         public List<RentalTransaction> GetRentalHistoryByMemberId(int memberId)
         {
             return rentalDAL.GetRentalHistoryByMemberId(memberId);
+        }
+
+        public void CreateRentalTransactionWithInventoryUpdate(RentalTransaction rentalTransaction)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    int transactionId = rentalDAL.CreateRentalTransaction(rentalTransaction);
+
+                    rentalTransaction.RentalTransactionID = transactionId;
+
+                    foreach (var item in rentalTransaction.RentalItems)
+                    {
+                        furnitureDAL.UpdateStockQuantity(item.FurnitureID, item.Quantity);
+                    }
+                    scope.Complete();
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }
