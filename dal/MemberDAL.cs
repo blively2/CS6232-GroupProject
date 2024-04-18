@@ -133,13 +133,16 @@ namespace SofaSoGood.DAL
         /// <param name="firstName">The member's first name.</param>
         /// <param name="lastName">The member's last name.</param>
         /// <returns></returns>
-        public List<Member> GetMembersByName(string firstName, string lastName)
-        {
-            List<Member> members = new List<Member>();
-            using (var connection = SofaSoGoodDBConnection.GetConnection())
-            {
-                string query = "SELECT * FROM [Member] WHERE (@FirstName = '' OR FirstName LIKE @FirstName) AND (@LastName = '' OR LastName LIKE @LastName)";
-                using (var command = new SqlCommand(query, connection))
+		public List<Member> GetMembersByName(string firstName, string lastName)
+		{
+			List<Member> members = new List<Member>();
+			using (var connection = SofaSoGoodDBConnection.GetConnection())
+			{
+				string query = @"
+			        SELECT * FROM [Member] 
+			        WHERE (@FirstName = '' OR LOWER(FirstName) LIKE LOWER(@FirstName)) 
+			        AND (@LastName = '' OR LOWER(LastName) LIKE LOWER(@LastName))";
+				using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@FirstName", firstName + "%");
                     command.Parameters.AddWithValue("@LastName", lastName + "%");
