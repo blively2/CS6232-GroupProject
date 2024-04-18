@@ -52,17 +52,21 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\RentalController.cs" />
+    <Compile Include="Controller\ReturnController.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\LoginDAL.cs" />
     <Compile Include="DAL\CS6232-g3DBConnection.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\RentalDAL.cs" />
+    <Compile Include="DAL\ReturnDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\RentalItem.cs" />
     <Compile Include="Model\RentalTransaction.cs" />
+    <Compile Include="Model\ReturnItem.cs" />
+    <Compile Include="Model\ReturnTransaction.cs" />
     <Compile Include="UserControls\RegisterMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
