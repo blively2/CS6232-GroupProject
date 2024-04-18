@@ -47,7 +47,7 @@ namespace SofaSoGood.UserControls
         {
             firstNameTextBox.ReadOnly = true;
             lastNameTextBox.ReadOnly = true;
-            genderComboBox.Enabled = false;
+            genderComboBox.Enabled = true;
             dateOfBirthDatePicker.Enabled = false;
             address1TextBox.ReadOnly = true;
             address2TextBox.ReadOnly = true;
