@@ -72,7 +72,7 @@
             // 
             this.MemberLabel.AutoSize = true;
             this.MemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.MemberLabel.Location = new System.Drawing.Point(12, 56);
+            this.MemberLabel.Location = new System.Drawing.Point(12, 34);
             this.MemberLabel.Name = "MemberLabel";
             this.MemberLabel.Size = new System.Drawing.Size(90, 25);
             this.MemberLabel.TabIndex = 1;
@@ -94,10 +94,10 @@
             this.Phone});
             this.MemberListView.FullRowSelect = true;
             this.MemberListView.HideSelection = false;
-            this.MemberListView.Location = new System.Drawing.Point(2, 84);
+            this.MemberListView.Location = new System.Drawing.Point(2, 62);
             this.MemberListView.MultiSelect = false;
             this.MemberListView.Name = "MemberListView";
-            this.MemberListView.Size = new System.Drawing.Size(746, 92);
+            this.MemberListView.Size = new System.Drawing.Size(746, 61);
             this.MemberListView.TabIndex = 34;
             this.MemberListView.UseCompatibleStateImageBehavior = false;
             this.MemberListView.View = System.Windows.Forms.View.Details;
@@ -158,12 +158,12 @@
             this.Description,
             this.RentalRatePerDay,
             this.Quantity});
-            this.FurnitureDataGridView.Location = new System.Drawing.Point(2, 232);
+            this.FurnitureDataGridView.Location = new System.Drawing.Point(2, 154);
             this.FurnitureDataGridView.MultiSelect = false;
             this.FurnitureDataGridView.Name = "FurnitureDataGridView";
             this.FurnitureDataGridView.RowTemplate.Height = 28;
             this.FurnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.FurnitureDataGridView.Size = new System.Drawing.Size(746, 110);
+            this.FurnitureDataGridView.Size = new System.Drawing.Size(746, 234);
             this.FurnitureDataGridView.TabIndex = 58;
             // 
             // FurnitureID
@@ -212,7 +212,7 @@
             // 
             this.ItemsLabel.AutoSize = true;
             this.ItemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.ItemsLabel.Location = new System.Drawing.Point(12, 204);
+            this.ItemsLabel.Location = new System.Drawing.Point(12, 126);
             this.ItemsLabel.Name = "ItemsLabel";
             this.ItemsLabel.Size = new System.Drawing.Size(65, 25);
             this.ItemsLabel.TabIndex = 59;
@@ -222,7 +222,7 @@
             // 
             this.DueDateLabel.AutoSize = true;
             this.DueDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.DueDateLabel.Location = new System.Drawing.Point(12, 363);
+            this.DueDateLabel.Location = new System.Drawing.Point(12, 391);
             this.DueDateLabel.Name = "DueDateLabel";
             this.DueDateLabel.Size = new System.Drawing.Size(100, 25);
             this.DueDateLabel.TabIndex = 60;
@@ -232,7 +232,7 @@
             // 
             this.TotalCostLabel.AutoSize = true;
             this.TotalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.TotalCostLabel.Location = new System.Drawing.Point(558, 363);
+            this.TotalCostLabel.Location = new System.Drawing.Point(558, 391);
             this.TotalCostLabel.Name = "TotalCostLabel";
             this.TotalCostLabel.Size = new System.Drawing.Size(108, 25);
             this.TotalCostLabel.TabIndex = 61;
