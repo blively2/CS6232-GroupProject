@@ -88,8 +88,8 @@
             this.Phone});
             this.SelectedMemberListView.FullRowSelect = true;
             this.SelectedMemberListView.HideSelection = false;
-            this.SelectedMemberListView.Location = new System.Drawing.Point(0, 31);
-            this.SelectedMemberListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SelectedMemberListView.Location = new System.Drawing.Point(0, 24);
+            this.SelectedMemberListView.Margin = new System.Windows.Forms.Padding(2);
             this.SelectedMemberListView.MultiSelect = false;
             this.SelectedMemberListView.Name = "SelectedMemberListView";
             this.SelectedMemberListView.Size = new System.Drawing.Size(648, 41);
@@ -144,11 +144,11 @@
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.TitleLabel.Location = new System.Drawing.Point(258, 0);
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.Location = new System.Drawing.Point(252, 0);
             this.TitleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(165, 29);
+            this.TitleLabel.Size = new System.Drawing.Size(149, 25);
             this.TitleLabel.TabIndex = 34;
             this.TitleLabel.Text = "Rent Furniture";
             // 
@@ -156,7 +156,7 @@
             // 
             this.UseSearchMemberFunctionalityLabel.AutoSize = true;
             this.UseSearchMemberFunctionalityLabel.ForeColor = System.Drawing.Color.Black;
-            this.UseSearchMemberFunctionalityLabel.Location = new System.Drawing.Point(2, 16);
+            this.UseSearchMemberFunctionalityLabel.Location = new System.Drawing.Point(2, 9);
             this.UseSearchMemberFunctionalityLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.UseSearchMemberFunctionalityLabel.Name = "UseSearchMemberFunctionalityLabel";
             this.UseSearchMemberFunctionalityLabel.Size = new System.Drawing.Size(125, 13);
@@ -167,7 +167,7 @@
             // 
             this.UseSearchFurnitureFunctionalityLabel.AutoSize = true;
             this.UseSearchFurnitureFunctionalityLabel.ForeColor = System.Drawing.Color.Black;
-            this.UseSearchFurnitureFunctionalityLabel.Location = new System.Drawing.Point(2, 190);
+            this.UseSearchFurnitureFunctionalityLabel.Location = new System.Drawing.Point(2, 215);
             this.UseSearchFurnitureFunctionalityLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.UseSearchFurnitureFunctionalityLabel.Name = "UseSearchFurnitureFunctionalityLabel";
             this.UseSearchFurnitureFunctionalityLabel.Size = new System.Drawing.Size(320, 13);
@@ -179,7 +179,7 @@
             this.DateAlertLabel.AutoSize = true;
             this.DateAlertLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateAlertLabel.ForeColor = System.Drawing.Color.Red;
-            this.DateAlertLabel.Location = new System.Drawing.Point(168, 213);
+            this.DateAlertLabel.Location = new System.Drawing.Point(456, 212);
             this.DateAlertLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DateAlertLabel.Name = "DateAlertLabel";
             this.DateAlertLabel.Size = new System.Drawing.Size(97, 20);
@@ -190,8 +190,8 @@
             // 
             this.StartDatePicker.Enabled = false;
             this.StartDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.StartDatePicker.Location = new System.Drawing.Point(65, 213);
-            this.StartDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StartDatePicker.Location = new System.Drawing.Point(64, 233);
+            this.StartDatePicker.Margin = new System.Windows.Forms.Padding(2);
             this.StartDatePicker.Name = "StartDatePicker";
             this.StartDatePicker.Size = new System.Drawing.Size(101, 20);
             this.StartDatePicker.TabIndex = 52;
@@ -201,7 +201,7 @@
             // StartDateLabel
             // 
             this.StartDateLabel.AutoSize = true;
-            this.StartDateLabel.Location = new System.Drawing.Point(3, 216);
+            this.StartDateLabel.Location = new System.Drawing.Point(2, 236);
             this.StartDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StartDateLabel.Name = "StartDateLabel";
             this.StartDateLabel.Size = new System.Drawing.Size(58, 13);
@@ -212,8 +212,8 @@
             // 
             this.EndDatePicker.Enabled = false;
             this.EndDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.EndDatePicker.Location = new System.Drawing.Point(65, 233);
-            this.EndDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EndDatePicker.Location = new System.Drawing.Point(231, 233);
+            this.EndDatePicker.Margin = new System.Windows.Forms.Padding(2);
             this.EndDatePicker.Name = "EndDatePicker";
             this.EndDatePicker.Size = new System.Drawing.Size(101, 20);
             this.EndDatePicker.TabIndex = 55;
@@ -223,7 +223,7 @@
             // EndDateLabel
             // 
             this.EndDateLabel.AutoSize = true;
-            this.EndDateLabel.Location = new System.Drawing.Point(3, 237);
+            this.EndDateLabel.Location = new System.Drawing.Point(169, 237);
             this.EndDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EndDateLabel.Name = "EndDateLabel";
             this.EndDateLabel.Size = new System.Drawing.Size(55, 13);
@@ -233,10 +233,10 @@
             // RentFurnitureButton
             // 
             this.RentFurnitureButton.Enabled = false;
-            this.RentFurnitureButton.Location = new System.Drawing.Point(513, 211);
-            this.RentFurnitureButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RentFurnitureButton.Location = new System.Drawing.Point(557, 232);
+            this.RentFurnitureButton.Margin = new System.Windows.Forms.Padding(2);
             this.RentFurnitureButton.Name = "RentFurnitureButton";
-            this.RentFurnitureButton.Size = new System.Drawing.Size(113, 23);
+            this.RentFurnitureButton.Size = new System.Drawing.Size(88, 23);
             this.RentFurnitureButton.TabIndex = 56;
             this.RentFurnitureButton.Text = "Rent";
             this.RentFurnitureButton.UseVisualStyleBackColor = true;
@@ -256,13 +256,13 @@
             this.InStockQuantity,
             this.TotalQuantity,
             this.AmountToRent});
-            this.SelectedFurnitureDataGridView.Location = new System.Drawing.Point(0, 89);
-            this.SelectedFurnitureDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SelectedFurnitureDataGridView.Location = new System.Drawing.Point(0, 69);
+            this.SelectedFurnitureDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.SelectedFurnitureDataGridView.MultiSelect = false;
             this.SelectedFurnitureDataGridView.Name = "SelectedFurnitureDataGridView";
             this.SelectedFurnitureDataGridView.RowTemplate.Height = 28;
             this.SelectedFurnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(647, 98);
+            this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(647, 140);
             this.SelectedFurnitureDataGridView.TabIndex = 57;
             this.SelectedFurnitureDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.SelectedFurnitureDataGridViewCellBeginEdit);
             this.SelectedFurnitureDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.SelectedFurnitureDataGridViewCellValidating);
@@ -329,8 +329,8 @@
             // 
             // TaxTextBox
             // 
-            this.TaxTextBox.Location = new System.Drawing.Point(395, 212);
-            this.TaxTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TaxTextBox.Location = new System.Drawing.Point(377, 234);
+            this.TaxTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.TaxTextBox.Name = "TaxTextBox";
             this.TaxTextBox.ReadOnly = true;
             this.TaxTextBox.Size = new System.Drawing.Size(68, 20);
@@ -338,8 +338,8 @@
             // 
             // CostTextBox
             // 
-            this.CostTextBox.Location = new System.Drawing.Point(395, 191);
-            this.CostTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CostTextBox.Location = new System.Drawing.Point(377, 213);
+            this.CostTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.CostTextBox.Name = "CostTextBox";
             this.CostTextBox.ReadOnly = true;
             this.CostTextBox.Size = new System.Drawing.Size(68, 20);
@@ -347,8 +347,8 @@
             // 
             // TotalTextBox
             // 
-            this.TotalTextBox.Location = new System.Drawing.Point(395, 233);
-            this.TotalTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TotalTextBox.Location = new System.Drawing.Point(485, 236);
+            this.TotalTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.TotalTextBox.Name = "TotalTextBox";
             this.TotalTextBox.ReadOnly = true;
             this.TotalTextBox.Size = new System.Drawing.Size(68, 20);
@@ -357,7 +357,7 @@
             // TaxLabel
             // 
             this.TaxLabel.AutoSize = true;
-            this.TaxLabel.Location = new System.Drawing.Point(366, 214);
+            this.TaxLabel.Location = new System.Drawing.Point(348, 236);
             this.TaxLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TaxLabel.Name = "TaxLabel";
             this.TaxLabel.Size = new System.Drawing.Size(28, 13);
@@ -367,7 +367,7 @@
             // CostLabe
             // 
             this.CostLabe.AutoSize = true;
-            this.CostLabe.Location = new System.Drawing.Point(361, 193);
+            this.CostLabe.Location = new System.Drawing.Point(345, 217);
             this.CostLabe.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CostLabe.Name = "CostLabe";
             this.CostLabe.Size = new System.Drawing.Size(31, 13);
@@ -377,7 +377,7 @@
             // TotalLabel
             // 
             this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(359, 235);
+            this.TotalLabel.Location = new System.Drawing.Point(449, 238);
             this.TotalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(34, 13);
@@ -405,7 +405,7 @@
             this.Controls.Add(this.UseSearchMemberFunctionalityLabel);
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.SelectedMemberListView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RentFurnitureUserControl";
             this.Size = new System.Drawing.Size(647, 259);
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).EndInit();

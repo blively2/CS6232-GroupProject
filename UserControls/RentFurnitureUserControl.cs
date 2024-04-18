@@ -412,6 +412,5 @@ namespace SofaSoGood.UserControls
         {
             UpdateCostSummary();
         }
-
     }
 }
