@@ -175,5 +175,116 @@ namespace SofaSoGood.DAL
 
             return rentalHistory;
         }
+
+        public RentalItem GetRentalItemById(int rentalItemId)
+        {
+            RentalItem rentalItem = null;
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT * FROM [RentalItem] WHERE RentalItemID = @RentalItemID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RentalItemID", rentalItemId);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            rentalItem = new RentalItem
+                            {
+                                RentalItemID = rentalItemId,
+                                RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                                FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
+                                DailyRate = reader.GetDecimal(reader.GetOrdinal("DailyRate"))
+                            };
+                        }
+                    }
+                }
+            }
+            return rentalItem;
+        }
+
+        public void UpdateRentalItemQuantity(int rentalItemId, int newQuantity)
+        {
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "UPDATE [RentalItem] SET Quantity = @Quantity WHERE RentalItemID = @RentalItemID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RentalItemID", rentalItemId);
+                    command.Parameters.AddWithValue("@Quantity", newQuantity);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public RentalTransaction GetRentalTransactionByRentalItemId(int rentalItemId)
+        {
+            RentalTransaction rentalTransaction = null;
+
+            string query = @"
+        SELECT rt.* 
+        FROM [RentalTransaction] rt
+        JOIN [RentalItem] ri ON rt.RentalTransactionID = ri.RentalTransactionID
+        WHERE ri.RentalItemID = @RentalItemID";
+
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@RentalItemID", rentalItemId);
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        rentalTransaction = new RentalTransaction
+                        {
+                            RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                            MemberID = reader.GetInt32(reader.GetOrdinal("MemberID")),
+                            EmployeeID = reader.GetInt32(reader.GetOrdinal("EmployeeID")),
+                            RentalDate = reader.GetDateTime(reader.GetOrdinal("RentalDate")),
+                            DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate")),
+                            TotalCost = reader.GetDecimal(reader.GetOrdinal("TotalCost")),
+                            RentalItems = GetRentalItemsByTransactionId(reader.GetInt32(reader.GetOrdinal("RentalTransactionID")))
+                        };
+                    }
+                }
+            }
+
+            return rentalTransaction;
+        }
+
+        private List<RentalItem> GetRentalItemsByTransactionId(int rentalTransactionId)
+        {
+            List<RentalItem> rentalItems = new List<RentalItem>();
+
+            string itemQuery = "SELECT * FROM [RentalItem] WHERE RentalTransactionID = @RentalTransactionID";
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            using (var command = new SqlCommand(itemQuery, connection))
+            {
+                command.Parameters.AddWithValue("@RentalTransactionID", rentalTransactionId);
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var rentalItem = new RentalItem
+                        {
+                            RentalItemID = reader.GetInt32(reader.GetOrdinal("RentalItemID")),
+                            RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                            FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                            Quantity = reader.GetInt32(reader.GetOrdinal("Quantity")),
+                            DailyRate = reader.GetDecimal(reader.GetOrdinal("DailyRate"))
+                        };
+                        rentalItems.Add(rentalItem);
+                    }
+                }
+            }
+
+            return rentalItems;
+        }
     }
 }
