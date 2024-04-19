@@ -48,6 +48,9 @@ namespace SofaSoGood.View
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.MemberSelectedLabel = new System.Windows.Forms.Label();
             this.ItemsAmountLabel = new System.Windows.Forms.Label();
+            this.BuildReturnTabPage = new System.Windows.Forms.TabPage();
+            this.ReturnFurnitureTabPage = new System.Windows.Forms.TabPage();
+            this.ReturnHistoryTabPage = new System.Windows.Forms.TabPage();
             this.MainDashboardTabControl.SuspendLayout();
             this.RegisterMemberTabPage.SuspendLayout();
             this.EditMemberTabPage.SuspendLayout();
@@ -65,6 +68,9 @@ namespace SofaSoGood.View
             this.MainDashboardTabControl.Controls.Add(this.SearchFurnitureTabPage);
             this.MainDashboardTabControl.Controls.Add(this.RentFurnitureTabPage);
             this.MainDashboardTabControl.Controls.Add(this.rentalHistoryTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.BuildReturnTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.ReturnFurnitureTabPage);
+            this.MainDashboardTabControl.Controls.Add(this.ReturnHistoryTabPage);
             this.MainDashboardTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainDashboardTabControl.Location = new System.Drawing.Point(0, 0);
             this.MainDashboardTabControl.Name = "MainDashboardTabControl";
@@ -97,7 +103,7 @@ namespace SofaSoGood.View
             this.EditMemberTabPage.Controls.Add(this.EditMemberUserControl);
             this.EditMemberTabPage.Location = new System.Drawing.Point(4, 29);
             this.EditMemberTabPage.Name = "EditMemberTabPage";
-            this.EditMemberTabPage.Size = new System.Drawing.Size(192, 67);
+            this.EditMemberTabPage.Size = new System.Drawing.Size(972, 402);
             this.EditMemberTabPage.TabIndex = 2;
             this.EditMemberTabPage.Text = "Edit Member";
             this.EditMemberTabPage.UseVisualStyleBackColor = true;
@@ -107,7 +113,7 @@ namespace SofaSoGood.View
             this.EditMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EditMemberUserControl.Location = new System.Drawing.Point(0, 0);
             this.EditMemberUserControl.Name = "EditMemberUserControl";
-            this.EditMemberUserControl.Size = new System.Drawing.Size(192, 67);
+            this.EditMemberUserControl.Size = new System.Drawing.Size(972, 402);
             this.EditMemberUserControl.TabIndex = 0;
             // 
             // SearchMemberTabPage
@@ -115,7 +121,7 @@ namespace SofaSoGood.View
             this.SearchMemberTabPage.Controls.Add(this.SearchMemberUserControl);
             this.SearchMemberTabPage.Location = new System.Drawing.Point(4, 29);
             this.SearchMemberTabPage.Name = "SearchMemberTabPage";
-            this.SearchMemberTabPage.Size = new System.Drawing.Size(192, 67);
+            this.SearchMemberTabPage.Size = new System.Drawing.Size(972, 402);
             this.SearchMemberTabPage.TabIndex = 3;
             this.SearchMemberTabPage.Text = "Search Member";
             this.SearchMemberTabPage.UseVisualStyleBackColor = true;
@@ -125,7 +131,7 @@ namespace SofaSoGood.View
             this.SearchMemberUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchMemberUserControl.Location = new System.Drawing.Point(0, 0);
             this.SearchMemberUserControl.Name = "SearchMemberUserControl";
-            this.SearchMemberUserControl.Size = new System.Drawing.Size(192, 67);
+            this.SearchMemberUserControl.Size = new System.Drawing.Size(972, 402);
             this.SearchMemberUserControl.TabIndex = 0;
             // 
             // SearchFurnitureTabPage
@@ -134,7 +140,7 @@ namespace SofaSoGood.View
             this.SearchFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
             this.SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
             this.SearchFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchFurnitureTabPage.Size = new System.Drawing.Size(192, 67);
+            this.SearchFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
             this.SearchFurnitureTabPage.TabIndex = 4;
             this.SearchFurnitureTabPage.Text = "Search Furniture";
             this.SearchFurnitureTabPage.UseVisualStyleBackColor = true;
@@ -152,15 +158,15 @@ namespace SofaSoGood.View
             this.RentFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
             this.RentFurnitureTabPage.Name = "RentFurnitureTabPage";
             this.RentFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RentFurnitureTabPage.Size = new System.Drawing.Size(192, 67);
+            this.RentFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
             this.RentFurnitureTabPage.TabIndex = 5;
-            this.RentFurnitureTabPage.Text = "Rent Furniture";
+            this.RentFurnitureTabPage.Text = "Rent";
             this.RentFurnitureTabPage.UseVisualStyleBackColor = true;
             // 
             // RentFurnitureUserControl
             // 
             this.RentFurnitureUserControl.Location = new System.Drawing.Point(0, 0);
-            this.RentFurnitureUserControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RentFurnitureUserControl.Margin = new System.Windows.Forms.Padding(2);
             this.RentFurnitureUserControl.Name = "RentFurnitureUserControl";
             this.RentFurnitureUserControl.Size = new System.Drawing.Size(970, 398);
             this.RentFurnitureUserControl.TabIndex = 0;
@@ -179,6 +185,7 @@ namespace SofaSoGood.View
             // rentalHistoryUserControl
             // 
             this.rentalHistoryUserControl.Location = new System.Drawing.Point(0, 3);
+            this.rentalHistoryUserControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rentalHistoryUserControl.Name = "rentalHistoryUserControl";
             this.rentalHistoryUserControl.Size = new System.Drawing.Size(969, 399);
             this.rentalHistoryUserControl.TabIndex = 0;
@@ -224,6 +231,36 @@ namespace SofaSoGood.View
             this.ItemsAmountLabel.Size = new System.Drawing.Size(95, 20);
             this.ItemsAmountLabel.TabIndex = 2;
             this.ItemsAmountLabel.Text = "Items: None";
+            // 
+            // BuildReturnTabPage
+            // 
+            this.BuildReturnTabPage.Location = new System.Drawing.Point(4, 29);
+            this.BuildReturnTabPage.Name = "BuildReturnTabPage";
+            this.BuildReturnTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.BuildReturnTabPage.Size = new System.Drawing.Size(972, 402);
+            this.BuildReturnTabPage.TabIndex = 7;
+            this.BuildReturnTabPage.Text = "Build Return";
+            this.BuildReturnTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ReturnFurnitureTabPage
+            // 
+            this.ReturnFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
+            this.ReturnFurnitureTabPage.Name = "ReturnFurnitureTabPage";
+            this.ReturnFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ReturnFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
+            this.ReturnFurnitureTabPage.TabIndex = 8;
+            this.ReturnFurnitureTabPage.Text = "Return";
+            this.ReturnFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ReturnHistoryTabPage
+            // 
+            this.ReturnHistoryTabPage.Location = new System.Drawing.Point(4, 29);
+            this.ReturnHistoryTabPage.Name = "ReturnHistoryTabPage";
+            this.ReturnHistoryTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ReturnHistoryTabPage.Size = new System.Drawing.Size(972, 402);
+            this.ReturnHistoryTabPage.TabIndex = 9;
+            this.ReturnHistoryTabPage.Text = "Return History";
+            this.ReturnHistoryTabPage.UseVisualStyleBackColor = true;
             // 
             // MemberDashboard
             // 
@@ -273,5 +310,8 @@ namespace SofaSoGood.View
         private System.Windows.Forms.Label ItemsAmountLabel;
         private TabPage rentalHistoryTabPage;
         private UserControls.RentalHistoryUserControl rentalHistoryUserControl;
+        private TabPage BuildReturnTabPage;
+        private TabPage ReturnFurnitureTabPage;
+        private TabPage ReturnHistoryTabPage;
     }
 }
