@@ -44,13 +44,16 @@ namespace SofaSoGood.View
             this.RentFurnitureUserControl = new SofaSoGood.UserControls.RentFurnitureUserControl();
             this.rentalHistoryTabPage = new System.Windows.Forms.TabPage();
             this.rentalHistoryUserControl = new SofaSoGood.UserControls.RentalHistoryUserControl();
+            this.BuildReturnTabPage = new System.Windows.Forms.TabPage();
+            this.ReturnFurnitureTabPage = new System.Windows.Forms.TabPage();
+            this.ReturnHistoryTabPage = new System.Windows.Forms.TabPage();
             this.WelcomeUserLabel = new System.Windows.Forms.Label();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.MemberSelectedLabel = new System.Windows.Forms.Label();
             this.ItemsAmountLabel = new System.Windows.Forms.Label();
-            this.BuildReturnTabPage = new System.Windows.Forms.TabPage();
-            this.ReturnFurnitureTabPage = new System.Windows.Forms.TabPage();
-            this.ReturnHistoryTabPage = new System.Windows.Forms.TabPage();
+            this.buildReturnUserControl1 = new SofaSoGood.UserControls.BuildReturnUserControl();
+            this.returnFurnitureUserControl1 = new SofaSoGood.UserControls.ReturnFurnitureUserControl();
+            this.returnHistoryUserControl1 = new SofaSoGood.UserControls.ReturnHistoryUserControl();
             this.MainDashboardTabControl.SuspendLayout();
             this.RegisterMemberTabPage.SuspendLayout();
             this.EditMemberTabPage.SuspendLayout();
@@ -58,6 +61,9 @@ namespace SofaSoGood.View
             this.SearchFurnitureTabPage.SuspendLayout();
             this.RentFurnitureTabPage.SuspendLayout();
             this.rentalHistoryTabPage.SuspendLayout();
+            this.BuildReturnTabPage.SuspendLayout();
+            this.ReturnFurnitureTabPage.SuspendLayout();
+            this.ReturnHistoryTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainDashboardTabControl
@@ -190,6 +196,39 @@ namespace SofaSoGood.View
             this.rentalHistoryUserControl.Size = new System.Drawing.Size(969, 399);
             this.rentalHistoryUserControl.TabIndex = 0;
             // 
+            // BuildReturnTabPage
+            // 
+            this.BuildReturnTabPage.Controls.Add(this.buildReturnUserControl1);
+            this.BuildReturnTabPage.Location = new System.Drawing.Point(4, 29);
+            this.BuildReturnTabPage.Name = "BuildReturnTabPage";
+            this.BuildReturnTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.BuildReturnTabPage.Size = new System.Drawing.Size(972, 402);
+            this.BuildReturnTabPage.TabIndex = 7;
+            this.BuildReturnTabPage.Text = "Build Return";
+            this.BuildReturnTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ReturnFurnitureTabPage
+            // 
+            this.ReturnFurnitureTabPage.Controls.Add(this.returnFurnitureUserControl1);
+            this.ReturnFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
+            this.ReturnFurnitureTabPage.Name = "ReturnFurnitureTabPage";
+            this.ReturnFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ReturnFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
+            this.ReturnFurnitureTabPage.TabIndex = 8;
+            this.ReturnFurnitureTabPage.Text = "Return";
+            this.ReturnFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ReturnHistoryTabPage
+            // 
+            this.ReturnHistoryTabPage.Controls.Add(this.returnHistoryUserControl1);
+            this.ReturnHistoryTabPage.Location = new System.Drawing.Point(4, 29);
+            this.ReturnHistoryTabPage.Name = "ReturnHistoryTabPage";
+            this.ReturnHistoryTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ReturnHistoryTabPage.Size = new System.Drawing.Size(972, 402);
+            this.ReturnHistoryTabPage.TabIndex = 9;
+            this.ReturnHistoryTabPage.Text = "Return History";
+            this.ReturnHistoryTabPage.UseVisualStyleBackColor = true;
+            // 
             // WelcomeUserLabel
             // 
             this.WelcomeUserLabel.AutoSize = true;
@@ -232,35 +271,26 @@ namespace SofaSoGood.View
             this.ItemsAmountLabel.TabIndex = 2;
             this.ItemsAmountLabel.Text = "Items: None";
             // 
-            // BuildReturnTabPage
+            // buildReturnUserControl1
             // 
-            this.BuildReturnTabPage.Location = new System.Drawing.Point(4, 29);
-            this.BuildReturnTabPage.Name = "BuildReturnTabPage";
-            this.BuildReturnTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.BuildReturnTabPage.Size = new System.Drawing.Size(972, 402);
-            this.BuildReturnTabPage.TabIndex = 7;
-            this.BuildReturnTabPage.Text = "Build Return";
-            this.BuildReturnTabPage.UseVisualStyleBackColor = true;
+            this.buildReturnUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.buildReturnUserControl1.Name = "buildReturnUserControl1";
+            this.buildReturnUserControl1.Size = new System.Drawing.Size(966, 426);
+            this.buildReturnUserControl1.TabIndex = 0;
             // 
-            // ReturnFurnitureTabPage
+            // returnFurnitureUserControl1
             // 
-            this.ReturnFurnitureTabPage.Location = new System.Drawing.Point(4, 29);
-            this.ReturnFurnitureTabPage.Name = "ReturnFurnitureTabPage";
-            this.ReturnFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ReturnFurnitureTabPage.Size = new System.Drawing.Size(972, 402);
-            this.ReturnFurnitureTabPage.TabIndex = 8;
-            this.ReturnFurnitureTabPage.Text = "Return";
-            this.ReturnFurnitureTabPage.UseVisualStyleBackColor = true;
+            this.returnFurnitureUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.returnFurnitureUserControl1.Name = "returnFurnitureUserControl1";
+            this.returnFurnitureUserControl1.Size = new System.Drawing.Size(966, 426);
+            this.returnFurnitureUserControl1.TabIndex = 0;
             // 
-            // ReturnHistoryTabPage
+            // returnHistoryUserControl1
             // 
-            this.ReturnHistoryTabPage.Location = new System.Drawing.Point(4, 29);
-            this.ReturnHistoryTabPage.Name = "ReturnHistoryTabPage";
-            this.ReturnHistoryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ReturnHistoryTabPage.Size = new System.Drawing.Size(972, 402);
-            this.ReturnHistoryTabPage.TabIndex = 9;
-            this.ReturnHistoryTabPage.Text = "Return History";
-            this.ReturnHistoryTabPage.UseVisualStyleBackColor = true;
+            this.returnHistoryUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.returnHistoryUserControl1.Name = "returnHistoryUserControl1";
+            this.returnHistoryUserControl1.Size = new System.Drawing.Size(966, 426);
+            this.returnHistoryUserControl1.TabIndex = 0;
             // 
             // MemberDashboard
             // 
@@ -286,6 +316,9 @@ namespace SofaSoGood.View
             this.SearchFurnitureTabPage.ResumeLayout(false);
             this.RentFurnitureTabPage.ResumeLayout(false);
             this.rentalHistoryTabPage.ResumeLayout(false);
+            this.BuildReturnTabPage.ResumeLayout(false);
+            this.ReturnFurnitureTabPage.ResumeLayout(false);
+            this.ReturnHistoryTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +346,8 @@ namespace SofaSoGood.View
         private TabPage BuildReturnTabPage;
         private TabPage ReturnFurnitureTabPage;
         private TabPage ReturnHistoryTabPage;
+        private UserControls.BuildReturnUserControl buildReturnUserControl1;
+        private UserControls.ReturnFurnitureUserControl returnFurnitureUserControl1;
+        private UserControls.ReturnHistoryUserControl returnHistoryUserControl1;
     }
 }

@@ -67,6 +67,12 @@
     <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\ReturnItem.cs" />
     <Compile Include="Model\ReturnTransaction.cs" />
+    <Compile Include="UserControls\BuildReturnUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BuildReturnUserControl.Designer.cs">
+      <DependentUpon>BuildReturnUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RegisterMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +96,18 @@
     </Compile>
     <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.Designer.cs">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReturnHistoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnHistoryUserControl.Designer.cs">
+      <DependentUpon>ReturnHistoryUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
@@ -132,6 +150,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\BuildReturnUserControl.resx">
+      <DependentUpon>BuildReturnUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RegisterMemberUserControl.resx">
       <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnFurnitureUserControl.resx">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnHistoryUserControl.resx">
+      <DependentUpon>ReturnHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
