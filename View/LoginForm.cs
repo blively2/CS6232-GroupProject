@@ -17,6 +17,9 @@ namespace SofaSoGood
         private readonly EmployeeController employeeController;
         // Reference to MemberDashboard
         private readonly MemberDashboard MainDashboard;
+
+        private readonly AdminController adminController;
+
         // Reference to Employee that is logged in currently
         public Employee LoggedInEmployee;
 
@@ -30,6 +33,7 @@ namespace SofaSoGood
             this.MainDashboard = new MemberDashboard(this);
             loginController = new LoginController();
             employeeController = new EmployeeController();
+            adminController = new AdminController();
         }
 
         /// <summary>
@@ -43,21 +47,43 @@ namespace SofaSoGood
         {
             if (loginController.VerifyUserCredentials(this.UsernameTextBox.Text, this.PasswordTextBox.Text))
             {
-                int loggedInEmployeeID = loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
-                Employee loggedInEmployee = employeeController.GetEmployeeByLoginID(loggedInEmployeeID);
-                this.SetLoggedInEmployee(loggedInEmployee);
-                this.Hide();
-                this.MainDashboard.SetCurrentUserLabel(loggedInEmployee.FirstName + " " + loggedInEmployee.LastName);
-                this.MainDashboard.Show();
-                this.UsernameTextBox.Text = string.Empty;
-                this.PasswordTextBox.Text = string.Empty;
+                int loginID = loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
+
+                var admin = adminController.GetAdminByLoginID(loginID);
+                if (admin != null)
+                {
+                    AdminDashboard adminDashboard = new AdminDashboard();
+                    adminDashboard.SetCurrentAdmin(admin.FirstName + " " + admin.LastName);
+                    adminDashboard.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    var employee = employeeController.GetEmployeeByLoginID(loginID);
+                    if (employee != null)
+                    {
+                        MemberDashboard memberDashboard = new MemberDashboard(this);
+                        memberDashboard.SetCurrentUserLabel(employee.FirstName + " " + employee.LastName);
+                        memberDashboard.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        ShowLoginError();
+                    }
+                }
             }
             else
             {
-                this.UsernameTextBox.Text = string.Empty;
-                this.PasswordTextBox.Text = string.Empty;
-                this.LoginWarningLabel.Text = "Incorrect Username/Password";
+                ShowLoginError();
             }
+        }
+
+        private void ShowLoginError()
+        {
+            this.LoginWarningLabel.Text = "Incorrect Username/Password";
+            this.UsernameTextBox.Text = string.Empty;
+            this.PasswordTextBox.Text = string.Empty;
         }
 
         /// <summary>

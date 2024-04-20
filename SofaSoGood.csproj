@@ -47,10 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminUserControls\ReportUserControls.cs">
+    <Compile Include="Controller\AdminController.cs" />
+    <Compile Include="DAL\AdminDAL.cs" />
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="UserControlsAdmin\ReportUserControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AdminUserControls\ReportUserControls.Designer.cs">
+    <Compile Include="UserControlsAdmin\ReportUserControls.Designer.cs">
       <DependentUpon>ReportUserControls.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller\EmployeeController.cs" />
@@ -73,58 +76,58 @@
     <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\ReturnItem.cs" />
     <Compile Include="Model\ReturnTransaction.cs" />
-    <Compile Include="MemberUserControls\BuildReturnUserControl.cs">
+    <Compile Include="UserControlsMember\BuildReturnUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\BuildReturnUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\BuildReturnUserControl.Designer.cs">
       <DependentUpon>BuildReturnUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\RegisterMemberUserControl.cs">
+    <Compile Include="UserControlsMember\RegisterMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\RegisterMemberUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\RegisterMemberUserControl.Designer.cs">
       <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\EditMemberUserControl.cs">
+    <Compile Include="UserControlsMember\EditMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\EditMemberUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\EditMemberUserControl.Designer.cs">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\RentalHistoryUserControl.cs">
+    <Compile Include="UserControlsMember\RentalHistoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\RentalHistoryUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\RentalHistoryUserControl.Designer.cs">
       <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\RentFurnitureUserControl.cs">
+    <Compile Include="UserControlsMember\RentFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\RentFurnitureUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\RentFurnitureUserControl.Designer.cs">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\ReturnFurnitureUserControl.cs">
+    <Compile Include="UserControlsMember\ReturnFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\ReturnFurnitureUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\ReturnFurnitureUserControl.Designer.cs">
       <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\ReturnHistoryUserControl.cs">
+    <Compile Include="UserControlsMember\ReturnHistoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\ReturnHistoryUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\ReturnHistoryUserControl.Designer.cs">
       <DependentUpon>ReturnHistoryUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\SearchFurnitureUserControl.cs">
+    <Compile Include="UserControlsMember\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\SearchFurnitureUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\SearchFurnitureUserControl.Designer.cs">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserControls\SearchMemberUserControl.cs">
+    <Compile Include="UserControlsMember\SearchMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserControls\SearchMemberUserControl.Designer.cs">
+    <Compile Include="UserControlsMember\SearchMemberUserControl.Designer.cs">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminDashboard.cs">
@@ -153,7 +156,7 @@
     <Compile Include="View\MemberDashboard.Designer.cs">
       <DependentUpon>MemberDashboard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminUserControls\ReportUserControls.resx">
+    <EmbeddedResource Include="UserControlsAdmin\ReportUserControls.resx">
       <DependentUpon>ReportUserControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -165,31 +168,31 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MemberUserControls\BuildReturnUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\BuildReturnUserControl.resx">
       <DependentUpon>BuildReturnUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\RegisterMemberUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\RegisterMemberUserControl.resx">
       <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\EditMemberUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\EditMemberUserControl.resx">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\RentalHistoryUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\RentalHistoryUserControl.resx">
       <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\RentFurnitureUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\ReturnFurnitureUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\ReturnFurnitureUserControl.resx">
       <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\ReturnHistoryUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\ReturnHistoryUserControl.resx">
       <DependentUpon>ReturnHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\SearchFurnitureUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserControls\SearchMemberUserControl.resx">
+    <EmbeddedResource Include="UserControlsMember\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminDashboard.resx">
@@ -204,6 +207,7 @@
     <EmbeddedResource Include="View\MemberDashboard.resx">
       <DependentUpon>MemberDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
