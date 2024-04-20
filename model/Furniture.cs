@@ -68,5 +68,13 @@
         /// The total quantity.
         /// </value>
         public int TotalQuantity { get; set;}
+
+        /// <summary>
+        /// Gets or sets the AmountRented.
+        /// </summary>
+        /// <value>
+        /// The total quantity.
+        /// </value>
+        public int AmountRented { get; set; }
     }
 }

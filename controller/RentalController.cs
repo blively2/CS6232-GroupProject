@@ -92,7 +92,7 @@ namespace SofaSoGood.Controller
         /// </summary>
         /// <param name="memberId">The ID of the member whose rental history is being requested.</param>
         /// <returns>A list of RentalTransaction objects representing the member's rental history.</returns>
-        public List<CurrentlyRentedFurnitureInformation> GetCurrentlyRentedFurnitureByMemberID(int memberId)
+        public List<Furniture> GetCurrentlyRentedFurnitureByMemberID(int memberId)
         {
             return rentalDAL.GetCurrentlyRentedFurnitureByMemberID(memberId);
         }

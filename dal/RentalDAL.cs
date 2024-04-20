@@ -287,9 +287,9 @@ namespace SofaSoGood.DAL
             return rentalItems;
         }
 
-        public List<CurrentlyRentedFurnitureInformation> GetCurrentlyRentedFurnitureByMemberID(int memberId)
+        public List<Furniture> GetCurrentlyRentedFurnitureByMemberID(int memberId)
         {
-            List<CurrentlyRentedFurnitureInformation> currentlyRentedFurnitures = new List<CurrentlyRentedFurnitureInformation>();
+            List<Furniture> currentlyRentedFurnitures = new List<Furniture>();
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
                 string query = @"
@@ -321,14 +321,14 @@ WHERE
                     {
                         while (reader.Read())
                         {
-                            var rentedFurnitureInfo = new CurrentlyRentedFurnitureInformation
+                            var rentedFurnitureInfo = new Furniture
                             {
                                 FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
-                                FurnitureName = reader.GetString(reader.GetOrdinal("FurnitureName")),
-                                FurnitureCategory = reader.GetString(reader.GetOrdinal("FurnitureCategory")),
-                                FurnitureStyle = reader.GetString(reader.GetOrdinal("FurnitureStyle")),
+                                Name = reader.GetString(reader.GetOrdinal("FurnitureName")),
+                                CategoryName = reader.GetString(reader.GetOrdinal("FurnitureCategory")),
+                                StyleName = reader.GetString(reader.GetOrdinal("FurnitureStyle")),
                                 Description = reader.GetString(reader.GetOrdinal("Description")),
-                                RentalRatePerDay = reader.GetDecimal(reader.GetOrdinal("RentalRatePerDay")),
+                                RentalRatePerDay = (double)reader.GetDecimal(reader.GetOrdinal("RentalRatePerDay")),
                                 AmountRented = reader.GetInt32(reader.GetOrdinal("AmountRented"))
                             };
                             currentlyRentedFurnitures.Add(rentedFurnitureInfo);

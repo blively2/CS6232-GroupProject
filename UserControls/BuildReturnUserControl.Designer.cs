@@ -166,11 +166,13 @@
             this.CurrentlyRentedFurnitureListView.FullRowSelect = true;
             this.CurrentlyRentedFurnitureListView.HideSelection = false;
             this.CurrentlyRentedFurnitureListView.Location = new System.Drawing.Point(0, 198);
+            this.CurrentlyRentedFurnitureListView.MultiSelect = false;
             this.CurrentlyRentedFurnitureListView.Name = "CurrentlyRentedFurnitureListView";
             this.CurrentlyRentedFurnitureListView.Size = new System.Drawing.Size(970, 181);
             this.CurrentlyRentedFurnitureListView.TabIndex = 49;
             this.CurrentlyRentedFurnitureListView.UseCompatibleStateImageBehavior = false;
             this.CurrentlyRentedFurnitureListView.View = System.Windows.Forms.View.Details;
+            this.CurrentlyRentedFurnitureListView.DoubleClick += new System.EventHandler(this.CurrentlyRentedFurnitureListViewDoubleClick);
             // 
             // FurnitureID
             // 
@@ -210,11 +212,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(397, 392);
+            this.label1.Location = new System.Drawing.Point(366, 382);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 20);
+            this.label1.Size = new System.Drawing.Size(214, 20);
             this.label1.TabIndex = 50;
-            this.label1.Text = "Selected Items: 0";
+            this.label1.Text = "Selected Items For Return: 0";
             // 
             // BuildReturnUserControl
             // 

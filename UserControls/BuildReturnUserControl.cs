@@ -3,6 +3,8 @@ using SofaSoGood.Model;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace SofaSoGood.UserControls
 {
@@ -11,11 +13,13 @@ namespace SofaSoGood.UserControls
 
         private RentalController rentalController;
         private ReturnController returnController;
+        private List<Furniture> furnitureList;
 
         public BuildReturnUserControl()
         {
             this.rentalController = new RentalController();
             this.returnController = new ReturnController();
+            this.furnitureList = new List<Furniture>();
             InitializeComponent();
             FormatSelectedMemberAndFurnitureListView();
             CheckIfMemberAndFurniturePopulated();
@@ -56,7 +60,7 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Displays the selected member information in the ListView.
+        /// Displays the selected member information and their currently rented furniture in the ListView.
         /// </summary>
         /// <param name="SelectedMember">The selected member.</param>
         public void DisplaySelectedMemberAndUpdateCurrentlyRentedFurniture(Member SelectedMember)
@@ -77,16 +81,16 @@ namespace SofaSoGood.UserControls
                 item.SubItems.Add(SelectedMember.ContactPhone ?? string.Empty);
                 SelectedMemberListView.Items.Add(item);
 
-                List<CurrentlyRentedFurnitureInformation> currentlyRentedFurniture = this.rentalController.GetCurrentlyRentedFurnitureByMemberID(SelectedMember.MemberID);
+                List<Furniture> currentlyRentedFurniture = this.rentalController.GetCurrentlyRentedFurnitureByMemberID(SelectedMember.MemberID);
                 if (currentlyRentedFurniture.Count > 0) {
                     foreach (var furniture in currentlyRentedFurniture)
                     {
                         var furnitureItem = new ListViewItem(furniture.FurnitureID.ToString());
                         furnitureItem.SubItems.AddRange(new string[]
                         {
-                    furniture.FurnitureName,
-                    furniture.FurnitureCategory,
-                    furniture.FurnitureStyle,
+                    furniture.Name,
+                    furniture.CategoryName,
+                    furniture.StyleName,
                     furniture.Description,
                     furniture.RentalRatePerDay.ToString("C"),
                     furniture.AmountRented.ToString()
@@ -105,6 +109,26 @@ namespace SofaSoGood.UserControls
                 CurrentlyRentedFurnitureListView.Items.Clear();
             }
             this.FormatSelectedMemberAndFurnitureListView();
+        }
+
+        private void CurrentlyRentedFurnitureListViewDoubleClick(object sender, System.EventArgs e)
+        {
+            if (CurrentlyRentedFurnitureListView.SelectedItems.Count == 1)
+            {
+                int furnitureID = int.Parse(CurrentlyRentedFurnitureListView.SelectedItems[0].Text);
+
+                if (furnitureList.Any(f => f.FurnitureID == furnitureID))
+                {
+                    System.Diagnostics.Debug.WriteLine("Nooooooooooooo");
+                    return;
+                }
+
+                var chosenFurniture = furnitureList.FirstOrDefault(f => f.FurnitureID == furnitureID);
+                if (chosenFurniture != null)
+                {
+                    furnitureList.Add(chosenFurniture);
+                }
+            }
         }
     }
 }
