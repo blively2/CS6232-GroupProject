@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminUserControls\ReportUserControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminUserControls\ReportUserControls.Designer.cs">
+      <DependentUpon>ReportUserControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\LoginController.cs" />
@@ -67,59 +73,65 @@
     <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\ReturnItem.cs" />
     <Compile Include="Model\ReturnTransaction.cs" />
-    <Compile Include="UserControls\BuildReturnUserControl.cs">
+    <Compile Include="MemberUserControls\BuildReturnUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\BuildReturnUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\BuildReturnUserControl.Designer.cs">
       <DependentUpon>BuildReturnUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RegisterMemberUserControl.cs">
+    <Compile Include="MemberUserControls\RegisterMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RegisterMemberUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\RegisterMemberUserControl.Designer.cs">
       <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EditMemberUserControl.cs">
+    <Compile Include="MemberUserControls\EditMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\EditMemberUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\EditMemberUserControl.Designer.cs">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RentalHistoryUserControl.cs">
+    <Compile Include="MemberUserControls\RentalHistoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RentalHistoryUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\RentalHistoryUserControl.Designer.cs">
       <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\RentFurnitureUserControl.cs">
+    <Compile Include="MemberUserControls\RentFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\RentFurnitureUserControl.Designer.cs">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ReturnFurnitureUserControl.cs">
+    <Compile Include="MemberUserControls\ReturnFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ReturnFurnitureUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\ReturnFurnitureUserControl.Designer.cs">
       <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ReturnHistoryUserControl.cs">
+    <Compile Include="MemberUserControls\ReturnHistoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ReturnHistoryUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\ReturnHistoryUserControl.Designer.cs">
       <DependentUpon>ReturnHistoryUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchFurnitureUserControl.cs">
+    <Compile Include="MemberUserControls\SearchFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchFurnitureUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\SearchFurnitureUserControl.Designer.cs">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SearchMemberUserControl.cs">
+    <Compile Include="MemberUserControls\SearchMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SearchMemberUserControl.Designer.cs">
+    <Compile Include="MemberUserControls\SearchMemberUserControl.Designer.cs">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminDashboard.Designer.cs">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ReceiptForm.cs">
       <SubType>Form</SubType>
@@ -141,6 +153,9 @@
     <Compile Include="View\MemberDashboard.Designer.cs">
       <DependentUpon>MemberDashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminUserControls\ReportUserControls.resx">
+      <DependentUpon>ReportUserControls.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -150,32 +165,35 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\BuildReturnUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\BuildReturnUserControl.resx">
       <DependentUpon>BuildReturnUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RegisterMemberUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\RegisterMemberUserControl.resx">
       <DependentUpon>RegisterMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\EditMemberUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\EditMemberUserControl.resx">
       <DependentUpon>EditMemberUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RentalHistoryUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\RentalHistoryUserControl.resx">
       <DependentUpon>RentalHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ReturnFurnitureUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\ReturnFurnitureUserControl.resx">
       <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ReturnHistoryUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\ReturnHistoryUserControl.resx">
       <DependentUpon>ReturnHistoryUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchFurnitureUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\SearchFurnitureUserControl.resx">
       <DependentUpon>SearchFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SearchMemberUserControl.resx">
+    <EmbeddedResource Include="MemberUserControls\SearchMemberUserControl.resx">
       <DependentUpon>SearchMemberUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReceiptForm.resx">
       <DependentUpon>ReceiptForm.cs</DependentUpon>
