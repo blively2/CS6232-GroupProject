@@ -206,6 +206,8 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void FurnitureIDTextBoxTextChanged(object sender, EventArgs e)
         {
+            categoryComboBox.SelectedIndex = -1;
+            styleComboBox.SelectedIndex = -1;
             this.VisibilityFurnitureList();
         }
 
@@ -215,6 +217,8 @@ namespace SofaSoGood.UserControls
         private void CategoryComboBoxDropDown(object sender, EventArgs e)
         {
             this.VisibilityFurnitureList();
+            furnitureIDTextBox.Clear();
+            styleComboBox.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -223,6 +227,8 @@ namespace SofaSoGood.UserControls
         private void StyleComboBoxDropDown(object sender, EventArgs e)
         {
             this.VisibilityFurnitureList();
+            furnitureIDTextBox.Clear();
+            categoryComboBox.SelectedIndex = -1;
         }
 
         /// <summary>
