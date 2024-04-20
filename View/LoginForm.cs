@@ -64,6 +64,7 @@ namespace SofaSoGood
                     {
                         MemberDashboard memberDashboard = new MemberDashboard(this);
                         memberDashboard.SetCurrentUserLabel(employee.FirstName + " " + employee.LastName);
+                        this.LoggedInEmployee = employee;
                         memberDashboard.Show();
                         this.Hide();
                     }
