@@ -19,6 +19,7 @@ namespace SofaSoGood.UserControls
         private MemberDashboard MemberDashboard;
         private RentFurnitureUserControl RentFurnitureUserControl;
         private BuildReturnUserControl BuildReturnUserControl;
+        private ReturnFurnitureUserControl ReturnFurnitureUserControl;
 
         /// <summary>
         /// Constructor for SearchCustomerUserControl.
@@ -238,6 +239,7 @@ namespace SofaSoGood.UserControls
                     this.MemberDashboard.SelectedMemberChanged(SelectedMember);
                     this.RentFurnitureUserControl.DisplaySelectedMember(SelectedMember);
                     this.BuildReturnUserControl.DisplaySelectedMemberAndUpdateCurrentlyRentedFurniture(SelectedMember);
+                    this.ReturnFurnitureUserControl.DisplaySelectedMember(SelectedMember);
                     MemberDashboard.PopulateEditMemberForm(ChosenMember);
                     MemberDashboard.ShowMemberRentalHistory(MemberID);
                 }
@@ -272,6 +274,16 @@ namespace SofaSoGood.UserControls
         public void SetBuildReturnUserControl(BuildReturnUserControl BuildReturnUserControl)
         {
             this.BuildReturnUserControl = BuildReturnUserControl;
+        }
+
+        /// <summary>
+        /// Sets the BuildReturnUserControl for use.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        public void SetReturnFurnitureUserControl(ReturnFurnitureUserControl ReturnFurnitureUserControl)
+        {
+            this.ReturnFurnitureUserControl = ReturnFurnitureUserControl;
         }
     }
 }

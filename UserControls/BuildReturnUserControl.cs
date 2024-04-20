@@ -13,13 +13,14 @@ namespace SofaSoGood.UserControls
 
         private RentalController rentalController;
         private ReturnController returnController;
-        private List<Furniture> furnitureList;
+        private List<Furniture> returnFurnitureList;
+        private ReturnFurnitureUserControl ReturnFurnitureUserControl;
 
         public BuildReturnUserControl()
         {
             this.rentalController = new RentalController();
             this.returnController = new ReturnController();
-            this.furnitureList = new List<Furniture>();
+            this.returnFurnitureList = new List<Furniture>();
             InitializeComponent();
             FormatSelectedMemberAndFurnitureListView();
             CheckIfMemberAndFurniturePopulated();
@@ -67,12 +68,15 @@ namespace SofaSoGood.UserControls
         {
             if (SelectedMember != null)
             {
+                returnFurnitureList.Clear();
+                CurrentlyRentedFurnitureListView.Items.Clear();
                 SelectedMemberListView.Items.Clear();
+                this.UpdateItemsToReturnLabel();
                 ListViewItem item = new ListViewItem(SelectedMember.MemberID.ToString());
                 item.SubItems.Add(SelectedMember.FirstName ?? string.Empty);
                 item.SubItems.Add(SelectedMember.LastName ?? string.Empty);
                 item.SubItems.Add(SelectedMember.Gender ?? string.Empty);
-                item.SubItems.Add(SelectedMember.DateOfBirth.ToShortDateString());
+                item.SubItems.Add(SelectedMember.DateOfBirth.ToString("d"));
                 item.SubItems.Add(SelectedMember.Address1 ?? string.Empty);
                 item.SubItems.Add(SelectedMember.Address2 ?? string.Empty);
                 item.SubItems.Add(SelectedMember.City ?? string.Empty);
@@ -85,15 +89,18 @@ namespace SofaSoGood.UserControls
                 if (currentlyRentedFurniture.Count > 0) {
                     foreach (var furniture in currentlyRentedFurniture)
                     {
+                        System.Diagnostics.Debug.WriteLine(furniture.FurnitureID);
                         var furnitureItem = new ListViewItem(furniture.FurnitureID.ToString());
                         furnitureItem.SubItems.AddRange(new string[]
                         {
-                    furniture.Name,
-                    furniture.CategoryName,
-                    furniture.StyleName,
-                    furniture.Description,
-                    furniture.RentalRatePerDay.ToString("C"),
-                    furniture.AmountRented.ToString()
+                            furniture.RentalTransactionID.ToString(),
+                            furniture.RentalItemID.ToString(),
+                            furniture.Name,
+                            furniture.CategoryName,
+                            furniture.StyleName,
+                            furniture.Description,
+                            furniture.DueDate.ToShortDateString(),
+                            furniture.AmountRented.ToString()
                         });
                         CurrentlyRentedFurnitureListView.Items.Add(furnitureItem);
                     }
@@ -108,6 +115,7 @@ namespace SofaSoGood.UserControls
                 SelectedMemberListView.Items.Clear();
                 CurrentlyRentedFurnitureListView.Items.Clear();
             }
+            this.UpdateReturnFurnitureUserControl();
             this.FormatSelectedMemberAndFurnitureListView();
         }
 
@@ -115,20 +123,57 @@ namespace SofaSoGood.UserControls
         {
             if (CurrentlyRentedFurnitureListView.SelectedItems.Count == 1)
             {
-                int furnitureID = int.Parse(CurrentlyRentedFurnitureListView.SelectedItems[0].Text);
+                ListViewItem selectedItem = CurrentlyRentedFurnitureListView.SelectedItems[0];
+                int furnitureID = int.Parse(selectedItem.Text);
 
-                if (furnitureList.Any(f => f.FurnitureID == furnitureID))
+                if (returnFurnitureList.Any(f => f.FurnitureID == furnitureID))
                 {
-                    System.Diagnostics.Debug.WriteLine("Nooooooooooooo");
+                    ItemsToReturnLabel.Text = "Furniture already selected.";
                     return;
                 }
 
-                var chosenFurniture = furnitureList.FirstOrDefault(f => f.FurnitureID == furnitureID);
-                if (chosenFurniture != null)
+                Furniture chosenFurniture = new Furniture
                 {
-                    furnitureList.Add(chosenFurniture);
-                }
+                    FurnitureID = furnitureID,
+                    RentalTransactionID = int.Parse(selectedItem.SubItems[1].Text),
+                    RentalItemID = int.Parse(selectedItem.SubItems[2].Text),
+                    Name = selectedItem.SubItems[3].Text,
+                    CategoryName = selectedItem.SubItems[4].Text,
+                    StyleName = selectedItem.SubItems[5].Text,
+                    Description = selectedItem.SubItems[6].Text,
+                    DueDate = System.DateTime.Parse(selectedItem.SubItems[7].Text),
+                    AmountRented = int.Parse(selectedItem.SubItems[8].Text)
+                };
+
+                returnFurnitureList.Add(chosenFurniture);
+                System.Diagnostics.Debug.WriteLine($"Furniture added: {chosenFurniture.Name}");
             }
+            this.UpdateReturnFurnitureUserControl();
+            this.UpdateItemsToReturnLabel();
+        }
+
+        /// <summary>
+        /// Programmatically formats the list views for selected member and furniture.
+        /// </summary>
+        private void UpdateItemsToReturnLabel()
+        {
+            ItemsToReturnLabel.Text = "Selected Items for Return: " + returnFurnitureList.Count.ToString();
+        }
+
+        /// <summary>
+        /// Programmatically formats the list views for selected member and furniture.
+        /// </summary>
+        public void SetReturnFurnitureUserControl(ReturnFurnitureUserControl returnFurnitureUserControl)
+        {
+            this.ReturnFurnitureUserControl = returnFurnitureUserControl;
+        }
+
+        /// <summary>
+        /// Programmatically formats the list views for selected member and furniture.
+        /// </summary>
+        private void UpdateReturnFurnitureUserControl()
+        {
+            this.ReturnFurnitureUserControl.DisplaySelectedFurniture(this.returnFurnitureList);
         }
     }
 }

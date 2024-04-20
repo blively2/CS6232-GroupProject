@@ -26,11 +26,13 @@ namespace SofaSoGood.View
             this.SearchMemberUserControl.SetMemberDashboard(this);
             this.SearchMemberUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
             this.SearchMemberUserControl.SetBuildReturnUserControl(this.BuildReturnUserControl);
+            this.SearchMemberUserControl.SetReturnFurnitureUserControl(this.ReturnFurnitureUserControl);
             this.SearchFurnitureUserControl.SetMemberDashboard(this);
             this.SearchFurnitureUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
             this.RentFurnitureUserControl.SetLoginForm(this.LoginForm);
             this.RentFurnitureUserControl.SetSearchFurnitureUserControl(this.SearchFurnitureUserControl);
             this.RentFurnitureUserControl.SetSearchMemberUserControl(this.SearchMemberUserControl);
+            this.BuildReturnUserControl.SetReturnFurnitureUserControl(this.ReturnFurnitureUserControl);
         }
 
         /// <summary>

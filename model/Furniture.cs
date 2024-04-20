@@ -76,5 +76,29 @@
         /// The total quantity.
         /// </value>
         public int AmountRented { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AmountRented.
+        /// </summary>
+        /// <value>
+        /// The total quantity.
+        /// </value>
+        public int RentalTransactionID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AmountRented.
+        /// </summary>
+        /// <value>
+        /// The total quantity.
+        /// </value>
+        public int RentalItemID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AmountRented.
+        /// </summary>
+        /// <value>
+        /// The total quantity.
+        /// </value>
+        public System.DateTime DueDate { get; set; }
     }
 }

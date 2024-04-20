@@ -294,7 +294,10 @@ namespace SofaSoGood.DAL
             {
                 string query = @"
 SELECT 
-    f.FurnitureID, 
+    f.FurnitureID,
+    rt.RentalTransactionID,
+    ri.RentalItemID,
+    rt.DueDate,
     f.Name AS FurnitureName, 
     f.CategoryName AS FurnitureCategory,
     f.StyleName AS FurnitureStyle,
@@ -324,6 +327,9 @@ WHERE
                             var rentedFurnitureInfo = new Furniture
                             {
                                 FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
+                                RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
+                                RentalItemID = reader.GetInt32(reader.GetOrdinal("RentalItemID")),
+                                DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate")),
                                 Name = reader.GetString(reader.GetOrdinal("FurnitureName")),
                                 CategoryName = reader.GetString(reader.GetOrdinal("FurnitureCategory")),
                                 StyleName = reader.GetString(reader.GetOrdinal("FurnitureStyle")),
