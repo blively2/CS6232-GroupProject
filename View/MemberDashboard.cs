@@ -25,6 +25,7 @@ namespace SofaSoGood.View
             this.LoginForm = LoginForm;
             this.SearchMemberUserControl.SetMemberDashboard(this);
             this.SearchMemberUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
+            this.SearchMemberUserControl.SetBuildReturnUserControl(this.BuildReturnUserControl);
             this.SearchFurnitureUserControl.SetMemberDashboard(this);
             this.SearchFurnitureUserControl.SetRentFurnitureUserControl(this.RentFurnitureUserControl);
             this.RentFurnitureUserControl.SetLoginForm(this.LoginForm);
@@ -105,7 +106,7 @@ namespace SofaSoGood.View
         /// <param name="memberId">The ID of the member whose rental history is to be displayed.</param>
         public void ShowMemberRentalHistory(int memberId)
         {
-            rentalHistoryUserControl.LoadRentalHistory(memberId);
+            RentalHistoryUserControl.LoadRentalHistory(memberId);
         }
     }
 }

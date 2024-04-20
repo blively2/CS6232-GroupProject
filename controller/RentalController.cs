@@ -87,6 +87,16 @@ namespace SofaSoGood.Controller
             return rentalDAL.GetRentalHistoryByMemberId(memberId);
         }
 
+        /// <summary>
+        /// Retrieves all rental transactions associated with a specific member ID.
+        /// </summary>
+        /// <param name="memberId">The ID of the member whose rental history is being requested.</param>
+        /// <returns>A list of RentalTransaction objects representing the member's rental history.</returns>
+        public List<CurrentlyRentedFurnitureInformation> GetCurrentlyRentedFurnitureByMemberID(int memberId)
+        {
+            return rentalDAL.GetCurrentlyRentedFurnitureByMemberID(memberId);
+        }
+
         public void CreateRentalTransactionWithInventoryUpdate(RentalTransaction rentalTransaction)
         {
             using (TransactionScope scope = new TransactionScope())

@@ -60,6 +60,7 @@
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\RentalDAL.cs" />
     <Compile Include="DAL\ReturnDAL.cs" />
+    <Compile Include="Model\CurrentlyRentedFurnitureInformation.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />

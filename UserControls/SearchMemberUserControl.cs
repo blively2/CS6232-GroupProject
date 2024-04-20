@@ -18,6 +18,7 @@ namespace SofaSoGood.UserControls
         public Member SelectedMember;
         private MemberDashboard MemberDashboard;
         private RentFurnitureUserControl RentFurnitureUserControl;
+        private BuildReturnUserControl BuildReturnUserControl;
 
         /// <summary>
         /// Constructor for SearchCustomerUserControl.
@@ -236,6 +237,7 @@ namespace SofaSoGood.UserControls
                     SelectedMember = ChosenMember;
                     this.MemberDashboard.SelectedMemberChanged(SelectedMember);
                     this.RentFurnitureUserControl.DisplaySelectedMember(SelectedMember);
+                    this.BuildReturnUserControl.DisplaySelectedMemberAndUpdateCurrentlyRentedFurniture(SelectedMember);
                     MemberDashboard.PopulateEditMemberForm(ChosenMember);
                     MemberDashboard.ShowMemberRentalHistory(MemberID);
                 }
@@ -243,7 +245,7 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Ensures that the application exits properly when closed.
+        /// Sets the Member Dashboard for use.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Provides data for the FormClosed event.</param>
@@ -253,13 +255,23 @@ namespace SofaSoGood.UserControls
         }
 
         /// <summary>
-        /// Ensures that the application exits properly when closed.
+        /// Sets the RentFurnitureUserControl for use.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">Provides data for the FormClosed event.</param>
         public void SetRentFurnitureUserControl(RentFurnitureUserControl RentFurnitureControl)
         {
             this.RentFurnitureUserControl = RentFurnitureControl;
+        }
+
+        /// <summary>
+        /// Sets the BuildReturnUserControl for use.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Provides data for the FormClosed event.</param>
+        public void SetBuildReturnUserControl(BuildReturnUserControl BuildReturnUserControl)
+        {
+            this.BuildReturnUserControl = BuildReturnUserControl;
         }
     }
 }
