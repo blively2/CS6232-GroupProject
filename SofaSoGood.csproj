@@ -49,7 +49,9 @@
   <ItemGroup>
     <Compile Include="Controller\AdminController.cs" />
     <Compile Include="DAL\AdminDAL.cs" />
+    <Compile Include="DAL\FurnitureReportDAL.cs" />
     <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\FurnitureReportItem.cs" />
     <Compile Include="UserControlsAdmin\ReportUserControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
