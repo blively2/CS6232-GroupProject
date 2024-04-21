@@ -1,5 +1,9 @@
-﻿using SofaSoGood.Model;
+﻿using SofaSoGood.Controller;
+using SofaSoGood.DAL;
+using SofaSoGood.Model;
+using SofaSoGood.View;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +17,16 @@ namespace SofaSoGood.UserControls
 {
     public partial class ReturnFurnitureUserControl : UserControl
     {
+
+        private LoginForm LoginForm;
+        private RentalController RentalController;
+        private ReturnController ReturnController;
+        private SearchMemberUserControl SearchMemberUserControl;
         public ReturnFurnitureUserControl()
         {
             InitializeComponent();
+            this.RentalController = new RentalController();
+            this.ReturnController = new ReturnController();
             CheckIfMemberAndFurniturePopulated();
             FormatSelectedMemberAndFurnitureListView();
         }
@@ -33,6 +44,15 @@ namespace SofaSoGood.UserControls
 
             this.SelectedMemberLabel.Text = memberPopulated ? "" : "Please select a member.";
             this.SelectedFurnitureLabel.Text = furniturePopulated ? "Click AmountToReturn to Edit Quantities, Right Click to Remove" : "Please select furniture to return.";
+
+            if (memberPopulated && furniturePopulated)
+            {
+                this.ReturnFurnitureButton.Enabled = true;
+            }
+            else 
+            {
+                this.ReturnFurnitureButton.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -124,6 +144,55 @@ namespace SofaSoGood.UserControls
                     MessageBox.Show($"Amount to return must be a positive number and cannot exceed the amount rented ({amountRented}).", "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void ReturnFurnitureButtonClick(object sender, EventArgs e)
+        {
+            DateTime returnDate = DateTime.Now;
+            List<ReturnItem> returnItems = new List<ReturnItem>();
+
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                int rentalItemID = Convert.ToInt32(row.Cells["RentalItemID"].Value);
+                int quantityReturned = Convert.ToInt32(row.Cells["AmountToReturn"].Value);
+                decimal dailyRate = this.RentalController.GetFurnitureDailyRate(Convert.ToInt32(row.Cells["FurnitureID"].Value));
+                DateTime dueDate = Convert.ToDateTime(row.Cells["DueDate"].Value);
+
+                // Create a ReturnItem object and add it to the list
+                ReturnItem returnItem = new ReturnItem
+                {
+                    RentalItemID = rentalItemID,
+                    QuantityReturned = quantityReturned
+                };
+                returnItems.Add(returnItem);
+            }
+
+            // Create the ReturnTransaction object
+            ReturnTransaction returnTransaction = new ReturnTransaction
+            {
+                EmployeeID = this.LoginForm.LoggedInEmployee.EmployeeID,
+                MemberID = this.SearchMemberUserControl.SelectedMember.MemberID,
+                ReturnDate = returnDate,
+                ReturnItems = returnItems
+            };
+
+            this.ReturnController.ProcessReturn(returnTransaction);
+        }
+
+        /// <summary>
+        /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
+        /// </summary>
+        public void SetLoginForm(LoginForm loginForm)
+        {
+            this.LoginForm = loginForm;
+        }
+
+        /// <summary>
+        /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
+        /// </summary>
+        public void SetSearchMemberUserControl(SearchMemberUserControl searchMemberUserControl)
+        {
+            this.SearchMemberUserControl = searchMemberUserControl;
         }
     }
 }

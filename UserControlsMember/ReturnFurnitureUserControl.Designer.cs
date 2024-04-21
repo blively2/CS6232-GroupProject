@@ -54,6 +54,7 @@
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountToReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnFurnitureButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,7 +181,7 @@
             this.SelectedFurnitureDataGridView.Name = "SelectedFurnitureDataGridView";
             this.SelectedFurnitureDataGridView.RowTemplate.Height = 28;
             this.SelectedFurnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(644, 140);
+            this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(644, 129);
             this.SelectedFurnitureDataGridView.TabIndex = 60;
             this.SelectedFurnitureDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.SelectedFurnitureDataGridView_CellValidating);
             // 
@@ -243,10 +244,23 @@
             this.AmountToReturn.HeaderText = "AmountToReturn";
             this.AmountToReturn.Name = "AmountToReturn";
             // 
+            // ReturnFurnitureButton
+            // 
+            this.ReturnFurnitureButton.Enabled = false;
+            this.ReturnFurnitureButton.Location = new System.Drawing.Point(510, 238);
+            this.ReturnFurnitureButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ReturnFurnitureButton.Name = "ReturnFurnitureButton";
+            this.ReturnFurnitureButton.Size = new System.Drawing.Size(88, 23);
+            this.ReturnFurnitureButton.TabIndex = 61;
+            this.ReturnFurnitureButton.Text = "Return";
+            this.ReturnFurnitureButton.UseVisualStyleBackColor = true;
+            this.ReturnFurnitureButton.Click += new System.EventHandler(this.ReturnFurnitureButtonClick);
+            // 
             // ReturnFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ReturnFurnitureButton);
             this.Controls.Add(this.SelectedFurnitureDataGridView);
             this.Controls.Add(this.SelectedFurnitureLabel);
             this.Controls.Add(this.SelectedMemberLabel);
@@ -289,5 +303,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountRented;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountToReturn;
+        private System.Windows.Forms.Button ReturnFurnitureButton;
     }
 }

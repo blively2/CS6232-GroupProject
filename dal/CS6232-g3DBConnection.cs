@@ -12,7 +12,7 @@ namespace SofaSoGood.DAL
         /// </summary>
         public static SqlConnection GetConnection()
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=CS6232-g3;Integrated Security=True";
+            string connectionString = "Data Source=localhost;Initial Catalog=CS6232-g3;Integrated Security=True;";
             return new SqlConnection(connectionString);
         }
     }
