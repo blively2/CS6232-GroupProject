@@ -3,6 +3,7 @@ using SofaSoGood.Controller;
 using SofaSoGood.View;
 using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SofaSoGood
 {
@@ -82,6 +83,7 @@ namespace SofaSoGood
 
         private void ShowLoginError()
         {
+            this.LoginWarningLabel.ForeColor = Color.Red;
             this.LoginWarningLabel.Text = "Incorrect Username/Password";
             this.UsernameTextBox.Text = string.Empty;
             this.PasswordTextBox.Text = string.Empty;
@@ -92,7 +94,10 @@ namespace SofaSoGood
         /// </summary>
         private void UsernameOrPasswordTextBoxTextChanged(object sender, EventArgs e)
         {
-            this.LoginWarningLabel.Text = string.Empty;
+            if (string.IsNullOrWhiteSpace(this.UsernameTextBox.Text) && string.IsNullOrWhiteSpace(this.PasswordTextBox.Text))
+            {
+                this.LoginWarningLabel.Text = string.Empty;
+            }    
         }
 
         /// <summary>

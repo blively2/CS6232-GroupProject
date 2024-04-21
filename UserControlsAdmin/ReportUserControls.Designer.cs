@@ -37,14 +37,14 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.furnitureListView = new System.Windows.Forms.ListView();
             this.FurnitureID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FurnitureName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FurnitureCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FurnitureStyle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FurnitureName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TotalNumberOfReantalTransations = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TotalNumberOfAllFurnitureRentalTransations = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PercentageOfTransaction = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PercentageOfMemberAgeInRange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PercentageOfMemberAgeOutRange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateWarningLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dateOfBirthDatePicker
@@ -70,7 +70,7 @@
             // 
             this.popularLabel.AutoSize = true;
             this.popularLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.popularLabel.Location = new System.Drawing.Point(245, 18);
+            this.popularLabel.Location = new System.Drawing.Point(339, 22);
             this.popularLabel.Name = "popularLabel";
             this.popularLabel.Size = new System.Drawing.Size(423, 40);
             this.popularLabel.TabIndex = 5;
@@ -106,6 +106,7 @@
             this.reportButton.TabIndex = 11;
             this.reportButton.Text = "Report";
             this.reportButton.UseVisualStyleBackColor = false;
+            this.reportButton.Click += new System.EventHandler(this.ReportButton_Click);
             // 
             // clearButton
             // 
@@ -116,6 +117,7 @@
             this.clearButton.TabIndex = 12;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // furnitureListView
             // 
@@ -123,7 +125,6 @@
             this.FurnitureID,
             this.FurnitureCategory,
             this.FurnitureName,
-            this.FurnitureStyle,
             this.TotalNumberOfReantalTransations,
             this.TotalNumberOfAllFurnitureRentalTransations,
             this.PercentageOfTransaction,
@@ -143,22 +144,17 @@
             this.FurnitureID.Text = "Furniture ID";
             this.FurnitureID.Width = 90;
             // 
-            // FurnitureName
-            // 
-            this.FurnitureName.DisplayIndex = 1;
-            this.FurnitureName.Text = "Furniture Name";
-            this.FurnitureName.Width = 90;
-            // 
             // FurnitureCategory
             // 
             this.FurnitureCategory.DisplayIndex = 2;
             this.FurnitureCategory.Text = "Furniture Category";
             this.FurnitureCategory.Width = 120;
             // 
-            // FurnitureStyle
+            // FurnitureName
             // 
-            this.FurnitureStyle.Text = "Furniture Style";
-            this.FurnitureStyle.Width = 90;
+            this.FurnitureName.DisplayIndex = 1;
+            this.FurnitureName.Text = "Furniture Name";
+            this.FurnitureName.Width = 90;
             // 
             // TotalNumberOfReantalTransations
             // 
@@ -184,9 +180,20 @@
             // 
             this.PercentageOfMemberAgeOutRange.Text = "Percentage of Member\'s Age (29+)";
             // 
+            // dateWarningLabel
+            // 
+            this.dateWarningLabel.AutoSize = true;
+            this.dateWarningLabel.ForeColor = System.Drawing.Color.Red;
+            this.dateWarningLabel.Location = new System.Drawing.Point(362, 131);
+            this.dateWarningLabel.Name = "dateWarningLabel";
+            this.dateWarningLabel.Size = new System.Drawing.Size(210, 13);
+            this.dateWarningLabel.TabIndex = 50;
+            this.dateWarningLabel.Text = "Select Rented From and Rented To Dates.";
+            // 
             // ReportUserControls
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.dateWarningLabel);
             this.Controls.Add(this.furnitureListView);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.reportButton);
@@ -215,11 +222,11 @@
         private System.Windows.Forms.ColumnHeader FurnitureID;
         private System.Windows.Forms.ColumnHeader FurnitureName;
         private System.Windows.Forms.ColumnHeader FurnitureCategory;
-        private System.Windows.Forms.ColumnHeader FurnitureStyle;
         private System.Windows.Forms.ColumnHeader TotalNumberOfReantalTransations;
         private System.Windows.Forms.ColumnHeader TotalNumberOfAllFurnitureRentalTransations;
         private System.Windows.Forms.ColumnHeader PercentageOfTransaction;
         private System.Windows.Forms.ColumnHeader PercentageOfMemberAgeInRange;
         private System.Windows.Forms.ColumnHeader PercentageOfMemberAgeOutRange;
+        private System.Windows.Forms.Label dateWarningLabel;
     }
 }

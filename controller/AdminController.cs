@@ -1,5 +1,8 @@
 ﻿using SofaSoGood.DAL;
 using SofaSoGood.Model;
+using System.Data;
+using System;
+using System.Collections.Generic;
 
 namespace SofaSoGood.Controller
 {
@@ -9,13 +12,15 @@ namespace SofaSoGood.Controller
     public class AdminController
     {
         private readonly AdminDAL adminDAL;
+        private readonly FurnitureReportDAL furnitureReportDAL;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminController"/> class.
         /// </summary>
         public AdminController()
         {
-            adminDAL = new AdminDAL();
+            this.adminDAL = new AdminDAL();
+            this.furnitureReportDAL = new FurnitureReportDAL();
         }
 
         /// <summary>
@@ -26,6 +31,17 @@ namespace SofaSoGood.Controller
         public Admin GetAdminByLoginID(int loginID)
         {
             return adminDAL.GetAdminByLoginID(loginID);
+        }
+
+        /// <summary>
+        /// Fetches the popular furniture.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns></returns>
+        public List<FurnitureReportItem> FetchPopularFurniture(DateTime startDate, DateTime endDate)
+        {
+            return furnitureReportDAL.GetPopularFurniture(startDate, endDate);
         }
     }
 }
