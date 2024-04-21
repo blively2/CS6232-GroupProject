@@ -35,6 +35,7 @@ namespace SofaSoGood.UserControls
             this.furnitureListView.Hide();
             this.doubleClicktoSelectFurnitureLabel.Hide();
             SelectedFurniture = new List<Furniture>();
+            this.furnitureIDWarningLabel.Text = string.Empty;
             this.categoryWarningLabel.Text = string.Empty;
             this.styleWarningLabel.Text = string.Empty;
         }
@@ -55,6 +56,15 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void SearchByCategoryButtonClick(object sender, EventArgs e)
         {
+            if (categoryComboBox.SelectedItem == null)
+            {
+                categoryWarningLabel.ForeColor = Color.Red;
+                categoryWarningLabel.Text = "Please select a category.";
+                return;
+            }
+            categoryWarningLabel.Text = "";
+            styleWarningLabel.Text = "";
+            furnitureIDWarningLabel.Text = "";
             var furnitureList = furnitureController.SearchFurnitureByCategory(categoryComboBox.SelectedItem.ToString());
             PopulateFurnitureListView(furnitureList);
         }
@@ -65,8 +75,18 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void SearchByFurnitureIDButtonClick(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(furnitureIDTextBox.Text))
+            {
+                furnitureIDWarningLabel.ForeColor = Color.Red;
+                furnitureIDWarningLabel.Text = "Please enter a Furniture ID.";
+                return;
+            }
+
             if (int.TryParse(furnitureIDTextBox.Text, out int furnitureID))
             {
+                categoryWarningLabel.Text = "";
+                styleWarningLabel.Text = "";
+                furnitureIDWarningLabel.Text = "";
                 var furniture = furnitureController.GetFurnitureByID(furnitureID);
                 List<Furniture> furnitureList = furniture != null ? new List<Furniture> { furniture } : new List<Furniture>();
                 PopulateFurnitureListView(furnitureList);
@@ -85,6 +105,16 @@ namespace SofaSoGood.UserControls
         /// </summary>
         private void SearchByStyleButtonClick(object sender, EventArgs e)
         {
+            if (styleComboBox.SelectedItem == null)
+            {
+                styleWarningLabel.ForeColor = Color.Red;
+                styleWarningLabel.Text = "Please select a style.";
+                return;
+            }
+            categoryWarningLabel.Text = "";
+            styleWarningLabel.Text = "";
+            furnitureIDWarningLabel.Text = "";
+
             var furnitureList = furnitureController.SearchFurnitureByStyle(styleComboBox.SelectedItem.ToString());
             PopulateFurnitureListView(furnitureList);
         }
