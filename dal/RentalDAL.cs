@@ -297,6 +297,7 @@ SELECT
     f.FurnitureID,
     rt.RentalTransactionID,
     ri.RentalItemID,
+    rt.RentalDate,
     rt.DueDate,
     f.Name AS FurnitureName, 
     f.CategoryName AS FurnitureCategory,
@@ -310,7 +311,6 @@ FROM
     INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
 WHERE 
     rt.MemberID = @MemberID
-    AND rt.DueDate >= CAST(GETDATE() AS Date)
     AND NOT EXISTS (
         SELECT 1 FROM ReturnItem ri2
         WHERE ri2.RentalItemID = ri.RentalItemID
@@ -329,6 +329,7 @@ WHERE
                                 FurnitureID = reader.GetInt32(reader.GetOrdinal("FurnitureID")),
                                 RentalTransactionID = reader.GetInt32(reader.GetOrdinal("RentalTransactionID")),
                                 RentalItemID = reader.GetInt32(reader.GetOrdinal("RentalItemID")),
+                                RentalDate = reader.GetDateTime(reader.GetOrdinal("RentalDate")),
                                 DueDate = reader.GetDateTime(reader.GetOrdinal("DueDate")),
                                 Name = reader.GetString(reader.GetOrdinal("FurnitureName")),
                                 CategoryName = reader.GetString(reader.GetOrdinal("FurnitureCategory")),

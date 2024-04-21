@@ -52,6 +52,7 @@
             this.FurnitureCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FurnitureStyle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RentalDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DueDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AmountRented = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
@@ -178,19 +179,20 @@
             this.FurnitureCategory,
             this.FurnitureStyle,
             this.Description,
+            this.RentalDate,
             this.DueDate,
             this.AmountRented});
             this.CurrentlyRentedFurnitureListView.FullRowSelect = true;
             this.CurrentlyRentedFurnitureListView.HideSelection = false;
-            this.CurrentlyRentedFurnitureListView.Location = new System.Drawing.Point(0, 129);
+            this.CurrentlyRentedFurnitureListView.Location = new System.Drawing.Point(0, 127);
             this.CurrentlyRentedFurnitureListView.Margin = new System.Windows.Forms.Padding(2);
             this.CurrentlyRentedFurnitureListView.MultiSelect = false;
             this.CurrentlyRentedFurnitureListView.Name = "CurrentlyRentedFurnitureListView";
             this.CurrentlyRentedFurnitureListView.Size = new System.Drawing.Size(648, 119);
-            this.CurrentlyRentedFurnitureListView.TabIndex = 51;
+            this.CurrentlyRentedFurnitureListView.TabIndex = 52;
             this.CurrentlyRentedFurnitureListView.UseCompatibleStateImageBehavior = false;
             this.CurrentlyRentedFurnitureListView.View = System.Windows.Forms.View.Details;
-            this.CurrentlyRentedFurnitureListView.DoubleClick += new System.EventHandler(this.CurrentlyRentedFurnitureListViewDoubleClick);
+            this.CurrentlyRentedFurnitureListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CurrentlyRentedFurnitureListViewDoubleClick);
             // 
             // FurnitureID
             // 
@@ -224,6 +226,10 @@
             // 
             this.Description.Text = "Description";
             this.Description.Width = 120;
+            // 
+            // RentalDate
+            // 
+            this.RentalDate.Text = "RentalDate";
             // 
             // DueDate
             // 
@@ -278,6 +284,7 @@
         private System.Windows.Forms.ColumnHeader FurnitureCategory;
         private System.Windows.Forms.ColumnHeader FurnitureStyle;
         private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.ColumnHeader RentalDate;
         private System.Windows.Forms.ColumnHeader DueDate;
         private System.Windows.Forms.ColumnHeader AmountRented;
     }

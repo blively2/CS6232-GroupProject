@@ -99,6 +99,7 @@ namespace SofaSoGood.UserControls
                             furniture.CategoryName,
                             furniture.StyleName,
                             furniture.Description,
+                            furniture.RentalDate.ToShortDateString(),
                             furniture.DueDate.ToShortDateString(),
                             furniture.AmountRented.ToString()
                         });
@@ -141,12 +142,13 @@ namespace SofaSoGood.UserControls
                     CategoryName = selectedItem.SubItems[4].Text,
                     StyleName = selectedItem.SubItems[5].Text,
                     Description = selectedItem.SubItems[6].Text,
-                    DueDate = System.DateTime.Parse(selectedItem.SubItems[7].Text),
-                    AmountRented = int.Parse(selectedItem.SubItems[8].Text)
+                    RentalDate = System.DateTime.Parse(selectedItem.SubItems[7].Text),
+                    DueDate = System.DateTime.Parse(selectedItem.SubItems[8].Text),
+                    AmountRented = int.Parse(selectedItem.SubItems[9].Text)
                 };
 
                 returnFurnitureList.Add(chosenFurniture);
-                System.Diagnostics.Debug.WriteLine($"Furniture added: {chosenFurniture.Name}");
+                System.Diagnostics.Debug.WriteLine($"Furniture added: {chosenFurniture.RentalDate}");
             }
             this.UpdateReturnFurnitureUserControl();
             this.UpdateItemsToReturnLabel();

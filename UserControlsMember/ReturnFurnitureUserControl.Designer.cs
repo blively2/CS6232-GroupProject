@@ -44,6 +44,15 @@
             this.SelectedMemberLabel = new System.Windows.Forms.Label();
             this.SelectedFurnitureLabel = new System.Windows.Forms.Label();
             this.SelectedFurnitureDataGridView = new System.Windows.Forms.DataGridView();
+            this.ReturnFurnitureButton = new System.Windows.Forms.Button();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.RefundLabel = new System.Windows.Forms.Label();
+            this.FineAmountLabel = new System.Windows.Forms.Label();
+            this.TotalTextBox = new System.Windows.Forms.TextBox();
+            this.RefundTextBox = new System.Windows.Forms.TextBox();
+            this.FineTextBox = new System.Windows.Forms.TextBox();
+            this.ReturnDateLabel = new System.Windows.Forms.Label();
+            this.ReturnDateTextBox = new System.Windows.Forms.TextBox();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalTransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,10 +60,10 @@
             this.FurnitureCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FurnitureStyle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RentalDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountToReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnFurnitureButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,6 +181,7 @@
             this.FurnitureCategory,
             this.FurnitureStyle,
             this.Description,
+            this.RentalDate,
             this.DueDate,
             this.AmountRented,
             this.AmountToReturn});
@@ -184,6 +194,94 @@
             this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(644, 129);
             this.SelectedFurnitureDataGridView.TabIndex = 60;
             this.SelectedFurnitureDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.SelectedFurnitureDataGridView_CellValidating);
+            // 
+            // ReturnFurnitureButton
+            // 
+            this.ReturnFurnitureButton.Enabled = false;
+            this.ReturnFurnitureButton.Location = new System.Drawing.Point(510, 238);
+            this.ReturnFurnitureButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ReturnFurnitureButton.Name = "ReturnFurnitureButton";
+            this.ReturnFurnitureButton.Size = new System.Drawing.Size(88, 23);
+            this.ReturnFurnitureButton.TabIndex = 61;
+            this.ReturnFurnitureButton.Text = "Return";
+            this.ReturnFurnitureButton.UseVisualStyleBackColor = true;
+            this.ReturnFurnitureButton.Click += new System.EventHandler(this.ReturnFurnitureButtonClick);
+            // 
+            // TotalLabel
+            // 
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Location = new System.Drawing.Point(371, 236);
+            this.TotalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(34, 13);
+            this.TotalLabel.TabIndex = 70;
+            this.TotalLabel.Text = "Total:";
+            // 
+            // RefundLabel
+            // 
+            this.RefundLabel.AutoSize = true;
+            this.RefundLabel.Location = new System.Drawing.Point(146, 236);
+            this.RefundLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RefundLabel.Name = "RefundLabel";
+            this.RefundLabel.Size = new System.Drawing.Size(45, 13);
+            this.RefundLabel.TabIndex = 69;
+            this.RefundLabel.Text = "Refund:";
+            // 
+            // FineAmountLabel
+            // 
+            this.FineAmountLabel.AutoSize = true;
+            this.FineAmountLabel.Location = new System.Drawing.Point(267, 236);
+            this.FineAmountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FineAmountLabel.Name = "FineAmountLabel";
+            this.FineAmountLabel.Size = new System.Drawing.Size(30, 13);
+            this.FineAmountLabel.TabIndex = 68;
+            this.FineAmountLabel.Text = "Fine:";
+            // 
+            // TotalTextBox
+            // 
+            this.TotalTextBox.Location = new System.Drawing.Point(409, 233);
+            this.TotalTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.TotalTextBox.Name = "TotalTextBox";
+            this.TotalTextBox.ReadOnly = true;
+            this.TotalTextBox.Size = new System.Drawing.Size(68, 20);
+            this.TotalTextBox.TabIndex = 67;
+            // 
+            // RefundTextBox
+            // 
+            this.RefundTextBox.Location = new System.Drawing.Point(195, 232);
+            this.RefundTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.RefundTextBox.Name = "RefundTextBox";
+            this.RefundTextBox.ReadOnly = true;
+            this.RefundTextBox.Size = new System.Drawing.Size(68, 20);
+            this.RefundTextBox.TabIndex = 66;
+            // 
+            // FineTextBox
+            // 
+            this.FineTextBox.Location = new System.Drawing.Point(299, 233);
+            this.FineTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.FineTextBox.Name = "FineTextBox";
+            this.FineTextBox.ReadOnly = true;
+            this.FineTextBox.Size = new System.Drawing.Size(68, 20);
+            this.FineTextBox.TabIndex = 65;
+            // 
+            // ReturnDateLabel
+            // 
+            this.ReturnDateLabel.AutoSize = true;
+            this.ReturnDateLabel.Location = new System.Drawing.Point(2, 236);
+            this.ReturnDateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ReturnDateLabel.Name = "ReturnDateLabel";
+            this.ReturnDateLabel.Size = new System.Drawing.Size(68, 13);
+            this.ReturnDateLabel.TabIndex = 72;
+            this.ReturnDateLabel.Text = "Return Date:";
+            // 
+            // ReturnDateTextBox
+            // 
+            this.ReturnDateTextBox.Location = new System.Drawing.Point(74, 232);
+            this.ReturnDateTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ReturnDateTextBox.Name = "ReturnDateTextBox";
+            this.ReturnDateTextBox.ReadOnly = true;
+            this.ReturnDateTextBox.Size = new System.Drawing.Size(68, 20);
+            this.ReturnDateTextBox.TabIndex = 71;
             // 
             // FurnitureID
             // 
@@ -227,6 +325,12 @@
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
             // 
+            // RentalDate
+            // 
+            this.RentalDate.HeaderText = "RentalDate";
+            this.RentalDate.Name = "RentalDate";
+            this.RentalDate.ReadOnly = true;
+            // 
             // DueDate
             // 
             this.DueDate.HeaderText = "DueDate";
@@ -244,22 +348,18 @@
             this.AmountToReturn.HeaderText = "AmountToReturn";
             this.AmountToReturn.Name = "AmountToReturn";
             // 
-            // ReturnFurnitureButton
-            // 
-            this.ReturnFurnitureButton.Enabled = false;
-            this.ReturnFurnitureButton.Location = new System.Drawing.Point(510, 238);
-            this.ReturnFurnitureButton.Margin = new System.Windows.Forms.Padding(2);
-            this.ReturnFurnitureButton.Name = "ReturnFurnitureButton";
-            this.ReturnFurnitureButton.Size = new System.Drawing.Size(88, 23);
-            this.ReturnFurnitureButton.TabIndex = 61;
-            this.ReturnFurnitureButton.Text = "Return";
-            this.ReturnFurnitureButton.UseVisualStyleBackColor = true;
-            this.ReturnFurnitureButton.Click += new System.EventHandler(this.ReturnFurnitureButtonClick);
-            // 
             // ReturnFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ReturnDateLabel);
+            this.Controls.Add(this.ReturnDateTextBox);
+            this.Controls.Add(this.TotalLabel);
+            this.Controls.Add(this.RefundLabel);
+            this.Controls.Add(this.FineAmountLabel);
+            this.Controls.Add(this.TotalTextBox);
+            this.Controls.Add(this.RefundTextBox);
+            this.Controls.Add(this.FineTextBox);
             this.Controls.Add(this.ReturnFurnitureButton);
             this.Controls.Add(this.SelectedFurnitureDataGridView);
             this.Controls.Add(this.SelectedFurnitureLabel);
@@ -293,6 +393,15 @@
         private System.Windows.Forms.Label SelectedMemberLabel;
         private System.Windows.Forms.Label SelectedFurnitureLabel;
         private System.Windows.Forms.DataGridView SelectedFurnitureDataGridView;
+        private System.Windows.Forms.Button ReturnFurnitureButton;
+        private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.Label RefundLabel;
+        private System.Windows.Forms.Label FineAmountLabel;
+        private System.Windows.Forms.TextBox TotalTextBox;
+        private System.Windows.Forms.TextBox RefundTextBox;
+        private System.Windows.Forms.TextBox FineTextBox;
+        private System.Windows.Forms.Label ReturnDateLabel;
+        private System.Windows.Forms.TextBox ReturnDateTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalTransactionID;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalItemID;
@@ -300,9 +409,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn FurnitureStyle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RentalDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountRented;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountToReturn;
-        private System.Windows.Forms.Button ReturnFurnitureButton;
     }
 }

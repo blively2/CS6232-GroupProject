@@ -1,16 +1,8 @@
 ﻿using SofaSoGood.Controller;
-using SofaSoGood.DAL;
 using SofaSoGood.Model;
-using SofaSoGood.View;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SofaSoGood.UserControls
@@ -27,6 +19,7 @@ namespace SofaSoGood.UserControls
             InitializeComponent();
             this.RentalController = new RentalController();
             this.ReturnController = new ReturnController();
+            ReturnDateTextBox.Text = DateTime.Now.ToString("d");
             CheckIfMemberAndFurniturePopulated();
             FormatSelectedMemberAndFurnitureListView();
         }
@@ -120,11 +113,13 @@ namespace SofaSoGood.UserControls
                 newRow.Cells["FurnitureCategory"].Value = furniture.CategoryName;
                 newRow.Cells["FurnitureStyle"].Value = furniture.StyleName;
                 newRow.Cells["Description"].Value = furniture.Description;
+                newRow.Cells["RentalDate"].Value = furniture.RentalDate.ToString("d");
                 newRow.Cells["DueDate"].Value = furniture.DueDate.ToString("d");
                 newRow.Cells["AmountRented"].Value = furniture.AmountRented;
                 newRow.Cells["AmountToReturn"].Value = "1";
             }
             this.FormatSelectedMemberAndFurnitureListView();
+            CalculateTotals();
         }
 
         private void SelectedFurnitureDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -137,6 +132,7 @@ namespace SofaSoGood.UserControls
                 bool isValidNumber = int.TryParse(e.FormattedValue.ToString(), out amountToReturn);
 
                 int amountRented = (int)dataGridView.Rows[e.RowIndex].Cells["AmountRented"].Value;
+                CalculateTotals();
 
                 if (!isValidNumber || amountToReturn > amountRented || amountToReturn <= 0)
                 {
@@ -158,7 +154,6 @@ namespace SofaSoGood.UserControls
                 decimal dailyRate = this.RentalController.GetFurnitureDailyRate(Convert.ToInt32(row.Cells["FurnitureID"].Value));
                 DateTime dueDate = Convert.ToDateTime(row.Cells["DueDate"].Value);
 
-                // Create a ReturnItem object and add it to the list
                 ReturnItem returnItem = new ReturnItem
                 {
                     RentalItemID = rentalItemID,
@@ -167,7 +162,6 @@ namespace SofaSoGood.UserControls
                 returnItems.Add(returnItem);
             }
 
-            // Create the ReturnTransaction object
             ReturnTransaction returnTransaction = new ReturnTransaction
             {
                 EmployeeID = this.LoginForm.LoggedInEmployee.EmployeeID,
@@ -193,6 +187,49 @@ namespace SofaSoGood.UserControls
         public void SetSearchMemberUserControl(SearchMemberUserControl searchMemberUserControl)
         {
             this.SearchMemberUserControl = searchMemberUserControl;
+        }
+
+        private void CalculateTotals()
+        {
+            decimal totalFine = 0m;
+            decimal totalRefund = 0m;
+            decimal totalCost = 0m;
+
+            DateTime returnDate = DateTime.Now;
+
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                if (row.Cells["AmountToReturn"].Value != null && int.TryParse(row.Cells["AmountToReturn"].Value.ToString(), out int amountToReturn))
+                {
+                    int furnitureId = Convert.ToInt32(row.Cells["FurnitureID"].Value);
+                    DateTime dueDate = Convert.ToDateTime(row.Cells["DueDate"].Value);
+                    DateTime rentalDate = Convert.ToDateTime(row.Cells["RentalDate"].Value);
+                    decimal dailyRate = this.RentalController.GetFurnitureDailyRate(furnitureId);
+
+                    int totalDaysRented = (dueDate - rentalDate).Days + 1;
+                    int daysLate = (returnDate - dueDate).Days;
+                    int daysEarly = (dueDate - returnDate).Days;
+
+                    decimal totalRateForReturn = dailyRate * amountToReturn * totalDaysRented;
+
+                    if (daysLate > 0) 
+                    {
+                        decimal fineAmount = dailyRate * amountToReturn * daysLate;
+                        totalFine += fineAmount;
+                    }
+                    else if (daysEarly > 0)
+                    {
+                        decimal refundAmount = dailyRate * amountToReturn * daysEarly;
+                        totalRefund += refundAmount;
+                    }
+
+                    totalCost += totalRateForReturn;
+                }
+            }
+
+            FineTextBox.Text = totalFine.ToString("C");
+            RefundTextBox.Text = totalRefund.ToString("C");
+            TotalTextBox.Text = totalCost.ToString("C");
         }
     }
 }

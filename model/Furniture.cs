@@ -100,5 +100,13 @@
         /// The total quantity.
         /// </value>
         public System.DateTime DueDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AmountRented.
+        /// </summary>
+        /// <value>
+        /// The total quantity.
+        /// </value>
+        public System.DateTime RentalDate { get; set; }
     }
 }
