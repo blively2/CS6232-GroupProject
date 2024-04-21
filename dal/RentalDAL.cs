@@ -304,17 +304,28 @@ SELECT
     f.StyleName AS FurnitureStyle,
     f.Description, 
     f.RentalRatePerDay,
-    ri.Quantity AS AmountRented
+    (ri.Quantity - ISNULL(SUM(ri2.QuantityReturned), 0)) AS AmountRented
 FROM 
     RentalTransaction rt
-    INNER JOIN RentalItem ri ON rt.RentalTransactionID = ri.RentalTransactionID
-    INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
+INNER JOIN RentalItem ri ON rt.RentalTransactionID = ri.RentalTransactionID
+INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
+LEFT JOIN ReturnItem ri2 ON ri.RentalItemID = ri2.RentalItemID
 WHERE 
     rt.MemberID = @MemberID
-    AND NOT EXISTS (
-        SELECT 1 FROM ReturnItem ri2
-        WHERE ri2.RentalItemID = ri.RentalItemID
-    );";
+GROUP BY 
+    f.FurnitureID,
+    rt.RentalTransactionID,
+    ri.RentalItemID,
+    rt.RentalDate,
+    rt.DueDate,
+    f.Name, 
+    f.CategoryName,
+    f.StyleName,
+    f.Description, 
+    f.RentalRatePerDay,
+    ri.Quantity
+HAVING 
+    ri.Quantity - ISNULL(SUM(ri2.QuantityReturned), 0) > 0;";
 
                 using (var command = new SqlCommand(query, connection))
                 {
