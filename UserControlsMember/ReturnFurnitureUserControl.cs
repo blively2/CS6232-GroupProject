@@ -144,6 +144,10 @@ namespace SofaSoGood.UserControls
 
         private void ReturnFurnitureButtonClick(object sender, EventArgs e)
         {
+            if (!ConfirmReturnTransaction()) 
+            {
+                return;
+            }
             DateTime returnDate = DateTime.Now;
             List<ReturnItem> returnItems = new List<ReturnItem>();
 
@@ -171,6 +175,8 @@ namespace SofaSoGood.UserControls
             };
 
             this.ReturnController.ProcessReturn(returnTransaction);
+            SelectedFurnitureDataGridView.Rows.Clear();
+            CalculateTotals();
         }
 
         /// <summary>
@@ -245,6 +251,36 @@ namespace SofaSoGood.UserControls
         private void SelectedFurnitureDataGridViewCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             CalculateTotals();
+        }
+
+        /// <summary>
+        /// Asks the User to confirm the transaction before proceeding.
+        /// </summary>
+        /// <returns>boolean for confirmation</returns>
+        private bool ConfirmReturnTransaction()
+        {
+            string confirmationMessage = "Confirm return of the following items:\n";
+
+            foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
+            {
+                string itemName = row.Cells["FurnitureName"].Value.ToString();
+                int quantity = Convert.ToInt32(row.Cells["AmountToReturn"].Value);
+                confirmationMessage += $"{quantity} x {itemName}\n";
+            }
+
+            string memberName = $"{this.SearchMemberUserControl.SelectedMember.FirstName} {this.SearchMemberUserControl.SelectedMember.LastName}";
+            confirmationMessage += $"to {memberName} for ";
+
+            string totalCost = TotalTextBox.Text;
+            confirmationMessage += $"{totalCost}.";
+
+            DialogResult dialogResult = MessageBox.Show(confirmationMessage, "Confirm Rental", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

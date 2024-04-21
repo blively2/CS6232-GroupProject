@@ -26,33 +26,44 @@ namespace SofaSoGood.Controller
         {
             using (TransactionScope scope = new TransactionScope())
             {
-                int returnTransactionId = returnDal.CreateReturnTransaction(returnTransaction);
-                returnTransaction.ReturnTransactionID = returnTransactionId;
-
-                foreach (var returnItem in returnTransaction.ReturnItems)
+                using (var connection = SofaSoGoodDBConnection.GetConnection())
                 {
-                    RentalTransaction correspondingRentalTransaction = rentalDal.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
+                    connection.Open();
 
-                    RentalItem rentalItem = correspondingRentalTransaction.RentalItems.FirstOrDefault(ri => ri.RentalItemID == returnItem.RentalItemID);
+                    decimal totalRefund = 0;
+                    decimal totalFine = 0;
 
-                    if (rentalItem != null)
+                    foreach (var returnItem in returnTransaction.ReturnItems)
                     {
-                        furnitureDal.IncrementStockQuantity(rentalItem.FurnitureID, returnItem.QuantityReturned);
+                        RentalTransaction rentalTransaction = rentalDal.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
 
-                        decimal fineOrRefundAmount = CalculateRefundOrFine(correspondingRentalTransaction, returnItem);
+                        decimal itemRefundOrFine = CalculateRefundOrFine(rentalTransaction, returnItem);
 
-                        if (returnItem.QuantityReturned < rentalItem.Quantity)
+                        if (itemRefundOrFine < 0)
                         {
-                            rentalDal.UpdateRentalItemQuantity(returnItem.RentalItemID, rentalItem.Quantity - returnItem.QuantityReturned);
+                            totalRefund += Math.Abs(itemRefundOrFine);
                         }
+                        else
+                        {
+                            totalFine += itemRefundOrFine;
+                        }
+                    }
 
+                    returnTransaction.ReturnAmount = totalRefund;
+                    returnTransaction.FineAmount = totalFine;
+
+                    int returnTransactionId = returnDal.CreateReturnTransaction(returnTransaction);
+                    returnTransaction.ReturnTransactionID = returnTransactionId;
+
+                    foreach (var returnItem in returnTransaction.ReturnItems)
+                    {
                         returnDal.AddReturnItem(returnItem, returnTransactionId);
                     }
-                }
-                scope.Complete();
 
-                return returnTransaction;
+                    scope.Complete();
+                }
             }
+            return returnTransaction;
         }
 
         private decimal CalculateRefundOrFine(RentalTransaction rentalTransaction, ReturnItem returnItem)
