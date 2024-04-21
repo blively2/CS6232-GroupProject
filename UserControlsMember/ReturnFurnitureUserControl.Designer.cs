@@ -44,15 +44,6 @@
             this.SelectedMemberLabel = new System.Windows.Forms.Label();
             this.SelectedFurnitureLabel = new System.Windows.Forms.Label();
             this.SelectedFurnitureDataGridView = new System.Windows.Forms.DataGridView();
-            this.ReturnFurnitureButton = new System.Windows.Forms.Button();
-            this.TotalLabel = new System.Windows.Forms.Label();
-            this.RefundLabel = new System.Windows.Forms.Label();
-            this.FineAmountLabel = new System.Windows.Forms.Label();
-            this.TotalTextBox = new System.Windows.Forms.TextBox();
-            this.RefundTextBox = new System.Windows.Forms.TextBox();
-            this.FineTextBox = new System.Windows.Forms.TextBox();
-            this.ReturnDateLabel = new System.Windows.Forms.Label();
-            this.ReturnDateTextBox = new System.Windows.Forms.TextBox();
             this.FurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalTransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +55,15 @@
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountRented = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountToReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnFurnitureButton = new System.Windows.Forms.Button();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.RefundLabel = new System.Windows.Forms.Label();
+            this.FineAmountLabel = new System.Windows.Forms.Label();
+            this.TotalTextBox = new System.Windows.Forms.TextBox();
+            this.RefundTextBox = new System.Windows.Forms.TextBox();
+            this.FineTextBox = new System.Windows.Forms.TextBox();
+            this.ReturnDateLabel = new System.Windows.Forms.Label();
+            this.ReturnDateTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.SelectedFurnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,6 +194,72 @@
             this.SelectedFurnitureDataGridView.Size = new System.Drawing.Size(644, 129);
             this.SelectedFurnitureDataGridView.TabIndex = 60;
             this.SelectedFurnitureDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.SelectedFurnitureDataGridView_CellValidating);
+            this.SelectedFurnitureDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectedFurnitureDataGridViewCellValueChanged);
+            // 
+            // FurnitureID
+            // 
+            this.FurnitureID.HeaderText = "FurnitureID";
+            this.FurnitureID.Name = "FurnitureID";
+            this.FurnitureID.ReadOnly = true;
+            // 
+            // RentalTransactionID
+            // 
+            this.RentalTransactionID.HeaderText = "RentalTransactionID";
+            this.RentalTransactionID.Name = "RentalTransactionID";
+            this.RentalTransactionID.ReadOnly = true;
+            // 
+            // RentalItemID
+            // 
+            this.RentalItemID.HeaderText = "RentalItemID";
+            this.RentalItemID.Name = "RentalItemID";
+            this.RentalItemID.ReadOnly = true;
+            // 
+            // FurnitureName
+            // 
+            this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.Name = "FurnitureName";
+            this.FurnitureName.ReadOnly = true;
+            // 
+            // FurnitureCategory
+            // 
+            this.FurnitureCategory.HeaderText = "Category";
+            this.FurnitureCategory.Name = "FurnitureCategory";
+            this.FurnitureCategory.ReadOnly = true;
+            // 
+            // FurnitureStyle
+            // 
+            this.FurnitureStyle.HeaderText = "Style";
+            this.FurnitureStyle.Name = "FurnitureStyle";
+            this.FurnitureStyle.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // RentalDate
+            // 
+            this.RentalDate.HeaderText = "RentalDate";
+            this.RentalDate.Name = "RentalDate";
+            this.RentalDate.ReadOnly = true;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "DueDate";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
+            // AmountRented
+            // 
+            this.AmountRented.HeaderText = "AmountRented";
+            this.AmountRented.Name = "AmountRented";
+            this.AmountRented.ReadOnly = true;
+            // 
+            // AmountToReturn
+            // 
+            this.AmountToReturn.HeaderText = "AmountToReturn";
+            this.AmountToReturn.Name = "AmountToReturn";
             // 
             // ReturnFurnitureButton
             // 
@@ -282,71 +348,6 @@
             this.ReturnDateTextBox.ReadOnly = true;
             this.ReturnDateTextBox.Size = new System.Drawing.Size(68, 20);
             this.ReturnDateTextBox.TabIndex = 71;
-            // 
-            // FurnitureID
-            // 
-            this.FurnitureID.HeaderText = "FurnitureID";
-            this.FurnitureID.Name = "FurnitureID";
-            this.FurnitureID.ReadOnly = true;
-            // 
-            // RentalTransactionID
-            // 
-            this.RentalTransactionID.HeaderText = "RentalTransactionID";
-            this.RentalTransactionID.Name = "RentalTransactionID";
-            this.RentalTransactionID.ReadOnly = true;
-            // 
-            // RentalItemID
-            // 
-            this.RentalItemID.HeaderText = "RentalItemID";
-            this.RentalItemID.Name = "RentalItemID";
-            this.RentalItemID.ReadOnly = true;
-            // 
-            // FurnitureName
-            // 
-            this.FurnitureName.HeaderText = "Name";
-            this.FurnitureName.Name = "FurnitureName";
-            this.FurnitureName.ReadOnly = true;
-            // 
-            // FurnitureCategory
-            // 
-            this.FurnitureCategory.HeaderText = "Category";
-            this.FurnitureCategory.Name = "FurnitureCategory";
-            this.FurnitureCategory.ReadOnly = true;
-            // 
-            // FurnitureStyle
-            // 
-            this.FurnitureStyle.HeaderText = "Style";
-            this.FurnitureStyle.Name = "FurnitureStyle";
-            this.FurnitureStyle.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // RentalDate
-            // 
-            this.RentalDate.HeaderText = "RentalDate";
-            this.RentalDate.Name = "RentalDate";
-            this.RentalDate.ReadOnly = true;
-            // 
-            // DueDate
-            // 
-            this.DueDate.HeaderText = "DueDate";
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            // 
-            // AmountRented
-            // 
-            this.AmountRented.HeaderText = "AmountRented";
-            this.AmountRented.Name = "AmountRented";
-            this.AmountRented.ReadOnly = true;
-            // 
-            // AmountToReturn
-            // 
-            this.AmountToReturn.HeaderText = "AmountToReturn";
-            this.AmountToReturn.Name = "AmountToReturn";
             // 
             // ReturnFurnitureUserControl
             // 

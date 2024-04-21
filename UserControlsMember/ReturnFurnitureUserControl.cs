@@ -193,7 +193,7 @@ namespace SofaSoGood.UserControls
         {
             decimal totalFine = 0m;
             decimal totalRefund = 0m;
-            decimal totalCost = 0m;
+            decimal netAmount = 0m;
 
             DateTime returnDate = DateTime.Now;
 
@@ -206,13 +206,10 @@ namespace SofaSoGood.UserControls
                     DateTime rentalDate = Convert.ToDateTime(row.Cells["RentalDate"].Value);
                     decimal dailyRate = this.RentalController.GetFurnitureDailyRate(furnitureId);
 
-                    int totalDaysRented = (dueDate - rentalDate).Days + 1;
                     int daysLate = (returnDate - dueDate).Days;
                     int daysEarly = (dueDate - returnDate).Days;
 
-                    decimal totalRateForReturn = dailyRate * amountToReturn * totalDaysRented;
-
-                    if (daysLate > 0) 
+                    if (daysLate > 0)
                     {
                         decimal fineAmount = dailyRate * amountToReturn * daysLate;
                         totalFine += fineAmount;
@@ -222,14 +219,32 @@ namespace SofaSoGood.UserControls
                         decimal refundAmount = dailyRate * amountToReturn * daysEarly;
                         totalRefund += refundAmount;
                     }
-
-                    totalCost += totalRateForReturn;
                 }
             }
 
+            netAmount = totalFine - totalRefund;
+
             FineTextBox.Text = totalFine.ToString("C");
             RefundTextBox.Text = totalRefund.ToString("C");
-            TotalTextBox.Text = totalCost.ToString("C");
+            TotalTextBox.Text = Math.Abs(netAmount).ToString("C");
+
+            if (netAmount > 0)
+            {
+                TotalTextBox.BackColor = Color.Red;
+            }
+            else if (netAmount < 0)
+            {
+                TotalTextBox.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                TotalTextBox.BackColor = Color.LightGray;
+            }
+        }
+
+        private void SelectedFurnitureDataGridViewCellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            CalculateTotals();
         }
     }
 }
