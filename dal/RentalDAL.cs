@@ -356,5 +356,19 @@ HAVING
             }
             return currentlyRentedFurnitures;
         }
+
+        public int GetFurnitureIdByRentalItemId(int rentalItemId)
+        {
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "SELECT FurnitureID FROM [RentalItem] WHERE RentalItemID = @RentalItemID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RentalItemID", rentalItemId);
+                    connection.Open();
+                    return (int)command.ExecuteScalar();
+                }
+            }
+        }
     }
 }
