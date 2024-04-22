@@ -89,7 +89,6 @@ namespace SofaSoGood.UserControls
                 if (currentlyRentedFurniture.Count > 0) {
                     foreach (var furniture in currentlyRentedFurniture)
                     {
-                        System.Diagnostics.Debug.WriteLine(furniture.FurnitureID);
                         var furnitureItem = new ListViewItem(furniture.FurnitureID.ToString());
                         furnitureItem.SubItems.AddRange(new string[]
                         {
@@ -148,7 +147,6 @@ namespace SofaSoGood.UserControls
                 };
 
                 returnFurnitureList.Add(chosenFurniture);
-                System.Diagnostics.Debug.WriteLine($"Furniture added: {chosenFurniture.RentalDate}");
             }
             this.UpdateReturnFurnitureUserControl();
             this.UpdateItemsToReturnLabel();
