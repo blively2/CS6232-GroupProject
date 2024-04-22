@@ -11,6 +11,7 @@ namespace SofaSoGood.Model
         public int ReturnItemID { get; set; }
         public int ReturnTransactionID { get; set; }
         public int RentalItemID { get; set; }
+        public int FurnitureID { get; set; }
         public int QuantityReturned { get; set; }
     }
 }

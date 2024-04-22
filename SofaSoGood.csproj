@@ -138,6 +138,12 @@
     <Compile Include="View\AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnForm .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnForm .Designer.cs">
+      <DependentUpon>ReturnForm .cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ReceiptForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnForm .resx">
+      <DependentUpon>ReturnForm .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReceiptForm.resx">
       <DependentUpon>ReceiptForm.cs</DependentUpon>

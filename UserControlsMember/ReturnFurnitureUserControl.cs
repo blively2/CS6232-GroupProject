@@ -1,5 +1,6 @@
 ﻿using SofaSoGood.Controller;
 using SofaSoGood.Model;
+using SofaSoGood.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -155,12 +156,14 @@ namespace SofaSoGood.UserControls
             {
                 int rentalItemID = Convert.ToInt32(row.Cells["RentalItemID"].Value);
                 int quantityReturned = Convert.ToInt32(row.Cells["AmountToReturn"].Value);
+                int furnitureID = Convert.ToInt32(row.Cells["FurnitureID"].Value);
                 decimal dailyRate = this.RentalController.GetFurnitureDailyRate(Convert.ToInt32(row.Cells["FurnitureID"].Value));
                 DateTime dueDate = Convert.ToDateTime(row.Cells["DueDate"].Value);
 
                 ReturnItem returnItem = new ReturnItem
                 {
                     RentalItemID = rentalItemID,
+                    FurnitureID = furnitureID,
                     QuantityReturned = quantityReturned
                 };
                 returnItems.Add(returnItem);
@@ -175,6 +178,8 @@ namespace SofaSoGood.UserControls
             };
 
             this.ReturnController.ProcessReturn(returnTransaction);
+            var returnForm = new ReturnForm(returnTransaction);
+            returnForm.ShowDialog();
             SelectedFurnitureDataGridView.Rows.Clear();
             CalculateTotals();
         }

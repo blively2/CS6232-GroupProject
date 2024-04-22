@@ -97,6 +97,11 @@ namespace SofaSoGood.Controller
             return rentalDAL.GetCurrentlyRentedFurnitureByMemberID(memberId);
         }
 
+        public RentalItem GetRentalItemById(int rentalItemId) 
+        { 
+            return rentalDAL.GetRentalItemById(rentalItemId);
+        }
+
         public void CreateRentalTransactionWithInventoryUpdate(RentalTransaction rentalTransaction)
         {
             using (TransactionScope scope = new TransactionScope())
