@@ -33,6 +33,9 @@ namespace SofaSoGood.Controller
                     decimal totalRefund = 0;
                     decimal totalFine = 0;
 
+                    int returnTransactionId = returnDal.CreateReturnTransaction(returnTransaction);
+                    returnTransaction.ReturnTransactionID = returnTransactionId;
+
                     foreach (var returnItem in returnTransaction.ReturnItems)
                     {
                         RentalTransaction rentalTransaction = rentalDal.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
@@ -47,18 +50,17 @@ namespace SofaSoGood.Controller
                         {
                             totalFine += itemRefundOrFine;
                         }
+
+                        int furnitureId = rentalDal.GetFurnitureIdByRentalItemId(returnItem.RentalItemID);
+                        furnitureDal.IncrementStockQuantity(furnitureId, returnItem.QuantityReturned);
+
+                        rentalDal.UpdateRentalItemQuantity(returnItem.RentalItemID, -returnItem.QuantityReturned);
+
+                        returnDal.AddReturnItem(returnItem, returnTransactionId);
                     }
 
                     returnTransaction.ReturnAmount = totalRefund;
                     returnTransaction.FineAmount = totalFine;
-
-                    int returnTransactionId = returnDal.CreateReturnTransaction(returnTransaction);
-                    returnTransaction.ReturnTransactionID = returnTransactionId;
-
-                    foreach (var returnItem in returnTransaction.ReturnItems)
-                    {
-                        returnDal.AddReturnItem(returnItem, returnTransactionId);
-                    }
 
                     scope.Complete();
                 }
