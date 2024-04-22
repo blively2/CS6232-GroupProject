@@ -13,7 +13,7 @@ namespace SofaSoGood.UserControls
 
         private RentalController rentalController;
         private ReturnController returnController;
-        private List<Furniture> returnFurnitureList;
+        public List<Furniture> returnFurnitureList;
         private ReturnFurnitureUserControl ReturnFurnitureUserControl;
 
         public BuildReturnUserControl()

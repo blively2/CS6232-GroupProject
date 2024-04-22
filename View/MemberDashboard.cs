@@ -111,6 +111,7 @@ namespace SofaSoGood.View
         public void ShowMemberRentalHistory(int memberId)
         {
             RentalHistoryUserControl.LoadRentalHistory(memberId);
+            ReturnHistoryUserControl.LoadReturnHistory(memberId);
         }
     }
 }

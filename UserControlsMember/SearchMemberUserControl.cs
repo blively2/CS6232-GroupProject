@@ -18,7 +18,7 @@ namespace SofaSoGood.UserControls
         public Member SelectedMember;
         private MemberDashboard MemberDashboard;
         private RentFurnitureUserControl RentFurnitureUserControl;
-        private BuildReturnUserControl BuildReturnUserControl;
+        public BuildReturnUserControl BuildReturnUserControl;
         private ReturnFurnitureUserControl ReturnFurnitureUserControl;
 
         /// <summary>
