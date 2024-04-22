@@ -33,12 +33,15 @@ namespace SofaSoGood.Controller
                     decimal totalRefund = 0;
                     decimal totalFine = 0;
 
+                    int returnTransactionId = returnDal.CreateReturnTransaction(returnTransaction);
+                    returnTransaction.ReturnTransactionID = returnTransactionId;
+
                     foreach (var returnItem in returnTransaction.ReturnItems)
                     {
                         RentalTransaction rentalTransaction = rentalDal.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
+                        RentalItem rentalItem = rentalTransaction.RentalItems.FirstOrDefault(ri => ri.RentalItemID == returnItem.RentalItemID);
 
                         decimal itemRefundOrFine = CalculateRefundOrFine(rentalTransaction, returnItem);
-
                         if (itemRefundOrFine < 0)
                         {
                             totalRefund += Math.Abs(itemRefundOrFine);
@@ -47,18 +50,22 @@ namespace SofaSoGood.Controller
                         {
                             totalFine += itemRefundOrFine;
                         }
+
+                        returnDal.AddReturnItem(returnItem, returnTransactionId);
+
+                        if (rentalItem != null)
+                        {
+                            furnitureDal.IncrementStockQuantity(rentalItem.FurnitureID, returnItem.QuantityReturned);
+
+                            if (returnItem.QuantityReturned < rentalItem.Quantity)
+                            {
+                                rentalDal.UpdateRentalItemQuantity(rentalItem.RentalItemID, rentalItem.Quantity - returnItem.QuantityReturned);
+                            }
+                        }
                     }
 
                     returnTransaction.ReturnAmount = totalRefund;
                     returnTransaction.FineAmount = totalFine;
-
-                    int returnTransactionId = returnDal.CreateReturnTransaction(returnTransaction);
-                    returnTransaction.ReturnTransactionID = returnTransactionId;
-
-                    foreach (var returnItem in returnTransaction.ReturnItems)
-                    {
-                        returnDal.AddReturnItem(returnItem, returnTransactionId);
-                    }
 
                     scope.Complete();
                 }
