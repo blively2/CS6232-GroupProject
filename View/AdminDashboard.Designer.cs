@@ -51,10 +51,10 @@
             // reportTabPage
             // 
             this.reportTabPage.Controls.Add(this.reportUserControls1);
-            this.reportTabPage.Location = new System.Drawing.Point(4, 29);
+            this.reportTabPage.Location = new System.Drawing.Point(4, 38);
             this.reportTabPage.Name = "reportTabPage";
             this.reportTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.reportTabPage.Size = new System.Drawing.Size(976, 386);
+            this.reportTabPage.Size = new System.Drawing.Size(976, 377);
             this.reportTabPage.TabIndex = 9;
             this.reportTabPage.Text = "Report";
             this.reportTabPage.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             this.welcomeAdminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.welcomeAdminLabel.Location = new System.Drawing.Point(12, 423);
             this.welcomeAdminLabel.Name = "welcomeAdminLabel";
-            this.welcomeAdminLabel.Size = new System.Drawing.Size(158, 25);
+            this.welcomeAdminLabel.Size = new System.Drawing.Size(234, 36);
             this.welcomeAdminLabel.TabIndex = 2;
             this.welcomeAdminLabel.Text = "Welcome, admin";
             // 
@@ -82,7 +82,7 @@
             this.LogoutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.LogoutLinkLabel.Location = new System.Drawing.Point(851, 423);
             this.LogoutLinkLabel.Name = "LogoutLinkLabel";
-            this.LogoutLinkLabel.Size = new System.Drawing.Size(72, 25);
+            this.LogoutLinkLabel.Size = new System.Drawing.Size(108, 36);
             this.LogoutLinkLabel.TabIndex = 3;
             this.LogoutLinkLabel.TabStop = true;
             this.LogoutLinkLabel.Text = "Logout";
@@ -98,6 +98,7 @@
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminFormClose);
             this.AdminDashboardTabControl.ResumeLayout(false);
             this.reportTabPage.ResumeLayout(false);
             this.ResumeLayout(false);

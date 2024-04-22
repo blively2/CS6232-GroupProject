@@ -38,5 +38,10 @@ namespace SofaSoGood.View
             this.Hide();
             this.LoginForm.Show();
         }
+
+        private void AdminFormClose(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
