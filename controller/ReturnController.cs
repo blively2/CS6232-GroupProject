@@ -95,5 +95,25 @@ namespace SofaSoGood.Controller
                 return fineAmount;
             }
         }
+
+        /// <summary>
+        /// Retrieves all rental transactions associated with a specific member ID.
+        /// </summary>
+        /// <param name="memberId">The ID of the member whose rental history is being requested.</param>
+        /// <returns>A list of RentalTransaction objects representing the member's rental history.</returns>
+        public List<ReturnTransaction> GetReturnHistoryByMemberId(int memberId)
+        {
+            return returnDal.GetReturnHistoryByMemberId(memberId);
+        }
+
+        /// <summary>
+        /// Retrieves a rental transaction from the database based on its ID.
+        /// </summary>
+        /// <param name="rentalTransactionId">The ID of the rental transaction to retrieve.</param>
+        /// <returns>A RentalTransaction object if found; otherwise, null.</returns>
+        public ReturnTransaction GetReturnTransaction(int returnTransactionId)
+        {
+            return returnDal.GetReturnTransaction(returnTransactionId);
+        }
     }
 }

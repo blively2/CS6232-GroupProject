@@ -36,8 +36,8 @@
             this.searchHistoryButton = new System.Windows.Forms.Button();
             this.memberIdLabel = new System.Windows.Forms.Label();
             this.memberIdTextBox = new System.Windows.Forms.TextBox();
-            this.ReturnlHistoryDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.ReturnlHistoryDataGridView)).BeginInit();
+            this.ReturnHistoryDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.ReturnHistoryDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ReturnHistoryTitleLabel
@@ -83,6 +83,7 @@
             this.clearSearchButton.TabIndex = 12;
             this.clearSearchButton.Text = "Clear";
             this.clearSearchButton.UseVisualStyleBackColor = true;
+            this.clearSearchButton.Click += new System.EventHandler(this.ClearSearchButton_Click);
             // 
             // searchHistoryButton
             // 
@@ -92,6 +93,7 @@
             this.searchHistoryButton.TabIndex = 11;
             this.searchHistoryButton.Text = "Search";
             this.searchHistoryButton.UseVisualStyleBackColor = true;
+            this.searchHistoryButton.Click += new System.EventHandler(this.SearchHistoryButton_Click);
             // 
             // memberIdLabel
             // 
@@ -108,19 +110,21 @@
             this.memberIdTextBox.Name = "memberIdTextBox";
             this.memberIdTextBox.Size = new System.Drawing.Size(100, 20);
             this.memberIdTextBox.TabIndex = 9;
+            this.memberIdTextBox.Click += new System.EventHandler(this.MemberIdTextBox_TextChanged);
             // 
-            // ReturnlHistoryDataGridView
+            // ReturnHistoryDataGridView
             // 
-            this.ReturnlHistoryDataGridView.AllowUserToAddRows = false;
-            this.ReturnlHistoryDataGridView.AllowUserToDeleteRows = false;
-            this.ReturnlHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ReturnlHistoryDataGridView.Location = new System.Drawing.Point(3, 91);
-            this.ReturnlHistoryDataGridView.MultiSelect = false;
-            this.ReturnlHistoryDataGridView.Name = "ReturnlHistoryDataGridView";
-            this.ReturnlHistoryDataGridView.ReadOnly = true;
-            this.ReturnlHistoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ReturnlHistoryDataGridView.Size = new System.Drawing.Size(638, 183);
-            this.ReturnlHistoryDataGridView.TabIndex = 10;
+            this.ReturnHistoryDataGridView.AllowUserToAddRows = false;
+            this.ReturnHistoryDataGridView.AllowUserToDeleteRows = false;
+            this.ReturnHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReturnHistoryDataGridView.Location = new System.Drawing.Point(3, 91);
+            this.ReturnHistoryDataGridView.MultiSelect = false;
+            this.ReturnHistoryDataGridView.Name = "ReturnHistoryDataGridView";
+            this.ReturnHistoryDataGridView.ReadOnly = true;
+            this.ReturnHistoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ReturnHistoryDataGridView.Size = new System.Drawing.Size(638, 183);
+            this.ReturnHistoryDataGridView.TabIndex = 10;
+            this.ReturnHistoryDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RentalHistoryDataGridViewCellMouseDoubleClick);
             // 
             // ReturnHistoryUserControl
             // 
@@ -133,12 +137,12 @@
             this.Controls.Add(this.searchHistoryButton);
             this.Controls.Add(this.memberIdLabel);
             this.Controls.Add(this.memberIdTextBox);
-            this.Controls.Add(this.ReturnlHistoryDataGridView);
+            this.Controls.Add(this.ReturnHistoryDataGridView);
             this.Controls.Add(this.ReturnHistoryTitleLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ReturnHistoryUserControl";
             this.Size = new System.Drawing.Size(644, 277);
-            ((System.ComponentModel.ISupportInitialize)(this.ReturnlHistoryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReturnHistoryDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,6 +158,6 @@
         private System.Windows.Forms.Button searchHistoryButton;
         private System.Windows.Forms.Label memberIdLabel;
         private System.Windows.Forms.TextBox memberIdTextBox;
-        private System.Windows.Forms.DataGridView ReturnlHistoryDataGridView;
+        private System.Windows.Forms.DataGridView ReturnHistoryDataGridView;
     }
 }

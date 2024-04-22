@@ -13,7 +13,6 @@ namespace SofaSoGood.View
         private ReturnTransaction returnTransaction;
         private MemberController memberController;
         private FurnitureController furnitureController;
-        private RentalController rentalController;
         private EmployeeController employeeController;
         private Employee ReturnedByEmployee;
 
