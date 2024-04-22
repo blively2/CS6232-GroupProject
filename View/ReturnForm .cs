@@ -12,6 +12,7 @@ namespace SofaSoGood.View
     {
         private ReturnTransaction returnTransaction;
         private MemberController memberController;
+        private RentalController rentalController;
         private FurnitureController furnitureController;
         private EmployeeController employeeController;
         private Employee ReturnedByEmployee;
@@ -24,13 +25,14 @@ namespace SofaSoGood.View
             InitializeComponent();
             this.returnTransaction = returnTransaction;
             this.memberController = new MemberController();
+            this.rentalController = new RentalController();
             this.furnitureController = new FurnitureController();
             this.employeeController = new EmployeeController();
             TransactionIDLabel.Text = "Transaction Number: " + this.returnTransaction.ReturnTransactionID.ToString();
             this.PopulateMemberListView();
             this.DisplayFurniture(this.returnTransaction.ReturnItems);
             this.ReturnedByEmployee = this.employeeController.GetEmployeeByEmployeeID(returnTransaction.EmployeeID);
-            ReturnDateLabel.Text = "Due Date: " + this.returnTransaction.ReturnDate.ToShortDateString();
+            ReturnDateLabel.Text = "Return Date: " + this.returnTransaction.ReturnDate.ToShortDateString();
             ReturnAmountCostLabel.Text = "Refund Amount: $" + this.returnTransaction.ReturnAmount.ToString();
             FineAmountLabel.Text = "Fine Amount: $" + this.returnTransaction.FineAmount.ToString();
             ReturnedByLabel.Text = "Rented By: " + this.ReturnedByEmployee.FirstName + ReturnedByEmployee.LastName;
@@ -71,7 +73,8 @@ namespace SofaSoGood.View
 
             foreach (var returnItem in ReturnItems)
             {
-                Furniture furniture = furnitureController.GetFurnitureByID(returnItem.FurnitureID);
+                int furnitureID = rentalController.GetFurnitureIdByRentalItemId(returnItem.RentalItemID);
+                Furniture furniture = furnitureController.GetFurnitureByID(furnitureID);
                 int index = FurnitureDataGridView.Rows.Add();
                 DataGridViewRow newRow = FurnitureDataGridView.Rows[index];
                 newRow.Cells["FurnitureID"].Value = furniture.FurnitureID;

@@ -68,6 +68,11 @@ namespace SofaSoGood.Controller
             return furnitureDAL.GetFurnitureDailyRate(furnitureId);
         }
 
+        public int GetFurnitureIdByRentalItemId(int rentalItemID)
+        {
+            return rentalDAL.GetFurnitureIdByRentalItemId(rentalItemID);
+        }
+
         /// <summary>
         /// Gets the next available ID for a new rental transaction, ensuring uniqueness.
         /// </summary>
