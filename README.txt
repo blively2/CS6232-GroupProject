@@ -34,6 +34,8 @@ return history displays history, double click to view return
 admin login is
 Admin
 password01
-
 still unhashed
 recommend dates 04/01 to 08/01
+
+There is something strange about the way we are calculating Refunds and Fines...
+If you rent four beds to a customer at $25 a day for four days and they only keep the beds for one day, please do not refund them $400.
