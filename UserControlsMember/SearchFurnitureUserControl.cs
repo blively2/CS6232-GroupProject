@@ -228,6 +228,7 @@ namespace SofaSoGood.UserControls
         public void ClearSelectedFurniture()
         {
             SelectedFurniture.Clear();
+            VisibilityFurnitureList();
             this.MemberDashboard.SelectedFurnitureChanged(this.SelectedFurniture);
         }
 
