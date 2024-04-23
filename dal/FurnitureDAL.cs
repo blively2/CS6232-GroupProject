@@ -345,20 +345,5 @@ namespace SofaSoGood.DAL
             }
             return furnitureList;
         }
-
-        public void IncrementStockQuantity(int furnitureId, int quantityReturned)
-        {
-            using (var connection = SofaSoGoodDBConnection.GetConnection())
-            {
-                string query = "UPDATE [Furniture] SET InStockQuantity = InStockQuantity + @QuantityReturned WHERE FurnitureID = @FurnitureID";
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@FurnitureID", furnitureId);
-                    command.Parameters.AddWithValue("@QuantityReturned", quantityReturned);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
     }
 }
