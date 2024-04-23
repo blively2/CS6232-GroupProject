@@ -60,6 +60,11 @@ namespace SofaSoGood.Controller
                         returnDal.AddReturnItem(returnItem, returnTransactionId);
                     }
 
+                    foreach (var returnItem in returnTransaction.ReturnItems)
+                    {
+                        furnitureDal.IncreaseStockQuantity(returnItem.FurnitureID, returnItem.QuantityReturned);
+                    }
+
                     scope.Complete();
                 }
             }

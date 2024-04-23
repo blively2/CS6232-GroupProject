@@ -255,6 +255,26 @@ namespace SofaSoGood.DAL
         }
 
         /// <summary>
+        /// Updates the stock quantity of a specific piece of furniture after a return transaction.
+        /// </summary>
+        /// <param name="furnitureId">The ID of the furniture whose stock quantity is to be updated.</param>
+        /// <param name="quantityReturned">The quantity of the furniture that was returned, which will be added to the current stock.</param>
+        public void IncreaseStockQuantity(int furnitureId, int quantityReturned)
+        {
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "UPDATE [Furniture] SET InStockQuantity = InStockQuantity + @QuantityReturned WHERE FurnitureID = @FurnitureID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@FurnitureID", SqlDbType.Int).Value = furnitureId;
+                    command.Parameters.Add("@QuantityReturned", SqlDbType.Int).Value = quantityReturned;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
         /// Retrieves all furniture items from the database that are currently available for rent.
         /// </summary>
         /// <returns>A list of Furniture objects representing all available furniture items.</returns>
