@@ -71,7 +71,7 @@ namespace SofaSoGood
                     }
                     else
                     {
-                        ShowLoginError();
+                        ShowLoginError(); 
                     }
                 }
             }
@@ -94,7 +94,7 @@ namespace SofaSoGood
         /// </summary>
         private void UsernameOrPasswordTextBoxTextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.UsernameTextBox.Text) && string.IsNullOrWhiteSpace(this.PasswordTextBox.Text))
+            if (!string.IsNullOrWhiteSpace(this.UsernameTextBox.Text) && !string.IsNullOrWhiteSpace(this.PasswordTextBox.Text))
             {
                 this.LoginWarningLabel.Text = string.Empty;
             }    

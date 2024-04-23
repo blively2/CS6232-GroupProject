@@ -39,6 +39,11 @@ namespace SofaSoGood.View
             this.LoginForm.Show();
         }
 
+        /// <summary>
+        /// Admins the form close.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="FormClosedEventArgs"/> instance containing the event data.</param>
         private void AdminFormClose(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
