@@ -205,6 +205,7 @@ namespace SofaSoGood
             stateComboBox.SelectedIndex = -1;
             zipTextBox.Clear();
             contactPhoneTextBox.Clear();
+            confirmationAlertLabel.Text = string.Empty;
         }
 
         /// <summary>
