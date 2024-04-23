@@ -15,11 +15,13 @@ namespace SofaSoGood.UserControls
         private RentalController RentalController;
         private ReturnController ReturnController;
         private SearchMemberUserControl SearchMemberUserControl;
+        private BuildReturnUserControl BuildReturnUserControl;
         public ReturnFurnitureUserControl()
         {
             InitializeComponent();
             this.RentalController = new RentalController();
             this.ReturnController = new ReturnController();
+            SelectedFurnitureDataGridView.ContextMenuStrip = SelectedFurnitureMenuStrip;
             ReturnDateTextBox.Text = DateTime.Now.ToString("d");
             CheckIfMemberAndFurniturePopulated();
             FormatSelectedMemberAndFurnitureListView();
@@ -203,6 +205,14 @@ namespace SofaSoGood.UserControls
             this.SearchMemberUserControl = searchMemberUserControl;
         }
 
+        /// <summary>
+        /// Checks if both member and furniture are populated and adjusts control accessibility accordingly.
+        /// </summary>
+        public void SetBuildReturnUserControl(BuildReturnUserControl buildReturnUserControl)
+        {
+            this.BuildReturnUserControl = buildReturnUserControl;
+        }
+
         private void CalculateTotals()
         {
             decimal totalFine = 0m;
@@ -290,5 +300,20 @@ namespace SofaSoGood.UserControls
             }
             return false;
         }
+
+        private void RemoveMenuItemClick(object sender, EventArgs e)
+        {
+            if (SelectedFurnitureDataGridView.SelectedRows.Count == 1)
+            {
+                var selectedRow = SelectedFurnitureDataGridView.SelectedRows[0];
+                int furnitureIdToRemove = Convert.ToInt32(selectedRow.Cells["FurnitureID"].Value);
+                int rentalTransactionIdToRemove = Convert.ToInt32(selectedRow.Cells["RentalTransactionID"].Value);
+
+                SelectedFurnitureDataGridView.Rows.Remove(selectedRow);
+                this.BuildReturnUserControl.RemoveFurnitureItem(furnitureIdToRemove, rentalTransactionIdToRemove);
+            }
+            this.CheckIfMemberAndFurniturePopulated();
+            CalculateTotals();
+        }
     }
-}
+    }

@@ -176,5 +176,15 @@ namespace SofaSoGood.UserControls
         {
             this.ReturnFurnitureUserControl.DisplaySelectedFurniture(this.returnFurnitureList);
         }
+
+        /// <summary>
+        /// Removes a furniture item from SelectedFurniture by ID. Updates the count in MemberDashboard.
+        /// </summary>
+        /// <param name="furnitureID">ID of furniture item to remove..</param>
+        public void RemoveFurnitureItem(int furnitureID, int rentalTransactionID)
+        {
+            returnFurnitureList.RemoveAll(f => f.FurnitureID == furnitureID && f.RentalTransactionID == rentalTransactionID);
+            UpdateItemsToReturnLabel();
+        }
     }
 }

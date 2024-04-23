@@ -35,6 +35,7 @@ namespace SofaSoGood.View
             this.BuildReturnUserControl.SetReturnFurnitureUserControl(this.ReturnFurnitureUserControl);
             this.ReturnFurnitureUserControl.SetLoginForm(this.LoginForm);
             this.ReturnFurnitureUserControl.SetSearchMemberUserControl(this.SearchMemberUserControl);
+            this.ReturnFurnitureUserControl.SetBuildReturnUserControl(this.BuildReturnUserControl);
         }
 
         /// <summary>
