@@ -20,6 +20,15 @@ namespace SofaSoGood.AdminUserControls
             InitializeComponent();
             this.adminController = new AdminController();
             this.dateWarningLabel.Text = string.Empty;
+            FormatFurnitureListView();
+        }
+
+        private void FormatFurnitureListView() 
+        {
+            foreach (ColumnHeader column in furnitureListView.Columns)
+            {
+                column.Width = -2;
+            }
         }
 
         /// <summary>
