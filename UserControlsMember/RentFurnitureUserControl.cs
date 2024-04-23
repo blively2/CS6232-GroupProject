@@ -208,6 +208,7 @@ namespace SofaSoGood.UserControls
             this.SearchFurnitureUserControl.ClearSelectedFurniture();
             this.UpdateCostSummary();
             SearchMemberUserControl.BuildReturnUserControl.DisplaySelectedMemberAndUpdateCurrentlyRentedFurniture(SearchMemberUserControl.SelectedMember);
+            SearchMemberUserControl.UpdateHistory();
         }
 
         /// <summary>

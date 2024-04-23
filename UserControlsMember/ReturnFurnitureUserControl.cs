@@ -182,6 +182,7 @@ namespace SofaSoGood.UserControls
             returnForm.ShowDialog();
             SelectedFurnitureDataGridView.Rows.Clear();
             SearchMemberUserControl.BuildReturnUserControl.DisplaySelectedMemberAndUpdateCurrentlyRentedFurniture(SearchMemberUserControl.SelectedMember);
+            SearchMemberUserControl.UpdateHistory();
             CalculateTotals();
             CheckIfMemberAndFurniturePopulated();
         }
