@@ -125,10 +125,11 @@ namespace SofaSoGood.UserControls
             {
                 ListViewItem selectedItem = CurrentlyRentedFurnitureListView.SelectedItems[0];
                 int furnitureID = int.Parse(selectedItem.Text);
+                int rentalTransactionID = int.Parse(selectedItem.SubItems[1].Text);
 
-                if (returnFurnitureList.Any(f => f.FurnitureID == furnitureID))
+                if (returnFurnitureList.Any(f => f.FurnitureID == furnitureID && f.RentalTransactionID == rentalTransactionID))
                 {
-                    ItemsToReturnLabel.Text = "Furniture already selected.";
+                    ItemsToReturnLabel.Text = "This rental furniture is already selected for return.";
                     return;
                 }
 
