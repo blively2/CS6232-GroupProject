@@ -141,6 +141,10 @@ namespace SofaSoGood.UserControls
             contactTextBox.ReadOnly = false;
         }
 
+        /// <summary>
+        /// Validates the inputs.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateInputs()
         {
             bool isValid = true;
@@ -316,6 +320,11 @@ namespace SofaSoGood.UserControls
             DisableEditableFields();
         }
 
+        /// <summary>
+        /// Handles the TextChanged event of the Input control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Input_TextChanged(object sender, EventArgs e)
         {
             ResetValidationMessages();

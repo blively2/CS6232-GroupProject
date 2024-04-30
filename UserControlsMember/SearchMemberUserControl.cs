@@ -286,6 +286,9 @@ namespace SofaSoGood.UserControls
             this.ReturnFurnitureUserControl = ReturnFurnitureUserControl;
         }
 
+        /// <summary>
+        /// Updates the history.
+        /// </summary>
         public void UpdateHistory()
         {
             this.MemberDashboard.ShowMemberRentalHistory(SelectedMember.MemberID);

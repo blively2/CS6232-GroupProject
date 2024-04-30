@@ -53,6 +53,10 @@ namespace SofaSoGood.AdminUserControls
             }
         }
 
+        /// <summary>
+        /// Populates the ListView.
+        /// </summary>
+        /// <param name="data">The data.</param>
         private void PopulateListView(List<FurnitureReportItem> data)
         {
             furnitureListView.Items.Clear();

@@ -1,16 +1,20 @@
 ﻿using SofaSoGood.Model;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SofaSoGood.DAL
 {
+    /// <summary>
+    /// Represent the DAL for Return
+    /// </summary>
     public class ReturnDAL
     {
+        /// <summary>
+        /// Creates the return transaction.
+        /// </summary>
+        /// <param name="returnTransaction">The return transaction.</param>
+        /// <returns></returns>
         public int CreateReturnTransaction(ReturnTransaction returnTransaction)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
@@ -35,6 +39,11 @@ namespace SofaSoGood.DAL
             }
         }
 
+        /// <summary>
+        /// Adds the return item.
+        /// </summary>
+        /// <param name="returnItem">The return item.</param>
+        /// <param name="returnTransactionId">The return transaction identifier.</param>
         public void AddReturnItem(ReturnItem returnItem, int returnTransactionId)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())

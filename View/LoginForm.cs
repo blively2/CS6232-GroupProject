@@ -12,16 +12,15 @@ namespace SofaSoGood
     /// </summary>
     public partial class LoginForm : Form
     {
-        // Reference to LoginController
+        
         private readonly LoginController loginController;
-        // Reference to EmployeeController
+       
         private readonly EmployeeController employeeController;
-        // Reference to MemberDashboard
+        
         private readonly MemberDashboard MainDashboard;
 
         private readonly AdminController adminController;
 
-        // Reference to Employee that is logged in currently
         public Employee LoggedInEmployee;
 
         /// <summary>

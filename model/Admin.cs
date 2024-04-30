@@ -2,6 +2,9 @@
 
 namespace SofaSoGood.Model
 {
+    /// <summary>
+    /// / Class to define Admin
+    /// </summary>
     public class Admin
     {
         /// <summary>

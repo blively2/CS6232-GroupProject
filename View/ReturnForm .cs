@@ -10,12 +10,12 @@ namespace SofaSoGood.View
     /// </summary>
     public partial class ReturnForm : Form
     {
-        private ReturnTransaction returnTransaction;
-        private MemberController memberController;
-        private RentalController rentalController;
-        private FurnitureController furnitureController;
-        private EmployeeController employeeController;
-        private Employee ReturnedByEmployee;
+        private readonly ReturnTransaction returnTransaction;
+        private readonly MemberController memberController;
+        private readonly RentalController rentalController;
+        private readonly FurnitureController furnitureController;
+        private readonly EmployeeController employeeController;
+        private readonly Employee ReturnedByEmployee;
 
         /// <summary>
         /// Constructs a new ReceiptForm.

@@ -3,18 +3,22 @@ using SofaSoGood.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace SofaSoGood.Controller
 {
+    /// <summary>
+    /// Represent return controller
+    /// </summary>
     public class ReturnController
     {
         private readonly ReturnDAL returnDal;
         private readonly RentalDAL rentalDal;
         private readonly FurnitureDAL furnitureDal;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReturnController"/> class.
+        /// </summary>
         public ReturnController()
         {
             returnDal = new ReturnDAL();
@@ -22,6 +26,11 @@ namespace SofaSoGood.Controller
             furnitureDal = new FurnitureDAL();
         }
 
+        /// <summary>
+        /// Processes the return.
+        /// </summary>
+        /// <param name="returnTransaction">The return transaction.</param>
+        /// <returns></returns>
         public ReturnTransaction ProcessReturn(ReturnTransaction returnTransaction)
         {
             using (TransactionScope scope = new TransactionScope())
@@ -71,6 +80,13 @@ namespace SofaSoGood.Controller
             return returnTransaction;
         }
 
+        /// <summary>
+        /// Calculates the refund or fine.
+        /// </summary>
+        /// <param name="rentalTransaction">The rental transaction.</param>
+        /// <param name="returnItem">The return item.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentException">No matching rental item found for return item.</exception>
         private decimal CalculateRefundOrFine(RentalTransaction rentalTransaction, ReturnItem returnItem)
         {
 

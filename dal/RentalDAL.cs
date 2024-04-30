@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using SofaSoGood.Model;
@@ -176,6 +175,11 @@ namespace SofaSoGood.DAL
             return rentalHistory;
         }
 
+        /// <summary>
+        /// Gets the rental item by identifier.
+        /// </summary>
+        /// <param name="rentalItemId">The rental item identifier.</param>
+        /// <returns></returns>
         public RentalItem GetRentalItemById(int rentalItemId)
         {
             RentalItem rentalItem = null;
@@ -205,6 +209,11 @@ namespace SofaSoGood.DAL
             return rentalItem;
         }
 
+        /// <summary>
+        /// Updates the rental item quantity.
+        /// </summary>
+        /// <param name="rentalItemId">The rental item identifier.</param>
+        /// <param name="newQuantity">The new quantity.</param>
         public void UpdateRentalItemQuantity(int rentalItemId, int newQuantity)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
@@ -257,6 +266,11 @@ namespace SofaSoGood.DAL
             return rentalTransaction;
         }
 
+        /// <summary>
+        /// Gets the rental items by transaction identifier.
+        /// </summary>
+        /// <param name="rentalTransactionId">The rental transaction identifier.</param>
+        /// <returns></returns>
         private List<RentalItem> GetRentalItemsByTransactionId(int rentalTransactionId)
         {
             List<RentalItem> rentalItems = new List<RentalItem>();
@@ -287,45 +301,50 @@ namespace SofaSoGood.DAL
             return rentalItems;
         }
 
+        /// <summary>
+        /// Gets the currently rented furniture by member identifier.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+        /// <returns></returns>
         public List<Furniture> GetCurrentlyRentedFurnitureByMemberID(int memberId)
         {
             List<Furniture> currentlyRentedFurnitures = new List<Furniture>();
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
                 string query = @"
-SELECT 
-    f.FurnitureID,
-    rt.RentalTransactionID,
-    ri.RentalItemID,
-    rt.RentalDate,
-    rt.DueDate,
-    f.Name AS FurnitureName, 
-    f.CategoryName AS FurnitureCategory,
-    f.StyleName AS FurnitureStyle,
-    f.Description, 
-    f.RentalRatePerDay,
-    (ri.Quantity - ISNULL(SUM(ri2.QuantityReturned), 0)) AS AmountRented
-FROM 
-    RentalTransaction rt
-INNER JOIN RentalItem ri ON rt.RentalTransactionID = ri.RentalTransactionID
-INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
-LEFT JOIN ReturnItem ri2 ON ri.RentalItemID = ri2.RentalItemID
-WHERE 
-    rt.MemberID = @MemberID
-GROUP BY 
-    f.FurnitureID,
-    rt.RentalTransactionID,
-    ri.RentalItemID,
-    rt.RentalDate,
-    rt.DueDate,
-    f.Name, 
-    f.CategoryName,
-    f.StyleName,
-    f.Description, 
-    f.RentalRatePerDay,
-    ri.Quantity
-HAVING 
-    ri.Quantity - ISNULL(SUM(ri2.QuantityReturned), 0) > 0;";
+                                SELECT 
+                                f.FurnitureID,
+                                rt.RentalTransactionID,
+                                ri.RentalItemID,
+                                rt.RentalDate,
+                                rt.DueDate,
+                                f.Name AS FurnitureName, 
+                                f.CategoryName AS FurnitureCategory,
+                                f.StyleName AS FurnitureStyle,
+                                f.Description, 
+                                f.RentalRatePerDay,
+                                (ri.Quantity - ISNULL(SUM(ri2.QuantityReturned), 0)) AS AmountRented
+                                FROM 
+                                RentalTransaction rt
+                                INNER JOIN RentalItem ri ON rt.RentalTransactionID = ri.RentalTransactionID
+                                INNER JOIN Furniture f ON ri.FurnitureID = f.FurnitureID
+                                LEFT JOIN ReturnItem ri2 ON ri.RentalItemID = ri2.RentalItemID
+                                WHERE 
+                                rt.MemberID = @MemberID
+                                GROUP BY 
+                                f.FurnitureID,
+                                rt.RentalTransactionID,
+                                ri.RentalItemID,
+                                rt.RentalDate,
+                                rt.DueDate,
+                                f.Name, 
+                                f.CategoryName,
+                                f.StyleName,
+                                f.Description, 
+                                f.RentalRatePerDay,
+                                ri.Quantity
+                                HAVING 
+                                ri.Quantity - ISNULL(SUM(ri2.QuantityReturned), 0) > 0;";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -357,6 +376,11 @@ HAVING
             return currentlyRentedFurnitures;
         }
 
+        /// <summary>
+        /// Gets the furniture identifier by rental item identifier.
+        /// </summary>
+        /// <param name="rentalItemId">The rental item identifier.</param>
+        /// <returns></returns>
         public int GetFurnitureIdByRentalItemId(int rentalItemId)
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())

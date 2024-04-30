@@ -3,15 +3,18 @@ using SofaSoGood.Model;
 using SofaSoGood.View;
 using System;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace SofaSoGood.UserControls
 {
+    /// <summary>
+    /// User control for return history 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class ReturnHistoryUserControl : UserControl
     {
-        private ReturnController returnController;
-        private MemberController memberController;
+        private readonly ReturnController returnController;
+        private readonly MemberController memberController;
         public ReturnHistoryUserControl()
         {
             InitializeComponent();

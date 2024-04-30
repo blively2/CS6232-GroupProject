@@ -8,6 +8,10 @@ using System.Linq;
 
 namespace SofaSoGood.UserControls
 {
+    /// <summary>
+    /// User control for Build Return
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class BuildReturnUserControl : UserControl
     {
 
@@ -16,6 +20,9 @@ namespace SofaSoGood.UserControls
         public List<Furniture> returnFurnitureList;
         private ReturnFurnitureUserControl ReturnFurnitureUserControl;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildReturnUserControl"/> class.
+        /// </summary>
         public BuildReturnUserControl()
         {
             this.rentalController = new RentalController();
@@ -119,6 +126,11 @@ namespace SofaSoGood.UserControls
             this.FormatSelectedMemberAndFurnitureListView();
         }
 
+        /// <summary>
+        /// Currentlies the rented furniture ListView double click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void CurrentlyRentedFurnitureListViewDoubleClick(object sender, System.EventArgs e)
         {
             if (CurrentlyRentedFurnitureListView.SelectedItems.Count == 1)

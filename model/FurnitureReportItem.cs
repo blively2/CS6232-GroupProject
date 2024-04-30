@@ -1,5 +1,8 @@
 ﻿namespace SofaSoGood.Model
 {
+    /// <summary>
+    ///  Class to define Furniture report
+    /// </summary>
     public class FurnitureReportItem
     {
         /// <summary>

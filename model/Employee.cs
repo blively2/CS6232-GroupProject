@@ -2,6 +2,9 @@
 
 namespace SofaSoGood.Model
 {
+    /// <summary>
+    /// / Class to define Employee
+    /// </summary>
     public class Employee
     {
         /// <summary>

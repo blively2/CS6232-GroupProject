@@ -17,7 +17,7 @@ namespace SofaSoGood.UserControls
         private SearchFurnitureUserControl SearchFurnitureUserControl;
         private SearchMemberUserControl SearchMemberUserControl;
         private LoginForm LoginForm;
-        private RentalController rentalController;
+        private readonly RentalController rentalController;
 
         /// <summary>
         /// Constructor for RentFurnitureUserControl.

@@ -1,6 +1,5 @@
 ﻿using SofaSoGood.DAL;
 using SofaSoGood.Model;
-
 namespace SofaSoGood.Controller
 {
     /// <summary>

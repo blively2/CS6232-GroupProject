@@ -68,6 +68,11 @@ namespace SofaSoGood.Controller
             return furnitureDAL.GetFurnitureDailyRate(furnitureId);
         }
 
+        /// <summary>
+        /// Gets the furniture identifier by rental item identifier.
+        /// </summary>
+        /// <param name="rentalItemID">The rental item identifier.</param>
+        /// <returns></returns>
         public int GetFurnitureIdByRentalItemId(int rentalItemID)
         {
             return rentalDAL.GetFurnitureIdByRentalItemId(rentalItemID);
@@ -102,11 +107,20 @@ namespace SofaSoGood.Controller
             return rentalDAL.GetCurrentlyRentedFurnitureByMemberID(memberId);
         }
 
-        public RentalItem GetRentalItemById(int rentalItemId) 
-        { 
+        /// <summary>
+        /// Gets the rental item by identifier.
+        /// </summary>
+        /// <param name="rentalItemId">The rental item identifier.</param>
+        /// <returns></returns>
+        public RentalItem GetRentalItemById(int rentalItemId)
+        {
             return rentalDAL.GetRentalItemById(rentalItemId);
         }
 
+        /// <summary>
+        /// Creates the rental transaction with inventory update.
+        /// </summary>
+        /// <param name="rentalTransaction">The rental transaction.</param>
         public void CreateRentalTransactionWithInventoryUpdate(RentalTransaction rentalTransaction)
         {
             using (TransactionScope scope = new TransactionScope())
@@ -123,7 +137,7 @@ namespace SofaSoGood.Controller
                     }
                     scope.Complete();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     throw;
