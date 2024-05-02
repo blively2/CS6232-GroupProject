@@ -48,18 +48,42 @@ namespace SofaSoGood.DAL
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
-                string query = @"
-            INSERT INTO [ReturnItem] (ReturnTransactionID, RentalItemID, QuantityReturned) 
-            VALUES (@ReturnTransactionID, @RentalItemID, @QuantityReturned);";
-
-                using (var command = new SqlCommand(query, connection))
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
                 {
-                    command.Parameters.AddWithValue("@ReturnTransactionID", returnTransactionId);
-                    command.Parameters.AddWithValue("@RentalItemID", returnItem.RentalItemID);
-                    command.Parameters.AddWithValue("@QuantityReturned", returnItem.QuantityReturned);
+                    try
+                    {
+                        string query = @"
+                INSERT INTO [ReturnItem] (ReturnTransactionID, RentalItemID, QuantityReturned) 
+                VALUES (@ReturnTransactionID, @RentalItemID, @QuantityReturned);";
+                        using (var command = new SqlCommand(query, connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@ReturnTransactionID", returnTransactionId);
+                            command.Parameters.AddWithValue("@RentalItemID", returnItem.RentalItemID);
+                            command.Parameters.AddWithValue("@QuantityReturned", returnItem.QuantityReturned);
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
+                        }
+
+                        string updateQuery = @"
+                UPDATE [RentalItem]
+                SET QuantityReturned = QuantityReturned + @QuantityReturned
+                WHERE RentalItemID = @RentalItemID";
+                        using (var updateCommand = new SqlCommand(updateQuery, connection, transaction))
+                        {
+                            updateCommand.Parameters.AddWithValue("@RentalItemID", returnItem.RentalItemID);
+                            updateCommand.Parameters.AddWithValue("@QuantityReturned", returnItem.QuantityReturned);
+
+                            updateCommand.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }
