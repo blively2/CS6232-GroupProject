@@ -61,7 +61,6 @@ namespace SofaSoGood.Controller
                         {
                             totalFine += itemRefundOrFine;
                         }
-                        rentalDal.UpdateRentalItemQuantityReturned(returnItem.RentalItemID, returnItem.QuantityReturned + rentalTransaction.RentalItems.First(ri => ri.RentalItemID == returnItem.RentalItemID).QuantityReturned);
 
                         furnitureDal.IncreaseStockQuantity(returnItem.FurnitureID, returnItem.QuantityReturned);
                     }
