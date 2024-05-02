@@ -46,7 +46,12 @@ namespace SofaSoGood.Controller
                     {
                         RentalTransaction rentalTransaction = rentalDal.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
 
-                        decimal itemRefundOrFine = CalculateRefundOrFine(rentalTransaction, returnItem);
+                        if (rentalTransaction == null)
+                        {
+                            throw new ArgumentException("No rental transaction found for the given rental item ID.");
+                        }
+
+                        decimal itemRefundOrFine = CalculateRefundOrFine(rentalTransaction, returnItem, DateTime.Now);
 
                         if (itemRefundOrFine < 0)
                         {
@@ -56,6 +61,9 @@ namespace SofaSoGood.Controller
                         {
                             totalFine += itemRefundOrFine;
                         }
+                        rentalDal.UpdateRentalItemQuantityReturned(returnItem.RentalItemID, returnItem.QuantityReturned + rentalTransaction.RentalItems.First(ri => ri.RentalItemID == returnItem.RentalItemID).QuantityReturned);
+
+                        furnitureDal.IncreaseStockQuantity(returnItem.FurnitureID, returnItem.QuantityReturned);
                     }
 
                     returnTransaction.ReturnAmount = totalRefund;
@@ -67,11 +75,6 @@ namespace SofaSoGood.Controller
                     foreach (var returnItem in returnTransaction.ReturnItems)
                     {
                         returnDal.AddReturnItem(returnItem, returnTransactionId);
-                    }
-
-                    foreach (var returnItem in returnTransaction.ReturnItems)
-                    {
-                        furnitureDal.IncreaseStockQuantity(returnItem.FurnitureID, returnItem.QuantityReturned);
                     }
 
                     scope.Complete();
@@ -87,19 +90,13 @@ namespace SofaSoGood.Controller
         /// <param name="returnItem">The return item.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentException">No matching rental item found for return item.</exception>
-        private decimal CalculateRefundOrFine(RentalTransaction rentalTransaction, ReturnItem returnItem)
+        private decimal CalculateRefundOrFine(RentalTransaction rentalTransaction, ReturnItem returnItem, DateTime returnDate)
         {
-
             RentalItem rentalItem = rentalTransaction.RentalItems.FirstOrDefault(ri => ri.RentalItemID == returnItem.RentalItemID);
-
             if (rentalItem == null)
-            {
                 throw new ArgumentException("No matching rental item found for return item.");
-            }
 
             decimal dailyRate = rentalItem.DailyRate;
-            DateTime returnDate = DateTime.Now;
-
             int rentedDays = (rentalTransaction.DueDate - rentalTransaction.RentalDate).Days + 1;
             int actualDaysRented = (returnDate - rentalTransaction.RentalDate).Days + 1;
 
