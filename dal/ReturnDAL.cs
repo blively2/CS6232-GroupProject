@@ -1,7 +1,10 @@
 ﻿using SofaSoGood.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Transactions;
 
 namespace SofaSoGood.DAL
 {
@@ -10,6 +13,16 @@ namespace SofaSoGood.DAL
     /// </summary>
     public class ReturnDAL
     {
+
+        private FurnitureDAL furnitureDal;
+        private RentalDAL rentalDal;
+
+        public ReturnDAL(FurnitureDAL furnitureDal, RentalDAL rentalDal)
+        {
+            this.furnitureDal = furnitureDal;
+            this.rentalDal = rentalDal;
+        }
+
         /// <summary>
         /// Creates the return transaction.
         /// </summary>
@@ -190,6 +203,80 @@ namespace SofaSoGood.DAL
                 }
             }
             return returnTransaction;
+        }
+
+        public ReturnTransaction ProcessReturn(ReturnTransaction returnTransaction)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                using (var connection = SofaSoGoodDBConnection.GetConnection())
+                {
+                    connection.Open();
+
+                    decimal totalRefund = 0;
+                    decimal totalFine = 0;
+
+                    foreach (var returnItem in returnTransaction.ReturnItems)
+                    {
+                        RentalTransaction rentalTransaction = rentalDal.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
+                        if (rentalTransaction == null)
+                        {
+                            throw new ArgumentException("No rental transaction found for the given rental item ID.");
+                        }
+
+                        decimal itemRefundOrFine = CalculateRefundOrFine(rentalTransaction, returnItem, DateTime.Now);
+
+                        if (itemRefundOrFine < 0)
+                        {
+                            totalRefund += Math.Abs(itemRefundOrFine);
+                        }
+                        else
+                        {
+                            totalFine += itemRefundOrFine;
+                        }
+
+                        furnitureDal.IncreaseStockQuantity(returnItem.FurnitureID, returnItem.QuantityReturned);
+                    }
+
+                    returnTransaction.ReturnAmount = totalRefund;
+                    returnTransaction.FineAmount = totalFine;
+
+                    int returnTransactionId = CreateReturnTransaction(returnTransaction);
+                    returnTransaction.ReturnTransactionID = returnTransactionId;
+
+                    foreach (var returnItem in returnTransaction.ReturnItems)
+                    {
+                        AddReturnItem(returnItem, returnTransactionId);
+                    }
+
+                    scope.Complete();
+                }
+                return returnTransaction;
+            }
+        }
+
+        private decimal CalculateRefundOrFine(RentalTransaction rentalTransaction, ReturnItem returnItem, DateTime returnDate)
+        {
+            RentalItem rentalItem = rentalTransaction.RentalItems.FirstOrDefault(ri => ri.RentalItemID == returnItem.RentalItemID);
+            if (rentalItem == null)
+                throw new ArgumentException("No matching rental item found for return item.");
+
+            decimal dailyRate = rentalItem.DailyRate;
+            int rentedDays = (rentalTransaction.DueDate - rentalTransaction.RentalDate).Days + 1;
+            int actualDaysRented = (returnDate - rentalTransaction.RentalDate).Days + 1;
+
+            if (returnDate <= rentalTransaction.DueDate)
+            {
+                int daysUnused = rentedDays - actualDaysRented;
+                decimal refundAmount = daysUnused > 0 ? daysUnused * dailyRate : 0;
+                return -refundAmount;
+            }
+            else
+            {
+                int daysLate = actualDaysRented - rentedDays;
+                decimal fineAmount = daysLate * dailyRate;
+                return fineAmount;
+            }
         }
     }
 }
