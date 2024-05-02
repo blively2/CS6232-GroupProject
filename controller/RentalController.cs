@@ -24,22 +24,6 @@ namespace SofaSoGood.Controller
         }
 
         /// <summary>
-        /// Creates a new rental transaction in the database and updates the stock quantity of the rented furniture.
-        /// </summary>
-        /// <param name="rentalTransaction">The rental transaction to be created.</param>
-        public void CreateRentalTransaction(RentalTransaction rentalTransaction)
-        {
-            int transactionId = rentalDAL.CreateRentalTransaction(rentalTransaction);
-
-            rentalTransaction.RentalTransactionID = transactionId;
-
-            foreach (var item in rentalTransaction.RentalItems)
-            {
-                furnitureDAL.UpdateStockQuantity(item.FurnitureID, item.Quantity);
-            }
-        }
-
-        /// <summary>
         /// Retrieves a rental transaction from the database based on its ID.
         /// </summary>
         /// <param name="rentalTransactionId">The ID of the rental transaction to retrieve.</param>
@@ -121,14 +105,13 @@ namespace SofaSoGood.Controller
         /// Creates the rental transaction with inventory update.
         /// </summary>
         /// <param name="rentalTransaction">The rental transaction.</param>
-        public void CreateRentalTransactionWithInventoryUpdate(RentalTransaction rentalTransaction)
+        public void CreateRentalTransaction(RentalTransaction rentalTransaction)
         {
             using (TransactionScope scope = new TransactionScope())
             {
                 try
                 {
                     int transactionId = rentalDAL.CreateRentalTransaction(rentalTransaction);
-
                     rentalTransaction.RentalTransactionID = transactionId;
 
                     foreach (var item in rentalTransaction.RentalItems)
@@ -139,7 +122,6 @@ namespace SofaSoGood.Controller
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
