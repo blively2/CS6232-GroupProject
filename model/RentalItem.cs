@@ -29,5 +29,10 @@
         /// Gets or sets the daily rate.
         /// </summary>
         public decimal DailyRate { get; set; }
+
+        public int QuantityReturned { get; set; }
+
+        public int QuantityRemaining => Quantity - QuantityReturned;
+
     }
 }
