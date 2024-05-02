@@ -18,34 +18,47 @@ namespace SofaSoGood.DAL
         {
             using (var connection = SofaSoGoodDBConnection.GetConnection())
             {
-                string query = "INSERT INTO [RentalTransaction] (MemberID, EmployeeID, RentalDate, DueDate, TotalCost) " +
-                                "VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost); " +
-                                "SELECT CAST(SCOPE_IDENTITY() as int);";
-                using (var command = new SqlCommand(query, connection))
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
                 {
-                    command.Parameters.Add("@MemberID", SqlDbType.Int).Value = rentalTransaction.MemberID;
-                    command.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = rentalTransaction.EmployeeID;
-                    command.Parameters.Add("@RentalDate", SqlDbType.Date).Value = rentalTransaction.RentalDate;
-                    command.Parameters.Add("@DueDate", SqlDbType.Date).Value = rentalTransaction.DueDate;
-                    command.Parameters.Add("@TotalCost", SqlDbType.Decimal).Value = rentalTransaction.TotalCost;
-
-                    connection.Open();
-                    int rentalTransactionId = (int)command.ExecuteScalar();
-
-                    foreach (var item in rentalTransaction.RentalItems)
+                    try
                     {
-                        string itemQuery = "INSERT INTO [RentalItem] (RentalTransactionID, FurnitureID, Quantity, DailyRate) " +
-                                            "VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate)";
-                        using (var itemCommand = new SqlCommand(itemQuery, connection))
+                        string query = "INSERT INTO [RentalTransaction] (MemberID, EmployeeID, RentalDate, DueDate, TotalCost) " +
+                                       "VALUES (@MemberID, @EmployeeID, @RentalDate, @DueDate, @TotalCost); " +
+                                       "SELECT CAST(SCOPE_IDENTITY() as int);";
+                        using (var command = new SqlCommand(query, connection, transaction))
                         {
-                            itemCommand.Parameters.Add("@RentalTransactionID", SqlDbType.Int).Value = rentalTransactionId;
-                            itemCommand.Parameters.Add("@FurnitureID", SqlDbType.Int).Value = item.FurnitureID;
-                            itemCommand.Parameters.Add("@Quantity", SqlDbType.Int).Value = item.Quantity;
-                            itemCommand.Parameters.Add("@DailyRate", SqlDbType.Decimal).Value = item.DailyRate;
-                            itemCommand.ExecuteNonQuery();
+                            command.Parameters.Add("@MemberID", SqlDbType.Int).Value = rentalTransaction.MemberID;
+                            command.Parameters.Add("@EmployeeID", SqlDbType.Int).Value = rentalTransaction.EmployeeID;
+                            command.Parameters.Add("@RentalDate", SqlDbType.Date).Value = rentalTransaction.RentalDate;
+                            command.Parameters.Add("@DueDate", SqlDbType.Date).Value = rentalTransaction.DueDate;
+                            command.Parameters.Add("@TotalCost", SqlDbType.Decimal).Value = rentalTransaction.TotalCost;
+
+                            int rentalTransactionId = (int)command.ExecuteScalar();
+
+                            foreach (var item in rentalTransaction.RentalItems)
+                            {
+                                string itemQuery = "INSERT INTO [RentalItem] (RentalTransactionID, FurnitureID, Quantity, DailyRate) " +
+                                                   "VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate)";
+                                using (var itemCommand = new SqlCommand(itemQuery, connection, transaction))
+                                {
+                                    itemCommand.Parameters.Add("@RentalTransactionID", SqlDbType.Int).Value = rentalTransactionId;
+                                    itemCommand.Parameters.Add("@FurnitureID", SqlDbType.Int).Value = item.FurnitureID;
+                                    itemCommand.Parameters.Add("@Quantity", SqlDbType.Int).Value = item.Quantity;
+                                    itemCommand.Parameters.Add("@DailyRate", SqlDbType.Decimal).Value = item.DailyRate;
+                                    itemCommand.ExecuteNonQuery();
+                                }
+                            }
+
+                            transaction.Commit();
+                            return rentalTransactionId;
                         }
                     }
-                    return rentalTransactionId;
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }
