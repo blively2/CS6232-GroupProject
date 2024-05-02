@@ -38,8 +38,8 @@ namespace SofaSoGood.DAL
 
                             foreach (var item in rentalTransaction.RentalItems)
                             {
-                                string itemQuery = "INSERT INTO [RentalItem] (RentalTransactionID, FurnitureID, Quantity, DailyRate) " +
-                                                   "VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate)";
+                                string itemQuery = "INSERT INTO [RentalItem] (RentalTransactionID, FurnitureID, Quantity, DailyRate, QuantityReturned) " +
+                                                   "VALUES (@RentalTransactionID, @FurnitureID, @Quantity, @DailyRate, 0);";
                                 using (var itemCommand = new SqlCommand(itemQuery, connection, transaction))
                                 {
                                     itemCommand.Parameters.Add("@RentalTransactionID", SqlDbType.Int).Value = rentalTransactionId;
@@ -404,6 +404,21 @@ namespace SofaSoGood.DAL
                     command.Parameters.AddWithValue("@RentalItemID", rentalItemId);
                     connection.Open();
                     return (int)command.ExecuteScalar();
+                }
+            }
+        }
+
+        public void UpdateRentalItemQuantityReturned(int rentalItemId, int quantityReturned)
+        {
+            using (var connection = SofaSoGoodDBConnection.GetConnection())
+            {
+                string query = "UPDATE [RentalItem] SET QuantityReturned = @QuantityReturned WHERE RentalItemID = @RentalItemID";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RentalItemID", rentalItemId);
+                    command.Parameters.AddWithValue("@QuantityReturned", quantityReturned);
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
             }
         }
