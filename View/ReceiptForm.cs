@@ -33,6 +33,7 @@ namespace SofaSoGood.View
             DueDateLabel.Text = "Due Date: " + this.rentalTransaction.DueDate.ToShortDateString();
             TotalCostLabel.Text = "Total Cost: $" + this.rentalTransaction.TotalCost.ToString();
             RentedByLabel.Text = "Rented By: " + this.RentedByEmployee.FirstName + RentedByEmployee.LastName;
+            RentalDateLabel.Text = "Rental Date: " + this.rentalTransaction.RentalDate.ToShortDateString();
         }
 
         /// <summary>
