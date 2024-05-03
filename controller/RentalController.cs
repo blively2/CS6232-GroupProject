@@ -34,6 +34,16 @@ namespace SofaSoGood.Controller
         }
 
         /// <summary>
+        /// Retrieves a rental transaction from the database based on its ID.
+        /// </summary>
+        /// <param name="rentalItemId">The ID of the rental transaction to retrieve.</param>
+        /// <returns>A RentalTransaction object if found; otherwise, null.</returns>
+        public RentalTransaction GetRentalTransactionByRentalItemId(int rentalItemID)
+        {
+            return rentalDAL.GetRentalTransactionByRentalItemId(rentalItemID);
+        }
+
+        /// <summary>
         /// Gets a list of furniture that is available for rental.
         /// </summary>
         /// <returns>A list of Furniture objects that are available for rental.</returns>

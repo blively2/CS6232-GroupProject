@@ -74,6 +74,7 @@ namespace SofaSoGood.View
             foreach (var returnItem in ReturnItems)
             {
                 int furnitureID = rentalController.GetFurnitureIdByRentalItemId(returnItem.RentalItemID);
+                RentalTransaction rentalTransaction = rentalController.GetRentalTransactionByRentalItemId(returnItem.RentalItemID);
                 Furniture furniture = furnitureController.GetFurnitureByID(furnitureID);
                 int index = FurnitureDataGridView.Rows.Add();
                 DataGridViewRow newRow = FurnitureDataGridView.Rows[index];
@@ -84,6 +85,8 @@ namespace SofaSoGood.View
                 newRow.Cells["Description"].Value = furniture.Description;
                 newRow.Cells["RentalRatePerDay"].Value = furniture.RentalRatePerDay.ToString("C");
                 newRow.Cells["Quantity"].Value = returnItem.QuantityReturned;
+                newRow.Cells["RentalTransactionID"].Value = rentalTransaction.RentalTransactionID;
+                newRow.Cells["RentalDate"].Value = rentalTransaction.RentalDate.ToShortDateString();
             }
         }
 
