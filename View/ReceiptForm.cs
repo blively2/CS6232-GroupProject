@@ -81,6 +81,7 @@ namespace SofaSoGood.View
                 newRow.Cells["Description"].Value = furniture.Description;
                 newRow.Cells["RentalRatePerDay"].Value = furniture.RentalRatePerDay.ToString("C");
                 newRow.Cells["Quantity"].Value = rentalItem.Quantity;
+                newRow.Cells["QuantityReturned"].Value = rentalItem.QuantityReturned;
             }
         }
 

@@ -112,6 +112,7 @@ namespace SofaSoGood.DAL
                                     RentalTransactionID = itemReader.GetInt32(itemReader.GetOrdinal("RentalTransactionID")),
                                     FurnitureID = itemReader.GetInt32(itemReader.GetOrdinal("FurnitureID")),
                                     Quantity = itemReader.GetInt32(itemReader.GetOrdinal("Quantity")),
+                                    QuantityReturned = itemReader.GetInt32(itemReader.GetOrdinal("QuantityReturned")),
                                     DailyRate = itemReader.GetDecimal(itemReader.GetOrdinal("DailyRate"))
                                 };
                                 rentalTransaction.RentalItems.Add(rentalItem);
