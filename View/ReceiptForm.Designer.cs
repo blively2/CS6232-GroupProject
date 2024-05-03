@@ -55,6 +55,7 @@
             this.DueDateLabel = new System.Windows.Forms.Label();
             this.TotalCostLabel = new System.Windows.Forms.Label();
             this.RentedByLabel = new System.Windows.Forms.Label();
+            this.RentalDateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FurnitureDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             this.TransactionIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.TransactionIDLabel.Location = new System.Drawing.Point(12, 9);
             this.TransactionIDLabel.Name = "TransactionIDLabel";
-            this.TransactionIDLabel.Size = new System.Drawing.Size(126, 25);
+            this.TransactionIDLabel.Size = new System.Drawing.Size(188, 36);
             this.TransactionIDLabel.TabIndex = 0;
             this.TransactionIDLabel.Text = "Transaction#";
             // 
@@ -74,7 +75,7 @@
             this.MemberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.MemberLabel.Location = new System.Drawing.Point(12, 34);
             this.MemberLabel.Name = "MemberLabel";
-            this.MemberLabel.Size = new System.Drawing.Size(90, 25);
+            this.MemberLabel.Size = new System.Drawing.Size(130, 36);
             this.MemberLabel.TabIndex = 1;
             this.MemberLabel.Text = "Member:";
             // 
@@ -161,6 +162,7 @@
             this.FurnitureDataGridView.Location = new System.Drawing.Point(2, 154);
             this.FurnitureDataGridView.MultiSelect = false;
             this.FurnitureDataGridView.Name = "FurnitureDataGridView";
+            this.FurnitureDataGridView.RowHeadersWidth = 62;
             this.FurnitureDataGridView.RowTemplate.Height = 28;
             this.FurnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.FurnitureDataGridView.Size = new System.Drawing.Size(746, 234);
@@ -169,44 +171,58 @@
             // FurnitureID
             // 
             this.FurnitureID.HeaderText = "ID";
+            this.FurnitureID.MinimumWidth = 8;
             this.FurnitureID.Name = "FurnitureID";
             this.FurnitureID.ReadOnly = true;
+            this.FurnitureID.Width = 150;
             // 
             // FurnitureName
             // 
             this.FurnitureName.HeaderText = "Name";
+            this.FurnitureName.MinimumWidth = 8;
             this.FurnitureName.Name = "FurnitureName";
             this.FurnitureName.ReadOnly = true;
+            this.FurnitureName.Width = 150;
             // 
             // FurnitureCategory
             // 
             this.FurnitureCategory.HeaderText = "Category";
+            this.FurnitureCategory.MinimumWidth = 8;
             this.FurnitureCategory.Name = "FurnitureCategory";
             this.FurnitureCategory.ReadOnly = true;
+            this.FurnitureCategory.Width = 150;
             // 
             // FurnitureStyle
             // 
             this.FurnitureStyle.HeaderText = "Style";
+            this.FurnitureStyle.MinimumWidth = 8;
             this.FurnitureStyle.Name = "FurnitureStyle";
             this.FurnitureStyle.ReadOnly = true;
+            this.FurnitureStyle.Width = 150;
             // 
             // Description
             // 
             this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 8;
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
+            this.Description.Width = 150;
             // 
             // RentalRatePerDay
             // 
             this.RentalRatePerDay.HeaderText = "RentalRatePerDay";
+            this.RentalRatePerDay.MinimumWidth = 8;
             this.RentalRatePerDay.Name = "RentalRatePerDay";
             this.RentalRatePerDay.ReadOnly = true;
+            this.RentalRatePerDay.Width = 150;
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 8;
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 150;
             // 
             // ItemsLabel
             // 
@@ -214,7 +230,7 @@
             this.ItemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.ItemsLabel.Location = new System.Drawing.Point(12, 126);
             this.ItemsLabel.Name = "ItemsLabel";
-            this.ItemsLabel.Size = new System.Drawing.Size(65, 25);
+            this.ItemsLabel.Size = new System.Drawing.Size(93, 36);
             this.ItemsLabel.TabIndex = 59;
             this.ItemsLabel.Text = "Items:";
             // 
@@ -224,7 +240,7 @@
             this.DueDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.DueDateLabel.Location = new System.Drawing.Point(12, 391);
             this.DueDateLabel.Name = "DueDateLabel";
-            this.DueDateLabel.Size = new System.Drawing.Size(100, 25);
+            this.DueDateLabel.Size = new System.Drawing.Size(146, 36);
             this.DueDateLabel.TabIndex = 60;
             this.DueDateLabel.Text = "Due Date:";
             // 
@@ -234,7 +250,7 @@
             this.TotalCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.TotalCostLabel.Location = new System.Drawing.Point(558, 391);
             this.TotalCostLabel.Name = "TotalCostLabel";
-            this.TotalCostLabel.Size = new System.Drawing.Size(108, 25);
+            this.TotalCostLabel.Size = new System.Drawing.Size(158, 36);
             this.TotalCostLabel.TabIndex = 61;
             this.TotalCostLabel.Text = "Total Cost:";
             // 
@@ -244,9 +260,19 @@
             this.RentedByLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.RentedByLabel.Location = new System.Drawing.Point(12, 427);
             this.RentedByLabel.Name = "RentedByLabel";
-            this.RentedByLabel.Size = new System.Drawing.Size(108, 25);
+            this.RentedByLabel.Size = new System.Drawing.Size(162, 36);
             this.RentedByLabel.TabIndex = 62;
             this.RentedByLabel.Text = "Rented By:";
+            // 
+            // RentalDateLabel
+            // 
+            this.RentalDateLabel.AutoSize = true;
+            this.RentalDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.RentalDateLabel.Location = new System.Drawing.Point(251, 391);
+            this.RentalDateLabel.Name = "RentalDateLabel";
+            this.RentalDateLabel.Size = new System.Drawing.Size(178, 36);
+            this.RentalDateLabel.TabIndex = 63;
+            this.RentalDateLabel.Text = "Rental Date:";
             // 
             // ReceiptForm
             // 
@@ -254,6 +280,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(750, 461);
+            this.Controls.Add(this.RentalDateLabel);
             this.Controls.Add(this.RentedByLabel);
             this.Controls.Add(this.TotalCostLabel);
             this.Controls.Add(this.DueDateLabel);
@@ -303,5 +330,6 @@
         private System.Windows.Forms.Label DueDateLabel;
         private System.Windows.Forms.Label TotalCostLabel;
         private System.Windows.Forms.Label RentedByLabel;
+        private System.Windows.Forms.Label RentalDateLabel;
     }
 }
