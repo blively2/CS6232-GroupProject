@@ -63,7 +63,7 @@ namespace SofaSoGood.UserControls
             this.SelectedMemberListView.BackColor = !memberPopulated ? Color.LightGray : SystemColors.Window;
             this.CurrentlyRentedFurnitureListView.BackColor = !furniturePopulated ? Color.LightGray : SystemColors.Window;
 
-            this.SelectAMemberLabel.Text = memberPopulated ? "Selected Member: " : "Please select a member.";
+            this.SelectAMemberLabel.Text = memberPopulated ? "Selected Member: " : "Please select a member in the Search Member tab.";
             this.CurrentlyRentedFurnitureLabel.Text = furniturePopulated ? "Double Click an item to add it to a return." : "No rented furniture for selected member.";
         }
 

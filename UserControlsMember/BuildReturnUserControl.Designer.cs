@@ -61,9 +61,10 @@
             // 
             this.BuildReturnTitleLabel.AutoSize = true;
             this.BuildReturnTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.BuildReturnTitleLabel.Location = new System.Drawing.Point(231, 6);
+            this.BuildReturnTitleLabel.Location = new System.Drawing.Point(346, 9);
+            this.BuildReturnTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BuildReturnTitleLabel.Name = "BuildReturnTitleLabel";
-            this.BuildReturnTitleLabel.Size = new System.Drawing.Size(257, 29);
+            this.BuildReturnTitleLabel.Size = new System.Drawing.Size(386, 40);
             this.BuildReturnTitleLabel.TabIndex = 3;
             this.BuildReturnTitleLabel.Text = "Currently Rented Items";
             // 
@@ -71,10 +72,9 @@
             // 
             this.SelectAMemberLabel.AutoSize = true;
             this.SelectAMemberLabel.ForeColor = System.Drawing.Color.Black;
-            this.SelectAMemberLabel.Location = new System.Drawing.Point(2, 34);
-            this.SelectAMemberLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SelectAMemberLabel.Location = new System.Drawing.Point(3, 52);
             this.SelectAMemberLabel.Name = "SelectAMemberLabel";
-            this.SelectAMemberLabel.Size = new System.Drawing.Size(93, 13);
+            this.SelectAMemberLabel.Size = new System.Drawing.Size(138, 20);
             this.SelectAMemberLabel.TabIndex = 36;
             this.SelectAMemberLabel.Text = "Selected Member:";
             // 
@@ -138,11 +138,10 @@
             this.Phone});
             this.SelectedMemberListView.FullRowSelect = true;
             this.SelectedMemberListView.HideSelection = false;
-            this.SelectedMemberListView.Location = new System.Drawing.Point(0, 49);
-            this.SelectedMemberListView.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectedMemberListView.Location = new System.Drawing.Point(0, 75);
             this.SelectedMemberListView.MultiSelect = false;
             this.SelectedMemberListView.Name = "SelectedMemberListView";
-            this.SelectedMemberListView.Size = new System.Drawing.Size(648, 41);
+            this.SelectedMemberListView.Size = new System.Drawing.Size(970, 61);
             this.SelectedMemberListView.TabIndex = 37;
             this.SelectedMemberListView.UseCompatibleStateImageBehavior = false;
             this.SelectedMemberListView.View = System.Windows.Forms.View.Details;
@@ -151,21 +150,19 @@
             // 
             this.CurrentlyRentedFurnitureLabel.AutoSize = true;
             this.CurrentlyRentedFurnitureLabel.ForeColor = System.Drawing.Color.Black;
-            this.CurrentlyRentedFurnitureLabel.Location = new System.Drawing.Point(2, 114);
-            this.CurrentlyRentedFurnitureLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CurrentlyRentedFurnitureLabel.Location = new System.Drawing.Point(3, 175);
             this.CurrentlyRentedFurnitureLabel.Name = "CurrentlyRentedFurnitureLabel";
-            this.CurrentlyRentedFurnitureLabel.Size = new System.Drawing.Size(125, 13);
+            this.CurrentlyRentedFurnitureLabel.Size = new System.Drawing.Size(372, 20);
             this.CurrentlyRentedFurnitureLabel.TabIndex = 38;
-            this.CurrentlyRentedFurnitureLabel.Text = "Please Select a Member.";
+            this.CurrentlyRentedFurnitureLabel.Text = "Please Select a Member in the Search Member tab.";
             // 
             // ItemsToReturnLabel
             // 
             this.ItemsToReturnLabel.AutoSize = true;
             this.ItemsToReturnLabel.ForeColor = System.Drawing.Color.Black;
-            this.ItemsToReturnLabel.Location = new System.Drawing.Point(244, 248);
-            this.ItemsToReturnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ItemsToReturnLabel.Location = new System.Drawing.Point(366, 382);
             this.ItemsToReturnLabel.Name = "ItemsToReturnLabel";
-            this.ItemsToReturnLabel.Size = new System.Drawing.Size(142, 13);
+            this.ItemsToReturnLabel.Size = new System.Drawing.Size(214, 20);
             this.ItemsToReturnLabel.TabIndex = 50;
             this.ItemsToReturnLabel.Text = "Selected Items For Return: 0";
             // 
@@ -184,11 +181,10 @@
             this.AmountRented});
             this.CurrentlyRentedFurnitureListView.FullRowSelect = true;
             this.CurrentlyRentedFurnitureListView.HideSelection = false;
-            this.CurrentlyRentedFurnitureListView.Location = new System.Drawing.Point(0, 127);
-            this.CurrentlyRentedFurnitureListView.Margin = new System.Windows.Forms.Padding(2);
+            this.CurrentlyRentedFurnitureListView.Location = new System.Drawing.Point(0, 195);
             this.CurrentlyRentedFurnitureListView.MultiSelect = false;
             this.CurrentlyRentedFurnitureListView.Name = "CurrentlyRentedFurnitureListView";
-            this.CurrentlyRentedFurnitureListView.Size = new System.Drawing.Size(648, 119);
+            this.CurrentlyRentedFurnitureListView.Size = new System.Drawing.Size(970, 181);
             this.CurrentlyRentedFurnitureListView.TabIndex = 52;
             this.CurrentlyRentedFurnitureListView.UseCompatibleStateImageBehavior = false;
             this.CurrentlyRentedFurnitureListView.View = System.Windows.Forms.View.Details;
@@ -242,7 +238,7 @@
             // 
             // BuildReturnUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.CurrentlyRentedFurnitureListView);
             this.Controls.Add(this.ItemsToReturnLabel);
@@ -250,9 +246,8 @@
             this.Controls.Add(this.SelectedMemberListView);
             this.Controls.Add(this.SelectAMemberLabel);
             this.Controls.Add(this.BuildReturnTitleLabel);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BuildReturnUserControl";
-            this.Size = new System.Drawing.Size(644, 277);
+            this.Size = new System.Drawing.Size(966, 426);
             this.ResumeLayout(false);
             this.PerformLayout();
 
