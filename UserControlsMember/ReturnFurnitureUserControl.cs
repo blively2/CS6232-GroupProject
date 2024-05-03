@@ -38,7 +38,7 @@ namespace SofaSoGood.UserControls
             this.SelectedMemberListView.BackColor = !memberPopulated ? Color.LightGray : SystemColors.Window;
             this.SelectedFurnitureDataGridView.BackColor = !furniturePopulated ? Color.LightGray : SystemColors.Window;
 
-            this.SelectedMemberLabel.Text = memberPopulated ? "" : "Please select a member.";
+            this.SelectedMemberLabel.Text = memberPopulated ? "" : "Please select a member in the Search Member tab.";
             this.SelectedFurnitureLabel.Text = furniturePopulated ? "Click AmountToReturn to Edit Quantities, Right Click to Remove" : "Please select furniture to return.";
 
             if (memberPopulated && furniturePopulated)
