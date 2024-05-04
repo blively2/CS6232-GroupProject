@@ -234,8 +234,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\cs6232-g3_iteration3.sql" />
-    <Content Include="DB\scriptUpdateTest.sql" />
+    <Content Include="DB\cs6232-g3-finalUpdate.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
