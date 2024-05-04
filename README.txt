@@ -14,6 +14,8 @@ Password: password2
 Username: user3
 Password: password3
 
+HASHED
+
 Database Creation located in Iteration 1: Deliverables folder.
 
 Workflow
@@ -35,7 +37,7 @@ return history displays history, double click to view return
 admin login is
 Admin
 password01
-still unhashed
+HASHED
 recommend dates 04/01 to 08/01
 
 Issues pertaining to rental refund and fine calculations appears to be corrected. 
