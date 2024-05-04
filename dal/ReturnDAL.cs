@@ -261,20 +261,20 @@ namespace SofaSoGood.DAL
             if (rentalItem == null)
                 throw new ArgumentException("No matching rental item found for return item.");
 
-            decimal dailyRate = rentalItem.DailyRate;
+            decimal dailyRate = rentalItem.DailyRate / rentalItem.Quantity;
             int rentedDays = (rentalTransaction.DueDate - rentalTransaction.RentalDate).Days + 1;
             int actualDaysRented = (returnDate - rentalTransaction.RentalDate).Days + 1;
 
             if (returnDate <= rentalTransaction.DueDate)
             {
                 int daysUnused = rentedDays - actualDaysRented;
-                decimal refundAmount = daysUnused > 0 ? daysUnused * dailyRate : 0;
+                decimal refundAmount = daysUnused > 0 ? daysUnused * dailyRate * returnItem.QuantityReturned : 0;
                 return -refundAmount;
             }
             else
             {
                 int daysLate = actualDaysRented - rentedDays;
-                decimal fineAmount = daysLate * dailyRate;
+                decimal fineAmount = daysLate * dailyRate * returnItem.QuantityReturned;
                 return fineAmount;
             }
         }
