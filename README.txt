@@ -37,5 +37,5 @@ password01
 still unhashed
 recommend dates 04/01 to 08/01
 
-There is something strange about the way we are calculating Refunds and Fines...
-If you rent four beds to a customer at $25 a day for four days and they only keep the beds for one day, please do not refund them $400.
+Issues pertaining to rental refund and fine calculations appears to be corrected. 
+Please note that to view the Quantity Returned, select any return receipt from the Rental History page to view quantity returned.
