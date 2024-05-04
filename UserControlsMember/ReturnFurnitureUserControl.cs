@@ -213,6 +213,9 @@ namespace SofaSoGood.UserControls
             this.BuildReturnUserControl = buildReturnUserControl;
         }
 
+        /// <summary>
+        /// Calculates total, refund, and fines for the transaction.
+        /// </summary>
         private void CalculateTotals()
         {
             decimal totalFine = 0m;
