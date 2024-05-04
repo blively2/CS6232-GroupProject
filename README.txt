@@ -1,5 +1,6 @@
 Classic ReadMe file!
 
+pLeAsE rUn ThE nEw Db ScRiPt!!!
 Sofa So Good, your Furniture Management System.
 
 Default logins: 
