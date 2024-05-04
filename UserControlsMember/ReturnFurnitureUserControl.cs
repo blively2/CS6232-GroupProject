@@ -219,7 +219,7 @@ namespace SofaSoGood.UserControls
             decimal totalRefund = 0m;
             decimal netAmount = 0m;
 
-            DateTime returnDate = DateTime.Now;
+            DateTime returnDate = DateTime.Now;  // Consider using a more precise time control if needed
 
             foreach (DataGridViewRow row in SelectedFurnitureDataGridView.Rows)
             {
@@ -230,17 +230,18 @@ namespace SofaSoGood.UserControls
                     DateTime rentalDate = Convert.ToDateTime(row.Cells["RentalDate"].Value);
                     decimal dailyRate = this.RentalController.GetFurnitureDailyRate(furnitureId);
 
-                    int daysLate = (returnDate - dueDate).Days;
-                    int daysEarly = (dueDate - returnDate).Days;
+                    int totalRentalDays = (dueDate - rentalDate).Days + 1;
+                    int daysUsed = (returnDate - rentalDate).Days + 1;
+                    int daysUnused = totalRentalDays - daysUsed;
 
-                    if (daysLate > 0)
+                    if (daysUsed > totalRentalDays)
                     {
-                        decimal fineAmount = dailyRate * amountToReturn * daysLate;
+                        decimal fineAmount = dailyRate * amountToReturn * (daysUsed - totalRentalDays);
                         totalFine += fineAmount;
                     }
-                    else if (daysEarly > 0)
+                    else if (daysUnused > 0)
                     {
-                        decimal refundAmount = dailyRate * amountToReturn * daysEarly;
+                        decimal refundAmount = dailyRate * amountToReturn * daysUnused;
                         totalRefund += refundAmount;
                     }
                 }
