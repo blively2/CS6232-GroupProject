@@ -4,6 +4,7 @@ using SofaSoGood.View;
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Text;
 
 namespace SofaSoGood
 {
@@ -45,9 +46,12 @@ namespace SofaSoGood
         /// <param name="e">Contains the event data.</param>
         private void LoginButtonClick(object sender, EventArgs e)
         {
-            if (loginController.VerifyUserCredentials(this.UsernameTextBox.Text, this.PasswordTextBox.Text))
+            string hashedUsername = ComputeMd5Hash(this.UsernameTextBox.Text);
+            string hashedPassword = ComputeMd5Hash(this.PasswordTextBox.Text);
+
+            if (loginController.VerifyUserCredentials(hashedUsername, hashedPassword))
             {
-                int loginID = loginController.GetLoginIDByUsernameAndPassword(this.UsernameTextBox.Text, this.PasswordTextBox.Text);
+                int loginID = loginController.GetLoginIDByUsernameAndPassword(hashedUsername, hashedPassword);
 
                 var admin = adminController.GetAdminByLoginID(loginID);
                 if (admin != null)
@@ -70,7 +74,7 @@ namespace SofaSoGood
                     }
                     else
                     {
-                        ShowLoginError(); 
+                        ShowLoginError();
                     }
                 }
             }
@@ -116,6 +120,25 @@ namespace SofaSoGood
         private void SetLoggedInEmployee(Employee PassedInEmployee)
         {
             this.LoggedInEmployee = PassedInEmployee;
+        }
+
+        /// <summary>
+        /// Hashing because it wasn't done.
+        /// </summary>
+        private string ComputeMd5Hash(string input)
+        {
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = Encoding.Unicode.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
         }
     }
 }
