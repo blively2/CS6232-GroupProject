@@ -30,8 +30,14 @@
         /// </summary>
         public decimal DailyRate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the quantity returned.
+        /// </summary>
         public int QuantityReturned { get; set; }
 
+        /// <summary>
+        /// determines amount of remaining items in rental
+        /// </summary>
         public int QuantityRemaining => Quantity - QuantityReturned;
 
     }
